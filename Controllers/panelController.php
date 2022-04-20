@@ -13,7 +13,7 @@ class panelController extends controller
     use \databaseHelper;
 
     private $userController;
-    static $blade;
+    private static $blade;
 
     public function __construct()
     {
@@ -22,12 +22,21 @@ class panelController extends controller
 
     static function panel()
     {
+//        $lang = loadLang('fa', 'login');
+//        $queryBuilder = self::queryBuilder();
+//        $db = $queryBuilder->from('menus');
+//        $menus = $db->all();
+//
+//        echo self::$blade->make('Backend/main/index', ['lang'=>$lang, 'view'=>self::$blade, 'menus'=>$menus])->render();
         $lang = loadLang('fa', 'login');
-        $queryBuilder = self::queryBuilder();
-        $db = $queryBuilder->from('menus');
-        $menus = $db->all();
-
-        echo self::$blade->make('Backend/main/index', ['lang'=>$lang, 'view'=>self::$blade, 'menus'=>$menus])->render();
+//        $content = self::$blade->make('Backend/main/layout/menus')->render();
+        echo self::$blade->make('Backend/main/index',
+            [
+                'lang' => $lang,
+                'view' => self::$blade,
+//                'content' => $content
+            ]
+        );
     }
 
     static function addMenu()

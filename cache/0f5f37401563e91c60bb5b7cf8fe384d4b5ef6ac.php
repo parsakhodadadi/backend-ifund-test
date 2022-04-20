@@ -46,4 +46,4 @@
     </table>
 </form>
 </body>
-</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/Backend/main/layout/login-form.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/panel/admin/login.blade.php ENDPATH**/ ?>

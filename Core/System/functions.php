@@ -41,16 +41,20 @@ function loadController($controllerName=null)
     return new $controllerName;
 }
 
-//function loadModel($modelName) {
-//    include "Models/$modelName.php";
-//    $modelAddress='\App\Models\\'.$modelName;
-//    return $modelAddress;
-//}
+function loadModel($modelName) {
+    include "Models/$modelName.php";
+    $modelAddress = '\App\Models\\'.$modelName;
+    return $modelAddress;
+}
 
 function loadLang($lang='fa',$file=null)
 {
     $configHelper = new configHelper();
-    return include "./Views/languages/{$configHelper::getConfig('default-language')}/$file.php";
+    try {
+        return include "./languages/{$configHelper::getConfig('default-language')}/$file.php";
+    } catch (Exception $e) {
+        return $lang;
+    }
 }
 
 function route($route)
@@ -104,6 +108,11 @@ function redirect($url = null)
     } else {
         // core error
     }
+}
+
+function request() {
+    if (!empty($_GET)) return $_GET;
+    if (!empty($_POST)) return $_POST;
 }
 
 
