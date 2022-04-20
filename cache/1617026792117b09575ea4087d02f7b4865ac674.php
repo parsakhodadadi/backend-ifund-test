@@ -37,7 +37,7 @@
 								<div class="p-4 rounded">
 									<div class="text-center">
 										<h3 class=""><?php echo e($lang['form_name']); ?></h3>
-										<p><?php echo e($lang['no_account']); ?><a href="<?php echo route(''); ?><?php echo route(''); ?>../Views/backend/authentication-signup.html"><?php echo e($lang['register']); ?></a>
+										<p><?php echo e($lang['no_account']); ?><a href="<?php echo route(''); ?>register"><?php echo e($lang['register']); ?></a>
 										</p>
 									</div>
 									<div class="d-grid">

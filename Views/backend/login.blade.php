@@ -37,7 +37,7 @@
 								<div class="p-4 rounded">
 									<div class="text-center">
 										<h3 class="">{{ $lang['form_name'] }}</h3>
-										<p>{{ $lang['no_account'] }}<a href="{!! route('') !!}{!! route('') !!}../Views/backend/authentication-signup.html">{{ $lang['register'] }}</a>
+										<p>{{ $lang['no_account'] }}<a href="{!! route('') !!}register">{{ $lang['register'] }}</a>
 										</p>
 									</div>
 									<div class="d-grid">

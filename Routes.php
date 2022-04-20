@@ -31,9 +31,9 @@ $router->get('/add-menu', 'panelController@addMenu');
 
 $router->post('/add-menu','panelController@addMenu');
 
-$router->get('/register', 'userController@registerData');
+$router->get('/register', 'RegisterController@register');
 
-$router->post('/register', 'userController@registerData');
+$router->post('/register', 'RegisterController@register');
 
 $router->get('/login', 'userController@login');
 

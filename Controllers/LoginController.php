@@ -26,7 +26,6 @@ class LoginController extends controller
 //        var_dump($menus);
 //        exit();
 
-        echo "heyyy";
         $request = request();
         if (!empty($request)) {
             $users = $this->model->checkUser($request);

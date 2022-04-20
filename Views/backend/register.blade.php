@@ -18,7 +18,7 @@
 	<link href="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/css/app.css" rel="stylesheet">
 	<link href="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/css/icons.css" rel="stylesheet">
-	<title>ساین ادمین - قالب مدیریتی بوت استرپ 5</title>
+	<title>{{ $lang['register'] }}</title>
 </head>
 
 <body class="rtl">
@@ -36,8 +36,8 @@
 							<div class="card-body">
 								<div class="p-4 rounded">
 									<div class="text-center">
-										<h3 class="">ثبت نام</h3>
-										<p>حساب کاربری دارید؟ <a href="{!! route('') !!}Others/Themes/Backend/main/horizontal/authentication-signin.html">وارد شوید</a>
+										<h3 class="">{{ $lang['register'] }}</h3>
+										<p>{{ $lang['already-account'] }}<a href="{!! route('') !!}login">{{ $lang['sign-in'] }}</a>
 										</p>
 									</div>
 									<div class="d-grid">
@@ -45,63 +45,62 @@
 												class="d-flex justify-content-center align-items-center">
 												<img class="me-2" src="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/images/icons/search.svg" width="16"
 													 alt="Image Description">
-												<span>ثبت نام با حساب گوگل</span>
+												<span>{{ $lang['register-google'] }}</span>
 											</span>
 										</a> <a href="javascript:;" class="btn btn-facebook"><i
-												class="bx bxl-facebook"></i>ثبت نام با حساب فیسبوک</a>
+												class="bx bxl-facebook"></i>{{ $lang['register-facebook'] }}</a>
 									</div>
-									<div class="login-separater text-center mb-4"> <span>یا ثبت نام با ایمیل</span>
+									<div class="login-separater text-center mb-4"> <span>{{ $lang['register-email'] }}</span>
 										<hr />
 									</div>
 									<div class="form-body">
-										<form class="row g-3">
+										<form class="row g-3" action="{!! route('') !!}register">
 											<div class="col-sm-6">
-												<label for="inputFirstName" class="form-label">نام</label>
-												<input type="email" class="form-control" id="inputFirstName"
-													placeholder="پدرام">
+												<label for="inputFirstName" class="form-label">{{ $lang['first-name'] }}</label>
+												<input type="text" class="form-control" id="inputFirstName"
+													placeholder="{{ $lang['ex-first-name'] }}" name="firstname">
 											</div>
 											<div class="col-sm-6">
-												<label for="inputLastName" class="form-label">نام خانوادگی</label>
-												<input type="email" class="form-control" id="inputLastName"
-													placeholder="شریفی">
+												<label for="inputLastName" class="form-label">{{ $lang['last-name'] }}</label>
+												<input type="text" class="form-control" id="inputLastName"
+													placeholder="{{ $lang['ex-last-name'] }}" name="lastname">
 											</div>
 											<div class="col-12">
-												<label for="inputEmailAddress" class="form-label">آدرس ایمیل</label>
+												<label for="inputEmailAddress" class="form-label">{{ $lang['email-address'] }}</label>
 												<input type="email" class="form-control" id="inputEmailAddress"
-													placeholder="example@user.com">
+													placeholder="example@user.com" name="username">
 											</div>
 											<div class="col-12">
-												<label for="inputChoosePassword" class="form-label">رمز عبور</label>
+												<label for="inputChoosePassword" class="form-label">{{ $lang['password'] }}</label>
 												<div class="input-group" id="show_hide_password">
 													<input type="password" class="form-control border-end-0"
 														id="inputChoosePassword" value="12345678"
-														placeholder="رمز عبور خود را وارد کنید"> <a href="javascript:;"
+														placeholder="{{ $lang['enter-pass'] }}" name="password"> <a href="javascript:;"
 														class="input-group-text bg-transparent"><i
 															class='bx bx-hide'></i></a>
 												</div>
 											</div>
 											<div class="col-12">
-												<label for="inputSelectCountry" class="form-label">کشور</label>
+												<label for="inputSelectCountry" class="form-label">{{ $lang['country'] }}</label>
 												<select class="form-select" id="inputSelectCountry"
-													aria-label="مثال ورودی انتخاب پیش فرض">
-													<option selected>ایران</option>
-													<option value="1">ترکیه</option>
-													<option value="2">چین</option>
-													<option value="3">کانادا</option>
+													aria-label="{{ $lang['examples'] }}" name="country">
+													<option selected>{{ $lang['iran'] }}</option>
+													<option value="1">{{ $lang['turkey'] }}</option>
+													<option value="2">{{ $lang['china'] }}</option>
+													<option value="3">{{ $lang['canada'] }}</option>
 												</select>
 											</div>
 											<div class="col-12">
 												<div class="form-check form-switch">
 													<input class="form-check-input" type="checkbox"
 														id="flexSwitchCheckChecked">
-													<label class="form-check-label" for="flexSwitchCheckChecked">من با
-														قوانین و سیاست حریم خصوصی موافقم</label>
+													<label class="form-check-label" for="flexSwitchCheckChecked">{{ $lang['agreement'] }}</label>
 												</div>
 											</div>
 											<div class="col-12">
 												<div class="d-grid">
 													<button type="submit" class="btn btn-primary"><i
-															class='bx bx-user'></i>ثبت نام</button>
+															class='bx bx-user'></i>{{ $lang['register'] }}</button>
 												</div>
 											</div>
 										</form>
