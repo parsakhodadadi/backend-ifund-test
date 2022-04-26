@@ -33,6 +33,7 @@ class users
             return 200;
         } catch (\PDOException $e) {
             return $e->getCode();
+            echo "no";
         }
     }
 

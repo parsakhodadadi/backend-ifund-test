@@ -76,7 +76,7 @@ class panelController extends controller
         foreach ($menus as $menu) {
             echo "<li class='$menu->icon'>";
             echo "<a href='$menu->route'> $menu->name </a>";
-                 showSubMenus($model);
+            showSubMenus($model);
             echo "</li>";
         }
         echo '</ul>';

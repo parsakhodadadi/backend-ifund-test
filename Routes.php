@@ -27,6 +27,8 @@ $router->get('/login', 'LoginController@login');
 
 $router->post('/login', 'LoginController@login');
 
+$router->get('/logout', 'LoginController@logout');
+
 $router->get('/add-menu', 'panelController@addMenu');
 
 $router->post('/add-menu','panelController@addMenu');

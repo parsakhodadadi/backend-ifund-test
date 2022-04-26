@@ -35,6 +35,7 @@ hey
 			<?php echo e($view->make('Backend/main/layout/sidebar-header')); ?>
 
 			<!--navigation-->
+			<?php echo e($view->make('Backend/main/layout/navigation')); ?>
 
 			<!--end navigation-->
 		</div>

@@ -22,7 +22,7 @@ class RegisterController
     {
         $request = request();
         if (!empty($request)) {
-            $this->model->insert([$request['username'], $request['password']]);
+            $this->model->insert(['username' => $request['username'], 'password' => $request['password']]);
             print_r($request);
         } else {
             $lang = loadLang('fa', 'register');
@@ -30,7 +30,7 @@ class RegisterController
                 [
                     'lang' => $lang,
                     'views' => $this->blade
-                ]
+                ] 
             );
         }
     }

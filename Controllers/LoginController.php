@@ -40,4 +40,8 @@ class LoginController extends controller
             );
         }
     }
-}
+
+    public function logout() {
+//        view('backend/login.blade');
+    }
+}   
