@@ -18,7 +18,6 @@ $router->setNamespace('\App\Controllers');
 //    $lang = loadLang('fa', 'login');
 //    echo $blade->make('Backend/main/layout/menus',['lang'=>$lang, 'view'=>$blade])->render();
 //});
-
 $router->get('/', 'panelController@panel');
 $router->post('/panel', 'panelController@panel');
 $router->get('/login', 'LoginController@login');
