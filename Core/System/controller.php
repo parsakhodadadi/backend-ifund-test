@@ -20,9 +20,14 @@ class controller
         return new $class;
     }
 
-    static public function view($name,$data = null)
-    {
-        view($name,$data);
+    static public function view() {
+        return new View();
     }
+
+//    static public function view($name, $data = null)
+//    {
+//        view($name, $data);
+//    }
+
 
 }

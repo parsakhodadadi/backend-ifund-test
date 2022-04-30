@@ -20,7 +20,6 @@ function loadFunctions()
 
 function view($view=null, $data=[])
 {
-
     if(!empty($data)) {
         foreach ($data as $var=>$value) {
             $$var=$value;
@@ -47,6 +46,22 @@ function loadModel($modelName) {
     return $modelAddress;
 }
 
+//function lang($lang, $languageNames = ['home']): array {
+//    if (!empty(is_dir("languages/$lang"))) {
+//        if (!empty($languageNames)) {
+//            foreach ($languageNames as $languageName) {
+//                $langFile = "languages/$lang/$languageName.php";
+//                if (file_exists($langFile)) {
+//                    $allLanguages[$languageName] = include $langFile;
+//                } else {
+//                    exit("$languageName does not exist");
+//                }
+//            }
+//            return $allLanguages;
+//        }
+//    } else exit("$lang directory does not exist");
+//}
+
 function loadLang($lang='fa',$file=null)
 {
     $configHelper = new configHelper();
@@ -63,42 +78,20 @@ function route($route)
     return $configHelper->setURL($route);
 }
 
-function checkGetRequest($paramName = null, $pageName = null)
-{
-    if (isset($_GET[$paramName]) && isset($pageName)) {
-        if ($_GET[$paramName] == $pageName) {
-            return true;
-        }else {
-            return false;
-        }
-    }
-}
-
-function checkPostRequest($postStatus = true, $indexName = null)
-{
-    if (!empty($_POST)) {
-        if ($postStatus) {
-            return $_POST;
-        }else {
-            return $_POST[$indexName];
-        }
-    }
-}
-
-function showSubMenus($model, $menu) {
-    $parentId = $menu->parent_id;
-    while (True) {
-        $subMenus = $model->from('menus')->where('parent_id', $parentId);
-        if (!empty($subMenus)) {
-            foreach ($subMenus as $subMenu) {
-                echo '<li>';
-                echo "<a href='$subMenu->route'> $subMenu->name </a>";
-                echo '</li>';
-                $parentId = $subMenu->parent_id;
-            }
-        }
-    }
-}
+//function showSubMenus($model, $menu) {
+//    $parentId = $menu->parent_id;
+//    while (True) {
+//        $subMenus = $model->from('menus')->where('parent_id', $parentId);
+//        if (!empty($subMenus)) {
+//            foreach ($subMenus as $subMenu) {
+//                echo '<li>';
+//                echo "<a href='$subMenu->route'> $subMenu->name </a>";
+//                echo '</li>';
+//                $parentId = $subMenu->parent_id;
+//            }
+//        }
+//    }
+//}
 
 function redirect($url = null)
 {

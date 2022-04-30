@@ -15,5 +15,10 @@ $configs = [
 
     'default-method'=>'show',
 
-    'default-language'=>'fa'
+    'default-language'=>'fa',
+
+    'views' => [
+        'directory' => 'views',
+        'cache' => 'cache'
+    ],
 ];

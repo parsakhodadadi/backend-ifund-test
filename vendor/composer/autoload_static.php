@@ -161,6 +161,7 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
     );
 
     public static $classMap = array (
+        'App\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/Controllers/CategoryController.php',
         'App\\Controllers\\ErrorController' => __DIR__ . '/../..' . '/Controllers/ErrorController.php',
         'App\\Controllers\\LoginController' => __DIR__ . '/../..' . '/Controllers/LoginController.php',
         'App\\Controllers\\RegisterController' => __DIR__ . '/../..' . '/Controllers/RegisterController.php',
@@ -172,6 +173,7 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'App\\Models\\users' => __DIR__ . '/../..' . '/Models/users.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Core\\System\\View' => __DIR__ . '/../..' . '/Core/System/Helpers/View.php',
         'Core\\System\\controller' => __DIR__ . '/../..' . '/Core/System/controller.php',
         'Core\\System\\validation' => __DIR__ . '/../..' . '/Core/System/validation.php',
         'Helper\\Directives' => __DIR__ . '/../..' . '/Helpers/directives.php',

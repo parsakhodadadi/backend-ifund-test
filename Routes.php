@@ -27,6 +27,10 @@ $router->get('/login', 'LoginController@login');
 
 $router->post('/login', 'LoginController@login');
 
+$router->get('/admin/category', 'CategoryController@create');
+
+$router->post('/admin/category', 'CategoryController@create');
+
 $router->get('/logout', 'LoginController@logout');
 
 $router->get('/add-menu', 'panelController@addMenu');
@@ -40,6 +44,8 @@ $router->post('/register', 'RegisterController@register');
 $router->get('/login', 'userController@login');
 
 $router->get('/checkLogin', 'userController@checkLoginInfo');
+
+$router->get('/admin', 'panelController@panel');
 
 // API Routes
 $router->get('/api/v1/test', function () {

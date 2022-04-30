@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controllers\\CategoryController' => $baseDir . '/Controllers/CategoryController.php',
     'App\\Controllers\\ErrorController' => $baseDir . '/Controllers/ErrorController.php',
     'App\\Controllers\\LoginController' => $baseDir . '/Controllers/LoginController.php',
     'App\\Controllers\\RegisterController' => $baseDir . '/Controllers/RegisterController.php',
@@ -17,6 +18,7 @@ return array(
     'App\\Models\\users' => $baseDir . '/Models/users.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Core\\System\\View' => $baseDir . '/Core/System/Helpers/View.php',
     'Core\\System\\controller' => $baseDir . '/Core/System/controller.php',
     'Core\\System\\validation' => $baseDir . '/Core/System/validation.php',
     'Helper\\Directives' => $baseDir . '/Helpers/directives.php',

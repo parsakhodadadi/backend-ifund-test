@@ -6,22 +6,22 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
+	<link rel="icon" href="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/favicon-32x32.png" type="image/png" />
 	<!--plugins-->
-	<link href="assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+	<link href="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+	<link href="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+	<link href="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
 	<!-- loader-->
-	<link href="assets/css/pace.min.css" rel="stylesheet" />
-	<script src="assets/js/pace.min.js"></script>
+	<link href="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/css/pace.min.css" rel="stylesheet" />
+	<script src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/js/pace.min.js"></script>
 	<!-- Bootstrap CSS -->
-	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="assets/css/app.css" rel="stylesheet">
-	<link href="assets/css/icons.css" rel="stylesheet">
+	<link href="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/css/app.css" rel="stylesheet">
+	<link href="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/css/icons.css" rel="stylesheet">
 	<!-- Theme Style CSS -->
-	<link rel="stylesheet" href="assets/css/dark-theme.css" />
-	<link rel="stylesheet" href="assets/css/semi-dark.css" />
-	<link rel="stylesheet" href="assets/css/header-colors.css" />
+	<link rel="stylesheet" href="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/css/dark-theme.css" />
+	<link rel="stylesheet" href="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/css/semi-dark.css" />
+	<link rel="stylesheet" href="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/css/header-colors.css" />
 	<title>ساین ادمین - قالب مدیریتی بوت استرپ 5</title>
 </head>
 
@@ -32,7 +32,7 @@
 		<div class="sidebar-wrapper" data-simplebar="true">
 			<div class="sidebar-header">
 				<div>
-					<img src="assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+					<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
 				</div>
 				<div>
 					<h4 class="logo-text">Synadmin</h4>
@@ -49,15 +49,15 @@
 						<div class="menu-title">داشبورد</div>
 					</a>
 					<ul>
-						<li> <a href="../../../../../Views/backend/Main/index.html"><i class="bx bx-left-arrow-alt"></i>تجزیه و تحلیل</a>
+						<li> <a href="{!! route('') !!}Views/backend/Main/index.html"><i class="bx bx-left-arrow-alt"></i>تجزیه و تحلیل</a>
 						</li>
-						<li> <a href="index2.html"><i class="bx bx-left-arrow-alt"></i>فروش</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/index2.html"><i class="bx bx-left-arrow-alt"></i>فروش</a>
 						</li>
-						<li> <a href="index3.html"><i class="bx bx-left-arrow-alt"></i>فروشگاه</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/index3.html"><i class="bx bx-left-arrow-alt"></i>فروشگاه</a>
 						</li>
-						<li> <a href="index4.html"><i class="bx bx-left-arrow-alt"></i>متناوب</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/index4.html"><i class="bx bx-left-arrow-alt"></i>متناوب</a>
 						</li>
-						<li> <a href="index5.html"><i class="bx bx-left-arrow-alt"></i>بیمارستان</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/index5.html"><i class="bx bx-left-arrow-alt"></i>بیمارستان</a>
 						</li>
 					</ul>
 				</li>
@@ -68,29 +68,29 @@
 						<div class="menu-title">اپلیکیشن</div>
 					</a>
 					<ul>
-						<li> <a href="app-emailbox.html"><i class="bx bx-left-arrow-alt"></i>ایمیل</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-emailbox.html"><i class="bx bx-left-arrow-alt"></i>ایمیل</a>
 						</li>
-						<li> <a href="app-emailread.html"><i class="bx bx-left-arrow-alt"></i>خواندن ایمیل</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-emailread.html"><i class="bx bx-left-arrow-alt"></i>خواندن ایمیل</a>
 						</li>
-						<li> <a href="app-chat-box.html"><i class="bx bx-left-arrow-alt"></i>باکس گفتگو</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-chat-box.html"><i class="bx bx-left-arrow-alt"></i>باکس گفتگو</a>
 						</li>
-						<li> <a href="app-file-manager.html"><i class="bx bx-left-arrow-alt"></i>مدیریت فایل</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-file-manager.html"><i class="bx bx-left-arrow-alt"></i>مدیریت فایل</a>
 						</li>
-						<li> <a href="app-contact-list.html"><i class="bx bx-left-arrow-alt"></i>مخاطبین</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-contact-list.html"><i class="bx bx-left-arrow-alt"></i>مخاطبین</a>
 						</li>
-						<li> <a href="app-to-do.html"><i class="bx bx-left-arrow-alt"></i>لیست Todo</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-to-do.html"><i class="bx bx-left-arrow-alt"></i>لیست Todo</a>
 						</li>
-						<li> <a href="app-invoice.html"><i class="bx bx-left-arrow-alt"></i>فاکتور</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-invoice.html"><i class="bx bx-left-arrow-alt"></i>فاکتور</a>
 						</li>
-						<li> <a href="app-fullcalender.html"><i class="bx bx-left-arrow-alt"></i>تقویم رویداد میلادی</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-fullcalender.html"><i class="bx bx-left-arrow-alt"></i>تقویم رویداد میلادی</a>
 						</li>
-						<li> <a href="app-fullcalender-jalali.html"><i class="bx bx-left-arrow-alt"></i>تقویم رویداد شمسی</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-fullcalender-jalali.html"><i class="bx bx-left-arrow-alt"></i>تقویم رویداد شمسی</a>
 						</li>
 					</ul>
 				</li>
 				<li class="menu-label">عناصر UI</li>
 				<li>
-					<a href="widgets.html">
+					<a href="{!! route('') !!}Others/Themes/Backend/main/vertical/widgets.html">
 						<div class="parent-icon"><i class='bx bx-briefcase-alt-2'></i>
 						</div>
 						<div class="menu-title">ویجت ها</div>
@@ -103,15 +103,15 @@
 						<div class="menu-title">فروشگاه</div>
 					</a>
 					<ul>
-						<li> <a href="ecommerce-products.html"><i class="bx bx-left-arrow-alt"></i>محصولات</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/ecommerce-products.html"><i class="bx bx-left-arrow-alt"></i>محصولات</a>
 						</li>
-						<li> <a href="ecommerce-products-details.html"><i class="bx bx-left-arrow-alt"></i>جزئیات
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/ecommerce-products-details.html"><i class="bx bx-left-arrow-alt"></i>جزئیات
 								محصول</a>
 						</li>
-						<li> <a href="ecommerce-add-new-products.html"><i class="bx bx-left-arrow-alt"></i>افزودن محصول
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/ecommerce-add-new-products.html"><i class="bx bx-left-arrow-alt"></i>افزودن محصول
 								جدید</a>
 						</li>
-						<li> <a href="ecommerce-orders.html"><i class="bx bx-left-arrow-alt"></i>سفارشات</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/ecommerce-orders.html"><i class="bx bx-left-arrow-alt"></i>سفارشات</a>
 						</li>
 					</ul>
 				</li>
@@ -122,41 +122,41 @@
 						<div class="menu-title">کامپوننت ها</div>
 					</a>
 					<ul>
-						<li> <a href="component-alerts.html"><i class="bx bx-left-arrow-alt"></i>هشدار</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-alerts.html"><i class="bx bx-left-arrow-alt"></i>هشدار</a>
 						</li>
-						<li> <a href="component-accordions.html"><i class="bx bx-left-arrow-alt"></i>آکاردئون</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-accordions.html"><i class="bx bx-left-arrow-alt"></i>آکاردئون</a>
 						</li>
-						<li> <a href="component-badges.html"><i class="bx bx-left-arrow-alt"></i>نشان</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-badges.html"><i class="bx bx-left-arrow-alt"></i>نشان</a>
 						</li>
-						<li> <a href="component-buttons.html"><i class="bx bx-left-arrow-alt"></i>دکمه</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-buttons.html"><i class="bx bx-left-arrow-alt"></i>دکمه</a>
 						</li>
-						<li> <a href="component-cards.html"><i class="bx bx-left-arrow-alt"></i>کارت</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-cards.html"><i class="bx bx-left-arrow-alt"></i>کارت</a>
 						</li>
-						<li> <a href="component-carousels.html"><i class="bx bx-left-arrow-alt"></i>اسلایدر</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-carousels.html"><i class="bx bx-left-arrow-alt"></i>اسلایدر</a>
 						</li>
-						<li> <a href="component-list-groups.html"><i class="bx bx-left-arrow-alt"></i>لیست گروهی</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-list-groups.html"><i class="bx bx-left-arrow-alt"></i>لیست گروهی</a>
 						</li>
-						<li> <a href="component-media-object.html"><i class="bx bx-left-arrow-alt"></i>اشیاء رسانه
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-media-object.html"><i class="bx bx-left-arrow-alt"></i>اشیاء رسانه
 								ای</a>
 						</li>
-						<li> <a href="component-modals.html"><i class="bx bx-left-arrow-alt"></i>مُدال</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-modals.html"><i class="bx bx-left-arrow-alt"></i>مُدال</a>
 						</li>
-						<li> <a href="component-navs-tabs.html"><i class="bx bx-left-arrow-alt"></i>تب بندی</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-navs-tabs.html"><i class="bx bx-left-arrow-alt"></i>تب بندی</a>
 						</li>
-						<li> <a href="component-navbar.html"><i class="bx bx-left-arrow-alt"></i>نوبار</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-navbar.html"><i class="bx bx-left-arrow-alt"></i>نوبار</a>
 						</li>
-						<li> <a href="component-paginations.html"><i class="bx bx-left-arrow-alt"></i>صفحه بندی</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-paginations.html"><i class="bx bx-left-arrow-alt"></i>صفحه بندی</a>
 						</li>
-						<li> <a href="component-popovers-tooltips.html"><i class="bx bx-left-arrow-alt"></i>پاپ آور و
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-popovers-tooltips.html"><i class="bx bx-left-arrow-alt"></i>پاپ آور و
 								تولتیپ</a>
 						</li>
-						<li> <a href="component-progress-bars.html"><i class="bx bx-left-arrow-alt"></i>نوار پیشرفت</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-progress-bars.html"><i class="bx bx-left-arrow-alt"></i>نوار پیشرفت</a>
 						</li>
-						<li> <a href="component-spinners.html"><i class="bx bx-left-arrow-alt"></i>اسپینر</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-spinners.html"><i class="bx bx-left-arrow-alt"></i>اسپینر</a>
 						</li>
-						<li> <a href="component-notifications.html"><i class="bx bx-left-arrow-alt"></i>اعلان ها</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-notifications.html"><i class="bx bx-left-arrow-alt"></i>اعلان ها</a>
 						</li>
-						<li> <a href="component-avtars-chips.html"><i class="bx bx-left-arrow-alt"></i>آواتارها و تراشه
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/component-avtars-chips.html"><i class="bx bx-left-arrow-alt"></i>آواتارها و تراشه
 								ها</a>
 						</li>
 					</ul>
@@ -168,11 +168,11 @@
 						<div class="menu-title">محتوا</div>
 					</a>
 					<ul>
-						<li> <a href="content-grid-system.html"><i class="bx bx-left-arrow-alt"></i>سیستم شبکه بندی</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/content-grid-system.html"><i class="bx bx-left-arrow-alt"></i>سیستم شبکه بندی</a>
 						</li>
-						<li> <a href="content-typography.html"><i class="bx bx-left-arrow-alt"></i>تایپوگرافی</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/content-typography.html"><i class="bx bx-left-arrow-alt"></i>تایپوگرافی</a>
 						</li>
-						<li> <a href="content-text-utilities.html"><i class="bx bx-left-arrow-alt"></i>موارد مفید
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/content-text-utilities.html"><i class="bx bx-left-arrow-alt"></i>موارد مفید
 								متن</a>
 						</li>
 					</ul>
@@ -184,11 +184,11 @@
 						<div class="menu-title">آیکون ها</div>
 					</a>
 					<ul>
-						<li> <a href="icons-line-icons.html"><i class="bx bx-left-arrow-alt"></i>آیکون های LineIcons</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/icons-line-icons.html"><i class="bx bx-left-arrow-alt"></i>آیکون های LineIcons</a>
 						</li>
-						<li> <a href="icons-boxicons.html"><i class="bx bx-left-arrow-alt"></i>آیکون های Boxicons</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/icons-boxicons.html"><i class="bx bx-left-arrow-alt"></i>آیکون های Boxicons</a>
 						</li>
-						<li> <a href="icons-feather-icons.html"><i class="bx bx-left-arrow-alt"></i>آیکون های
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/icons-feather-icons.html"><i class="bx bx-left-arrow-alt"></i>آیکون های
 								Feather</a>
 						</li>
 					</ul>
@@ -201,23 +201,23 @@
 						<div class="menu-title">فرم ها</div>
 					</a>
 					<ul>
-						<li> <a href="form-elements.html"><i class="bx bx-left-arrow-alt"></i>عناصر فرم</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/form-elements.html"><i class="bx bx-left-arrow-alt"></i>عناصر فرم</a>
 						</li>
-						<li> <a href="form-input-group.html"><i class="bx bx-left-arrow-alt"></i>ورودی گروهی</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/form-input-group.html"><i class="bx bx-left-arrow-alt"></i>ورودی گروهی</a>
 						</li>
-						<li> <a href="form-layouts.html"><i class="bx bx-left-arrow-alt"></i>لایه های فرم</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/form-layouts.html"><i class="bx bx-left-arrow-alt"></i>لایه های فرم</a>
 						</li>
-						<li> <a href="form-validations.html"><i class="bx bx-left-arrow-alt"></i>اعتبارسنجی فرم</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/form-validations.html"><i class="bx bx-left-arrow-alt"></i>اعتبارسنجی فرم</a>
 						</li>
-						<li> <a href="form-wizard.html"><i class="bx bx-left-arrow-alt"></i>فرم حرفه ای</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/form-wizard.html"><i class="bx bx-left-arrow-alt"></i>فرم حرفه ای</a>
 						</li>
-						<li> <a href="form-text-editor.html"><i class="bx bx-left-arrow-alt"></i>ویرایشگر متن</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/form-text-editor.html"><i class="bx bx-left-arrow-alt"></i>ویرایشگر متن</a>
 						</li>
-						<li> <a href="form-file-upload.html"><i class="bx bx-left-arrow-alt"></i>آپلود فایل</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/form-file-upload.html"><i class="bx bx-left-arrow-alt"></i>آپلود فایل</a>
 						</li>
-						<li> <a href="form-date-time-pickes.html"><i class="bx bx-left-arrow-alt"></i>انتخابگر تاریخ</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/form-date-time-pickes.html"><i class="bx bx-left-arrow-alt"></i>انتخابگر تاریخ</a>
 						</li>
-						<li> <a href="form-select2.html"><i class="bx bx-left-arrow-alt"></i>انتخاب 2</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/form-select2.html"><i class="bx bx-left-arrow-alt"></i>انتخاب 2</a>
 						</li>
 					</ul>
 				</li>
@@ -228,9 +228,9 @@
 						<div class="menu-title">جداول</div>
 					</a>
 					<ul>
-						<li> <a href="table-basic-table.html"><i class="bx bx-left-arrow-alt"></i>جدول پایه</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/table-basic-table.html"><i class="bx bx-left-arrow-alt"></i>جدول پایه</a>
 						</li>
-						<li> <a href="table-datatable.html"><i class="bx bx-left-arrow-alt"></i>جدول داده</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/table-datatable.html"><i class="bx bx-left-arrow-alt"></i>جدول داده</a>
 						</li>
 					</ul>
 				</li>
@@ -242,25 +242,25 @@
 						<div class="menu-title">احراز هویت</div>
 					</a>
 					<ul>
-						<li> <a href="../../../../../Views/backend/authentication-signin.html" target="_blank"><i
+						<li> <a href="{!! route('') !!}Views/backend/authentication-signin.html" target="_blank"><i
 									class="bx bx-left-arrow-alt"></i>ورود</a>
 						</li>
-						<li> <a href="../../../../../Views/backend/authentication-signup.html" target="_blank"><i
+						<li> <a href="{!! route('') !!}Views/backend/authentication-signup.html" target="_blank"><i
 									class="bx bx-left-arrow-alt"></i>ثبت نام</a>
 						</li>
-						<li> <a href="authentication-signin-with-header-footer.html" target="_blank"><i
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/authentication-signin-with-header-footer.html" target="_blank"><i
 									class="bx bx-left-arrow-alt"></i>ورود با هدر و فوتر</a>
 						</li>
-						<li> <a href="authentication-signup-with-header-footer.html" target="_blank"><i
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/authentication-signup-with-header-footer.html" target="_blank"><i
 									class="bx bx-left-arrow-alt"></i>ثبت نام با هدر و فوتر</a>
 						</li>
-						<li> <a href="authentication-forgot-password.html" target="_blank"><i
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/authentication-forgot-password.html" target="_blank"><i
 									class="bx bx-left-arrow-alt"></i>فراموشی رمز عبور</a>
 						</li>
-						<li> <a href="authentication-reset-password.html" target="_blank"><i
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/authentication-reset-password.html" target="_blank"><i
 									class="bx bx-left-arrow-alt"></i>بازنشانی رمز عبور</a>
 						</li>
-						<li> <a href="authentication-lock-screen.html" target="_blank"><i
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/authentication-lock-screen.html" target="_blank"><i
 									class="bx bx-left-arrow-alt"></i>صفحه قفل</a>
 						</li>
 					</ul>
@@ -273,7 +273,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="timeline.html">
+					<a href="{!! route('') !!}Others/Themes/Backend/main/vertical/timeline.html">
 						<div class="parent-icon"> <i class="bx bx-video-recording"></i>
 						</div>
 						<div class="menu-title">تایم لاین</div>
@@ -286,29 +286,29 @@
 						<div class="menu-title">خطا ها</div>
 					</a>
 					<ul>
-						<li> <a href="errors-404-error.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>خطای
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/errors-404-error.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>خطای
 								404</a>
 						</li>
-						<li> <a href="errors-500-error.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>خطای
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/errors-500-error.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>خطای
 								500</a>
 						</li>
-						<li> <a href="errors-coming-soon.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>صفحه
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/errors-coming-soon.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>صفحه
 								به زودی</a>
 						</li>
-						<li> <a href="error-blank-page.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>صفحه
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/error-blank-page.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>صفحه
 								خالی</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<a href="faq.html">
+					<a href="{!! route('') !!}Others/Themes/Backend/main/vertical/faq.html">
 						<div class="parent-icon"><i class="bx bx-help-circle"></i>
 						</div>
 						<div class="menu-title">سوالات متداول</div>
 					</a>
 				</li>
 				<li>
-					<a href="pricing-table.html">
+					<a href="{!! route('') !!}Others/Themes/Backend/main/vertical/pricing-table.html">
 						<div class="parent-icon"><i class='bx bx-dollar-circle'></i>
 						</div>
 						<div class="menu-title">پلن فروش</div>
@@ -322,11 +322,11 @@
 						<div class="menu-title">نمودار ها</div>
 					</a>
 					<ul>
-						<li> <a href="charts-apex-chart.html"><i class="bx bx-left-arrow-alt"></i>نمودار Apex</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/charts-apex-chart.html"><i class="bx bx-left-arrow-alt"></i>نمودار Apex</a>
 						</li>
-						<li> <a href="charts-chartjs.html"><i class="bx bx-left-arrow-alt"></i>نمودار Chartjs</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/charts-chartjs.html"><i class="bx bx-left-arrow-alt"></i>نمودار Chartjs</a>
 						</li>
-						<li> <a href="charts-highcharts.html"><i class="bx bx-left-arrow-alt"></i>نمودار Highcharts</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/charts-highcharts.html"><i class="bx bx-left-arrow-alt"></i>نمودار Highcharts</a>
 						</li>
 					</ul>
 				</li>
@@ -337,9 +337,9 @@
 						<div class="menu-title">نقشه ها</div>
 					</a>
 					<ul>
-						<li> <a href="map-google-maps.html"><i class="bx bx-left-arrow-alt"></i>نقشه گوگل</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/map-google-maps.html"><i class="bx bx-left-arrow-alt"></i>نقشه گوگل</a>
 						</li>
-						<li> <a href="map-vector-maps.html"><i class="bx bx-left-arrow-alt"></i>نقشه برداری</a>
+						<li> <a href="{!! route('') !!}Others/Themes/Backend/main/vertical/map-vector-maps.html"><i class="bx bx-left-arrow-alt"></i>نقشه برداری</a>
 						</li>
 					</ul>
 				</li>
@@ -377,16 +377,16 @@
 					<div class="top-menu-left d-none d-lg-block">
 						<ul class="nav">
 							<li class="nav-item">
-								<a class="nav-link" href="app-emailbox.html"><i class='bx bx-envelope'></i></a>
+								<a class="nav-link" href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-emailbox.html"><i class='bx bx-envelope'></i></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="app-chat-box.html"><i class='bx bx-message'></i></a>
+								<a class="nav-link" href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-chat-box.html"><i class='bx bx-message'></i></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="app-fullcalender.html"><i class='bx bx-calendar'></i></a>
+								<a class="nav-link" href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-fullcalender.html"><i class='bx bx-calendar'></i></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="app-to-do.html"><i class='bx bx-check-square'></i></a>
+								<a class="nav-link" href="{!! route('') !!}Others/Themes/Backend/main/vertical/app-to-do.html"><i class='bx bx-check-square'></i></a>
 							</li>
 						</ul>
 					</div>
@@ -595,8 +595,8 @@
 										<a class="dropdown-item" href="javascript:;">
 											<div class="d-flex align-items-center">
 												<div class="user-online">
-													<img src="assets/images/avatars/avatar-1.png" class="msg-avatar"
-														alt="user avatar">
+													<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-1.png" class="msg-avatar"
+														 alt="user avatar">
 												</div>
 												<div class="flex-grow-1">
 													<h6 class="msg-name">رضا افشار <span class="msg-time float-end">5
@@ -608,8 +608,8 @@
 										<a class="dropdown-item" href="javascript:;">
 											<div class="d-flex align-items-center">
 												<div class="user-online">
-													<img src="assets/images/avatars/avatar-2.png" class="msg-avatar"
-														alt="user avatar">
+													<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-2.png" class="msg-avatar"
+														 alt="user avatar">
 												</div>
 												<div class="flex-grow-1">
 													<h6 class="msg-name">پریسا توکلی <span class="msg-time float-end">14
@@ -621,8 +621,8 @@
 										<a class="dropdown-item" href="javascript:;">
 											<div class="d-flex align-items-center">
 												<div class="user-online">
-													<img src="assets/images/avatars/avatar-3.png" class="msg-avatar"
-														alt="user avatar">
+													<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-3.png" class="msg-avatar"
+														 alt="user avatar">
 												</div>
 												<div class="flex-grow-1">
 													<h6 class="msg-name">پدرام شریفی <span class="msg-time float-end">8
@@ -634,8 +634,8 @@
 										<a class="dropdown-item" href="javascript:;">
 											<div class="d-flex align-items-center">
 												<div class="user-online">
-													<img src="assets/images/avatars/avatar-4.png" class="msg-avatar"
-														alt="user avatar">
+													<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-4.png" class="msg-avatar"
+														 alt="user avatar">
 												</div>
 												<div class="flex-grow-1">
 													<h6 class="msg-name">یلدا رسولی <span class="msg-time float-end">15
@@ -647,8 +647,8 @@
 										<a class="dropdown-item" href="javascript:;">
 											<div class="d-flex align-items-center">
 												<div class="user-online">
-													<img src="assets/images/avatars/avatar-5.png" class="msg-avatar"
-														alt="user avatar">
+													<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-5.png" class="msg-avatar"
+														 alt="user avatar">
 												</div>
 												<div class="flex-grow-1">
 													<h6 class="msg-name">امیر صبوری <span class="msg-time float-end">22
@@ -660,8 +660,8 @@
 										<a class="dropdown-item" href="javascript:;">
 											<div class="d-flex align-items-center">
 												<div class="user-online">
-													<img src="assets/images/avatars/avatar-6.png" class="msg-avatar"
-														alt="user avatar">
+													<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-6.png" class="msg-avatar"
+														 alt="user avatar">
 												</div>
 												<div class="flex-grow-1">
 													<h6 class="msg-name">ساناز پگاه <span class="msg-time float-end">2
@@ -673,8 +673,8 @@
 										<a class="dropdown-item" href="javascript:;">
 											<div class="d-flex align-items-center">
 												<div class="user-online">
-													<img src="assets/images/avatars/avatar-7.png" class="msg-avatar"
-														alt="user avatar">
+													<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-7.png" class="msg-avatar"
+														 alt="user avatar">
 												</div>
 												<div class="flex-grow-1">
 													<h6 class="msg-name">سعید صادقی <span class="msg-time float-end">4
@@ -686,8 +686,8 @@
 										<a class="dropdown-item" href="javascript:;">
 											<div class="d-flex align-items-center">
 												<div class="user-online">
-													<img src="assets/images/avatars/avatar-8.png" class="msg-avatar"
-														alt="user avatar">
+													<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-8.png" class="msg-avatar"
+														 alt="user avatar">
 												</div>
 												<div class="flex-grow-1">
 													<h6 class="msg-name">فریبا سبحانی <span class="msg-time float-end">6
@@ -699,8 +699,8 @@
 										<a class="dropdown-item" href="javascript:;">
 											<div class="d-flex align-items-center">
 												<div class="user-online">
-													<img src="assets/images/avatars/avatar-9.png" class="msg-avatar"
-														alt="user avatar">
+													<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-9.png" class="msg-avatar"
+														 alt="user avatar">
 												</div>
 												<div class="flex-grow-1">
 													<h6 class="msg-name">علیرضا قربانی <span
@@ -712,8 +712,8 @@
 										<a class="dropdown-item" href="javascript:;">
 											<div class="d-flex align-items-center">
 												<div class="user-online">
-													<img src="assets/images/avatars/avatar-10.png" class="msg-avatar"
-														alt="user avatar">
+													<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-10.png" class="msg-avatar"
+														 alt="user avatar">
 												</div>
 												<div class="flex-grow-1">
 													<h6 class="msg-name">محمد خالقی <span class="msg-time float-end">2
@@ -725,8 +725,8 @@
 										<a class="dropdown-item" href="javascript:;">
 											<div class="d-flex align-items-center">
 												<div class="user-online">
-													<img src="assets/images/avatars/avatar-11.png" class="msg-avatar"
-														alt="user avatar">
+													<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-11.png" class="msg-avatar"
+														 alt="user avatar">
 												</div>
 												<div class="flex-grow-1">
 													<h6 class="msg-name">جواد علیپور <span class="msg-time float-end">5
@@ -746,7 +746,7 @@
 					<div class="user-box dropdown">
 						<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
 							role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
+							<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
 							<div class="user-info ps-3">
 								<p class="user-name mb-0">پریسا توکلی</p>
 								<p class="designattion mb-0">طراح وب</p>
@@ -785,16 +785,20 @@
 			<div class="page-content">
 				<!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">پروفایل کاربر</div>
-					<div class="ps-3">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">پروفایل کاربر</li>
-							</ol>
-						</nav>
-					</div>
+					<span>
+						<h4>
+							ایجاد دسته بندی جدید
+						</h4>
+					</span>
+{{--					<div class="ps-3">--}}
+{{--						<nav aria-label="breadcrumb">--}}
+{{--							<ol class="breadcrumb mb-0 p-0">--}}
+{{--								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>--}}
+{{--								</li>--}}
+{{--								<li class="breadcrumb-item active" aria-current="page">پروفایل کاربر</li>--}}
+{{--							</ol>--}}
+{{--						</nav>--}}
+{{--					</div>--}}
 					<div class="ms-auto">
 						<div class="btn-group">
 							<button type="button" class="btn btn-primary">تنظیمات</button>
@@ -816,95 +820,95 @@
 				<div class="container">
 					<div class="main-body">
 						<div class="row">
-							<div class="col-lg-4">
-								<div class="card">
-									<div class="card-body">
-										<div class="d-flex flex-column align-items-center text-center">
-											<img src="assets/images/avatars/avatar-2.png" alt="Admin"
-												class="rounded-circle p-1 bg-primary" width="110">
-											<div class="mt-3">
-												<h4>پریسا توکلی</h4>
-												<p class="text-secondary mb-1">توسعه دهنده فرانت اند</p>
-												<p class="text-muted font-size-sm">ایران، تهران</p>
-												<button class="btn btn-primary">دنبال کردن</button>
-												<button class="btn btn-outline-primary">پیام</button>
-											</div>
-										</div>
-										<hr class="my-4" />
-										<ul class="list-group list-group-flush">
-											<li
-												class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-												<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2" stroke-linecap="round"
-														stroke-linejoin="round"
-														class="feather feather-globe me-2 icon-inline">
-														<circle cx="12" cy="12" r="10"></circle>
-														<line x1="2" y1="12" x2="22" y2="12"></line>
-														<path
-															d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-														</path>
-													</svg>وب سایت</h6>
-												<span class="text-secondary">https://example.com</span>
-											</li>
-											<li
-												class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-												<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2" stroke-linecap="round"
-														stroke-linejoin="round"
-														class="feather feather-github me-2 icon-inline">
-														<path
-															d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-														</path>
-													</svg>گیت هاب</h6>
-												<span class="text-secondary">example</span>
-											</li>
-											<li
-												class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-												<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2" stroke-linecap="round"
-														stroke-linejoin="round"
-														class="feather feather-twitter me-2 icon-inline text-info">
-														<path
-															d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
-														</path>
-													</svg>توییتر</h6>
-												<span class="text-secondary">example@</span>
-											</li>
-											<li
-												class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-												<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2" stroke-linecap="round"
-														stroke-linejoin="round"
-														class="feather feather-instagram me-2 icon-inline text-danger">
-														<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-														<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z">
-														</path>
-														<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-													</svg>اینستاگرام</h6>
-												<span class="text-secondary">example</span>
-											</li>
-											<li
-												class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-												<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-														height="24" viewBox="0 0 24 24" fill="none"
-														stroke="currentColor" stroke-width="2" stroke-linecap="round"
-														stroke-linejoin="round"
-														class="feather feather-facebook me-2 icon-inline text-primary">
-														<path
-															d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
-														</path>
-													</svg>فیسبوک</h6>
-												<span class="text-secondary">example</span>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-8">
+{{--							<div class="col-lg-4">--}}
+{{--								<div class="card">--}}
+{{--									<div class="card-body">--}}
+{{--										<div class="d-flex flex-column align-items-center text-center">--}}
+{{--											<img src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/images/avatars/avatar-2.png" alt="Admin"--}}
+{{--												 class="rounded-circle p-1 bg-primary" width="110">--}}
+{{--											<div class="mt-3">--}}
+{{--												<h4>پریسا توکلی</h4>--}}
+{{--												<p class="text-secondary mb-1">توسعه دهنده فرانت اند</p>--}}
+{{--												<p class="text-muted font-size-sm">ایران، تهران</p>--}}
+{{--												<button class="btn btn-primary">دنبال کردن</button>--}}
+{{--												<button class="btn btn-outline-primary">پیام</button>--}}
+{{--											</div>--}}
+{{--										</div>--}}
+{{--										<hr class="my-4" />--}}
+{{--										<ul class="list-group list-group-flush">--}}
+{{--											<li--}}
+{{--												class="list-group-item d-flex justify-content-between align-items-center flex-wrap">--}}
+{{--												<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24"--}}
+{{--														height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--														stroke="currentColor" stroke-width="2" stroke-linecap="round"--}}
+{{--														stroke-linejoin="round"--}}
+{{--														class="feather feather-globe me-2 icon-inline">--}}
+{{--														<circle cx="12" cy="12" r="10"></circle>--}}
+{{--														<line x1="2" y1="12" x2="22" y2="12"></line>--}}
+{{--														<path--}}
+{{--															d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">--}}
+{{--														</path>--}}
+{{--													</svg>وب سایت</h6>--}}
+{{--												<span class="text-secondary">https://example.com</span>--}}
+{{--											</li>--}}
+{{--											<li--}}
+{{--												class="list-group-item d-flex justify-content-between align-items-center flex-wrap">--}}
+{{--												<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24"--}}
+{{--														height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--														stroke="currentColor" stroke-width="2" stroke-linecap="round"--}}
+{{--														stroke-linejoin="round"--}}
+{{--														class="feather feather-github me-2 icon-inline">--}}
+{{--														<path--}}
+{{--															d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">--}}
+{{--														</path>--}}
+{{--													</svg>گیت هاب</h6>--}}
+{{--												<span class="text-secondary">example</span>--}}
+{{--											</li>--}}
+{{--											<li--}}
+{{--												class="list-group-item d-flex justify-content-between align-items-center flex-wrap">--}}
+{{--												<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24"--}}
+{{--														height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--														stroke="currentColor" stroke-width="2" stroke-linecap="round"--}}
+{{--														stroke-linejoin="round"--}}
+{{--														class="feather feather-twitter me-2 icon-inline text-info">--}}
+{{--														<path--}}
+{{--															d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">--}}
+{{--														</path>--}}
+{{--													</svg>توییتر</h6>--}}
+{{--												<span class="text-secondary">example@</span>--}}
+{{--											</li>--}}
+{{--											<li--}}
+{{--												class="list-group-item d-flex justify-content-between align-items-center flex-wrap">--}}
+{{--												<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24"--}}
+{{--														height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--														stroke="currentColor" stroke-width="2" stroke-linecap="round"--}}
+{{--														stroke-linejoin="round"--}}
+{{--														class="feather feather-instagram me-2 icon-inline text-danger">--}}
+{{--														<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>--}}
+{{--														<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z">--}}
+{{--														</path>--}}
+{{--														<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>--}}
+{{--													</svg>اینستاگرام</h6>--}}
+{{--												<span class="text-secondary">example</span>--}}
+{{--											</li>--}}
+{{--											<li--}}
+{{--												class="list-group-item d-flex justify-content-between align-items-center flex-wrap">--}}
+{{--												<h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24"--}}
+{{--														height="24" viewBox="0 0 24 24" fill="none"--}}
+{{--														stroke="currentColor" stroke-width="2" stroke-linecap="round"--}}
+{{--														stroke-linejoin="round"--}}
+{{--														class="feather feather-facebook me-2 icon-inline text-primary">--}}
+{{--														<path--}}
+{{--															d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">--}}
+{{--														</path>--}}
+{{--													</svg>فیسبوک</h6>--}}
+{{--												<span class="text-secondary">example</span>--}}
+{{--											</li>--}}
+{{--										</ul>--}}
+{{--									</div>--}}
+{{--								</div>--}}
+{{--							</div>--}}
+							<div class="col-lg-12">
 								<div class="card">
 									<div class="card-body">
 										<div class="row mb-3">
@@ -957,45 +961,45 @@
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-sm-12">
-										<div class="card">
-											<div class="card-body">
-												<h5 class="d-flex align-items-center mb-3">وضعیت پروژه ها</h5>
-												<p>طراحی وب</p>
-												<div class="progress mb-3" style="height: 5px">
-													<div class="progress-bar bg-primary" role="progressbar"
-														style="width: 80%" aria-valuenow="80" aria-valuemin="0"
-														aria-valuemax="100"></div>
-												</div>
-												<p>وبسایت بازاریابی</p>
-												<div class="progress mb-3" style="height: 5px">
-													<div class="progress-bar bg-danger" role="progressbar"
-														style="width: 72%" aria-valuenow="72" aria-valuemin="0"
-														aria-valuemax="100"></div>
-												</div>
-												<p>تک صفحه ای</p>
-												<div class="progress mb-3" style="height: 5px">
-													<div class="progress-bar bg-success" role="progressbar"
-														style="width: 89%" aria-valuenow="89" aria-valuemin="0"
-														aria-valuemax="100"></div>
-												</div>
-												<p>الگوی موبایل</p>
-												<div class="progress mb-3" style="height: 5px">
-													<div class="progress-bar bg-warning" role="progressbar"
-														style="width: 55%" aria-valuenow="55" aria-valuemin="0"
-														aria-valuemax="100"></div>
-												</div>
-												<p>پنل مدیریتی</p>
-												<div class="progress" style="height: 5px">
-													<div class="progress-bar bg-info" role="progressbar"
-														style="width: 66%" aria-valuenow="66" aria-valuemin="0"
-														aria-valuemax="100"></div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+{{--								<div class="row">--}}
+{{--									<div class="col-sm-12">--}}
+{{--										<div class="card">--}}
+{{--											<div class="card-body">--}}
+{{--												<h5 class="d-flex align-items-center mb-3">وضعیت پروژه ها</h5>--}}
+{{--												<p>طراحی وب</p>--}}
+{{--												<div class="progress mb-3" style="height: 5px">--}}
+{{--													<div class="progress-bar bg-primary" role="progressbar"--}}
+{{--														style="width: 80%" aria-valuenow="80" aria-valuemin="0"--}}
+{{--														aria-valuemax="100"></div>--}}
+{{--												</div>--}}
+{{--												<p>وبسایت بازاریابی</p>--}}
+{{--												<div class="progress mb-3" style="height: 5px">--}}
+{{--													<div class="progress-bar bg-danger" role="progressbar"--}}
+{{--														style="width: 72%" aria-valuenow="72" aria-valuemin="0"--}}
+{{--														aria-valuemax="100"></div>--}}
+{{--												</div>--}}
+{{--												<p>تک صفحه ای</p>--}}
+{{--												<div class="progress mb-3" style="height: 5px">--}}
+{{--													<div class="progress-bar bg-success" role="progressbar"--}}
+{{--														style="width: 89%" aria-valuenow="89" aria-valuemin="0"--}}
+{{--														aria-valuemax="100"></div>--}}
+{{--												</div>--}}
+{{--												<p>الگوی موبایل</p>--}}
+{{--												<div class="progress mb-3" style="height: 5px">--}}
+{{--													<div class="progress-bar bg-warning" role="progressbar"--}}
+{{--														style="width: 55%" aria-valuenow="55" aria-valuemin="0"--}}
+{{--														aria-valuemax="100"></div>--}}
+{{--												</div>--}}
+{{--												<p>پنل مدیریتی</p>--}}
+{{--												<div class="progress" style="height: 5px">--}}
+{{--													<div class="progress-bar bg-info" role="progressbar"--}}
+{{--														style="width: 66%" aria-valuenow="66" aria-valuemin="0"--}}
+{{--														aria-valuemax="100"></div>--}}
+{{--												</div>--}}
+{{--											</div>--}}
+{{--										</div>--}}
+{{--									</div>--}}
+{{--								</div>--}}
 							</div>
 						</div>
 					</div>
@@ -1111,14 +1115,14 @@
 	</div>
 	<!--end switcher-->
 	<!-- Bootstrap JS -->
-	<script src="assets/js/bootstrap.bundle.min.js"></script>
+	<script src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/js/bootstrap.bundle.min.js"></script>
 	<!--plugins-->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
-	<script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+	<script src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/js/jquery.min.js"></script>
+	<script src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<script src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
 	<!--app JS-->
-	<script src="assets/js/app.js"></script>
+	<script src="{!! route('') !!}Others/Themes/Backend/main/vertical/assets/js/app.js"></script>
 </body>
 
 </html>
