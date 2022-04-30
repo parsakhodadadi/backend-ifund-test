@@ -913,50 +913,45 @@
 									<div class="card-body">
 										<div class="row mb-3">
 											<div class="col-sm-3">
-												<h6 class="mb-0">نام کامل</h6>
+												<h6 class="mb-0">{{ $lang['title'] }}</h6>
 											</div>
 											<div class="col-sm-9 text-secondary">
-												<input type="text" class="form-control" value="پریسا توکلی" />
+												<input type="text" class="form-control" />
 											</div>
 										</div>
 										<div class="row mb-3">
 											<div class="col-sm-3">
-												<h6 class="mb-0">ایمیل</h6>
+												<h6 class="mb-0">{{ $lang['description'] }}</h6>
 											</div>
 											<div class="col-sm-9 text-secondary">
-												<input type="text" class="form-control" value="parisa@example.com" />
+												<textarea class="form-control" value="parisa@example.com">
+												</textarea>
 											</div>
 										</div>
 										<div class="row mb-3">
 											<div class="col-sm-3">
-												<h6 class="mb-0">شماره تماس</h6>
+												<h6 class="mb-0">{{ $lang['tags'] }}</h6>
 											</div>
 											<div class="col-sm-9 text-secondary">
-												<input type="text" class="form-control" value="02155667788" />
+												<input type="text" class="form-control" />
 											</div>
 										</div>
 										<div class="row mb-3">
 											<div class="col-sm-3">
-												<h6 class="mb-0">موبایل</h6>
+												<h6 class="mb-0">{{ $lang['display-status'] }}</h6>
 											</div>
 											<div class="col-sm-9 text-secondary">
-												<input type="text" class="form-control" value="09123334455" />
-											</div>
-										</div>
-										<div class="row mb-3">
-											<div class="col-sm-3">
-												<h6 class="mb-0">آدرس</h6>
-											</div>
-											<div class="col-sm-9 text-secondary">
-												<input type="text" class="form-control"
-													value="ایران، میدان آزادی، خیابان آزادی" />
+												<label class="switch">
+													<input type="checkbox">
+													<span class=""></span>
+												</label>
 											</div>
 										</div>
 										<div class="row">
 											<div class="col-sm-3"></div>
 											<div class="col-sm-9 text-secondary">
 												<input type="button" class="btn btn-primary px-4"
-													value="ذخیره تغییرات" />
+													value="{{ $lang['send'] }}" />
 											</div>
 										</div>
 									</div>

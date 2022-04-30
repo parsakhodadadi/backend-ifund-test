@@ -3,5 +3,9 @@
 // category language list
 
 return [
-    'list' => 'category list',
+    'title' => 'عنوان',
+    'description' => 'توضیحات',
+    'tags' => 'برچسب ها',
+    'display-status' => 'وضعیت نمایش',
+    'send' => 'ارسال'
 ];

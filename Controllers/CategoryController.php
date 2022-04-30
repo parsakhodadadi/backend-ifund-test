@@ -7,7 +7,7 @@ use Core\System\controller;
 
 class CategoryController extends controller {
 
-    private string $lang;
+    private $lang;
     private object $blade;
 
     public function __construct() {
