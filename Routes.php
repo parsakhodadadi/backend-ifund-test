@@ -20,17 +20,11 @@ $router->setNamespace('\App\Controllers');
 //});
 
 $router->get('/', 'panelController@panel');
-
 $router->post('/panel', 'panelController@panel');
-
 $router->get('/login', 'LoginController@login');
-
 $router->post('/login', 'LoginController@login');
-
 $router->get('/admin/category', 'CategoryController@create');
-
 $router->post('/admin/category', 'CategoryController@create');
-
 $router->get('/logout', 'LoginController@logout');
 
 $router->get('/add-menu', 'panelController@addMenu');
