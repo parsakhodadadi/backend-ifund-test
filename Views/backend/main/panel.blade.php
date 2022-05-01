@@ -23,17 +23,19 @@ hey
     <!--end sidebar wrapper -->
     <!--start header -->
 {{ $view->make('Backend/main/layout/header') }}
+
+    <?php echo $content ?>
 <!--end header -->
     <!--start page wrapper -->
-{{ $view->make('Backend/main/layout/page-wrapper') }}
-<!--end page wrapper -->
-    <!--start overlay-->
-{{ $view->make('Backend/main/layout/overlay') }}
-<!--end overlay-->
-    <!--Start Back To Top Button-->
-{{ $view->make('Backend/main/layout/back-to-top-button') }}
+{{--{{ $view->make('Backend/main/layout/page-wrapper') }}--}}
+{{--<!--end page wrapper -->--}}
+{{--    <!--start overlay-->--}}
+{{--{{ $view->make('Backend/main/layout/overlay') }}--}}
+{{--<!--end overlay-->--}}
+{{--    <!--Start Back To Top Button-->--}}
+{{--{{ $view->make('Backend/main/layout/back-to-top-button') }}--}}
 <!--End Back To Top Button-->
-    {{ $view->make('Backend/main/layout/footer') }}
+{{ $view->make('Backend/main/layout/footer') }}
 </div>
 <!--end wrapper-->
 <!--start switcher-->

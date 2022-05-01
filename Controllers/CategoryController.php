@@ -17,8 +17,14 @@ class CategoryController extends controller {
     }
 
     public function create() {
-        $view = $this->blade->render('backend/main/layout/category/create');
-        echo $this->blade->render('backend/main/layout/category/create', ['view' => $this->blade, 'content' => $view, 'lang' => $this->lang]);
+        $request = request();
+        if (!empty($request)) {
+            echo '<pre>';
+            print_r($request);
+        } else {
+            $view = $this->blade->render('backend/main/layout/category/create', ['view' => $this->blade, 'lang' => $this->lang]);
+            echo $this->blade->render('backend/main/panel', ['view' => $this->blade, 'content' => $view, 'lang' => $this->lang]);
+        }
     }
 
     public function update() {

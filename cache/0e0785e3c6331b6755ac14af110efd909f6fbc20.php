@@ -26,20 +26,19 @@ hey
     <!--start header -->
 <?php echo e($view->make('Backend/main/layout/header')); ?>
 
+
+    <?php echo $content ?>
 <!--end header -->
     <!--start page wrapper -->
-<?php echo e($view->make('Backend/main/layout/page-wrapper')); ?>
 
-<!--end page wrapper -->
-    <!--start overlay-->
-<?php echo e($view->make('Backend/main/layout/overlay')); ?>
 
-<!--end overlay-->
-    <!--Start Back To Top Button-->
-<?php echo e($view->make('Backend/main/layout/back-to-top-button')); ?>
+
+
+
+
 
 <!--End Back To Top Button-->
-    <?php echo e($view->make('Backend/main/layout/footer')); ?>
+<?php echo e($view->make('Backend/main/layout/footer')); ?>
 
 </div>
 <!--end wrapper-->
