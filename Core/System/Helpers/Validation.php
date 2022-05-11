@@ -4,7 +4,7 @@ namespace Core\System;
 
 use http\Header\Parser;
 
-trait validation {
+class Validation {
 
     public function rules($rules = [], $request = [], $messages = [])
     {

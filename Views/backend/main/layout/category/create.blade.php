@@ -943,7 +943,7 @@
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<label class="switch">
-										<input type="checkbox">
+										<input type="checkbox" name="display">
 										<span class=""></span>
 									</label>
 								</div>

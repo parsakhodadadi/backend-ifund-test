@@ -6,28 +6,54 @@ class users
 {
     use \databaseHelper;
 
-    private $model;
+    private $db;
+    private $table = 'users';
+    private $fillableStatus = true;
+    private $fillable = ['id', 'name', 'password'];
+
+//    private $model;
 
     public function __construct() {
-        $this->model = self::queryBuilder();
+        if (!($this->fillableStatus)) {
+            $this->fillable = ['*'];
+        }
+//        $this->model = self::queryBuilder();
     }
 
-//    static function getUsers()
-//    {
+    public function getUsers($conditions = [])
+    {
+        try {
+            $db = self::queryBuilder();
+            $db = $db->from('users');
+            $db->select($this->fillable);
+
+            if (!empty($conditions)) {
+                foreach ($conditions as $element => $value) {
+                    $db->where($element, $value);
+                }
+            }
+
+            return $db->all();
+        } catch(\Exception $exception) {
+            echo $exception->getMessage();
+            exit();
+//            return $exception->getCode();
+        }
 //        $users = self::pdoSelect('users', 1, 5);
 //        return $users;
-//
-//    }
+
+    }
 
     public function checkUser($request)
     {
-        $db = $this->model->from('users');
+        $db = self::queryBuilder();
+        $db = $db->from('users');
         $db->where('username', $request['name']);
         $db->where('password', $request['password']);
         return $db->first();
     }
 
-    public function insert($data = []) {
+    public function create($data = []) {
         try {
             $this->pdoInsert('users', $data);
             return 200;
@@ -37,9 +63,9 @@ class users
         }
     }
 
-    public function update($data=[],$where=1) {
+    public function update($data = [], $where = 1) {
         try {
-            $this->pdoUpdate('users', $data, $where);
+            $this->pdoUpdate($this->table, $data, $where);
         } catch (\PDOException $e) {
             return $e->getCode();
         }

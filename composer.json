@@ -5,6 +5,7 @@
       "Routes.php"
     ],
     "classmap": [
+      "Middlewares",
       "Core/System/Helpers",
       "Core/System",
       "Models",

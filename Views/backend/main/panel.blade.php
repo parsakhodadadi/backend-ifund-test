@@ -7,7 +7,7 @@ hey
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
     <title>ساین ادمین - قالب مدیریتی بوت استرپ 5</title>
-    <?php echo $view->render('backend/main/layout/style') ?>
+    {{ $view->make('backend/main/layout/style') }}
 </head>
 
 <body class="rtl">
@@ -23,8 +23,8 @@ hey
     <!--end sidebar wrapper -->
     <!--start header -->
 {{ $view->make('Backend/main/layout/header') }}
-
-    <?php echo $content ?>
+    {!! $content !!}
+{{--    {{ $content }}--}}
 <!--end header -->
     <!--start page wrapper -->
 {{--{{ $view->make('Backend/main/layout/page-wrapper') }}--}}
@@ -41,6 +41,6 @@ hey
 <!--start switcher-->
 {{ $view->make('Backend/main/layout/switcher') }}
 <!--end switcher-->
-<?php echo $view->render('backend/main/layout/script')?>
+{{ $view->make('backend/main/layout/script') }}
 </body>
 </html>

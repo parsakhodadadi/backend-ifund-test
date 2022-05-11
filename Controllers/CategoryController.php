@@ -2,15 +2,18 @@
 
 namespace App\Controllers;
 
+use App\Middlewares\LoginMiddleware;
 use App\Models\users;
 use Core\System\controller;
 
 class CategoryController extends controller {
 
+    private $loginMiddleware;
     private $lang;
     private object $blade;
 
     public function __construct() {
+        $this->loginMiddleware = new LoginMiddleware();
         $lang = \configHelper::getConfig('default-language');
         $this->lang = loadLang($lang, 'category');
         $this->blade = $this->view()->blade();
@@ -29,9 +32,5 @@ class CategoryController extends controller {
 
     public function update() {
 
-    }
-
-    public function form() {
-        echo "category form";
     }
 }

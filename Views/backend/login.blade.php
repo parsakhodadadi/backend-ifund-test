@@ -78,7 +78,7 @@
 												</div>
 											</div>
 											<div class="col-md-6 text-end"> <a
-													href="{!! route('') !!}Others/Themes/Backend/main/vertical/authentication-forgot-password.html">ف{{ $lang['forget_password'] }}</a>
+													href="{!! route('') !!}Others/Themes/Backend/main/vertical/authentication-forgot-password.html">{{ $lang['forget_password'] }}</a>
 											</div>
 											<div class="col-12">
 												<div class="d-grid">

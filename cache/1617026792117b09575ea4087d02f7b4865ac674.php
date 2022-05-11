@@ -78,7 +78,7 @@
 												</div>
 											</div>
 											<div class="col-md-6 text-end"> <a
-													href="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/authentication-forgot-password.html">ف<?php echo e($lang['forget_password']); ?></a>
+													href="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/authentication-forgot-password.html"><?php echo e($lang['forget_password']); ?></a>
 											</div>
 											<div class="col-12">
 												<div class="d-grid">

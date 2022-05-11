@@ -8,6 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-
+خطا
 </body>
-</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/backend/main/layout/dashboard.blade.php ENDPATH**/ ?>
+</html>

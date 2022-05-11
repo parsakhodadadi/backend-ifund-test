@@ -2,7 +2,6 @@
 
 // Create Router instance
 $router = new \Bramus\Router\Router();
-
 $router->setNamespace('\App\Controllers');
 
 //$router->get('/add-menu', function () {
@@ -18,12 +17,10 @@ $router->setNamespace('\App\Controllers');
 //    $lang = loadLang('fa', 'login');
 //    echo $blade->make('Backend/main/layout/menus',['lang'=>$lang, 'view'=>$blade])->render();
 //});
-$router->get('/', 'panelController@panel');
-$router->post('/panel', 'panelController@panel');
-$router->get('/login', 'LoginController@login');
-$router->post('/login', 'LoginController@login');
-$router->get('/admin/category', 'CategoryController@create');
-$router->post('/admin/category', 'CategoryController@create');
+
+$router->get('/', 'HomeController@form');
+$router->get('/login', 'LoginController@form');
+$router->post('/login', 'LoginController@form');
 $router->get('/logout', 'LoginController@logout');
 
 $router->get('/add-menu', 'panelController@addMenu');
@@ -41,9 +38,15 @@ $router->get('/checkLogin', 'userController@checkLoginInfo');
 $router->get('/admin', 'panelController@panel');
 
 // API Routes
-$router->get('/api/v1/test', function () {
-    echo 'API TEST';
-});
+//$router->get('/api/v1/test', function () {
+//    echo 'API TEST';
+//});
+
+$router->post('/admin/category', 'CategoryController@create');
+$router->get('/admin/category', 'CategoryController@create');
+
+$router->before('GET|POST', '/admin', 'LoginController@checkLogin');
+$router->before('GET|POST', '/admin/.*', 'LoginController@checkLogin');
 
 $router->set404('ErrorController@error404');
 

@@ -26,7 +26,7 @@ function view($view=null, $data=[])
         }
     }
 
-    if(file_exists("Views/"."$view".".php")) {
+    if (file_exists("Views/"."$view".".php")) {
         include "Views/$view".".php";
     }else {
         exit("Views/$view".".php"." does not exist");
@@ -38,12 +38,6 @@ function view($view=null, $data=[])
 function loadController($controllerName=null)
 {
     return new $controllerName;
-}
-
-function loadModel($modelName) {
-    include "Models/$modelName.php";
-    $modelAddress = '\App\Models\\'.$modelName;
-    return $modelAddress;
 }
 
 //function lang($lang, $languageNames = ['home']): array {
@@ -72,6 +66,12 @@ function loadLang($lang='fa',$file=null)
     }
 }
 
+function loadModel($modelName) {
+    include "Models/$modelName.php";
+    $modelAddress = '\App\Models\\'.$modelName;
+    return $modelAddress;
+}
+
 function route($route)
 {
     $configHelper = new configHelper();
@@ -93,14 +93,10 @@ function route($route)
 //    }
 //}
 
-function redirect($url = null)
+function redirect($route = null)
 {
-    if ($url != null)
-    {
-        header('LOCATION:'. $url);
-    } else {
-        // core error
-    }
+    $config = include "Configs/config.php";
+    header('location:'.$config['base-url'].'login');
 }
 
 function request() {

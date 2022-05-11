@@ -2,7 +2,7 @@
 /**
  *description
  *
- * created by:Parsa Khodadadi
+ * created by:Parsa
  * email:parsakhodadadi2003@gmail.com
  * who:
  * updated at:
@@ -20,8 +20,20 @@ class controller
         return new $class;
     }
 
+    public function validation() {
+        return new validation();
+    }
+
     static public function view() {
         return new View();
+    }
+
+    public function security() {
+        return new \Security();
+    }
+
+    public function event() {
+        return new \Event();
     }
 
 //    static public function view($name, $data = null)

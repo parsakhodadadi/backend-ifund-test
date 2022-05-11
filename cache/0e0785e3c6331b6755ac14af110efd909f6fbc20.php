@@ -7,7 +7,8 @@ hey
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
     <title>ساین ادمین - قالب مدیریتی بوت استرپ 5</title>
-    <?php echo $view->render('backend/main/layout/style') ?>
+    <?php echo e($view->make('backend/main/layout/style')); ?>
+
 </head>
 
 <body class="rtl">
@@ -26,8 +27,9 @@ hey
     <!--start header -->
 <?php echo e($view->make('Backend/main/layout/header')); ?>
 
+    <?php echo $content; ?>
 
-    <?php echo $content ?>
+
 <!--end header -->
     <!--start page wrapper -->
 
@@ -46,6 +48,7 @@ hey
 <?php echo e($view->make('Backend/main/layout/switcher')); ?>
 
 <!--end switcher-->
-<?php echo $view->render('backend/main/layout/script')?>
+<?php echo e($view->make('backend/main/layout/script')); ?>
+
 </body>
 </html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/backend/main/panel.blade.php ENDPATH**/ ?>
