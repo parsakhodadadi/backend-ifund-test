@@ -55,14 +55,14 @@ class LoginController extends controller
             }
         }
 
+        $this->lang = loadLang('fa','login');
+
         if (!empty($request)) {
             if ($this->security()->checkCSRFToken($request['csrf_token'])) {
                 echo 'false';
             }
 
             unset($request['csrf_token']);
-
-            $this->lang = loadLang('fa','login');
 
             $rules = [
                 'name' => 'required',
@@ -109,7 +109,7 @@ class LoginController extends controller
             }
 
         } else {
-            echo self::view()->blade()->render('backend/main/login', [
+            echo self::view()->blade()->render('backend/login', [
                 'errors' => [],
                 'security' => $this->security(),
                 'lang' => $this->lang,
