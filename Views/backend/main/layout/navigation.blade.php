@@ -17,9 +17,9 @@
             <div class="menu-title">دسته بندی موضوعی </div>
         </a>
         <ul>
-            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}app-emailbox.html"><i class="bx bx-left-arrow-alt"></i>ایجاد دسته بندی ها</a>
+            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}app-emailbox.html"><i class="bx bx-left-arrow-alt"></i>ایجاد دسته بندی ها</a>
             </li>
-            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}app-emailread.html"><i class="bx bx-left-arrow-alt"></i>بروز رسانی دسته بندی ها</a>
+            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}app-emailread.html"><i class="bx bx-left-arrow-alt"></i>بروز رسانی دسته بندی ها</a>
             </li>
         </ul>
     </li>
@@ -32,7 +32,7 @@
 {{--    </li>--}}
 {{--    <li class="menu-label">عناصر UI</li>--}}
 {{--    <li>--}}
-{{--        <a href="{{ route('Others/Themes/Backend/main/vertical/') }}widgets.html">--}}
+{{--        <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}widgets.html">--}}
 {{--            <div class="parent-icon"><i class='bx bx-briefcase-alt-2'></i>--}}
 {{--            </div>--}}
 {{--            <div class="menu-title">ویجت ها</div>--}}
@@ -45,11 +45,11 @@
             <div class="menu-title">مدیریت محصولات</div>
         </a>
         <ul>
-            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}ecommerce-products.html"><i class="bx bx-left-arrow-alt"></i>ایجاد محصول جدید</a>
+            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}ecommerce-products.html"><i class="bx bx-left-arrow-alt"></i>ایجاد محصول جدید</a>
             </li>
-            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}ecommerce-products-details.html"><i class="bx bx-left-arrow-alt"></i>بروز رسانی محصولات</a>
+            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}ecommerce-products-details.html"><i class="bx bx-left-arrow-alt"></i>بروز رسانی محصولات</a>
             </li>
-            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}ecommerce-orders.html"><i class="bx bx-left-arrow-alt"></i>سفارشات</a>
+            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}ecommerce-orders.html"><i class="bx bx-left-arrow-alt"></i>سفارشات</a>
             </li>
         </ul>
     </li>
@@ -60,41 +60,41 @@
             <div class="menu-title">طرح بندی</div>
         </a>
         <ul>
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-alerts.html"><i class="bx bx-left-arrow-alt"></i>هشدار</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-alerts.html"><i class="bx bx-left-arrow-alt"></i>هشدار</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-accordions.html"><i class="bx bx-left-arrow-alt"></i>آکاردئون</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-accordions.html"><i class="bx bx-left-arrow-alt"></i>آکاردئون</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-badges.html"><i class="bx bx-left-arrow-alt"></i>نشان</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-badges.html"><i class="bx bx-left-arrow-alt"></i>نشان</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-buttons.html"><i class="bx bx-left-arrow-alt"></i>دکمه</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-buttons.html"><i class="bx bx-left-arrow-alt"></i>دکمه</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-cards.html"><i class="bx bx-left-arrow-alt"></i>کارت</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-cards.html"><i class="bx bx-left-arrow-alt"></i>کارت</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-carousels.html"><i class="bx bx-left-arrow-alt"></i>اسلایدر</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-carousels.html"><i class="bx bx-left-arrow-alt"></i>اسلایدر</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-list-groups.html"><i class="bx bx-left-arrow-alt"></i>لیست گروهی</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-list-groups.html"><i class="bx bx-left-arrow-alt"></i>لیست گروهی</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-media-object.html"><i class="bx bx-left-arrow-alt"></i>اشیاء رسانه--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-media-object.html"><i class="bx bx-left-arrow-alt"></i>اشیاء رسانه--}}
 {{--                    ای</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-modals.html"><i class="bx bx-left-arrow-alt"></i>مُدال</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-modals.html"><i class="bx bx-left-arrow-alt"></i>مُدال</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-navs-tabs.html"><i class="bx bx-left-arrow-alt"></i>تب بندی</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-navs-tabs.html"><i class="bx bx-left-arrow-alt"></i>تب بندی</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-navbar.html"><i class="bx bx-left-arrow-alt"></i>نوبار</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-navbar.html"><i class="bx bx-left-arrow-alt"></i>نوبار</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-paginations.html"><i class="bx bx-left-arrow-alt"></i>صفحه بندی</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-paginations.html"><i class="bx bx-left-arrow-alt"></i>صفحه بندی</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-popovers-tooltips.html"><i class="bx bx-left-arrow-alt"></i>پاپ آور و--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-popovers-tooltips.html"><i class="bx bx-left-arrow-alt"></i>پاپ آور و--}}
 {{--                    تولتیپ</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-progress-bars.html"><i class="bx bx-left-arrow-alt"></i>نوار پیشرفت</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-progress-bars.html"><i class="bx bx-left-arrow-alt"></i>نوار پیشرفت</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-spinners.html"><i class="bx bx-left-arrow-alt"></i>اسپینر</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-spinners.html"><i class="bx bx-left-arrow-alt"></i>اسپینر</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-notifications.html"><i class="bx bx-left-arrow-alt"></i>اعلان ها</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-notifications.html"><i class="bx bx-left-arrow-alt"></i>اعلان ها</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}component-avtars-chips.html"><i class="bx bx-left-arrow-alt"></i>آواتارها و تراشه--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}component-avtars-chips.html"><i class="bx bx-left-arrow-alt"></i>آواتارها و تراشه--}}
 {{--                    ها</a>--}}
 {{--            </li>--}}
         </ul>
@@ -113,11 +113,11 @@
 {{--            <div class="menu-title">محتوا</div>--}}
 {{--        </a>--}}
 {{--        <ul>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}content-grid-system.html"><i class="bx bx-left-arrow-alt"></i>سیستم شبکه بندی</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}content-grid-system.html"><i class="bx bx-left-arrow-alt"></i>سیستم شبکه بندی</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}content-typography.html"><i class="bx bx-left-arrow-alt"></i>تایپوگرافی</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}content-typography.html"><i class="bx bx-left-arrow-alt"></i>تایپوگرافی</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}content-text-utilities.html"><i class="bx bx-left-arrow-alt"></i>موارد مفید--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}content-text-utilities.html"><i class="bx bx-left-arrow-alt"></i>موارد مفید--}}
 {{--                    متن</a>--}}
 {{--            </li>--}}
 {{--        </ul>--}}
@@ -129,12 +129,12 @@
 {{--            <div class="menu-title">آیکون ها</div>--}}
 {{--        </a>--}}
 {{--        <ul>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}icons-line-icons.html"><i class="bx bx-left-arrow-alt"></i>آیکون های--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}icons-line-icons.html"><i class="bx bx-left-arrow-alt"></i>آیکون های--}}
 {{--                    LineIcons</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}icons-boxicons.html"><i class="bx bx-left-arrow-alt"></i>آیکون های Boxicons</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}icons-boxicons.html"><i class="bx bx-left-arrow-alt"></i>آیکون های Boxicons</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}icons-feather-icons.html"><i class="bx bx-left-arrow-alt"></i>آیکون های--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}icons-feather-icons.html"><i class="bx bx-left-arrow-alt"></i>آیکون های--}}
 {{--                    Feather</a>--}}
 {{--            </li>--}}
 {{--        </ul>--}}
@@ -147,24 +147,24 @@
 {{--            <div class="menu-title">فرم ها</div>--}}
 {{--        </a>--}}
 {{--        <ul>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}form-elements.html"><i class="bx bx-left-arrow-alt"></i>عناصر فرم</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}form-elements.html"><i class="bx bx-left-arrow-alt"></i>عناصر فرم</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}form-input-group.html"><i class="bx bx-left-arrow-alt"></i>ورودی گروهی</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}form-input-group.html"><i class="bx bx-left-arrow-alt"></i>ورودی گروهی</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}form-layouts.html"><i class="bx bx-left-arrow-alt"></i>لایه های فرم</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}form-layouts.html"><i class="bx bx-left-arrow-alt"></i>لایه های فرم</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}form-validations.html"><i class="bx bx-left-arrow-alt"></i>اعتبارسنجی فرم</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}form-validations.html"><i class="bx bx-left-arrow-alt"></i>اعتبارسنجی فرم</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}form-wizard.html"><i class="bx bx-left-arrow-alt"></i>فرم حرفه ای</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}form-wizard.html"><i class="bx bx-left-arrow-alt"></i>فرم حرفه ای</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}form-text-editor.html"><i class="bx bx-left-arrow-alt"></i>ویرایشگر متن</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}form-text-editor.html"><i class="bx bx-left-arrow-alt"></i>ویرایشگر متن</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}form-file-upload.html"><i class="bx bx-left-arrow-alt"></i>آپلود فایل</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}form-file-upload.html"><i class="bx bx-left-arrow-alt"></i>آپلود فایل</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}form-date-time-pickes.html"><i class="bx bx-left-arrow-alt"></i>انتخابگر--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}form-date-time-pickes.html"><i class="bx bx-left-arrow-alt"></i>انتخابگر--}}
 {{--                    تاریخ</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}form-select2.html"><i class="bx bx-left-arrow-alt"></i>انتخاب 2</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}form-select2.html"><i class="bx bx-left-arrow-alt"></i>انتخاب 2</a>--}}
 {{--            </li>--}}
 {{--        </ul>--}}
 {{--    </li>--}}
@@ -175,9 +175,9 @@
 {{--            <div class="menu-title">جداول</div>--}}
 {{--        </a>--}}
 {{--        <ul>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}table-basic-table.html"><i class="bx bx-left-arrow-alt"></i>جدول پایه</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}table-basic-table.html"><i class="bx bx-left-arrow-alt"></i>جدول پایه</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}table-datatable.html"><i class="bx bx-left-arrow-alt"></i>جدول داده</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}table-datatable.html"><i class="bx bx-left-arrow-alt"></i>جدول داده</a>--}}
 {{--            </li>--}}
 {{--        </ul>--}}
 {{--    </li>--}}
@@ -189,38 +189,38 @@
 {{--            <div class="menu-title">احراز هویت</div>--}}
 {{--        </a>--}}
 {{--        <ul>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}authentication-signin.html" target="_blank"><i--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}authentication-signin.html" target="_blank"><i--}}
 {{--                            class="bx bx-left-arrow-alt"></i>ورود</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}authentication-signup.html" target="_blank"><i--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}authentication-signup.html" target="_blank"><i--}}
 {{--                            class="bx bx-left-arrow-alt"></i>ثبت نام</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}authentication-signin-with-header-footer.html" target="_blank"><i--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}authentication-signin-with-header-footer.html" target="_blank"><i--}}
 {{--                            class="bx bx-left-arrow-alt"></i>ورود با هدر و فوتر</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}authentication-signup-with-header-footer.html" target="_blank"><i--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}authentication-signup-with-header-footer.html" target="_blank"><i--}}
 {{--                            class="bx bx-left-arrow-alt"></i>ثبت نام با هدر و فوتر</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}authentication-forgot-password.html" target="_blank"><i--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}authentication-forgot-password.html" target="_blank"><i--}}
 {{--                            class="bx bx-left-arrow-alt"></i>فراموشی رمز عبور</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}authentication-reset-password.html" target="_blank"><i--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}authentication-reset-password.html" target="_blank"><i--}}
 {{--                            class="bx bx-left-arrow-alt"></i>بازنشانی رمز عبور</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}authentication-lock-screen.html" target="_blank"><i--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}authentication-lock-screen.html" target="_blank"><i--}}
 {{--                            class="bx bx-left-arrow-alt"></i>صفحه قفل</a>--}}
 {{--            </li>--}}
 {{--        </ul>--}}
 {{--    </li>--}}
 {{--    <li>--}}
-{{--        <a href="{{ route('Others/Themes/Backend/main/vertical/') }}user-profile.html">--}}
+{{--        <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}user-profile.html">--}}
 {{--            <div class="parent-icon"><i class='bx bx-user-pin'></i>--}}
 {{--            </div>--}}
 {{--            <div class="menu-title">پروفایل کاربر</div>--}}
 {{--        </a>--}}
 {{--    </li>--}}
 {{--    <li>--}}
-{{--        <a href="{{ route('Others/Themes/Backend/main/vertical/') }}timeline.html">--}}
+{{--        <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}timeline.html">--}}
 {{--            <div class="parent-icon"> <i class="bx bx-video-recording"></i>--}}
 {{--            </div>--}}
 {{--            <div class="menu-title">تایم لاین</div>--}}
@@ -233,29 +233,29 @@
 {{--            <div class="menu-title">خطا ها</div>--}}
 {{--        </a>--}}
 {{--        <ul>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}errors-404-error.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>خطای--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}errors-404-error.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>خطای--}}
 {{--                    404</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}errors-500-error.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>خطای--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}errors-500-error.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>خطای--}}
 {{--                    500</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}errors-coming-soon.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>صفحه--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}errors-coming-soon.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>صفحه--}}
 {{--                    به زودی</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}error-blank-page.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>صفحه--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}error-blank-page.html" target="_blank"><i class="bx bx-left-arrow-alt"></i>صفحه--}}
 {{--                    خالی</a>--}}
 {{--            </li>--}}
 {{--        </ul>--}}
 {{--    </li>--}}
 {{--    <li>--}}
-{{--        <a href="{{ route('Others/Themes/Backend/main/vertical/') }}faq.html">--}}
+{{--        <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}faq.html">--}}
 {{--            <div class="parent-icon"><i class="bx bx-help-circle"></i>--}}
 {{--            </div>--}}
 {{--            <div class="menu-title">سوالات متداول</div>--}}
 {{--        </a>--}}
 {{--    </li>--}}
 {{--    <li>--}}
-{{--        <a href="{{ route('Others/Themes/Backend/main/vertical/') }}pricing-table.html">--}}
+{{--        <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}pricing-table.html">--}}
 {{--            <div class="parent-icon"><i class='bx bx-dollar-circle'></i>--}}
 {{--            </div>--}}
 {{--            <div class="menu-title">پلن فروش</div>--}}
@@ -269,11 +269,11 @@
 {{--            <div class="menu-title">نمودار ها</div>--}}
 {{--        </a>--}}
 {{--        <ul>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}charts-apex-chart.html"><i class="bx bx-left-arrow-alt"></i>نمودار Apex</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}charts-apex-chart.html"><i class="bx bx-left-arrow-alt"></i>نمودار Apex</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}charts-chartjs.html"><i class="bx bx-left-arrow-alt"></i>نمودار Chartjs</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}charts-chartjs.html"><i class="bx bx-left-arrow-alt"></i>نمودار Chartjs</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}charts-highcharts.html"><i class="bx bx-left-arrow-alt"></i>نمودار Highcharts</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}charts-highcharts.html"><i class="bx bx-left-arrow-alt"></i>نمودار Highcharts</a>--}}
 {{--            </li>--}}
 {{--        </ul>--}}
 {{--    </li>--}}
@@ -284,9 +284,9 @@
 {{--            <div class="menu-title">نقشه ها</div>--}}
 {{--        </a>--}}
 {{--        <ul>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}map-google-maps.html"><i class="bx bx-left-arrow-alt"></i>نقشه گوگل</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}map-google-maps.html"><i class="bx bx-left-arrow-alt"></i>نقشه گوگل</a>--}}
 {{--            </li>--}}
-{{--            <li> <a href="{{ route('Others/Themes/Backend/main/vertical/') }}map-vector-maps.html"><i class="bx bx-left-arrow-alt"></i>نقشه برداری</a>--}}
+{{--            <li> <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}map-vector-maps.html"><i class="bx bx-left-arrow-alt"></i>نقشه برداری</a>--}}
 {{--            </li>--}}
 {{--        </ul>--}}
 {{--    </li>--}}
@@ -320,7 +320,7 @@
 {{--    </li>--}}
 {{--    @foreach ($menus as $menu)--}}
 {{--        <li>--}}
-{{--            <a href="{{ route('Others/Themes/Backend/main/vertical/') }}widgets.html">--}}
+{{--            <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}widgets.html">--}}
 {{--                <div class="parent-icon"><i class='bx bx-briefcase-alt-2'></i>--}}
 {{--                </div>--}}
 {{--                <div class="menu-title">{{ $menu->name }}</div>--}}

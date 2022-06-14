@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2 align="center">فرم ثبت نام</h2>
-<form action="{{ route('register') }}" method="post">
+<form action="{{ route('/register') }}" method="post">
     <table align="center">
         <tr>
             <td>

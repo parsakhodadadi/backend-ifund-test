@@ -2,8 +2,16 @@
 
 namespace App\Middlewares;
 
-class LoginMiddleware {
-     public function __construct() {
-         echo "LoginMiddleware";
+use Core\System\controller;
+
+class LoginMiddleware extends controller {
+//     public function __construct() {
+//         echo "LoginMiddleware";
+//     }
+
+     public function boot() {
+         session_start();
+         if (!isset($_SESSION['USERID'])) redirect('/login');
+         return true;
      }
 }

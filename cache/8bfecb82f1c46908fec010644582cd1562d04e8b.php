@@ -1,6 +1,6 @@
 <div class="sidebar-header">
     <div>
-        <img src="<?php echo e(route('Others/Themes/Backend/main/vertical/')); ?>assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
+        <img src="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
     </div>
     <div>
         <h4 class="logo-text">Synadmin</h4>

@@ -4,7 +4,7 @@ $configs = [
     //defines base url of the project
     //ex: www.test.com
 
-    'base-url'=>'http://localhost:8888/ParsaFramework/',
+    'base-url'=>'http://localhost:8888/ParsaFramework',
 
     //false disable true enable
     'debug'=>true,

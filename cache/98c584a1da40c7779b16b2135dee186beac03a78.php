@@ -6,18 +6,18 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/images/favicon-32x32.png" type="image/png" />
+	<link rel="icon" href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/images/favicon-32x32.png" type="image/png" />
 	<!--plugins-->
-	<link href="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
 	<!-- loader-->
-	<link href="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/css/pace.min.css" rel="stylesheet" />
-	<script src="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/js/pace.min.js"></script>
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/css/pace.min.css" rel="stylesheet" />
+	<script src="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/js/pace.min.js"></script>
 	<!-- Bootstrap CSS -->
-	<link href="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/css/app.css" rel="stylesheet">
-	<link href="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/css/icons.css" rel="stylesheet">
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/css/app.css" rel="stylesheet">
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/css/icons.css" rel="stylesheet">
 	<title><?php echo e($lang['sign_in']); ?></title>
 </head>
 
@@ -30,20 +30,20 @@
 				<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
 					<div class="col mx-auto">
 						<div class="mb-4 text-center">
-							<img src="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/images/logo-img.png" width="180" alt="" />
+							<img src="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/images/logo-img.png" width="180" alt="" />
 						</div>
 						<div class="card">
 							<div class="card-body">
 								<div class="p-4 rounded">
 									<div class="text-center">
 										<h3 class=""><?php echo e($lang['form_name']); ?></h3>
-										<p><?php echo e($lang['no_account']); ?><a href="<?php echo route(''); ?>register"><?php echo e($lang['register']); ?></a>
+										<p><?php echo e($lang['no_account']); ?><a href="<?php echo route(''); ?>/register"><?php echo e($lang['register']); ?></a>
 										</p>
 									</div>
 									<div class="d-grid">
 										<a class="btn my-4 shadow-sm btn-white" href="javascript:;"> <span
 												class="d-flex justify-content-center align-items-center">
-												<img class="me-2" src="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/images/icons/search.svg" width="16"
+												<img class="me-2" src="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/images/icons/search.svg" width="16"
 													 alt="Image Description">
 												<span><?php echo e($lang['google_sign_in']); ?></span>
 											</span>
@@ -78,7 +78,7 @@
 												</div>
 											</div>
 											<div class="col-md-6 text-end"> <a
-													href="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/authentication-forgot-password.html"><?php echo e($lang['forget_password']); ?></a>
+													href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/authentication-forgot-password.html"><?php echo e($lang['forget_password']); ?></a>
 											</div>
 											<div class="col-12">
 												<div class="d-grid">
@@ -98,12 +98,12 @@
 	</div>
 	<!--end wrapper-->
 	<!-- Bootstrap JS -->
-	<script src="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/js/bootstrap.bundle.min.js"></script>
+	<script src="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/js/bootstrap.bundle.min.js"></script>
 	<!--plugins-->
-	<script src="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/js/jquery.min.js"></script>
-	<script src="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/plugins/simplebar/js/simplebar.min.js"></script>
-	<script src="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+	<script src="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/js/jquery.min.js"></script>
+	<script src="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<script src="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
 	<!--Password show & hide js -->
 	<script>
 		$(document).ready(function () {
@@ -122,7 +122,7 @@
 		});
 	</script>
 	<!--app JS-->
-	<script src="<?php echo route(''); ?>Others/Themes/Backend/main/vertical/assets/js/app.js"></script>
+	<script src="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/js/app.js"></script>
 </body>
 
 </html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/backend/login.blade.php ENDPATH**/ ?>

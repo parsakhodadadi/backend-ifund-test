@@ -17,9 +17,9 @@
             <div class="menu-title">دسته بندی موضوعی </div>
         </a>
         <ul>
-            <li> <a href="<?php echo e(route('Others/Themes/Backend/main/vertical/')); ?>app-emailbox.html"><i class="bx bx-left-arrow-alt"></i>ایجاد دسته بندی ها</a>
+            <li> <a href="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>app-emailbox.html"><i class="bx bx-left-arrow-alt"></i>ایجاد دسته بندی ها</a>
             </li>
-            <li> <a href="<?php echo e(route('Others/Themes/Backend/main/vertical/')); ?>app-emailread.html"><i class="bx bx-left-arrow-alt"></i>بروز رسانی دسته بندی ها</a>
+            <li> <a href="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>app-emailread.html"><i class="bx bx-left-arrow-alt"></i>بروز رسانی دسته بندی ها</a>
             </li>
         </ul>
     </li>
@@ -45,11 +45,11 @@
             <div class="menu-title">مدیریت محصولات</div>
         </a>
         <ul>
-            <li> <a href="<?php echo e(route('Others/Themes/Backend/main/vertical/')); ?>ecommerce-products.html"><i class="bx bx-left-arrow-alt"></i>ایجاد محصول جدید</a>
+            <li> <a href="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>ecommerce-products.html"><i class="bx bx-left-arrow-alt"></i>ایجاد محصول جدید</a>
             </li>
-            <li> <a href="<?php echo e(route('Others/Themes/Backend/main/vertical/')); ?>ecommerce-products-details.html"><i class="bx bx-left-arrow-alt"></i>بروز رسانی محصولات</a>
+            <li> <a href="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>ecommerce-products-details.html"><i class="bx bx-left-arrow-alt"></i>بروز رسانی محصولات</a>
             </li>
-            <li> <a href="<?php echo e(route('Others/Themes/Backend/main/vertical/')); ?>ecommerce-orders.html"><i class="bx bx-left-arrow-alt"></i>سفارشات</a>
+            <li> <a href="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>ecommerce-orders.html"><i class="bx bx-left-arrow-alt"></i>سفارشات</a>
             </li>
         </ul>
     </li>

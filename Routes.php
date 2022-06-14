@@ -35,18 +35,18 @@ $router->get('/login', 'userController@login');
 
 $router->get('/checkLogin', 'userController@checkLoginInfo');
 
-$router->get('/admin', 'panelController@panel');
+//$router->get('/admin', 'panelController@panel');
 
 // API Routes
 //$router->get('/api/v1/test', function () {
 //    echo 'API TEST';
 //});
 
-$router->post('/admin/category', 'CategoryController@create');
-$router->get('/admin/category', 'CategoryController@create');
+$router->get('/admin', 'GlobalController@loadMiddlewares');
+$router->get('/admin/category', 'GlobalController@boot');
 
-$router->before('GET|POST', '/admin', 'LoginController@checkLogin');
-$router->before('GET|POST', '/admin/.*', 'LoginController@checkLogin');
+$router->before('GET|POST', '/admin', 'GlobalController@loadMiddlewares');
+$router->before('GET|POST', '/admin/.*', 'GlobalController@checkLogin');
 
 $router->set404('ErrorController@error404');
 

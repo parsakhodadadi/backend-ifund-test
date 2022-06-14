@@ -137,7 +137,7 @@
 
                         <div class="row mb-4">
                             <div class="col-2">
-                                <img src="{{ route('Others/Themes/Backend/main/vertical/') }}assets/images/icons/united-states.png" width="42" alt="">
+                                <img src="{{ route('//Others/Themes/Backend/main/vertical/') }}assets/images/icons/united-states.png" width="42" alt="">
                             </div>
                             <div class="col">
                                 <p class="mb-2">آمریکا <strong class="float-end">445,85</strong></p>
@@ -149,7 +149,7 @@
                         </div>
                         <div class="row mb-4">
                             <div class="col-2">
-                                <img src="{{ route('Others/Themes/Backend/main/vertical/') }}assets/images/icons/germany.png" width="42" alt="">
+                                <img src="{{ route(''///Others/Themes/Backend/main/vertical/') }}assets/images/icons/germany.png" width="42" alt="">
                             </div>
                             <div class="col">
                                 <p class="mb-2">آلمان <strong class="float-end">683,46</strong></p>
@@ -161,7 +161,7 @@
                         </div>
                         <div class="row mb-4">
                             <div class="col-2">
-                                <img src="{{ route('Others/Themes/Backend/main/vertical/') }}assets/images/icons/canada.png" width="42" alt="">
+                                <img src="{{ route('//Others/Themes/Backend/main/vertical/') }}assets/images/icons/canada.png" width="42" alt="">
                             </div>
                             <div class="col">
                                 <p class="mb-2">کانادا <strong class="float-end">982,43</strong></p>
@@ -173,7 +173,7 @@
                         </div>
                         <div class="row mb-4">
                             <div class="col-2">
-                                <img src="{{ route('Others/Themes/Backend/main/vertical/') }}assets/images/icons/india.png" width="42" alt="">
+                                <img src="{{ route('//Others/Themes/Backend/main/vertical/') }}assets/images/icons/india.png" width="42" alt="">
                             </div>
                             <div class="col">
                                 <p class="mb-2">هند <strong class="float-end">852,35</strong></p>
@@ -185,7 +185,7 @@
                         </div>
                         <div class="row mb-4">
                             <div class="col-2">
-                                <img src="{{ route('Others/Themes/Backend/main/vertical/') }}assets/images/icons/netherlands.png" width="42" alt="">
+                                <img src="{{ route('//Others/Themes/Backend/main/vertical/') }}assets/images/icons/netherlands.png" width="42" alt="">
                             </div>
                             <div class="col">
                                 <p class="mb-2">هلند <strong class="float-end">785,24</strong></p>
@@ -197,7 +197,7 @@
                         </div>
                         <div class="row mb-0">
                             <div class="col-2">
-                                <img src="{{ route('Others/Themes/Backend/main/vertical/') }}assets/images/icons/malaysia.png" width="42" alt="">
+                                <img src="{{ route('//Others/Themes/Backend/main/vertical/') }}assets/images/icons/malaysia.png" width="42" alt="">
                             </div>
                             <div class="col">
                                 <p class="mb-2">مالزی <strong class="float-end">387,56</strong></p>

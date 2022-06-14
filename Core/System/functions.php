@@ -95,8 +95,9 @@ function route($route)
 
 function redirect($route = null)
 {
-    $config = include "Configs/config.php";
-    header('location:'.$config['base-url'].'login');
+    global $configs;
+    configHelper::checkFileExist("Configs/config.php");
+    header('location:'.$configs['base-url'].$route);
 }
 
 function request() {
