@@ -35,6 +35,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="p-4 rounded">
+									<form action="{!! route('/login') !!}" method="post">
 									<div class="text-center">
 										<h3 class="">{{ $lang['form_name'] }}</h3>
 										<p>{{ $lang['no_account'] }}<a href="{!! route('') !!}/register">{{ $lang['register'] }}</a>
@@ -87,6 +88,7 @@
 											</div>
 										</form>
 									</div>
+									</form>
 								</div>
 							</div>
 						</div>

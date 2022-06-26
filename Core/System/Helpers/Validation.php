@@ -2,39 +2,63 @@
 
 namespace Core\System;
 
-use http\Header\Parser;
-
 class Validation {
 
-    public function rules($rules = [], $request = [], $messages = [])
+    public function check($rules = [], $request = [], $messages = [])
     {
         $errors = [];
-        foreach ($request as $element=>$value) {
-            $allRules = explode('|', $rules[$element]);
-            foreach ($allRules as $rule) {
-                if (!$this->$rule($value)) {
-                    $errors[$element][$rule] = $messages[$element.".".$rule];
+        if (!empty($rules)) {
+            foreach ($request as $element => $rule) {
+                $elementRules = explode('|', $rule);
+                foreach ($elementRules as $elementRule) {
+                    $filterStatus = $this->elementRule($request[$element]);
+                    if (!$filterStatus) {
+                        $errors[$element][$elementRule] = $messages["$element.$elementRule"];
+                    }
                 }
-            }
-        }
-        return $errors;
-    }
 
-    public function isNumeric($value) : bool
-    {
-        if (is_numeric($value)) return true; else return false;
+            }
+            return $errors;
+        }
+
+//        $errors = [];
+//        foreach ($request as $element => $value) {
+//            $allRules = explode('|', $value);
+//            foreach ($allRules as $rule) {
+//                if (!$this->$rule($value)) {
+//                    $errors[$element][$rule] = $messages[$element.".".$rule];
+//                }
+//            }
+//        }
+//        return $errors;
     }
 
     public function required($value)
     {
-        if (!empty($value)) return true; else return false;
+        if (!empty($value)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public function email(string $value) : bool
-    {
-        if (filter_var($value, FILTER_VALIDATE_EMAIL)) {
-            return true;
-        }
-        return false;
+    public function min($value) {
+        echo $value;
     }
+
+    public function max($value) {
+        if (strlen($value) >= 8) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+//    public function email(string $value) : bool
+//    {
+//        if (filter_var($value, FILTER_VALIDATE_EMAIL)) {
+//            return true;
+//        }
+//        return false;
+//    }
 }

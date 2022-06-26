@@ -67,9 +67,10 @@ function loadLang($lang='fa',$file=null)
 }
 
 function loadModel($modelName) {
-    include "Models/$modelName.php";
-    $modelAddress = '\App\Models\\'.$modelName;
-    return $modelAddress;
+    return new $modelName();
+//    include "Models/$modelName.php";
+//    $modelAddress = '\App\Models\\'.$modelName;
+//    return $modelAddress;
 }
 
 function route($route)
@@ -101,8 +102,13 @@ function redirect($route = null)
 }
 
 function request() {
-    if (!empty($_GET)) return $_GET;
-    if (!empty($_POST)) return $_POST;
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') $request = $_POST;
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') $request = $_GET;
+    if (!empty($_FILES)) {
+        $request['files'] = $_FILES;
+    }
+
+    return $request;
 }
 
 

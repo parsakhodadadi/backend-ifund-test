@@ -35,6 +35,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="p-4 rounded">
+									<form action="<?php echo route('/login'); ?>" method="post">
 									<div class="text-center">
 										<h3 class=""><?php echo e($lang['form_name']); ?></h3>
 										<p><?php echo e($lang['no_account']); ?><a href="<?php echo route(''); ?>/register"><?php echo e($lang['register']); ?></a>
@@ -87,6 +88,7 @@
 											</div>
 										</form>
 									</div>
+									</form>
 								</div>
 							</div>
 						</div>

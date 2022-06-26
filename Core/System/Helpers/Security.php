@@ -6,10 +6,9 @@ class Security {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-
     }
 
-    public function attempt() {
+    public function attempt($attempt = 3) {
         $_SESSION['attempt'] += 1;
         if ($_SESSION['attempt'] >= 3)
             return true;

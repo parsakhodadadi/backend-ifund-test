@@ -46,7 +46,7 @@ $router->get('/admin', 'GlobalController@loadMiddlewares');
 $router->get('/admin/category', 'GlobalController@boot');
 
 $router->before('GET|POST', '/admin', 'GlobalController@loadMiddlewares');
-$router->before('GET|POST', '/admin/.*', 'GlobalController@checkLogin');
+$router->before('GET|POST', '/admin/.*', 'GlobalController@loadMiddlewares');
 
 $router->set404('ErrorController@error404');
 

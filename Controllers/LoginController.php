@@ -44,14 +44,14 @@ class LoginController extends controller
     }
 
     public function form() {
-
+//        echo 'form';
         session_start();
         $request = request();
         if (isset($_SESSION['USERID'])) {
             if (!empty($request)) {
                 die(json_encode(['code' => 200, 'message' => 'success', 'status' => true]));
             } else {
-                redirect('admin');
+                redirect('/admin');
             }
         }
 
@@ -82,7 +82,7 @@ class LoginController extends controller
             }
 
             $password = $request['password'];
-            unset($password);
+            unset($request['password']);
 
             $users = loadModel(users::class);
             $user = current($users->getUsers($request));
@@ -107,7 +107,6 @@ class LoginController extends controller
                 $_SESSION['USERID'] = $user->id;
                 echo json_encode(['code' => 200, 'message' => 'success', 'status' => true]);
             }
-
         } else {
             echo self::view()->blade()->render('backend/login', [
                 'errors' => [],
@@ -119,15 +118,16 @@ class LoginController extends controller
 
     public function checkLogin() {
         session_start();
-        if (!isset($_SESSION['USERID'])) redirect('login');
+        if (!isset($_SESSION['USERID'])) redirect('/login');
     }
 
     public function logout() {
         session_start();
         if(isset($_SESSION['USERID'])) {
             unset($_SESSION['USERID']);
-            redirect('login');
+            redirect('/login');
         }
-        redirect('login');
+        redirect('/login');
     }
+
 }   

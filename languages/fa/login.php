@@ -12,4 +12,7 @@ return [
     'remember_me' => 'مرا به خاطر بسپار',
     'forget_password' => 'فراموشی رمز عبور؟',
     'sign_in' => 'ورود',
+    'username.required' => 'نام کاربری نمی تواند خالی باشد',
+    'password.required' => 'رمزعبور نمی تواند خالی باشد',
+    'password.max' => 'رمزعبور به اندازه کافی قوی نمی باشد'
 ];

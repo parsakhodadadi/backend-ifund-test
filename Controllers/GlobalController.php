@@ -3,16 +3,17 @@
 namespace App\Controllers;
 
 use Core\System\controller;
-use App\Middlewares;
+use App\Middlewares\LoginMiddleware;
+use App\Middlewares\RegisterMiddleware;
 
 class GlobalController extends controller {
 
     public function loadMiddlewares() {
-        $this->middleware([Middlewares\LoginMiddleware::class, Middlewares\RegisterMiddleware::class]);
+        $this->middleware([LoginMiddleware::class, RegisterMiddleware::class]);
     }
 
-    public function checkLogin() {
-        session_start();
-        if (!isset($_SESSION['USERID'])) redirect('/login');
-    }
+//    public function checkLogin() {
+//        session_start();
+//        if (!isset($_SESSION['USERID'])) redirect('/login');
+//    }
 }

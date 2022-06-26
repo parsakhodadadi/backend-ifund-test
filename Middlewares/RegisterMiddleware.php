@@ -5,8 +5,7 @@ namespace App\Middlewares;
 class RegisterMiddleware {
 
     public function boot() {
-        echo 'RegisterMiddleware';
-        return true;
+        echo 'Register Middleware';
     }
 
 }

@@ -22,7 +22,7 @@ class controller
     }
 
     public function validation() {
-        return new validation();
+        return new Validation();
     }
 
     static public function view() {

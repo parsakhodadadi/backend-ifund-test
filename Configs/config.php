@@ -9,7 +9,7 @@ $configs = [
     //false disable true enable
     'debug'=>true,
 
-    'default-database'=>'database',
+    'default-database'=>'myDatabase',
 
     'default-controller'=>new App\Controllers\panelController,
 
