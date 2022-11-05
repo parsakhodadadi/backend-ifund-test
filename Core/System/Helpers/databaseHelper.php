@@ -1,4 +1,6 @@
 <?php
+
+//use PDO;
 use Requtize\QueryBuilder\Connection;
 use Requtize\QueryBuilder\QueryBuilder\QueryBuilderFactory;
 use Requtize\QueryBuilder\ConnectionAdapters\PdoBridge;
@@ -8,7 +10,7 @@ trait databaseHelper {
     static public function queryBuilder() {
         // Somewhere in our application we have created PDO instance
         global $configs;
-        $configHelper=new configHelper();
+        $configHelper = new configHelper();
         $configHelper::checkFileExist('Configs/config.php');
         $databaseDetails=call_user_func_array(['configHelper','getConfig'],['all',$configs['default-database']]);
 
@@ -49,22 +51,37 @@ trait databaseHelper {
         return $query->fetchAll($fetchMode);
     }
 
-    static public function pdoInsert($tableName,$data=[]) {
-        $fields=null;
-        $values=null;
+    static public function pdoInsert($tableName, $data=[]) {
+        $fields = null;
+        $values = null;
 
-        foreach ($data as $field=>$value) {
-            $fields.=$field . ',';
-            $values.="'$value',";
+        if (is_array($data) && !empty($data)) {
+            foreach ($data as $field=>$value) {
+                $fields.=$field . ',';
+                $values.="'$value',";
+                echo $field;
+                echo ' : ';
+                echo $value;
+                echo '<br>';
+                echo '---------';
+                echo '<br>';
+            }
+
+            $fields=substr($fields,0,-1);
+            $values=substr($values,0,-1);
+
+            print_r($fields);
+            echo '<br>';
+            print_r($values);
+
+            $conn=self::pdoOpen();
+
+            $query = $conn->prepare("INSERT INTO $tableName ($fields) VALUES ($values)");
+            $query->execute();
+            return true;
+        } else {
+            die('data : syntax error');
         }
-
-        $fields=substr($fields,0,-1);
-        $values=substr($values,0,-1);
-
-        $conn=self::pdoOpen();
-        $query=$conn->prepare("INSERT INTO $tableName ($fields) VALUES ($values)");
-        $query->execute();
-        return true;
     }
 
     public function pdoUpdate($tableName,$data=[],$where=1) {

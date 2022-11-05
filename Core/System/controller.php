@@ -12,8 +12,9 @@
 namespace Core\System;
 use \Core\System;
 use App\Middlewares\LoginMiddleware;
+use http\Env\Request;
 
-class controller
+class  controller
 {
 
     public function loadController($class)
@@ -21,27 +22,38 @@ class controller
         return new $class;
     }
 
-    public function validation() {
+    public function validation()
+    {
         return new Validation();
     }
 
-    static public function view() {
+    static public function view()
+    {
         return new View();
     }
 
-    public function security() {
+    public function security()
+    {
         return new \Security();
     }
 
-    public function event() {
+    public function event()
+    {
         return new \Event();
     }
 
-    public function middleware(array $middlewares = []) {
+    public function middleware(array $middlewares = [])
+    {
         foreach ($middlewares as $middleware) {
             $eachMiddleware = new $middleware;
             $eachMiddleware->boot();
         }
+    }
+
+    public function request($request)
+    {
+        $request = new $request;
+        return $request->boot(request());
     }
 
 //    static public function view($name, $data = null)

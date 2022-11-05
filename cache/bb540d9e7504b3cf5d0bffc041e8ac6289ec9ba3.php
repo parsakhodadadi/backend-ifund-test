@@ -908,7 +908,7 @@
 
 
 
-			<form action="<?php echo route('admin/category'); ?>" method="post">
+			<form action="<?php echo route('/admin/category'); ?>" method="post">
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
@@ -918,6 +918,9 @@
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" name="title" class="form-control" placeholder="<?php echo e($lang['title']); ?>"/>
+									<?php if(!empty($errors['title'])): ?>
+										<div class="alert-danger"><?php echo ($errors['title']['required']); ?></div>
+									<?php endif; ?>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -925,8 +928,10 @@
 									<h6 class="mb-0"><?php echo e($lang['description']); ?></h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<textarea class="form-control" name="description" placeholder="<?php echo e($lang['description']); ?>">
-									</textarea>
+									<input class="form-control" name="description" placeholder="<?php echo e($lang['description']); ?>" />
+									<?php if(!empty($errors['description'])): ?>
+										<div class="alert-danger"><?php echo ($errors['description']['required']); ?></div>
+									<?php endif; ?>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -935,19 +940,22 @@
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" name = "tags" class="form-control" />
+									<?php if(!empty($errors['tags'])): ?>
+										<div class="alert-danger"><?php echo ($errors['tags']['required']); ?></div>
+									<?php endif; ?>
 								</div>
 							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0"><?php echo e($lang['display-status']); ?></h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<label class="switch">
-										<input type="checkbox" name="display">
-										<span class=""></span>
-									</label>
-								</div>
-							</div>
+
+
+
+
+
+
+
+
+
+
+
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
@@ -955,6 +963,21 @@
 										   value="<?php echo e($lang['send']); ?>" />
 								</div>
 							</div>
+						</div>
+						<div>
+							<?php if(!empty($errorMessage)): ?>
+								<div class="alert-warning"><?php echo $errorMessage; ?></div>
+							<?php endif; ?>
+							<?php if(!empty($successMessage)): ?>
+								<div class="alert-success"><?php echo $successMessage; ?></div>
+							<?php endif; ?>
+
+
+
+
+
+
+
 						</div>
 					</div>
 				</div>

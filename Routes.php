@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 // Create Router instance
 $router = new \Bramus\Router\Router();
@@ -43,10 +43,12 @@ $router->get('/checkLogin', 'userController@checkLoginInfo');
 //});
 
 $router->get('/admin', 'GlobalController@loadMiddlewares');
-$router->get('/admin/category', 'GlobalController@boot');
+$router->get('/admin/category', 'CategoryController@create');
+
+$router->post('/admin/category', 'CategoryController@create');
 
 $router->before('GET|POST', '/admin', 'GlobalController@loadMiddlewares');
-$router->before('GET|POST', '/admin/.*', 'GlobalController@loadMiddlewares');
+//$router->before('GET|POST', '/admin/.*', 'GlobalController@loadMiddlewares');
 
 $router->set404('ErrorController@error404');
 

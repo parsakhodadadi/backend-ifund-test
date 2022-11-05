@@ -128,6 +128,6 @@ class LoginController extends controller
             redirect('/login');
         }
         redirect('/login');
-    }
+     }
 
-}   
+}

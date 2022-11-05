@@ -56,7 +56,7 @@ function loadController($controllerName=null)
 //    } else exit("$lang directory does not exist");
 //}
 
-function loadLang($lang='fa',$file=null)
+function loadLang($lang='fa', $file=null)
 {
     $configHelper = new configHelper();
     try {
@@ -109,6 +109,18 @@ function request() {
     }
 
     return $request;
+}
+
+function __($lang) {
+    $language = explode('.', $lang);
+    $lang = current($language);
+    $key = end($language);
+
+    $langFile = './languages/fa/'.$lang.'.php';
+    if (file_exists($langFile)) {
+        $allLangs = include $langFile;
+        return $allLangs[$key];
+    }
 }
 
 

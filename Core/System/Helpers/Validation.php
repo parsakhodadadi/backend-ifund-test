@@ -7,19 +7,31 @@ class Validation {
     public function check($rules = [], $request = [], $messages = [])
     {
         $errors = [];
-        if (!empty($rules)) {
-            foreach ($request as $element => $rule) {
+        if (!empty($rules) && !empty($request)) {
+//            print_r($request);
+//            echo '<br>';
+//            print_r($rules);
+            foreach ($rules as $element => $rule) {
+
                 $elementRules = explode('|', $rule);
                 foreach ($elementRules as $elementRule) {
-                    $filterStatus = $this->elementRule($request[$element]);
+
+                    // if(isset($request[$element]))
+                    //  {
+                    $filterStatus = $this->$elementRule($request[$element]);
                     if (!$filterStatus) {
                         $errors[$element][$elementRule] = $messages["$element.$elementRule"];
+//                        print_r($errors);
+//                        echo '<br>';
                     }
-                }
+                    //}else die('invalid data');
 
+                }
             }
+//            print_r($errors);
             return $errors;
         }
+    }
 
 //        $errors = [];
 //        foreach ($request as $element => $value) {
@@ -31,7 +43,7 @@ class Validation {
 //            }
 //        }
 //        return $errors;
-    }
+
 
     public function required($value)
     {

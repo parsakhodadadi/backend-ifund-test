@@ -4,5 +4,5 @@ $configs = [
     'server'=>'localhost',
     'user'=>'root',
     'password'=>'root',
-    'database'=>'myDatabase',
+    'database'=>'join',
 ];

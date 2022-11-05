@@ -6,18 +6,18 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/images/favicon-32x32.png" type="image/png" />
+	<link rel="icon" href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/images/favicon-32x32.png" type="image/png" />
 	<!--plugins-->
-	<link href="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
 	<!-- loader-->
-	<link href="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/css/pace.min.css" rel="stylesheet" />
-	<script src="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/js/pace.min.js"></script>
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/css/pace.min.css" rel="stylesheet" />
+	<script src="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/js/pace.min.js"></script>
 	<!-- Bootstrap CSS -->
-	<link href="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/css/app.css" rel="stylesheet">
-	<link href="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/css/icons.css" rel="stylesheet">
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/css/app.css" rel="stylesheet">
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/css/icons.css" rel="stylesheet">
 	<title>{{ $lang['register'] }}</title>
 </head>
 
@@ -30,20 +30,20 @@
 				<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2">
 					<div class="col mx-auto">
 						<div class="my-4 text-center">
-							<img src="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/images/logo-img.png" width="180" alt="" />
+							<img src="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/images/logo-img.png" width="180" alt="" />
 						</div>
 						<div class="card">
 							<div class="card-body">
 								<div class="p-4 rounded">
 									<div class="text-center">
 										<h3 class="">{{ $lang['register'] }}</h3>
-										<p>{{ $lang['already-account'] }}<a href="{!! route('') !!}login">{{ $lang['sign-in'] }}</a>
+										<p>{{ $lang['already-account'] }}<a href="{!! route('') !!}/login">{{ $lang['sign-in'] }}</a>
 										</p>
 									</div>
 									<div class="d-grid">
 										<a class="btn my-4 shadow-sm btn-white" href="javascript:;"> <span
 												class="d-flex justify-content-center align-items-center">
-												<img class="me-2" src="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/images/icons/search.svg" width="16"
+												<img class="me-2" src="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/images/icons/search.svg" width="16"
 													 alt="Image Description">
 												<span>{{ $lang['register-google'] }}</span>
 											</span>
@@ -54,7 +54,7 @@
 										<hr />
 									</div>
 									<div class="form-body">
-										<form class="row g-3" action="{!! route('') !!}register">
+										<form class="row g-3" action="{!! route('') !!}/register">
 											<div class="col-sm-6">
 												<label for="inputFirstName" class="form-label">{{ $lang['first-name'] }}</label>
 												<input type="text" class="form-control" id="inputFirstName"
@@ -116,12 +116,12 @@
 	</div>
 	<!--end wrapper-->
 	<!-- Bootstrap JS -->
-	<script src="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/js/bootstrap.bundle.min.js"></script>
+	<script src="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/js/bootstrap.bundle.min.js"></script>
 	<!--plugins-->
-	<script src="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/js/jquery.min.js"></script>
-	<script src="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/plugins/simplebar/js/simplebar.min.js"></script>
-	<script src="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+	<script src="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/js/jquery.min.js"></script>
+	<script src="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<script src="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
 	<!--Password show & hide js -->
 	<script>
 		$(document).ready(function () {
@@ -140,7 +140,7 @@
 		});
 	</script>
 	<!--app JS-->
-	<script src="{!! route('') !!}Others/Themes/Backend/main/horizontal/assets/js/app.js"></script>
+	<script src="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/js/app.js"></script>
 </body>
 
 </html>

@@ -908,7 +908,7 @@
 {{--									</div>--}}
 {{--								</div>--}}
 {{--							</div>--}}
-			<form action="{!! route('admin/category') !!}" method="post">
+			<form action="{!! route('/admin/category') !!}" method="post">
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
@@ -918,6 +918,9 @@
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" name="title" class="form-control" placeholder="{{ $lang['title'] }}"/>
+									@if(!empty($errors['title']))
+										<div class="alert-danger">{!! ($errors['title']['required']) !!}</div>
+									@endif
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -925,8 +928,10 @@
 									<h6 class="mb-0">{{ $lang['description'] }}</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<textarea class="form-control" name="description" placeholder="{{ $lang['description'] }}">
-									</textarea>
+									<input class="form-control" name="description" placeholder="{{ $lang['description'] }}" />
+									@if(!empty($errors['description']))
+										<div class="alert-danger">{!! ($errors['description']['required']) !!}</div>
+									@endif
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -935,19 +940,22 @@
 								</div>
 								<div class="col-sm-9 text-secondary">
 									<input type="text" name = "tags" class="form-control" />
+									@if(!empty($errors['tags']))
+										<div class="alert-danger">{!! ($errors['tags']['required']) !!}</div>
+									@endif
 								</div>
 							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">{{ $lang['display-status'] }}</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<label class="switch">
-										<input type="checkbox" name="display">
-										<span class=""></span>
-									</label>
-								</div>
-							</div>
+{{--							<div class="row mb-3">--}}
+{{--								<div class="col-sm-3">--}}
+{{--									<h6 class="mb-0">{{ $lang['display-status'] }}</h6>--}}
+{{--								</div>--}}
+{{--								<div class="col-sm-9 text-secondary">--}}
+{{--									<label class="switch">--}}
+{{--										<input type="checkbox" name="display">--}}
+{{--										<span class=""></span>--}}
+{{--									</label>--}}
+{{--								</div>--}}
+{{--							</div>--}}
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
@@ -955,6 +963,21 @@
 										   value="{{ $lang['send'] }}" />
 								</div>
 							</div>
+						</div>
+						<div>
+							@if(!empty($errorMessage))
+								<div class="alert-warning">{!! $errorMessage !!}</div>
+							@endif
+							@if(!empty($successMessage))
+								<div class="alert-success">{!! $successMessage !!}</div>
+							@endif
+{{--							@if(!empty($errors))--}}
+{{--								@foreach($errors as $error)--}}
+{{--									@foreach($error as $eachError)--}}
+{{--										<div class="alert-danger">{!! $eachError !!}</div>--}}
+{{--									@endforeach--}}
+{{--								@endforeach--}}
+{{--							@endif--}}
 						</div>
 					</div>
 				</div>

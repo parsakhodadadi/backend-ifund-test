@@ -3,16 +3,26 @@
 namespace App\Controllers;
 
 use App\Middlewares\LoginMiddleware;
+use App\Models\Category;
 use App\Models\users;
+use App\Request\CategoryRequest;
 use Core\System\controller;
+use Core\System\Validation;
 
-class CategoryController extends controller {
+class CategoryController extends controller
+{
+    use \QueryBuilder;
 
     private object $loginMiddleware;
     private $lang;
     private object $blade;
+    private $request;
+    private $queryBuilder;
 
-    public function __construct() {
+    public function __construct()
+    {
+        $this->queryBuilder = $this->connection();
+        $this->request = request();
         $this->loginMiddleware = new LoginMiddleware();
 //        $this->loginMiddleware->boot();
         $lang = \configHelper::getConfig('default-language');
@@ -20,17 +30,34 @@ class CategoryController extends controller {
         $this->blade = $this->view()->blade();
     }
 //
-    public function create() {
-//        $this->loginMiddleware->boot();
-        $request = request();
-//        if (!empty($request)) {
-//            echo '<pre>';
-//            print_r($request);
-//        } else {
-//            $view = $this->blade->render('backend/main/layout/category/create', ['view' => $this->blade, 'lang' => $this->lang]);
-//            echo $this->blade->render('backend/main/panel', ['view' => $this->blade, 'content' => $view, 'lang' => $this->lang]);
-//        }
+    public function create()
+    {
+        $successMessage = null;
+        $errors = $this->request(CategoryRequest::class);
+
+        if (!empty($this->request) && empty($errors)) {
+
+            try {
+                $this->request['user_id'] = 1;
+                $this->queryBuilder->from('categories')->insert($this->request);
+                $successMessage = __('category.success');
+            } catch (\Exception $exception) {
+                if ($exception->getCode() == 23000) {
+                    $errorMessage = __('category.error');
+                }
+            }
+        }
+
+        $view = $this->blade->render('backend/main/layout/category/create', [
+            'errors' => $errors ,
+            'lang' => $this->lang,
+            'successMessage' => $successMessage,
+            'errorMessage' => $errorMessage,
+        ]);
+        echo $this->blade->render('backend/main/panel', ['view' => $this->blade, 'content' => $view]);
+
     }
+
 //
 //    public function update() {
 //
