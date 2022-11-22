@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Exception\QueryBuilderException;
 use App\Middlewares\LoginMiddleware;
 use App\Models\Category;
 use App\Models\users;
@@ -33,19 +34,18 @@ class CategoryController extends controller
     public function create()
     {
         $successMessage = null;
+        $errorMessage = null;
+        $exception = new QueryBuilderException();
         $errors = $this->request(CategoryRequest::class);
 
         if (!empty($this->request) && empty($errors)) {
 
-            try {
-                $this->request['user_id'] = 1;
-                $this->queryBuilder->from('categories')->insert($this->request);
+            $this->request['user_id'] = 1;
+            $errorMessage = $exception->handle($this->request, $this->queryBuilder->from('categories'));
+            if (empty($errorMessage)) {
                 $successMessage = __('category.success');
-            } catch (\Exception $exception) {
-                if ($exception->getCode() == 23000) {
-                    $errorMessage = __('category.error');
-                }
             }
+
         }
 
         $view = $this->blade->render('backend/main/layout/category/create', [
@@ -54,6 +54,7 @@ class CategoryController extends controller
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,
         ]);
+
         echo $this->blade->render('backend/main/panel', ['view' => $this->blade, 'content' => $view]);
 
     }

@@ -2,36 +2,66 @@
 
 namespace App\Controllers;
 
+use App\Exception\QueryBuilderException;
+use App\Middlewares\LoginMiddleware;
 use App\Models\users;
+use App\Request\RegisterRequest;
+use Core\System\controller;
 use Jenssegers\Blade\Blade;
+use Requtize\QueryBuilder\QueryBuilder\QueryBuilder;
 
-class RegisterController
+class RegisterController extends controller
 {
-    use \databaseHelper;
+    use \QueryBuilder;
 
-    private $blade;
-    private $model;
+    private object $loginMiddleware;
+    private $lang;
+    private object $blade;
+    private $request;
+    private $queryBuilder;
 
     public function __construct()
     {
-        $this->blade = blade();
-        $this->model = new users();
+        $this->queryBuilder = $this->connection();
+        $this->request = request();
+        $lang = \configHelper::getConfig('default-language');
+        $this->lang = loadLang($lang, 'register');
+        $this->blade = $this->view()->blade();
     }
 
     public function register()
     {
-        $request = request();
-        if (!empty($request)) {
-            $this->model->insert(['username' => $request['username'], 'password' => $request['password']]);
-            print_r($request);
-        } else {
-            $lang = loadLang('fa', 'register');
-            echo $this->blade->make('backend/register',
-                [
-                    'lang' => $lang,
-                    'views' => $this->blade
-                ] 
-            );
+        $successMessage = null;
+        $errorMessage = null;
+        $exception = new QueryBuilderException();
+        $errors = $this->request(RegisterRequest::class);
+
+        if (!empty($this->request) && empty($errors)) {
+
+            $errorMessage = $exception->handle($this->request, $this->queryBuilder->from('users'));
+            if (empty($errorMessage)) {
+                $successMessage = __('register.success');
+            }
         }
+
+        echo self::view()->blade()->render('backend/register', [
+            'errors' => [],
+            'lang' => $this->lang,
+            'successMessage' => $successMessage,
+            'errorMessage' => $errorMessage,
+        ]);
+//        $request = request();
+//        if (!empty($request)) {
+//            $this->model->insert(['username' => $request['username'], 'password' => $request['password']]);
+//            print_r($request);
+//        } else {
+//            $lang = loadLang('fa', 'register');
+//            echo $this->blade->make('backend/register',
+//                [
+//                    'lang' => $lang,
+//                    'views' => $this->blade
+//                ]
+//            );
+//        }
     }
 }

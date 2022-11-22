@@ -66,11 +66,11 @@ class Validation {
         }
     }
 
-//    public function email(string $value) : bool
-//    {
-//        if (filter_var($value, FILTER_VALIDATE_EMAIL)) {
-//            return true;
-//        }
-//        return false;
-//    }
+    public function email(string $value) : bool
+    {
+        if (filter_var($value, FILTER_VALIDATE_EMAIL)) {
+            return true;
+        }
+        return false;
+    }
 }
