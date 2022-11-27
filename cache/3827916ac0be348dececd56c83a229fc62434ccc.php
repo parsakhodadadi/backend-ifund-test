@@ -23,7 +23,7 @@
 
 <body class="rtl">
 	<!--wrapper-->
-
+	<form action="<?php echo route('/register'); ?>" method="post">
 	<div class="wrapper">
 		<div class="authentication-header"></div>
 		<div class="d-flex align-items-center justify-content-center my-5 my-lg-0">
@@ -55,21 +55,36 @@
 										<hr />
 									</div>
 									<div class="form-body">
-										<form class="row g-3" action="<?php echo route('/register'); ?>">
+										<form class="row g-3" action="<?php echo route('/register'); ?>" method="post">
 											<div class="col-sm-6">
 												<label for="inputFirstName" class="form-label"><?php echo e($lang['first-name']); ?></label>
 												<input type="text" class="form-control" id="inputFirstName"
 													placeholder="<?php echo e($lang['ex-first-name']); ?>" name="first_name">
+												<?php if(!empty($errors['first_name'])): ?>
+													<div class="alert-danger"><?php echo $errors['first_name']['required']; ?></div>
+												<?php endif; ?>
 											</div>
 											<div class="col-sm-6">
 												<label for="inputLastName" class="form-label"><?php echo e($lang['last-name']); ?></label>
 												<input type="text" class="form-control" id="inputLastName"
 													placeholder="<?php echo e($lang['ex-last-name']); ?>" name="last_name">
+												<?php if(!empty($errors['last_name'])): ?>
+													<div class="alert-danger"><?php echo ($errors['last_name']['required']); ?></div>
+												<?php endif; ?>
 											</div>
 											<div class="col-12">
 												<label for="inputEmailAddress" class="form-label"><?php echo e($lang['email-address']); ?></label>
 												<input type="email" class="form-control" id="inputEmailAddress"
 													placeholder="example@user.com" name="email">
+												<?php if(!empty($errors['email'])): ?>
+													<?php if(!empty($errors['email']['required'])): ?>
+														<div class="alert-danger"><?php echo ($errors['email']['required']); ?></div>
+													<?php else: ?>
+														<?php if(!empty($errors['email']['email'])): ?>
+															<div class="alert-danger"><?php echo ($errors['email']['email']); ?></div>
+														<?php endif; ?>
+													<?php endif; ?>
+												<?php endif; ?>
 											</div>
 											<div class="col-12">
 												<label for="inputChoosePassword" class="form-label"><?php echo e($lang['password']); ?></label>
@@ -80,11 +95,20 @@
 														class="input-group-text bg-transparent"><i
 															class='bx bx-hide'></i></a>
 												</div>
+												<?php if(!empty($errors['password'])): ?>
+													<?php if(!empty($errors['password']['required'])): ?>
+														<div class="alert-danger"><?php echo ($errors['password']['required']); ?></div>
+													<?php else: ?>
+														<?php if(!empty($errors['password']['password'])): ?>
+															<div class="alert-danger"><?php echo ($errors['password']['password']); ?></div>
+														<?php endif; ?>
+													<?php endif; ?>
+												<?php endif; ?>
 											</div>
 											<div class="col-12">
 												<label for="inputSelectCountry" class="form-label"><?php echo e($lang['country']); ?></label>
 												<select class="form-select" id="inputSelectCountry"
-													aria-label="<?php echo e($lang['examples']); ?>" name="country">
+													aria-label="{ { $lang['examples'] }}" name="country">
 													<option selected><?php echo e($lang['iran']); ?></option>
 													<option value="1"><?php echo e($lang['turkey']); ?></option>
 													<option value="2"><?php echo e($lang['china']); ?></option>
@@ -147,7 +171,7 @@
 	</script>
 	<!--app JS-->
 	<script src="<?php echo route(''); ?>/Others/Themes/Backend/main/horizontal/assets/js/app.js"></script>
-
+	</form>
 </body>
 
 </html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/backend/register.blade.php ENDPATH**/ ?>

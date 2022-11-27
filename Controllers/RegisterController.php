@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers;
 
 use App\Exception\QueryBuilderException;
@@ -36,6 +35,7 @@ class RegisterController extends controller
         $exception = new QueryBuilderException();
         $errors = $this->request(RegisterRequest::class);
 
+
         if (!empty($this->request) && empty($errors)) {
 
             $errorMessage = $exception->handle($this->request, $this->queryBuilder->from('users'));
@@ -45,7 +45,7 @@ class RegisterController extends controller
         }
 
         echo self::view()->blade()->render('backend/register', [
-            'errors' => [],
+            'errors' => $errors,
             'lang' => $this->lang,
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,

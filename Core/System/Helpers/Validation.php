@@ -58,7 +58,7 @@ class Validation {
         echo $value;
     }
 
-    public function max($value) {
+    public function max($value) : bool{
         if (strlen($value) >= 8) {
             return true;
         } else {
@@ -73,4 +73,12 @@ class Validation {
         }
         return false;
     }
+
+    public function password(string $value) : bool {
+        if (strlen($value) >= 8) {
+            return true;
+        }
+        return false;
+    }
+
 }

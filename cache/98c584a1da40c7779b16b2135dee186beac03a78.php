@@ -59,7 +59,7 @@
 											<div class="col-12">
 												<label for="inputEmailAddress" class="form-label"><?php echo e($lang['email_address']); ?></label>
 												<input type="text" class="form-control" id="inputEmailAddress"
-													placeholder="نام کاربری خود را وارد کنید" name="name">
+													placeholder="نام کاربری خود را وارد کنید" name="email">
 											</div>
 											<div class="col-12">
 												<label for="inputChoosePassword" class="form-label"><?php echo e($lang['password']); ?></label>

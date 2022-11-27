@@ -12,7 +12,7 @@ class RegisterRequest extends Validation {
             'email' => 'email|required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'password' => 'required',
+            'password' => 'required|password',
             'country' => 'required'
         ];
     }
@@ -25,6 +25,7 @@ class RegisterRequest extends Validation {
             'first_name.required' => __('register.first_name-required'),
             'last_name.required' => __('register.last_name-required'),
             'password.required' => __('register.password-required'),
+            'password.password' => __('register.password-password'),
             'country.required' => __('register.country-required')
         ];
     }
