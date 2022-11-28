@@ -40,7 +40,7 @@ class CategoryController extends controller
 
         if (!empty($this->request) && empty($errors)) {
 
-            $this->request['user_id'] = 1;
+            $this->request['user_id'] = $_SESSION['USERID'];
             $errorMessage = $exception->handle($this->request, $this->queryBuilder->from('categories'));
             if (empty($errorMessage)) {
                 $successMessage = __('category.success');

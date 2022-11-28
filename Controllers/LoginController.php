@@ -19,29 +19,29 @@ class LoginController extends controller
         $this->model = new users();
     }
 
-    public function login()
-    {
-//        foreach ($menus as $menu) {
-//            echo $menu->name . '<br>';
+//    public function login()
+//    {
+////        foreach ($menus as $menu) {
+////            echo $menu->name . '<br>';
+////        }
+////        echo '<pre>';
+////        var_dump($menus);
+////        exit();
+//
+//        $request = request();
+//        if (!empty($request)) {
+//            $users = $this->model->checkUser($request);
+//            print_r($users);
+//        } else {
+//            $lang = loadLang('fa', 'login');
+//            echo $this->blade->make('backend/login',
+//                [
+//                    'lang' => $lang,
+//                    'views' => $this->blade,
+//                ]
+//            );
 //        }
-//        echo '<pre>';
-//        var_dump($menus);
-//        exit();
-
-        $request = request();
-        if (!empty($request)) {
-            $users = $this->model->checkUser($request);
-            print_r($users);
-        } else {
-            $lang = loadLang('fa', 'login');
-            echo $this->blade->make('backend/login',
-                [
-                    'lang' => $lang,
-                    'views' => $this->blade,
-                ]
-            );
-        }
-    }
+//    }
 
     public function form() {
 //        echo 'form';
@@ -65,17 +65,16 @@ class LoginController extends controller
             unset($request['csrf_token']);
 
             $rules = [
-                'name' => 'required',
-                'password' => 'required|max',
+                'email' => 'required',
+                'password' => 'required',
             ];
 
             $messages = [
-                'username.required' => $this->lang['username.required'],
-                'password.required' => $this->lang['password.required'],
-                'password.max' => $this->lang['password.max'],
+                'email.required' => 'نام الزامی می باشد',
+                'password.required' => 'پسورد الزامی می باشد',
             ];
 
-            $errors = $this->validation()->rules($rules, $request, $messages);
+            $errors = $this->validation()->check($rules, $request, $messages);
 
             if (!empty($errors)) {
                 die($this->view()->blade()->render('backend/main/login', ['errors' => $errors, 'view' => $this->view()]));
@@ -84,8 +83,15 @@ class LoginController extends controller
             $password = $request['password'];
             unset($request['password']);
 
+            print_r($request);
+
             $users = loadModel(users::class);
             $user = current($users->getUsers($request));
+
+            echo $password;
+            echo '<br>';
+            echo $user->password;
+
 
             if (!password_verify($password, $user->password)) {
                 echo json_encode(['code' => 401, 'message' => 'wrong password', 'status' => false]);
@@ -107,6 +113,16 @@ class LoginController extends controller
                 $_SESSION['USERID'] = $user->id;
                 echo json_encode(['code' => 200, 'message' => 'success', 'status' => true]);
             }
+
+//            echo $_SESSION['USERID'];
+            echo $this->blade->render('backend/main/panel', ['view' => $this->blade , 'content']);
+
+//            echo self::view()->blade()->render('backend/main/layout/category/create', [
+//                'errors' => [],
+//                'security' => $this->security(),
+//                'lang' => $this->lang,
+//            ]);
+
         } else {
             echo self::view()->blade()->render('backend/login', [
                 'errors' => [],

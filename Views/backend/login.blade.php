@@ -64,6 +64,9 @@
 											<div class="col-12">
 												<label for="inputChoosePassword" class="form-label">{{ $lang['password'] }}</label>
 												<div class="input-group" id="show_hide_password">
+													<div>
+														<input type="hidden" name="csrf_token" value="{{$security->csrfToken()}}">
+													</div>
 													<input type="password" class="form-control border-end-0"
 														id="inputChoosePassword" value="12345678"
 														placeholder="رمز عبور خود را وارد کنید" name="password"> <a href="javascript:;"

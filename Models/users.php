@@ -9,7 +9,7 @@ class users
     private $db;
     private $table = 'users';
     private $fillableStatus = true;
-    private $fillable = ['id', 'name', 'password'];
+    private $fillable = ['id', 'email', 'first_name', 'last_name', 'country', 'password'];
 
 //    private $model;
 

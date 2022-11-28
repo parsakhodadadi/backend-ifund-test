@@ -37,7 +37,7 @@ class RegisterController extends controller
 
 
         if (!empty($this->request) && empty($errors)) {
-
+            $this->request['password'] = password_hash($this->request['password'], PASSWORD_DEFAULT);
             $errorMessage = $exception->handle($this->request, $this->queryBuilder->from('users'));
             if (empty($errorMessage)) {
                 $successMessage = __('register.success');

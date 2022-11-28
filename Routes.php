@@ -31,7 +31,7 @@ $router->get('/register', 'RegisterController@register');
 
 $router->post('/register', 'RegisterController@register');
 
-$router->get('/login', 'userController@login');
+//$router->get('/login', 'userController@login');
 
 $router->get('/checkLogin', 'userController@checkLoginInfo');
 
@@ -47,8 +47,8 @@ $router->get('/admin/category', 'CategoryController@create');
 
 $router->post('/admin/category', 'CategoryController@create');
 
-$router->before('GET|POST', '/admin', 'GlobalController@loadMiddlewares');
-//$router->before('GET|POST', '/admin/.*', 'GlobalController@loadMiddlewares');
+$router->before('GET|POST', '/admin', 'LoginController@checkLogin');
+$router->before('GET|POST', '/admin/.*', 'LoginController@checkLogin');
 
 $router->set404('ErrorController@error404');
 

@@ -20,8 +20,7 @@ class Security {
     }
 
     public function checkCSRFToken($value) {
-        if ($_SESSION[$_SERVER['REMOTE_ADDR']]['csrf_token'] != $value)
-            return false;
+        if($_SESSION[$_SERVER['REMOTE_ADDR']]['csrf_token'] != $value) return false;
         return true;
     }
 }
