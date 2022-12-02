@@ -10,6 +10,7 @@
  */
 
 namespace Core\System;
+use App\Exception\QueryBuilderException;
 use \Core\System;
 use App\Middlewares\LoginMiddleware;
 use http\Env\Request;
@@ -54,6 +55,11 @@ class  controller
     {
         $request = new $request;
         return $request->boot(request());
+    }
+
+    public function queryBuilderException()
+    {
+        return new QueryBuilderException;
     }
 
 //    static public function view($name, $data = null)

@@ -7,7 +7,7 @@ use Requtize\QueryBuilder\QueryBuilder\QueryBuilderFactory;
 trait QueryBuilder
 {
 
-    public function connection()
+    public function queryBuilder()
     {
         // Somewhere in our application we have created PDO instance
         global $configs;
@@ -15,12 +15,17 @@ trait QueryBuilder
         $configHelper::checkFileExist('Configs/config.php');
         $databaseDetails=call_user_func_array(['configHelper','getConfig'],['all',$configs['default-database']]);
 
-        $pdo = new PDO("mysql:host={$databaseDetails['server']};dbname={$databaseDetails['database']}", $databaseDetails['user'], $databaseDetails['password']);
+        try {
+            $pdo = new PDO("mysql:host={$databaseDetails['server']};dbname={$databaseDetails['database']}", $databaseDetails['user'], $databaseDetails['password']);
 
-        // Build Connection object with PdoBridge ad Adapter
-        $conn=new Connection(new PdoBridge($pdo));
+            // Build Connection object with PdoBridge ad Adapter
+            $conn = new Connection(new PdoBridge($pdo));
 
-        // Pass this connection to Factory
-        return new QueryBuilderFactory($conn);
+            // Pass this connection to Factory
+            return new QueryBuilderFactory($conn);
+        } catch (Exception $exception) {
+            error_log($exception->getMessage().".\r\n", 3, 'storage/log/system.log');
+        }
+
     }
 }

@@ -1,0 +1,5 @@
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'onvan1' for key 'title' during query "INSERT INTO `categories` (`title`, `description`, `tags`, `user_id`) VALUES (:title, :description, :tags, :user_id)".
+SQLSTATE[HY000] [1049] Unknown database 'joined'.
+SQLSTATE[HY000] [1049] Unknown database 'joined'.
+SQLSTATE[HY000] [1049] Unknown database 'joined'.
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'تست۲' for key 'title' during query "INSERT INTO `categories` (`title`, `description`, `tags`, `user_id`) VALUES (:title, :description, :tags, :user_id)".
