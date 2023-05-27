@@ -3,6 +3,7 @@
 use Helper\Directives;
 use Helper\MyClass;
 use Jenssegers\Blade\Blade;
+
 use function Helper\globalfn1;
 
 function blade()
@@ -18,26 +19,25 @@ function loadFunctions()
     $ob->boot();
 }
 
-function view($view=null, $data=[])
+function view($view = null, $data = [])
 {
-    if(!empty($data)) {
-        foreach ($data as $var=>$value) {
-            $$var=$value;
+    if (!empty($data)) {
+        foreach ($data as $var => $value) {
+            $$var = $value;
         }
     }
 
-    if (file_exists("Views/"."$view".".php")) {
-        include "Views/$view".".php";
-    }else {
-        exit("Views/$view".".php"." does not exist");
+    if (file_exists("Views/" . "$view" . ".php")) {
+        include "Views/$view" . ".php";
+    } else {
+        exit("Views/$view" . ".php" . " does not exist");
     }
-
 }
 
 
-function loadController($controllerName=null)
+function loadController($controllerName = null)
 {
-    return new $controllerName;
+    return new $controllerName();
 }
 
 //function lang($lang, $languageNames = ['home']): array {
@@ -56,7 +56,7 @@ function loadController($controllerName=null)
 //    } else exit("$lang directory does not exist");
 //}
 
-function loadLang($lang='fa', $file=null)
+function loadLang($lang = 'fa', $file = null)
 {
     $configHelper = new configHelper();
     try {
@@ -66,7 +66,8 @@ function loadLang($lang='fa', $file=null)
     }
 }
 
-function loadModel($modelName) {
+function loadModel($modelName)
+{
     return new $modelName();
 //    include "Models/$modelName.php";
 //    $modelAddress = '\App\Models\\'.$modelName;
@@ -98,12 +99,17 @@ function redirect($route = null)
 {
     global $configs;
     configHelper::checkFileExist("Configs/config.php");
-    header('location:'.$configs['base-url'].$route);
+    header('location:' . $configs['base-url'] . $route);
 }
 
-function request() {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') $request = $_POST;
-    if ($_SERVER['REQUEST_METHOD'] == 'GET') $request = $_GET;
+function request()
+{
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $request = $_POST;
+    }
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        $request = $_GET;
+    }
     if (!empty($_FILES)) {
         $request['files'] = $_FILES;
     }
@@ -111,16 +117,26 @@ function request() {
     return $request;
 }
 
-function __($lang) {
+function __($lang)
+{
     $language = explode('.', $lang);
     $lang = current($language);
     $key = end($language);
 
-    $langFile = './languages/fa/'.$lang.'.php';
+    $langFile = './languages/fa/' . $lang . '.php';
     if (file_exists($langFile)) {
         $allLangs = include $langFile;
         return $allLangs[$key];
     }
 }
 
-
+function displayError($errors = [], $element = null)
+{
+    if (!empty($errors)) {
+        if (isset($errors[$element])) {
+            foreach ($errors[$element] as $error) {
+                echo '<p>' . $error . '</p>';
+            }
+        }
+    }
+}

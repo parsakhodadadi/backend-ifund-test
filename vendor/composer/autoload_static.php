@@ -8,14 +8,12 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
-        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '60799491728b879e74601d83e38b2cad' => __DIR__ . '/..' . '/illuminate/collections/helpers.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
-        '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
@@ -33,9 +31,7 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         ),
         'S' => 
         array (
-            'Symfony\\Polyfill\\Php81\\' => 23,
             'Symfony\\Polyfill\\Php80\\' => 23,
-            'Symfony\\Polyfill\\Php73\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Intl\\Normalizer\\' => 33,
             'Symfony\\Polyfill\\Intl\\Grapheme\\' => 31,
@@ -94,17 +90,9 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
         ),
-        'Symfony\\Polyfill\\Php81\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php81',
-        ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
-        ),
-        'Symfony\\Polyfill\\Php73\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php73',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
@@ -164,7 +152,7 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         ),
         'Psr\\Log\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+            0 => __DIR__ . '/..' . '/psr/log/src',
         ),
         'Psr\\Container\\' => 
         array (
@@ -252,11 +240,11 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'App\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Controllers/CategoryController.php',
         'App\\Controllers\\ErrorController' => __DIR__ . '/../..' . '/app/Controllers/ErrorController.php',
         'App\\Controllers\\GlobalController' => __DIR__ . '/../..' . '/app/Controllers/GlobalController.php',
+        'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Controllers/HomeController.php',
         'App\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Controllers/LoginController.php',
+        'App\\Controllers\\PanelController' => __DIR__ . '/../..' . '/app/Controllers/PanelController.php',
         'App\\Controllers\\RegisterController' => __DIR__ . '/../..' . '/app/Controllers/RegisterController.php',
-        'App\\Controllers\\homeController' => __DIR__ . '/../..' . '/app/Controllers/HomeController.php',
-        'App\\Controllers\\panelController' => __DIR__ . '/../..' . '/app/Controllers/panelController.php',
-        'App\\Controllers\\userController' => __DIR__ . '/../..' . '/app/Controllers/userController.php',
+        'App\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Controllers/UserController.php',
         'App\\Exception\\QueryBuilderException' => __DIR__ . '/../..' . '/app/exceptions/QueryBuilderException.php',
         'App\\Middlewares\\LoginMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/LoginMiddleware.php',
         'App\\Middlewares\\RegisterMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/RegisterMiddleware.php',
@@ -274,11 +262,9 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'Event' => __DIR__ . '/../..' . '/Core/System/Helpers/Event.php',
         'Helper\\Directives' => __DIR__ . '/../..' . '/Helpers/directives.php',
         'Helper\\Functions' => __DIR__ . '/../..' . '/Helpers/functions.php',
-        'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
         'QueryBuilder' => __DIR__ . '/../..' . '/Core/System/Helpers/QueryBuilder.php',
-        'ReturnTypeWillChange' => __DIR__ . '/..' . '/symfony/polyfill-php81/Resources/stubs/ReturnTypeWillChange.php',
         'Security' => __DIR__ . '/../..' . '/Core/System/Helpers/Security.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',

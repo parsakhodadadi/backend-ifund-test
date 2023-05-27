@@ -9,6 +9,7 @@ use Couchbase\User;
 class LoginController extends controller
 {
     use \databaseHelper;
+
     private $lang;
     private $blade;
     private $model;
@@ -19,32 +20,8 @@ class LoginController extends controller
         $this->model = new users();
     }
 
-//    public function login()
-//    {
-////        foreach ($menus as $menu) {
-////            echo $menu->name . '<br>';
-////        }
-////        echo '<pre>';
-////        var_dump($menus);
-////        exit();
-//
-//        $request = request();
-//        if (!empty($request)) {
-//            $users = $this->model->checkUser($request);
-//            print_r($users);
-//        } else {
-//            $lang = loadLang('fa', 'login');
-//            echo $this->blade->make('backend/login',
-//                [
-//                    'lang' => $lang,
-//                    'views' => $this->blade,
-//                ]
-//            );
-//        }
-//    }
-
-    public function form() {
-//        echo 'form';
+    public function form()
+    {
         session_start();
         $request = request();
         if (isset($_SESSION['USERID'])) {
@@ -55,7 +32,7 @@ class LoginController extends controller
             }
         }
 
-        $this->lang = loadLang('fa','login');
+        $this->lang = loadLang('fa', 'login');
 
         if (!empty($request)) {
             if ($this->security()->checkCSRFToken($request['csrf_token'])) {
@@ -77,7 +54,11 @@ class LoginController extends controller
             $errors = $this->validation()->check($rules, $request, $messages);
 
             if (!empty($errors)) {
-                die($this->view()->blade()->render('backend/main/login', ['errors' => $errors, 'view' => $this->view()]));
+                die($this->view()->blade()
+                    ->render('backend/main/login', [
+                        'errors' => $errors,
+                        'view' => $this->view()
+                    ]));
             }
 
             $password = $request['password'];
@@ -114,15 +95,7 @@ class LoginController extends controller
                 echo json_encode(['code' => 200, 'message' => 'success', 'status' => true]);
             }
 
-//            echo $_SESSION['USERID'];
             echo $this->blade->render('backend/main/panel', ['view' => $this->blade , 'content']);
-
-//            echo self::view()->blade()->render('backend/main/layout/category/create', [
-//                'errors' => [],
-//                'security' => $this->security(),
-//                'lang' => $this->lang,
-//            ]);
-
         } else {
             echo self::view()->blade()->render('backend/login', [
                 'errors' => [],
@@ -132,18 +105,21 @@ class LoginController extends controller
         }
     }
 
-    public function checkLogin() {
+    public function checkLogin()
+    {
         session_start();
-        if (!isset($_SESSION['USERID'])) redirect('/login');
+        if (!isset($_SESSION['USERID'])) {
+            redirect('/login');
+        }
     }
 
-    public function logout() {
+    public function logout()
+    {
         session_start();
-        if(isset($_SESSION['USERID'])) {
+        if (isset($_SESSION['USERID'])) {
             unset($_SESSION['USERID']);
             redirect('/login');
         }
         redirect('/login');
-     }
-
+    }
 }

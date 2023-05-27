@@ -6,11 +6,8 @@ use Core\System\Validation;
 
 class CategoryRequest extends Validation
 {
-//    public function __construct() {
-//        exit('category validation');
-//    }
-
-    public function rules() {
+    public function rules()
+    {
         return [
             'title' => 'required',
             'description' => 'required',
@@ -18,7 +15,8 @@ class CategoryRequest extends Validation
         ];
     }
 
-    public function messages() {
+    public function messages()
+    {
         return [
             'title.required' => 'عنوان را پر کنید',
             'description.required' => 'توضیحات را پر کنید',

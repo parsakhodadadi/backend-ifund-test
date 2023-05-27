@@ -4,9 +4,8 @@ namespace App\Controllers;
 
 use Core\System\controller;
 
-if (!define('ACCESS')) die('No script access directly is allowed.');
-
-class homeController extends controller {
+class HomeController extends controller
+{
     use \databaseHelper;
 
     private $model;
@@ -18,17 +17,16 @@ class homeController extends controller {
     {
         $lang = \configHelper::getConfig('default-language');
         //need to be edited
-        $this->lang = loadLang($lang,'home');
+        $this->lang = loadLang($lang, 'home');
     }
 
-    public function form() {
+    public function form()
+    {
         $request = request();
         if (!empty($request)) {
-
         } else {
             $view = self::view()->blade()->render('login', ['errors' => [], 'lang' => $this->lang]);
             echo $view;
         }
     }
-
 }

@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-//if (!defined('ACCESS')) die('No scr');
-
 class Category
 {
     use \databaseHelper;
@@ -13,14 +11,11 @@ class Category
     private $fillableStatus = true;
     private $fillable = ['id', 'name', 'description'];
 
-//    private $model;
-
     public function __construct()
     {
         if (!($this->fillableStatus)) {
             $this->fillable = ['*'];
         }
-//        $this->model = self::queryBuilder();
     }
 
     public function insert($data = [])
@@ -46,11 +41,7 @@ class Category
         } catch (\Exception $exception) {
             echo $exception->getMessage();
             exit();
-//            return $exception->getCode();
         }
-//        $users = self::pdoSelect('users', 1, 5);
-//        return $users;
-
     }
 
     public function checkUser($request)
@@ -69,7 +60,6 @@ class Category
             return 200;
         } catch (\PDOException $e) {
             return $e->getCode();
-            echo "no";
         }
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class users
+class Users
 {
     use \databaseHelper;
 
@@ -11,13 +11,11 @@ class users
     private $fillableStatus = true;
     private $fillable = ['id', 'email', 'first_name', 'last_name', 'country', 'password'];
 
-//    private $model;
-
-    public function __construct() {
+    public function __construct()
+    {
         if (!($this->fillableStatus)) {
             $this->fillable = ['*'];
         }
-//        $this->model = self::queryBuilder();
     }
 
     public function getUsers($conditions = [])
@@ -34,14 +32,10 @@ class users
             }
 
             return $db->all();
-        } catch(\Exception $exception) {
+        } catch (\Exception $exception) {
             echo $exception->getMessage();
             exit();
-//            return $exception->getCode();
         }
-//        $users = self::pdoSelect('users', 1, 5);
-//        return $users;
-
     }
 
     public function checkUser($request)
@@ -53,17 +47,18 @@ class users
         return $db->first();
     }
 
-    public function create($data = []) {
+    public function create($data = [])
+    {
         try {
             $this->pdoInsert('users', $data);
             return 200;
         } catch (\PDOException $e) {
             return $e->getCode();
-            echo "no";
         }
     }
 
-    public function update($data = [], $where = 1) {
+    public function update($data = [], $where = 1)
+    {
         try {
             $this->pdoUpdate($this->table, $data, $where);
         } catch (\PDOException $e) {
@@ -71,7 +66,8 @@ class users
         }
     }
 
-    public function delete($where) {
+    public function delete($where)
+    {
         try {
             $this->pdoDelete('users', $where);
         } catch (\PDOException $e) {

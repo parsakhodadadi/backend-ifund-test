@@ -4,8 +4,8 @@ namespace App\Request;
 
 use Core\System\Validation;
 
-class RegisterRequest extends Validation {
-
+class RegisterRequest extends Validation
+{
     public function rules()
     {
         return [
@@ -38,5 +38,4 @@ class RegisterRequest extends Validation {
             return $errors;
         }
     }
-
 }

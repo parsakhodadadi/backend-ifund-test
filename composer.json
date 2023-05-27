@@ -23,9 +23,17 @@
     "Helper\\": "Helpers"
   },
   "require": {
+    "bramus/router": "~1.6",
     "requtize/query-builder": "dev-master",
     "jenssegers/blade": "^1.4",
-    "bramus/router": "~1.6",
-    "robmorgan/phinx": "^0.13.4"
+    "robmorgan/phinx": "^0.13.4",
+    "squizlabs/php_codesniffer": "3.*"
+  },
+
+  "config": {
+    "platform": {
+      "php": "7.1.0"
+    }
   }
+
 }

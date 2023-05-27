@@ -1,0 +1,14 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PhpCSValidationInspection" enabled="true" level="WARNING" enabled_by_default="true" editorAttributes="WARNING_ATTRIBUTES">
+      <scope name="Project Files" level="WARNING" enabled="true">
+        <option name="CODING_STANDARD" value="PSR12" />
+        <option name="USE_INSTALLED_PATHS" value="true" />
+        <option name="INSTALLED_PATHS" value="$PROJECT_DIR$" />
+        <option name="EXTENSIONS" value="php,js,css,inc" />
+      </scope>
+      <option name="EXTENSIONS" value="php,js,css,inc" />
+    </inspection_tool>
+  </profile>
+</component>

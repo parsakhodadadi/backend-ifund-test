@@ -11,9 +11,8 @@ class QueryBuilderException
         try {
             $model->$action($request);
         } catch (Exception $exception) {
-            error_log($exception->getMessage().".\r\n", 3, 'storage/log/system.log');
+            error_log($exception->getMessage() . ".\r\n", 3, 'storage/log/system.log');
             return $exception->getCode();
         }
     }
 }
-

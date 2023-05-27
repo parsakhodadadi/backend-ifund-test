@@ -1,5 +1,6 @@
 <?php
 
+error_reporting(E_ALL);
 $configs = [
     //defines base url of the project
     //ex: www.test.com

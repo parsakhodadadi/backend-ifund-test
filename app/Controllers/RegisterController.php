@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Exception\QueryBuilderException;
@@ -50,18 +51,5 @@ class RegisterController extends controller
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,
         ]);
-//        $request = request();
-//        if (!empty($request)) {
-//            $this->model->insert(['username' => $request['username'], 'password' => $request['password']]);
-//            print_r($request);
-//        } else {
-//            $lang = loadLang('fa', 'register');
-//            echo $this->blade->make('backend/register',
-//                [
-//                    'lang' => $lang,
-//                    'views' => $this->blade
-//                ]
-//            );
-//        }
     }
 }

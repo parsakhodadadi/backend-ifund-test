@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
-class menus
+class Menus
 {
     use \databaseHelper;
 
-    static function getMenus()
+    public static function getMenus()
     {
         $users = self::pdoSelect('menus', 1, 5);
         return $users;
-
     }
 
-    static public function insert($data=[]) {
+    public static function insert($data = [])
+    {
         try {
             self::pdoInsert('menus', $data);
             return 200;
@@ -22,7 +22,8 @@ class menus
         }
     }
 
-    public function update($data = [], $where=1) {
+    public function update($data = [], $where = 1)
+    {
         try {
             $this->pdoUpdate('menus', $data, $where);
         } catch (\PDOException $e) {
@@ -30,7 +31,8 @@ class menus
         }
     }
 
-    public function delete($where) {
+    public function delete($where)
+    {
         try {
             $this->pdoDelete('menus', $where);
         } catch (\PDOException $e) {

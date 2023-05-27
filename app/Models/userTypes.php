@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
-class userTypes
+class UserTypes
 {
     use \databaseHelper;
 
-    static function getUsers()
+    public static function getUsers()
     {
         $users = self::pdoSelect('userTypes', 1, 5);
         return $users;
-
     }
 
-    public function insert($data=[]) {
+    public function insert($data = [])
+    {
         try {
             $this->pdoInsert('userTypes', $data);
             return 200;
@@ -22,17 +22,19 @@ class userTypes
         }
     }
 
-    public function update($data=[],$where=1) {
+    public function update($data = [], $where = 1)
+    {
         try {
-            $this->pdoUpdate('userTypes',$data,$where);
+            $this->pdoUpdate('userTypes', $data, $where);
         } catch (\PDOException $e) {
             return $e->getCode();
         }
     }
 
-    public function delete($where) {
+    public function delete($where)
+    {
         try {
-            $this->pdoDelete('userTypes',$where);
+            $this->pdoDelete('userTypes', $where);
         } catch (\PDOException $e) {
             return $e->getCode();
         }

@@ -34,13 +34,16 @@ class CategoryController extends controller
 
     public function create()
     {
+        if (true) {
+        }
         $this->validationErrors = $this->request(CategoryRequest::class);
 
         if (!empty($this->request) && empty($this->validationErrors)) {
             $this->request['user_id'] = $_SESSION['USERID'];
-            $this->errorMessage = $this->queryBuilderException()->handle($this->request, $this->queryBuilder()->from('categories'));
+            $this->errorMessage = $this->queryBuilderException()
+                ->handle($this->request, $this->queryBuilder()->from('categories'));
             if (empty($this->errorMessage)) {
-                 $this->successMessage = __('category.success');
+                $this->successMessage = __('category.success');
             }
         }
 
@@ -52,8 +55,8 @@ class CategoryController extends controller
         ]);
 
         echo $this->blade->render('backend/main/panel', ['view' => $this->blade, 'content' => $view]);
-
     }
+
 
 //
 //    public function update() {

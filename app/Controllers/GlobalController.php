@@ -6,14 +6,10 @@ use Core\System\controller;
 use App\Middlewares\LoginMiddleware;
 use App\Middlewares\RegisterMiddleware;
 
-class GlobalController extends controller {
-
-    public function loadMiddlewares() {
+class GlobalController extends controller
+{
+    public function loadMiddlewares()
+    {
         $this->middleware([LoginMiddleware::class, RegisterMiddleware::class]);
     }
-
-//    public function checkLogin() {
-//        session_start();
-//        if (!isset($_SESSION['USERID'])) redirect('/login');
-//    }
 }
