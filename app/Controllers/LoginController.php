@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\users;
+use App\Models\Users;
 use Core\System\controller;
 use Couchbase\User;
 

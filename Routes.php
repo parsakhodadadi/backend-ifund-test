@@ -1,6 +1,11 @@
 <?php
 
-namespace Bramus\Router;
+//namespace Bramus\Router;
+error_reporting(E_ALL);
+//$_SERVER['REQUEST_METHOD'] = 'GET';
+//$_SERVER['SERVER_PROTOCOL'] = 'http';
+
+//$_SERVER['REQUEST_METHOD'] = 'HEAD';
 
 class BramusRouter extends \Bramus\Router\Router
 {
@@ -20,28 +25,15 @@ class BramusRouter extends \Bramus\Router\Router
     protected $notFoundCallback = [];
 
     /**
-     * @var string Current base route, used for (sub)route mounting
-     */
-    private $baseRoute = '';
-
-    /**
      * @var string The Request Method that needs to be handled
      */
     private $requestedMethod = '';
 
-    /**
-     * @var string The Server Base Path for Router Execution
-     */
-    private $serverBasePath;
-
-    /**
-     * @var string Default Controllers Namespace
-     */
-    private $namespace = '';
-
     public function __construct()
     {
-        $_SERVER['REQUEST_METHOD'] = 'HEAD';
+        $_SERVER['REQUEST_METHOD'] = 'GET';
+        $_SERVER['SERVER_PROTOCOL'] = 'http';
+        $this->setNamespace('\App\Controllers');
     }
 
     /**
@@ -176,114 +168,82 @@ class BramusRouter extends \Bramus\Router\Router
         return $method;
     }
 
-    public function run($callback = null)
+    public function trigger404($match = null)
     {
-        // Define which method we need to handle
-        $this->requestedMethod = $this->getRequestMethod();
 
-        // Handle all before middlewares
-        if (isset($this->beforeRoutes[$this->requestedMethod])) {
-            $this->handle($this->beforeRoutes[$this->requestedMethod]);
-        }
-
-        // Handle all routes
+        // Counter to keep track of the number of routes we've handled
         $numHandled = 0;
-        if (isset($this->afterRoutes[$this->requestedMethod])) {
-            $numHandled = $this->handle($this->afterRoutes[$this->requestedMethod], true);
-        }
 
-        // If no route was handled, trigger the 404 (if any)
-        if ($numHandled === 0) {
-            if (isset($this->afterRoutes[$this->requestedMethod])) {
-                $this->trigger404($this->afterRoutes[$this->requestedMethod]);
+        // handle 404 pattern
+        if (count($this->notFoundCallback) > 0) {
+            // loop fallback-routes
+            foreach ($this->notFoundCallback as $route_pattern => $route_callable) {
+                // matches result
+                $matches = [];
+
+                // check if there is a match and get matches as $matches (pointer)
+                $is_match = $this->patternMatches($route_pattern, $this->getCurrentUri(), $matches, PREG_OFFSET_CAPTURE);
+
+                // is fallback route match?
+                if ($is_match) {
+                    // Rework matches to only contain the matches, not the orig string
+                    $matches = array_slice($matches, 1);
+
+                    // Extract the matched URL parameters (and only the parameters)
+                    $params = array_map(function ($match, $index) use ($matches) {
+
+                        // We have a following parameter: take the substring from the current param position until the next one's position (thank you PREG_OFFSET_CAPTURE)
+                        if (isset($matches[$index + 1]) && isset($matches[$index + 1][0]) && is_array($matches[$index + 1][0])) {
+                            if ($matches[$index + 1][0][1] > -1) {
+                                return trim(substr($match[0][0], 0, $matches[$index + 1][0][1] - $match[0][1]), '/');
+                            }
+                        } // We have no following parameters: return the whole lot
+
+                        return isset($match[0][0]) && $match[0][1] != -1 ? trim($match[0][0], '/') : null;
+                    }, $matches, array_keys($matches));
+
+                    $this->invoke($route_callable);
+
+                    ++$numHandled;
+                }
             }
-            // If a route was handled, perform the finish callback (if any)
-        } else {
-            if ($callback && is_callable($callback)) {
-                $callback();
-            }
         }
-
-        // If it originally was a HEAD request, clean up after ourselves by emptying the output buffer
-        if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'HEAD') {
-            ob_end_clean();
+        if (($numHandled == 0) && (isset($this->notFoundCallback['/']))) {
+            $this->invoke($this->notFoundCallback['/']);
+        } elseif ($numHandled == 0) {
+            header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
         }
-
-        // Return true if a route was handled, false otherwise
-        return $numHandled !== 0;
     }
 }
 
 $router = new BramusRouter();
 
 //Define routes
-$router->setNamespace('\App\Controllers');
-
-//$router->get('/add-menu', function () {
-//    $panel = new \App\Controllers\panelController();
-//    $blade = $panel::$blade;
-//    $lang = loadLang('fa', 'login');
-//    echo $blade->make('Backend/main/layout/menus',['lang'=>$lang, 'view'=>$blade])->render();
-//});
-//
-//$router->get('/add-menu-post', function () {
-//    $panel = new \App\Controllers\panelController();
-//    $blade = $panel::$blade;
-//    $lang = loadLang('fa', 'login');
-//    echo $blade->make('Backend/main/layout/menus',['lang'=>$lang, 'view'=>$blade])->render();
-//});
-
-$router->get('/', 'HomeController@form');
+//$router->setNamespace('\App\Controllers');
+//$router->get('/', 'HomeController@form');
 $router->get('/login', 'LoginController@form');
 $router->post('/login', 'LoginController@form');
-$router->get('/logout', 'LoginController@logout');
-
-$router->get('/add-menu', 'panelController@addMenu');
-
-$router->post('/add-menu', 'panelController@addMenu');
-
-$router->get('/register', 'RegisterController@register');
-
-$router->post('/register', 'RegisterController@register');
-
-//$router->get('/login', 'userController@login');
-
-$router->get('/checkLogin', 'userController@checkLoginInfo');
-
-//$router->get('/admin', 'panelController@panel');
-
-// API Routes
-//$router->get('/api/v1/test', function () {
-//    echo 'API TEST';
-//});
-
-$router->get('/admin', 'GlobalController@loadMiddlewares');
-$router->get('/admin/category', 'CategoryController@create');
-
-$router->post('/admin/category', 'CategoryController@create');
-
-$router->before('GET|POST', '/admin', 'LoginController@checkLogin');
-$router->before('GET|POST', '/admin/.*', 'LoginController@checkLogin');
-
-$router->set404('ErrorController@error404');
-
-//$router->set404(function () {
-//    header('HTTP/1.1 404 Not Found');
-//    // echo 'page not found';
-//    // ... do something special here
-//});
-
-//$router->get('/test1', function () {
-//    echo 'test1';
-//});
-//$router->before('GET', '/test/.*', function () {
-//    echo 'check middleware';
-//});
-//$router->set404(function () {
-//    // header('HTTP/1.1 404 Not Found');
-//    echo 'page not found';
-//    // ... do something special here
-//});
+//$router->get('/logout', 'LoginController@logout');
+//
+//$router->get('/add-menu', 'panelController@addMenu');
+//
+//$router->post('/add-menu', 'panelController@addMenu');
+//
+//$router->get('/register', 'RegisterController@register');
+//
+//$router->post('/register', 'RegisterController@register');
+//
+//$router->get('/checkLogin', 'userController@checkLoginInfo');
+//
+//$router->get('/admin', 'GlobalController@loadMiddlewares');
+//$router->get('/admin/category', 'CategoryController@create');
+//
+//$router->post('/admin/category', 'CategoryController@create');
+//
+//$router->before('GET|POST', '/admin', 'LoginController@checkLogin');
+//$router->before('GET|POST', '/admin/.*', 'LoginController@checkLogin');
+//
+//$router->set404('ErrorController@error404');
 
 //Run it!
 $router->run();

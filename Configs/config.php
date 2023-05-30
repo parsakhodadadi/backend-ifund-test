@@ -12,7 +12,7 @@ $configs = [
 
     'default-database'=>'myDatabase',
 
-    'default-controller'=>new App\Controllers\panelController,
+    'default-controller'=>new App\Controllers\PanelController,
 
     'default-method'=>'show',
 
