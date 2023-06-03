@@ -24,9 +24,10 @@ class HomeController extends controller
     {
         $request = request();
         if (!empty($request)) {
+
         } else {
-            $view = self::view()->blade()->render('login', ['errors' => [], 'lang' => $this->lang]);
-            echo $view;
+//            $view = self::view()->blade()->render('/backend/main/login', ['errors' => [], 'lang' => $this->lang]);
+//            echo $view;
         }
     }
 }

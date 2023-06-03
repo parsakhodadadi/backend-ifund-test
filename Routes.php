@@ -1,13 +1,12 @@
 <?php
 
-//namespace Bramus\Router;
-error_reporting(E_ALL);
-//$_SERVER['REQUEST_METHOD'] = 'GET';
-//$_SERVER['SERVER_PROTOCOL'] = 'http';
+namespace Bramus\Router;
 
-//$_SERVER['REQUEST_METHOD'] = 'HEAD';
+//use Bramus\Router;
 
-class BramusRouter extends \Bramus\Router\Router
+//error_reporting(E_ALL);
+
+class BramusRouter extends Bramus\Router\Router
 {
     /**
      * @var array The route patterns and their handling functions
@@ -182,7 +181,12 @@ class BramusRouter extends \Bramus\Router\Router
                 $matches = [];
 
                 // check if there is a match and get matches as $matches (pointer)
-                $is_match = $this->patternMatches($route_pattern, $this->getCurrentUri(), $matches, PREG_OFFSET_CAPTURE);
+                $is_match = $this->patternMatches(
+                    $route_pattern,
+                    $this->getCurrentUri(),
+                    $matches,
+                    PREG_OFFSET_CAPTURE
+                );
 
                 // is fallback route match?
                 if ($is_match) {
@@ -192,8 +196,13 @@ class BramusRouter extends \Bramus\Router\Router
                     // Extract the matched URL parameters (and only the parameters)
                     $params = array_map(function ($match, $index) use ($matches) {
 
-                        // We have a following parameter: take the substring from the current param position until the next one's position (thank you PREG_OFFSET_CAPTURE)
-                        if (isset($matches[$index + 1]) && isset($matches[$index + 1][0]) && is_array($matches[$index + 1][0])) {
+                        /* We have a following parameter: take the substring from the current param
+                         position until the next one's position (thank you PREG_OFFSET_CAPTURE) */
+                        if (
+                            isset($matches[$index + 1]) &&
+                            isset($matches[$index + 1][0]) &&
+                            is_array($matches[$index + 1][0])
+                        ) {
                             if ($matches[$index + 1][0][1] > -1) {
                                 return trim(substr($match[0][0], 0, $matches[$index + 1][0][1] - $match[0][1]), '/');
                             }
@@ -219,31 +228,30 @@ class BramusRouter extends \Bramus\Router\Router
 $router = new BramusRouter();
 
 //Define routes
-//$router->setNamespace('\App\Controllers');
-//$router->get('/', 'HomeController@form');
+$router->get('/', 'HomeController@form');
 $router->get('/login', 'LoginController@form');
 $router->post('/login', 'LoginController@form');
-//$router->get('/logout', 'LoginController@logout');
-//
-//$router->get('/add-menu', 'panelController@addMenu');
-//
-//$router->post('/add-menu', 'panelController@addMenu');
-//
-//$router->get('/register', 'RegisterController@register');
-//
-//$router->post('/register', 'RegisterController@register');
-//
-//$router->get('/checkLogin', 'userController@checkLoginInfo');
-//
-//$router->get('/admin', 'GlobalController@loadMiddlewares');
-//$router->get('/admin/category', 'CategoryController@create');
-//
-//$router->post('/admin/category', 'CategoryController@create');
-//
-//$router->before('GET|POST', '/admin', 'LoginController@checkLogin');
-//$router->before('GET|POST', '/admin/.*', 'LoginController@checkLogin');
-//
-//$router->set404('ErrorController@error404');
+$router->get('/logout', 'LoginController@logout');
+
+$router->get('/add-menu', 'panelController@addMenu');
+
+$router->post('/add-menu', 'panelController@addMenu');
+
+$router->get('/register', 'RegisterController@register');
+
+$router->post('/register', 'RegisterController@register');
+
+$router->get('/checkLogin', 'userController@checkLoginInfo');
+
+$router->get('/admin', 'GlobalController@loadMiddlewares');
+$router->get('/admin/category', 'CategoryController@create');
+
+$router->post('/admin/category', 'CategoryController@create');
+
+$router->before('GET|POST', '/admin', 'LoginController@checkLogin');
+$router->before('GET|POST', '/admin/.*', 'LoginController@checkLogin');
+
+$router->set404('ErrorController@error404');
 
 //Run it!
 $router->run();
