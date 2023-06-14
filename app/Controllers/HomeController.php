@@ -22,12 +22,37 @@ class HomeController extends controller
 
     public function form()
     {
+        $this->lang = loadLang('fa', 'login');
         $request = request();
         if (!empty($request)) {
+            $rules = [
+                'email' => 'required',
+                'password' => 'required'
+            ];
 
+            $messages = [
+                'email.required' => 'نام الزامی می باشد',
+                'password.required' => 'پسورد الزامی می باشد',
+            ];
+
+            $errors = $this->validation()->check($rules, $request, $messages);
+
+            if (!empty($errors)) {
+                echo self::view()->blade()->render('backend/login', [
+                    'errors' => [],
+                    'security' => $this->security(),
+                    'lang' => $this->lang
+                ]);
+            } else {
+                print_r($request);
+            }
         } else {
-//            $view = self::view()->blade()->render('/backend/main/login', ['errors' => [], 'lang' => $this->lang]);
-//            echo $view;
+            $view = self::view()->blade()->render('backend/login', [
+                'errors' => [],
+                'security' => $this->security(),
+                'lang' => $this->lang
+            ]);
+            echo $view;
         }
     }
 }

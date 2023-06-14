@@ -6,7 +6,7 @@ use App\Models\menus;
 use App\Models\users;
 use Core\System\controller;
 use Core\System\validation;
-use Helper\MyClass;
+use MyClass;
 
 class PanelController extends controller
 {

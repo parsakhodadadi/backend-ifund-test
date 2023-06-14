@@ -22,7 +22,7 @@ class RegisterController extends controller
 
     public function __construct()
     {
-        $this->queryBuilder = $this->connection();
+        $this->queryBuilder = $this->queryBuilder();
         $this->request = request();
         $lang = \configHelper::getConfig('default-language');
         $this->lang = loadLang($lang, 'register');

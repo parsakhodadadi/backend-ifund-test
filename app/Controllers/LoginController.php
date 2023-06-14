@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Users;
+use App\Services\User\Auth;
 use Core\System\controller;
 use Couchbase\User;
 
@@ -10,12 +11,14 @@ class LoginController extends controller
 {
     use \databaseHelper;
 
+    private object $authService;
     private $lang;
     private $blade;
     private $model;
 
     public function __construct()
     {
+        $this->authService = Auth::getInstance();
         $this->blade = blade();
         $this->model = new users();
     }
@@ -55,7 +58,7 @@ class LoginController extends controller
 
             if (!empty($errors)) {
                 die($this->view()->blade()
-                    ->render('backend/main/login', [
+                    ->render('backend/login', [
                         'errors' => $errors,
                         'view' => $this->view()
                     ]));

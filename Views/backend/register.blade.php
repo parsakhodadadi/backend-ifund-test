@@ -109,10 +109,10 @@
 												<label for="inputSelectCountry" class="form-label">{{ $lang['country'] }}</label>
 												<select class="form-select" id="inputSelectCountry"
 													aria-label="{ { $lang['examples'] }}" name="country">
-													<option selected>{{ $lang['iran'] }}</option>
-													<option value="1">{{ $lang['turkey'] }}</option>
-													<option value="2">{{ $lang['china'] }}</option>
-													<option value="3">{{ $lang['canada'] }}</option>
+													<option value="{{ $lang['iran'] }}">{{ $lang['iran'] }}</option>
+													<option value="{{ $lang['turkey'] }}">{{ $lang['turkey'] }}</option>
+													<option value="{{ $lang['china'] }}">{{ $lang['china'] }}</option>
+													<option value="{{ $lang['canada'] }}">{{ $lang['canada'] }}</option>
 												</select>
 											</div>
 											<div class="col-12">
