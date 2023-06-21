@@ -1,4 +1,5 @@
 <?php
+
 /**
  * written by: Parsa Khodadadi
  *
@@ -8,14 +9,16 @@
  * updated at:
  *
  */
-class configHelper {
-
+class configHelper
+{
     static function checkFileExist($path = null)
     {
         global $configs;
         if (file_exists($path)) {
             include $path;
-        } else exit($path.'does not exist');
+        } else {
+            exit($path . 'does not exist');
+        }
     }
 
     /**
@@ -23,7 +26,11 @@ class configHelper {
      */
     public function debug($debug = true)
     {
-        if ($debug != true) $debug = 0; else $debug = E_ALL;
+        if ($debug != true) {
+            $debug = 0;
+        } else {
+            $debug = E_ALL;
+        }
         ini_set('error_reporting', $debug);
     }
 
@@ -31,8 +38,11 @@ class configHelper {
     {
         global $configs;
         $this->checkFileExist('Configs/config.php');
-        if (!$status) echo $configs['base-url'].$route;
-        else return $configs['base-url'].$route;
+        if (!$status) {
+            echo $configs['base-url'] . $route;
+        } else {
+            return $configs['base-url'] . $route;
+        }
     }
 
     static function getConfig($indexName = null, $configName = 'config')
@@ -52,5 +62,4 @@ class configHelper {
 //        self::checkFileExist("Configs/config.php");
 //        $configs[$key]=$value;
 //    }
-
 }

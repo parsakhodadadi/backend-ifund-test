@@ -14,7 +14,7 @@
       "Helpers",
       "app/exceptions",
       "BramusRouter.php",
-      "Services/User/Auth.php"
+      "app/Services"
     ]
   },
   "psr-4": {

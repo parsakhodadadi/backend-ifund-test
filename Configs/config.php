@@ -5,6 +5,7 @@ $configs = [
     //defines base url of the project
     //ex: www.test.com
 
+    'login_method' => new \App\Services\User\DesignPatterns\Strategy\Methods\UserPasswordLogin(),
     'base-url'=>'http://localhost:8888/ParsaFramework',
 
     //false disable true enable

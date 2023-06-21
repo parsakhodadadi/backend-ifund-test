@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\Users;
 use App\Services\User\Auth;
+use App\Services\User\DesignPatterns\Strategy\Methods\EmailLogin;
+use App\Services\User\DesignPatterns\Strategy\Methods\OtpLogin;
 use Core\System\controller;
 use Couchbase\User;
 
@@ -18,13 +20,15 @@ class LoginController extends controller
 
     public function __construct()
     {
-        $this->authService = Auth::getInstance();
+        $this->authService = Auth::getInstance(\configHelper::getConfig('login_method'));
         $this->blade = blade();
         $this->model = new users();
     }
 
     public function form()
     {
+        $loginViewName = $this->authService->method()->getViewName();
+
         session_start();
         $request = request();
         if (isset($_SESSION['USERID'])) {
@@ -100,7 +104,7 @@ class LoginController extends controller
 
             echo $this->blade->render('backend/main/panel', ['view' => $this->blade , 'content']);
         } else {
-            echo self::view()->blade()->render('backend/login', [
+            echo self::view()->blade()->render("backend/$loginViewName", [
                 'errors' => [],
                 'security' => $this->security(),
                 'lang' => $this->lang,
