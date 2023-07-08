@@ -1,5 +1,7 @@
 <?php
 
+namespace Core\System\Helpers;
+
 /**
  * written by: Parsa Khodadadi
  *
@@ -9,9 +11,9 @@
  * updated at:
  *
  */
-class configHelper
+class ConfigHelper
 {
-    static function checkFileExist($path = null)
+    public static function checkFileExist($path = null)
     {
         global $configs;
         if (file_exists($path)) {
@@ -45,7 +47,16 @@ class configHelper
         }
     }
 
-    static function getConfig($indexName = null, $configName = 'config')
+    public function editConfig($indexName = null, $value = null, $configName = 'config')
+    {
+        global $configs;
+        self::checkFileExist("Configs/$configName.php");
+        $configs[$indexName] = $value;
+        return $configs[$indexName];
+//        $configsString = file_get_contents("Configs/config.php");
+    }
+
+    public static function getConfig($indexName = null, $configName = 'config')
     {
         global $configs;
         self::checkFileExist("Configs/$configName.php");
@@ -55,11 +66,4 @@ class configHelper
             return $configs[$indexName];
         }
     }
-
-//    function editConfigFile($key=null,$value=null)
-// {
-//        global $configs;
-//        self::checkFileExist("Configs/config.php");
-//        $configs[$key]=$value;
-//    }
 }

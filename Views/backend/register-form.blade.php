@@ -56,7 +56,7 @@
 									</div>
 									<div class="form-body">
 										<form class="row g-3" action="{!! route('/register') !!}" method="post">
-											<div class="col-sm-6">
+											<div class="col-sm-6" >
 												<label for="inputFirstName" class="form-label">{{ $lang['first-name'] }}</label>
 												<input type="text" class="form-control" id="inputFirstName"
 													placeholder="{{ $lang['ex-first-name'] }}" name="first_name">

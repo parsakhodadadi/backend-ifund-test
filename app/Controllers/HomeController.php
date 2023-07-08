@@ -3,19 +3,23 @@
 namespace App\Controllers;
 
 use Core\System\controller;
+use Core\System\Helpers\ConfigHelper;
+use Core\System\Helpers\databaseHelper;
 
 class HomeController extends controller
 {
-    use \databaseHelper;
+    use databaseHelper;
 
     private $model;
     private $orFields = ['username', 'password'];
     private $andFields = ['id'];
     private $lang;
+    private $configHelper;
 
     public function __construct()
     {
-        $lang = \configHelper::getConfig('default-language');
+        $configHelper = new ConfigHelper();
+        $lang = $configHelper::getConfig('default-language');
         //need to be edited
         $this->lang = loadLang($lang, 'home');
     }

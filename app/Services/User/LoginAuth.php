@@ -4,13 +4,13 @@ namespace App\Services\User;
 
 use App\Services\User\DesignPatterns\Strategy\Interfaces\LoginInerface;
 
-class Auth
+class LoginAuth
 {
     private object $loginMethod;
     public function __construct(LoginInerface $loginMethod)
     {
         $this->loginMethod = $loginMethod;
-        $this->data = [];
+//        $this->data = [];
     }
 
     /**
@@ -18,13 +18,13 @@ class Auth
      */
     private static $instances = [];
 
-    public static function getInstance($strategy): Auth
+    public static function getInstance($strategy): LoginAuth
     {
         $cls = static::class;
         if (!isset(self::$instances[$cls])) {
             self::$instances[$cls] = new static($strategy);
         }
-        return self::$instances[$cls ];
+        return self::$instances[$cls];
     }
 
     public function method()

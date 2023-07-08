@@ -4,7 +4,7 @@ return [
     'register' => 'ثبت نام',
     'already-account' => 'حساب کاربری دارید؟ ',
     'sign-in' => 'وارد شوید',
-    'register-google'=> 'ثبت نام با حساب گوگل',
+    'register-google' => 'ثبت نام با حساب گوگل',
     'register-facebook' => 'ثبت نام با حساب فیسبوک',
     'register-email' => 'یا ثبت نام با ایمیل',
     'first-name' => 'نام',
@@ -28,5 +28,13 @@ return [
     'password-required' => 'لطفا پسورد انتخابی خود را وارد نمایید.',
     'country-required' => 'لطفا کشور خود را وارد نمایید.',
     'success' => 'حساب کاربری شما با موفقیت ساخته شد.',
-    'password-password' => 'پسورد انتخاب شده معتبر نمی باشد.'
+    'password-password' => 'پسورد انتخاب شده معتبر نمی باشد.',
+    'email-verification' => 'فعالسازی ایمیل',
+    'verification-code' => 'کدفعالسازی',
+    'enter-verification-code' => 'کد تایید را وارد کنید',
+    'your-verification-code' => 'کدتایید شما:',
+    'code-required' => ' کدتایید الزامی می باشد',
+    'send-again-code' => 'ارسال مجدد کد',
+    'confirm-code' => 'تایید',
+    'email-verification-subject' => 'کد فعالسازی کتابفروشی پارسا',
 ];

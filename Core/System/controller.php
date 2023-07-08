@@ -1,4 +1,5 @@
 <?php
+
 /**
  *description
  *
@@ -10,17 +11,17 @@
  */
 
 namespace Core\System;
+
 use App\Exception\QueryBuilderException;
-use \Core\System;
+use Core\System;
 use App\Middlewares\LoginMiddleware;
 use http\Env\Request;
 
-class  controller
+class controller
 {
-
     public function loadController($class)
     {
-        return new $class;
+        return new $class();
     }
 
     public function validation()
@@ -28,7 +29,7 @@ class  controller
         return new Validation();
     }
 
-    static public function view()
+    public static function view()
     {
         return new View();
     }
@@ -46,26 +47,24 @@ class  controller
     public function middleware(array $middlewares = [])
     {
         foreach ($middlewares as $middleware) {
-            $eachMiddleware = new $middleware;
+            $eachMiddleware = new $middleware();
             $eachMiddleware->boot();
         }
     }
 
     public function request($request)
     {
-        $request = new $request;
+        $request = new $request();
         return $request->boot(request());
     }
 
     public function queryBuilderException()
     {
-        return new QueryBuilderException;
+        return new QueryBuilderException();
     }
 
 //    static public function view($name, $data = null)
 //    {
-//        view($name, $data); 
+//        view($name, $data);
 //    }
-
-
 }

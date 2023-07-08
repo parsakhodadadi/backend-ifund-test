@@ -5,12 +5,13 @@ namespace App\Controllers;
 use App\Models\menus;
 use App\Models\users;
 use Core\System\controller;
+use Core\System\Helpers\databaseHelper;
 use Core\System\validation;
 use MyClass;
 
 class PanelController extends controller
 {
-    use \databaseHelper;
+    use databaseHelper;
 
     public function panel()
     {

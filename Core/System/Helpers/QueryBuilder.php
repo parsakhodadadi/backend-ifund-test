@@ -1,22 +1,31 @@
 <?php
 
+namespace Core\System\Helpers;
+
+use PDO;
 use Requtize\QueryBuilder\Connection;
 use Requtize\QueryBuilder\ConnectionAdapters\PdoBridge;
 use Requtize\QueryBuilder\QueryBuilder\QueryBuilderFactory;
 
 trait QueryBuilder
 {
-
     public function queryBuilder()
     {
         // Somewhere in our application we have created PDO instance
         global $configs;
-        $configHelper = new configHelper();
+        $configHelper = new ConfigHelper();
         $configHelper::checkFileExist('Configs/config.php');
-        $databaseDetails=call_user_func_array(['configHelper','getConfig'],['all',$configs['default-database']]);
+        $databaseDetails = call_user_func_array(
+            ['Core\System\Helpers\ConfigHelper','getConfig'],
+            ['all',$configs['default-database']]
+        );
 
         try {
-            $pdo = new PDO("mysql:host={$databaseDetails['server']};dbname={$databaseDetails['database']}", $databaseDetails['user'], $databaseDetails['password']);
+            $pdo = new PDO(
+                "mysql:host={$databaseDetails['server']};dbname={$databaseDetails['database']}",
+                $databaseDetails['user'],
+                $databaseDetails['password']
+            );
 
             // Build Connection object with PdoBridge ad Adapter
             $conn = new Connection(new PdoBridge($pdo));
@@ -24,8 +33,7 @@ trait QueryBuilder
             // Pass this connection to Factory
             return new QueryBuilderFactory($conn);
         } catch (Exception $exception) {
-            error_log($exception->getMessage().".\r\n", 3, 'storage/log/system.log');
+            error_log($exception->getMessage() . ".\r\n", 3, 'storage/log/system.log');
         }
-
     }
 }

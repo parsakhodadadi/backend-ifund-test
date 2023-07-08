@@ -15,27 +15,27 @@ hey
 <div class="wrapper">
     <!--sidebar wrapper -->
     <div class="sidebar-wrapper" data-simplebar="true">
-    {{ $view->make('Backend/main/layout/sidebar-header') }}
-    <!--navigation-->
-    {{ $view->make('Backend/main/layout/navigation') }}
-    <!--end navigation-->
+        {{ $view->make('Backend/main/layout/sidebar-header') }}
+        <!--navigation-->
+        {{ $view->make('Backend/main/layout/navigation') }}
+        <!--end navigation-->
     </div>
     <!--end sidebar wrapper -->
     <!--start header -->
-{{ $view->make('Backend/main/layout/header') }}
-    {!! $content !!}
-{{--    {{ $content }}--}}
-<!--end header -->
+    {{ $view->make('Backend/main/layout/header') }}
+{{--    {!! $content !!}--}}
+    {{--    {{ $content }}--}}
+    <!--end header -->
     <!--start page wrapper -->
-{{--{{ $view->make('Backend/main/layout/page-wrapper') }}--}}
-{{--<!--end page wrapper -->--}}
-{{--    <!--start overlay-->--}}
-{{--{{ $view->make('Backend/main/layout/overlay') }}--}}
-{{--<!--end overlay-->--}}
-{{--    <!--Start Back To Top Button-->--}}
-{{--{{ $view->make('Backend/main/layout/back-to-top-button') }}--}}
-<!--End Back To Top Button-->
-{{ $view->make('Backend/main/layout/footer') }}
+    {{--{{ $view->make('Backend/main/layout/page-wrapper') }}--}}
+    {{--<!--end page wrapper -->--}}
+    {{--    <!--start overlay-->--}}
+    {{--{{ $view->make('Backend/main/layout/overlay') }}--}}
+    {{--<!--end overlay-->--}}
+    {{--    <!--Start Back To Top Button-->--}}
+    {{--{{ $view->make('Backend/main/layout/back-to-top-button') }}--}}
+    <!--End Back To Top Button-->
+    {{ $view->make('Backend/main/layout/footer') }}
 </div>
 <!--end wrapper-->
 <!--start switcher-->

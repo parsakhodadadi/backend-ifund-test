@@ -4,10 +4,11 @@ namespace App\Controllers;
 
 use App\Models\users;
 use Core\System\controller;
+use Core\System\Helpers\databaseHelper;
 
 class UserController extends controller
 {
-    use \databaseHelper;
+    use databaseHelper;
 
     private $userController;
     public static $blade;

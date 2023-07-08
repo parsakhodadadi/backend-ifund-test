@@ -38,7 +38,7 @@
 									<form action="{!! route('/login') !!}" method="post">
 									<div class="text-center">
 										<h3 class="">{{ $lang['form_name'] }}</h3>
-										<p>{{ $lang['no_account'] }}<a href="{!! route('') !!}/register">{{ $lang['register'] }}</a>
+										<p>{{ $lang['no_account'] }}<a href="{!! route('/register') !!}">{{ $lang['register'] }}</a>
 										</p>
 									</div>
 									<div class="d-grid">
@@ -55,21 +55,20 @@
 										<hr />
 									</div>
 									<div class="form-body">
-										<form class="row g-3" action="{{ route('login') }}" method="post">
 											<div class="col-12">
 												<label for="inputEmailAddress" class="form-label">{{ $lang['email_address'] }}</label>
+												<div>
+													<input type="hidden" name="csrf_token" value="{{$security->csrfToken()}}">
+												</div>
 												<input type="text" class="form-control" id="inputEmailAddress"
-													placeholder="نام کاربری خود را وارد کنید" name="email">
+													placeholder="{{ $lang['enter_email'] }}" name="email">
 											</div>
 											<div class="col-12">
 												<label for="inputChoosePassword" class="form-label">{{ $lang['password'] }}</label>
 												<div class="input-group" id="show_hide_password">
-													<div>
-														<input type="hidden" name="csrf_token" value="{{$security->csrfToken()}}">
-													</div>
 													<input type="password" class="form-control border-end-0"
 														id="inputChoosePassword" value="12345678"
-														placeholder="رمز عبور خود را وارد کنید" name="password"> <a href="javascript:;"
+														placeholder="{{ $lang['enter_password'] }}" name="password"><a href="javascript:;"
 														class="input-group-text bg-transparent"><i
 															class='bx bx-hide'></i></a>
 												</div>
@@ -82,14 +81,13 @@
 												</div>
 											</div>
 											<div class="col-md-6 text-end"> <a
-													href="{!! route('') !!}/Others/Themes/Backend/main/vertical/authentication-forgot-password.html">{{ $lang['forget_password'] }}</a>
+													href="{!! route('/login') !!}">{{ $lang['forget_password'] }}</a>
 											</div>
 											<div class="col-12">
 												<div class="d-grid">
-													<input type="submit" class="btn btn-primary">
+													<button type="submit" class="btn btn-primary">{!! $lang['sign_in'] !!}</button>
 												</div>
 											</div>
-										</form>
 									</div>
 									</form>
 								</div>

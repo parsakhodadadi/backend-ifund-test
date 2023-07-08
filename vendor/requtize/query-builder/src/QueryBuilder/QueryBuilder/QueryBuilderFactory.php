@@ -13,6 +13,9 @@ use Requtize\QueryBuilder\Event\EventDispatcherInterface;
 
 class QueryBuilderFactory
 {
+//    private $connection;
+//    private $eventDispatcher;
+
     public function __construct(Connection $connection, EventDispatcherInterface $eventDispatcher = null)
     {
         $this->connection      = $connection;

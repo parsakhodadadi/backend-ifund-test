@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Core\System\Helpers\databaseHelper;
+
 class Users
 {
-    use \databaseHelper;
+    use databaseHelper;
 
     private $db;
     private $table = 'users';

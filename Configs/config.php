@@ -1,23 +1,19 @@
 <?php
 
-error_reporting(E_ALL);
 $configs = [
-    //defines base url of the project
-    //ex: www.test.com
+    'login-method' => new \App\Services\User\DesignPatterns\Strategy\Methods\UserPasswordLogin(),
+    'register-method' => new \App\Services\User\DesignPatterns\Strategy\Methods\RegisterForm(),
+    'base-url' => 'http://localhost:8888/ParsaFramework',
 
-    'login_method' => new \App\Services\User\DesignPatterns\Strategy\Methods\UserPasswordLogin(),
-    'base-url'=>'http://localhost:8888/ParsaFramework',
+    'debug' => true,
 
-    //false disable true enable
-    'debug'=>true,
+    'default-database' => 'myDatabase',
 
-    'default-database'=>'myDatabase',
+    'default-controller' => new App\Controllers\PanelController(),
 
-    'default-controller'=>new App\Controllers\PanelController,
+    'default-method' => 'show',
 
-    'default-method'=>'show',
-
-    'default-language'=>'fa',
+    'default-language' => 'fa',
 
     'views' => [
         'directory' => 'views',

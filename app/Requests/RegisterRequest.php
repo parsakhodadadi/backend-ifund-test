@@ -26,7 +26,8 @@ class RegisterRequest extends Validation
             'last_name.required' => __('register.last_name-required'),
             'password.required' => __('register.password-required'),
             'password.password' => __('register.password-password'),
-            'country.required' => __('register.country-required')
+            'country.required' => __('register.country-required'),
+            'verification.required'=> __('register.code-required'),
         ];
     }
 

@@ -12,7 +12,9 @@ return [
     'remember_me' => 'مرا به خاطر بسپار',
     'forget_password' => 'فراموشی رمز عبور؟',
     'sign_in' => 'ورود',
-    'username.required' => 'نام کاربری نمی تواند خالی باشد',
-    'password.required' => 'رمزعبور نمی تواند خالی باشد',
-    'password.max' => 'رمزعبور به اندازه کافی قوی نمی باشد'
+    'password.max' => 'رمزعبور به اندازه کافی قوی نمی باشد',
+    'enter_email' => 'نام کاربری را وارد کنید',
+    'enter_password' => 'رمزعبور را وارد کنید',
+    'email.required' => 'نام کاربری الزامی می باشد',
+    'password.required' => 'رمز عبور الزامی می باشد',
 ];

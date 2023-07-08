@@ -3,6 +3,7 @@
 use Helper\Directives;
 use Helper\MyClass;
 use Jenssegers\Blade\Blade;
+use Core\System\Helpers\ConfigHelper;
 
 use function Helper\globalfn1;
 
@@ -58,9 +59,9 @@ function loadController($controllerName = null)
 
 function loadLang($lang = 'fa', $file = null)
 {
-    $configHelper = new configHelper();
+    $configHelper = new ConfigHelper();
     try {
-        return include "./languages/{$configHelper::getConfig('default-language')}/$file.php";
+        return include "./languages/{$configHelper->getConfig('default-language')}/$file.php";
     } catch (Exception $e) {
         return $lang;
     }
@@ -76,7 +77,7 @@ function loadModel($modelName)
 
 function route($route)
 {
-    $configHelper = new configHelper();
+    $configHelper = new ConfigHelper();
     return $configHelper->setURL($route);
 }
 
