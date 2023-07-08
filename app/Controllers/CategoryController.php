@@ -8,11 +8,13 @@ use App\Models\Category;
 use App\Models\users;
 use App\Request\CategoryRequest;
 use Core\System\controller;
+use Core\System\Helpers\ConfigHelper;
+use Core\System\Helpers\QueryBuilder;
 use Core\System\Validation;
 
 class CategoryController extends controller
 {
-    use \QueryBuilder;
+    use QueryBuilder;
 
     private object $loginMiddleware;
     private $lang;
@@ -21,21 +23,21 @@ class CategoryController extends controller
     private $successMessage;
     private $errorMessage;
     private $validationErrors;
+    private $configHelper;
 
     public function __construct()
     {
         $this->request = request();
         $this->loginMiddleware = new LoginMiddleware();
-//        $this->loginMiddleware->boot();
-        $lang = \configHelper::getConfig('default-language');
+        $this->configHelper = new ConfigHelper();
+        $this->loginMiddleware->boot();
+        $lang = $this->configHelper::getConfig('default-language');
         $this->lang = loadLang($lang, 'category');
         $this->blade = $this->view()->blade();
     }
 
     public function create()
     {
-        if (true) {
-        }
         $this->validationErrors = $this->request(CategoryRequest::class);
 
         if (!empty($this->request) && empty($this->validationErrors)) {

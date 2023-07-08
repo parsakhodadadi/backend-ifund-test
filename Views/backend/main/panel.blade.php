@@ -23,7 +23,7 @@ hey
     <!--end sidebar wrapper -->
     <!--start header -->
     {{ $view->make('Backend/main/layout/header') }}
-{{--    {!! $content !!}--}}
+    {!! $content !!}
     {{--    {{ $content }}--}}
     <!--end header -->
     <!--start page wrapper -->
