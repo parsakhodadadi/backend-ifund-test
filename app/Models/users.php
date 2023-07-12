@@ -50,7 +50,7 @@ class Users
     {
         $exception = new QueryBuilderException();
         try {
-            $exception->handle($data, $this->queryBuilder()->from($this->table));
+            $exception->handle($data, $this->db->from($this->table));
         } catch (Exception $e) {
             return $e->getCode();
         }

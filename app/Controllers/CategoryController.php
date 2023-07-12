@@ -72,7 +72,7 @@ class CategoryController extends controller
         echo $this->blade->render('backend/main/panel', ['view' => $this->blade, 'content' => $view]);
     }
 
-    public function edit($itemId)
+    public function edit(int $itemId)
     {
 //        $this->errorMessage = null;
 //        $this->request = request();
@@ -97,7 +97,7 @@ class CategoryController extends controller
         echo $this->blade->render('backend/main/panel', ['view' => $this->blade, 'content' => $view]);
     }
 
-    public function delete($itemId)
+    public function delete(int $itemId)
     {
         $this->errorMessage = null;
         $this->errorMessage = $this->categories->delete($itemId);

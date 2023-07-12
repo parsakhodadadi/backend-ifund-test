@@ -839,15 +839,13 @@
                                 <li class="list-group-item active" aria-current="true">
                                     <table>
                                         <tr>
-                                            <td width="20%" align="center">ردیف</td>
+                                            <td width="25%" align="center">عنوان</td>
                                             <td>|</td>
-                                            <td width="20%" align="center">عنوان</td>
+                                            <td width="25%" align="center">توضیحات</td>
                                             <td>|</td>
-                                            <td width="20%" align="center">توضیحات</td>
+                                            <td width="25%" align="center">برچسب ها</td>
                                             <td>|</td>
-                                            <td width="20%" align="center">برچسب ها</td>
-                                            <td>|</td>
-                                            <td width="20%" align="center">تنظیمات</td>
+                                            <td width="25%" align="center">تنظیمات</td>
                                         </tr>
                                     </table>
                                 </li>
@@ -856,15 +854,13 @@
                                         <div>
                                             <table>
                                                 <tr>
-                                                    <td width="20%" align="center"><?php echo e($category->id); ?></td>
+                                                    <td width="25%" align="center"><?php echo e($category->title); ?></td>
                                                     <td>|</td>
-                                                    <td width="20%" align="center"><?php echo e($category->title); ?></td>
+                                                    <td width="25%" align="center"><?php echo e($category->description); ?></td>
                                                     <td>|</td>
-                                                    <td width="20%" align="center"><?php echo e($category->description); ?></td>
+                                                    <td width="25%" align="center"><?php echo e($category->tags); ?></td>
                                                     <td>|</td>
-                                                    <td width="20%" align="center"><?php echo e($category->tags); ?></td>
-                                                    <td>|</td>
-                                                    <td width="20%" align="center">
+                                                    <td width="25%" align="center">
                                                         <a target="_self" href="<?php echo e(route("/admin/category/list/edit/") . $category->id); ?>">ویرایش</a>
                                                         <a target="_self" href="<?php echo e(route("/admin/category/list/delete/") . $category->id); ?>">حذف</a>
                                                     </td>
