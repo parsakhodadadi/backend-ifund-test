@@ -1,21 +1,14 @@
 {
   "autoload": {
     "files": [
+      "Configs/config.php",
       "Core/System/functions.php",
       "Routes.php"
     ],
     "classmap": [
-      "app/Middlewares",
-      "Core/System/Helpers",
       "Core/System",
-      "app/Requests",
-      "app/Models",
-      "app/Controllers",
       "Helpers",
-      "app/exceptions",
-      "BramusRouter.php",
-      "app/Services",
-      "app/DesignPatterns"
+      "db"
     ]
   },
   "psr-4": {

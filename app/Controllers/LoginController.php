@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controllers;
 
 use App\Models\Users;
@@ -15,7 +14,6 @@ use Couchbase\User;
 
 class LoginController extends controller
 {
-    use databaseHelper;
 
     private object $authService;
     private $lang;
@@ -79,8 +77,8 @@ class LoginController extends controller
                 $password = $request['password'];
                 unset($request['password']);
 
-                $users = loadModel(users::class);
-                $user = current($users->getUsers($request));
+                $users = loadModel(Users::class);
+                $user = current($users->get($request));
 
                 if (!password_verify($password, $user->password)) {
                     echo json_encode(['code' => 401, 'message' => 'wrong password', 'status' => false]);

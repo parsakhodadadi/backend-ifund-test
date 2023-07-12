@@ -1,14 +1,15 @@
 <?php
+
 namespace App\Controllers;
 
-use App\Exception\QueryBuilderException;
 use App\Middlewares\LoginMiddleware;
-use App\Models\users;
+use App\Models\Users;
 use App\Request\RegisterRequest;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
 use Jenssegers\Blade\Blade;
 use Requtize\QueryBuilder\QueryBuilder\QueryBuilder;
+
 
 class RegisterController extends controller
 {
@@ -35,13 +36,12 @@ class RegisterController extends controller
     {
         $successMessage = null;
         $errorMessage = null;
-        $exception = new QueryBuilderException();
         $errors = $this->request(RegisterRequest::class);
-
 
         if (!empty($this->request) && empty($errors)) {
             $this->request['password'] = password_hash($this->request['password'], PASSWORD_DEFAULT);
-            $errorMessage = $exception->handle($this->request, $this->queryBuilder->from('users'));
+            $users = loadModel(Users::class);
+            $errorMessage = $users->insert($this->request);
             if (empty($errorMessage)) {
                 $successMessage = __('register.success');
             }
@@ -53,18 +53,5 @@ class RegisterController extends controller
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,
         ]);
-//        $request = request();
-//        if (!empty($request)) {
-//            $this->model->insert(['username' => $request['username'], 'password' => $request['password']]);
-//            print_r($request);
-//        } else {
-//            $lang = loadLang('fa', 'register');
-//            echo $this->blade->make('backend/register',
-//                [
-//                    'lang' => $lang,
-//                    'views' => $this->blade
-//                ]
-//            );
-//        }
     }
 }

@@ -11,5 +11,8 @@ class GlobalController extends controller
     public function loadMiddlewares()
     {
         $this->middleware([LoginMiddleware::class, RegisterMiddleware::class]);
+
+
+
     }
 }

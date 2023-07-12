@@ -8,7 +8,7 @@ use Requtize\QueryBuilder\Connection;
 use Requtize\QueryBuilder\QueryBuilder\QueryBuilderFactory;
 use Requtize\QueryBuilder\ConnectionAdapters\PdoBridge;
 
-trait databaseHelper
+class databaseHelper
 {
     public static function queryBuilder()
     {
@@ -45,7 +45,7 @@ trait databaseHelper
         $configHelper::checkFileExist('Configs/config.php');
         // $defaultDatabase=new configHelper();
         // $databaseDetails=$defaultDatabase::getConfig('all','database');
-        $databaseDetails = call_user_func_array(['configHelper','getConfig'], ['all',$configs['default-database']]);
+        $databaseDetails = call_user_func_array(['Core\System\Helpers\ConfigHelper','getConfig'], ['all',$configs['default-database']]);
         try {
             $conn = new PDO("mysql:host={$databaseDetails['server']};dbname={$databaseDetails['database']}", $databaseDetails['user'], $databaseDetails['password']);
             // set the PDO error mode to exception
@@ -101,7 +101,6 @@ trait databaseHelper
     public function pdoUpdate($tableName, $data = [], $where = 1)
     {
         $fields = null;
-        $values = null;
 
         foreach ($data as $field => $value) {
             $fields .= $field . "='$value',";

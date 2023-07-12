@@ -28,6 +28,13 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
 
     $router->post('/admin/category', 'CategoryController@create');
 
+    $router->get('admin/category/list', "CategoryController@show");
+
+    $router->get('admin/category/list/edit/(\d+)', "CategoryController@edit");
+    $router->post('admin/category/list/edit/(\d+)', "CategoryController@edit");
+
+    $router->get('admin/category/list/delete/(\d+)', "CategoryController@delete");
+
     $router->before('GET|POST', '/admin', 'LoginController@checkLogin');
     $router->before('GET|POST', '/admin/.*', 'LoginController@checkLogin');
 

@@ -99,7 +99,8 @@ function route($route)
 function redirect($route = null)
 {
     global $configs;
-    configHelper::checkFileExist("Configs/config.php");
+    $configHelper = new ConfigHelper();
+    $configHelper::checkFileExist("Configs/config.php");
     header('location:' . $configs['base-url'] . $route);
 }
 

@@ -11,7 +11,6 @@ use MyClass;
 
 class PanelController extends controller
 {
-    use databaseHelper;
 
     public function panel()
     {

@@ -2,18 +2,19 @@
 
 namespace App\Models;
 
+use Core\System\Helpers\databaseHelper;
 use Exception;
 use Core\System\Helpers\QueryBuilder;
 use App\Exception\QueryBuilderException;
 
-class Users
+class Categories
 {
     use QueryBuilder;
 
     private $db;
-    private $table = 'users';
+    private $table = 'categories';
     private $fillableStatus = true;
-    private $fillable = ['id', 'email', 'first_name', 'last_name', 'country', 'password'];
+    private $fillable = ['id', 'title', 'description', 'tags', 'user_id'];
 
     public function __construct()
     {
@@ -32,18 +33,11 @@ class Users
                     $db = $db->where($element, $value);
                 }
             }
-
             return $db->all();
         } catch (Exception $exception) {
             echo $exception->getMessage();
             exit();
         }
-    }
-
-    public function check($request)
-    {
-        $db = $this->db->from($this->table)->where('username', $request['name'])->where('password', $request['password']);
-        return $db->first();
     }
 
     public function insert($data = [])
@@ -56,19 +50,19 @@ class Users
         }
     }
 
-    public function update($field, $value, $newValue)
+    public function update($where, array $data = [])
     {
-        try {
-            $this->db->from($this->table)->where($field, $value)->update([$field => $newValue]);
-        } catch (Exception $e) {
-            return $e->getCode();
+        $db = new databaseHelper();
+        if ($db->pdoUpdate($this->table, $data, 'id = ' . $where)) {
+            return true;
         }
+        return false;
     }
 
-    public function delete($field, $value)
+    public function delete($where)
     {
         try {
-            $this->db->from($this->table)->where($field, $value)->delete();
+            $this->db->from($this->table)->where('id', $where)->delete();
         } catch (Exception $e) {
             return $e->getCode();
         }

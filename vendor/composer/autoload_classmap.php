@@ -24,7 +24,7 @@ return array(
     'App\\Exception\\QueryBuilderException' => $baseDir . '/app/exceptions/QueryBuilderException.php',
     'App\\Middlewares\\LoginMiddleware' => $baseDir . '/app/Middlewares/LoginMiddleware.php',
     'App\\Middlewares\\RegisterMiddleware' => $baseDir . '/app/Middlewares/RegisterMiddleware.php',
-    'App\\Models\\Category' => $baseDir . '/app/Models/category.php',
+    'App\\Models\\Categories' => $baseDir . '/app/Models/Categories.php',
     'App\\Models\\Menus' => $baseDir . '/app/Models/menus.php',
     'App\\Models\\UserTypes' => $baseDir . '/app/Models/userTypes.php',
     'App\\Models\\Users' => $baseDir . '/app/Models/users.php',
