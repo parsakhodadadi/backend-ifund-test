@@ -17,4 +17,5 @@ return [
     'enter_password' => 'رمزعبور را وارد کنید',
     'email.required' => 'نام کاربری الزامی می باشد',
     'password.required' => 'رمز عبور الزامی می باشد',
+    'wrong-credential' => 'نام کاربری یا رمزعبور اشتباه است.',
 ];

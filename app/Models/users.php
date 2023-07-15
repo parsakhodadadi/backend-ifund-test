@@ -13,7 +13,7 @@ class Users
     private $db;
     private $table = 'users';
     private $fillableStatus = true;
-    private $fillable = ['id', 'email', 'first_name', 'last_name', 'country', 'password'];
+    private $fillable = ['id', 'email', 'first_name', 'last_name', 'password'];
 
     public function __construct()
     {
@@ -32,7 +32,6 @@ class Users
                     $db = $db->where($element, $value);
                 }
             }
-
             return $db->all();
         } catch (Exception $exception) {
             echo $exception->getMessage();

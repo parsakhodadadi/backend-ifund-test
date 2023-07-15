@@ -36,5 +36,6 @@ return [
     'code-required' => ' کدتایید الزامی می باشد',
     'send-again-code' => 'ارسال مجدد کد',
     'confirm-code' => 'تایید',
-    'email-verification-subject' => 'کد فعالسازی کتابفروشی پارسا',
+    'email-verification-subject' => 'کد فعالسازی',
+    'password-repeat' => 'تکرار رمز عبور',
 ];

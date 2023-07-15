@@ -20,6 +20,7 @@ class LoginController extends controller
     private $blade;
     private $model;
     private $configHelper;
+    private $errorMessage;
 
     public function __construct()
     {
@@ -35,9 +36,7 @@ class LoginController extends controller
     {
         $loginViewName = $this->authService->method()->getViewName();
         if ($loginViewName == 'user-password-login' || $loginViewName == 'otp-login') {
-//            if(empty(session_id()) && !headers_sent()){
                 session_start();
-//            }
             $request = request();
             if (isset($_SESSION['USERID'])) {
                 if (!empty($request)) {
@@ -81,15 +80,26 @@ class LoginController extends controller
                 $user = current($users->get($request));
 
                 if (!password_verify($password, $user->password)) {
-                    echo json_encode(['code' => 401, 'message' => 'wrong password', 'status' => false]);
-                    exit();
+                    $errorMessage = $this->lang['wrong-credential'];
+                    die($this->blade->render('backend/user-password-login', [
+                        'errorMessage' => $errorMessage,
+                        'errors' => [],
+                        'security' => $this->security(),
+                        'lang' => $this->lang,
+                    ]));
                 }
 
                 if (empty($users)) {
                     if ($this->security()->attempt()) {
                         $this->event()->blockUserPerTime(15);
                         if (!$this->event()->decayUserPerTime('attempt')) {
-                            exit('BLOCKED');
+                            $this->errorMessage = $this->lang['blocked'];
+                            die($this->blade->render('backend/user-password-login', [
+                                'errorMessage' => $this->errorMessage,
+                                'errors' => [],
+                                'security' => $this->security(),
+                                'lang' => $this->lang,
+                            ]));
                         }
                     }
                 }
@@ -101,7 +111,7 @@ class LoginController extends controller
                     echo json_encode(['code' => 200, 'message' => 'success', 'status' => true]);
                 }
 
-                echo $this->blade->render('backend/main/panel', ['view' => $this->blade, 'content']);
+                redirect('/admin');
             } else {
                 echo self::view()->blade()->render("backend/$loginViewName", [
                     'errors' => [],

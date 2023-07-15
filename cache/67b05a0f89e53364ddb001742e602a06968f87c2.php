@@ -90,7 +90,7 @@
 												<label for="inputChoosePassword" class="form-label"><?php echo e($lang['password']); ?></label>
 												<div class="input-group" id="show_hide_password">
 													<input type="password" class="form-control border-end-0"
-														id="inputChoosePassword" value="12345678"
+														id="inputChoosePassword" value=""
 														placeholder="<?php echo e($lang['enter-pass']); ?>" name="password"> <a href="javascript:;"
 														class="input-group-text bg-transparent"><i
 															class='bx bx-hide'></i></a>
@@ -105,16 +105,26 @@
 													<?php endif; ?>
 												<?php endif; ?>
 											</div>
-											<div class="col-12">
-												<label for="inputSelectCountry" class="form-label"><?php echo e($lang['country']); ?></label>
-												<select class="form-select" id="inputSelectCountry"
-													aria-label="{ { $lang['examples'] }}" name="country">
-													<option value="<?php echo e($lang['iran']); ?>"><?php echo e($lang['iran']); ?></option>
-													<option value="<?php echo e($lang['turkey']); ?>"><?php echo e($lang['turkey']); ?></option>
-													<option value="<?php echo e($lang['china']); ?>"><?php echo e($lang['china']); ?></option>
-													<option value="<?php echo e($lang['canada']); ?>"><?php echo e($lang['canada']); ?></option>
-												</select>
-											</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 											<div class="col-12">
 												<div class="form-check form-switch">
 													<input class="form-check-input" type="checkbox"

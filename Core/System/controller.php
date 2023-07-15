@@ -17,6 +17,7 @@ use Core\System;
 use App\Middlewares\LoginMiddleware;
 use http\Env\Request;
 
+
 class controller
 {
     public function loadController($class)

@@ -83,6 +83,11 @@
 											<div class="col-md-6 text-end"> <a
 													href="{!! route('/login') !!}">{{ $lang['forget_password'] }}</a>
 											</div>
+										    <div class="col-md-6">
+												@if(!empty($errorMessage))
+													<div class="alert-danger">{{ $errorMessage }}</div>
+												@endif
+									     	</div>
 											<div class="col-12">
 												<div class="d-grid">
 													<button type="submit" class="btn btn-primary">{!! $lang['sign_in'] !!}</button>

@@ -90,7 +90,7 @@
 												<label for="inputChoosePassword" class="form-label">{{ $lang['password'] }}</label>
 												<div class="input-group" id="show_hide_password">
 													<input type="password" class="form-control border-end-0"
-														id="inputChoosePassword" value="12345678"
+														id="inputChoosePassword" value=""
 														placeholder="{{ $lang['enter-pass'] }}" name="password"> <a href="javascript:;"
 														class="input-group-text bg-transparent"><i
 															class='bx bx-hide'></i></a>
@@ -105,16 +105,26 @@
 													@endif
 												@endif
 											</div>
-											<div class="col-12">
-												<label for="inputSelectCountry" class="form-label">{{ $lang['country'] }}</label>
-												<select class="form-select" id="inputSelectCountry"
-													aria-label="{ { $lang['examples'] }}" name="country">
-													<option value="{{ $lang['iran'] }}">{{ $lang['iran'] }}</option>
-													<option value="{{ $lang['turkey'] }}">{{ $lang['turkey'] }}</option>
-													<option value="{{ $lang['china'] }}">{{ $lang['china'] }}</option>
-													<option value="{{ $lang['canada'] }}">{{ $lang['canada'] }}</option>
-												</select>
-											</div>
+{{--											<div class="col-12">--}}
+{{--												<label for="inputEmailAddress" class="form-label">{{ $lang['password-repeat'] }}</label>--}}
+{{--												<input type="password" class="form-control" id="inputEmailAddress"--}}
+{{--													   placeholder="example@user.com" name="confirm_password">--}}
+{{--												@if(!empty($errors['password']))--}}
+{{--													@if(!empty($errors['password']['repeat']))--}}
+{{--														<div class="alert-danger">{!! ($errors['password']['repeat']) !!}</div>--}}
+{{--													@endif--}}
+{{--												@endif--}}
+{{--											</div>--}}
+{{--											<div class="col-12">--}}
+{{--												<label for="inputSelectCountry" class="form-label">{{ $lang['country'] }}</label>--}}
+{{--												<select class="form-select" id="inputSelectCountry"--}}
+{{--													aria-label="{ { $lang['examples'] }}" name="country">--}}
+{{--													<option value="{{ $lang['iran'] }}">{{ $lang['iran'] }}</option>--}}
+{{--													<option value="{{ $lang['turkey'] }}">{{ $lang['turkey'] }}</option>--}}
+{{--													<option value="{{ $lang['china'] }}">{{ $lang['china'] }}</option>--}}
+{{--													<option value="{{ $lang['canada'] }}">{{ $lang['canada'] }}</option>--}}
+{{--												</select>--}}
+{{--											</div>--}}
 											<div class="col-12">
 												<div class="form-check form-switch">
 													<input class="form-check-input" type="checkbox"

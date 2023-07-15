@@ -14,7 +14,7 @@ class Categories
     private $db;
     private $table = 'categories';
     private $fillableStatus = true;
-    private $fillable = ['id', 'title', 'description', 'tags', 'user_id'];
+    private $fillable = ['id', 'title', 'description', 'user_id'];
 
     public function __construct()
     {

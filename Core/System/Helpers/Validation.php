@@ -80,5 +80,4 @@ class Validation {
         }
         return false;
     }
-
 }

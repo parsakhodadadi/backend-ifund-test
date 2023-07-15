@@ -133,4 +133,4 @@
 	<script src="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/js/app.js"></script>
 </body>
 
-</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/backend/user-password-login.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/backend/user-password-login.blade.php ENDPATH**/ ?>
