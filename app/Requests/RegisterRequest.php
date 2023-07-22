@@ -13,6 +13,7 @@ class RegisterRequest extends Validation
             'first_name' => 'required',
             'last_name' => 'required',
             'password' => 'required|password',
+            'rep-pass' => 'required|password',
         ];
     }
 
@@ -26,6 +27,8 @@ class RegisterRequest extends Validation
             'password.required' => __('register.password-required'),
             'password.password' => __('register.password-password'),
             'verification.required'=> __('register.code-required'),
+            'rep-pass.required' => __('register.rep-pass-required'),
+            'rep-pass.password' => __('register.rep-pass-password'),
         ];
     }
 

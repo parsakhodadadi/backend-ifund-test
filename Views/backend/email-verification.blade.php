@@ -23,7 +23,7 @@
 
 <body class="rtl">
 <!--wrapper-->
-<form action="{!! route('/register') !!}" method="post">
+<form action="{!! route("/$action") !!}" method="post">
 	<div class="wrapper">
 		<div class="authentication-header"></div>
 		<div class="d-flex align-items-center justify-content-center my-5 my-lg-0">
@@ -40,25 +40,16 @@
 										<h3 class="">{{ $lang['email-verification'] }}</h3>
 									</div>
 									<div class="form-body">
-										<form class="row g-3" action="{!! route('/verifyEmail') !!}" method="post">
+										<form class="form-control row g-3" action="{!! route('/verifyEmail') !!}" method="post">
 											<div class="col-12">
 												<label for="inputChoosePassword" class="form-label">{{ $lang['verification-code'] }}</label>
 												<div class="input-group" id="show_hide_password">
 													<input type="password" class="form-control border-end-0"
-														   id="inputChoosePassword" value="12345678"
-														   placeholder="{{ $lang['enter-verification-code'] }}" name="password"> <a href="javascript:;"
+														   id="inputChoosePassword" value=""
+														   placeholder="{{ $lang['enter-verification-code'] }}" name="verification-code"> <a href="javascript:;"
 																													   class="input-group-text bg-transparent"><i
 																class='bx bx-hide'></i></a>
 												</div>
-												@if(!empty($errors['password']))
-													@if(!empty($errors['password']['required']))
-														<div class="alert-danger">{!! ($errors['password']['required']) !!}</div>
-													@else
-														@if(!empty($errors['password']['password']))
-															<div class="alert-danger">{!! ($errors['password']['password']) !!}</div>
-														@endif
-													@endif
-												@endif
 											</div>
 											<div class="col-md-6 text-end"> <a
 														href="{!! route('/login') !!}">{{ $lang['send-again-code'] }}</a>
@@ -68,10 +59,10 @@
 													<input type="submit" class="btn btn-primary" value='{{ $lang['confirm-code'] }}' />
 												</div>
 												@if(!empty($errorMessage))
-													<div class="alert-warning">{!! $errorMessage !!}</div>
+													<div class="form-control alert-danger">{!! $errorMessage !!}</div>
 												@endif
 												@if(!empty($successMessage))
-													<div class="alert-success">{!! $successMessage !!}</div>
+													<div class="form-control alert-success">{!! $successMessage !!}</div>
 												@endif
 											</div>
 										</form>

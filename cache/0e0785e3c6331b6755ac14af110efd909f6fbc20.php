@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-hey
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -31,17 +30,21 @@ hey
 
     
     <!--end header -->
-    <!--start page wrapper -->
-    
-    
-    
-    
-    
-    
-    
+
+
+
+    <!--start overlay-->
+    <?php echo e($view->make('Backend/main/layout/overlay')); ?>
+
+    <!--end overlay-->
+    <!--Start Back To Top Button-->
+    <?php echo e($view->make('Backend/main/layout/back-to-top-button')); ?>
+
     <!--End Back To Top Button-->
+    <!-- start footer-->
     <?php echo e($view->make('Backend/main/layout/footer')); ?>
 
+    <!-- end footer -->
 </div>
 <!--end wrapper-->
 <!--start switcher-->

@@ -12,8 +12,8 @@ class LoginMiddleware extends controller
     private $configHelper;
     public function __construct()
     {
-        $configHelper = new ConfigHelper();
-        $this->authService = LoginAuth::getInstance($configHelper::getConfig('login-method'));
+        $this->configHelper = new ConfigHelper();
+        $this->authService = LoginAuth::getInstance($this->configHelper::getConfig('login-method'));
     }
 
     public function boot()

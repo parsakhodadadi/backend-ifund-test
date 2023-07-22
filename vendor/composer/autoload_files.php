@@ -19,6 +19,8 @@ return array(
     '72142d7b40a3a0b14e91825290b5ad82' => $vendorDir . '/cakephp/core/functions.php',
     'ef65a1626449d89d0811cf9befce46f0' => $vendorDir . '/illuminate/events/functions.php',
     '948ad5488880985ff1c06721a4e447fe' => $vendorDir . '/cakephp/utility/bootstrap.php',
+    '047074ac0f0087a32c81ed46cbca2e7d' => $baseDir . '/Configs/config.php',
     '6dd382580aa6f7f6b026ef7c5f356c02' => $baseDir . '/Core/System/functions.php',
     '3f41224959c476e823f0ea7833cce8f3' => $baseDir . '/Routes.php',
+    '6a6be971e74b3ace465cc966f87e51e7' => $baseDir . '/staticTest.php',
 );

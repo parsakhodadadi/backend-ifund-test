@@ -8,16 +8,16 @@
 	<!--favicon-->
 	<link rel="icon" href="<?php echo route(''); ?>/Others/Themes/Backend/main/horizontal/assets/images/favicon-32x32.png" type="image/png" />
 	<!--plugins-->
-	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/horizontal/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/horizontal/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/horizontal/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
 	<!-- loader-->
-	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/horizontal/assets/css/pace.min.css" rel="stylesheet" />
-	<script src="<?php echo route(''); ?>/Others/Themes/Backend/main/horizontal/assets/js/pace.min.js"></script>
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/css/pace.min.css" rel="stylesheet" />
+	<script src="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/js/pace.min.js"></script>
 	<!-- Bootstrap CSS -->
-	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/horizontal/assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/horizontal/assets/css/app.css" rel="stylesheet">
-	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/horizontal/assets/css/icons.css" rel="stylesheet">
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/css/app.css" rel="stylesheet">
+	<link href="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/css/icons.css" rel="stylesheet">
 	<title><?php echo e($lang['register']); ?></title>
 </head>
 
@@ -44,7 +44,7 @@
 									<div class="d-grid">
 										<a class="btn my-4 shadow-sm btn-white" href="javascript:;"> <span
 												class="d-flex justify-content-center align-items-center">
-												<img class="me-2" src="<?php echo route(''); ?>/Others/Themes/Backend/main/horizontal/assets/images/icons/search.svg" width="16"
+												<img class="me-2" src="<?php echo route(''); ?>/Others/Themes/Backend/main/vertical/assets/images/icons/search.svg" width="16"
 													 alt="Image Description">
 												<span><?php echo e($lang['register-google']); ?></span>
 											</span>
@@ -61,7 +61,7 @@
 												<input type="text" class="form-control" id="inputFirstName"
 													placeholder="<?php echo e($lang['ex-first-name']); ?>" name="first_name">
 												<?php if(!empty($errors['first_name'])): ?>
-													<div class="alert-danger"><?php echo $errors['first_name']['required']; ?></div>
+													<div class="form-control alert-danger"><?php echo $errors['first_name']['required']; ?></div>
 												<?php endif; ?>
 											</div>
 											<div class="col-sm-6">
@@ -69,7 +69,7 @@
 												<input type="text" class="form-control" id="inputLastName"
 													placeholder="<?php echo e($lang['ex-last-name']); ?>" name="last_name">
 												<?php if(!empty($errors['last_name'])): ?>
-													<div class="alert-danger"><?php echo ($errors['last_name']['required']); ?></div>
+													<div class="form-control alert-danger"><?php echo ($errors['last_name']['required']); ?></div>
 												<?php endif; ?>
 											</div>
 											<div class="col-12">
@@ -78,10 +78,10 @@
 													placeholder="example@user.com" name="email">
 												<?php if(!empty($errors['email'])): ?>
 													<?php if(!empty($errors['email']['required'])): ?>
-														<div class="alert-danger"><?php echo ($errors['email']['required']); ?></div>
+														<div class="form-control alert-danger"><?php echo ($errors['email']['required']); ?></div>
 													<?php else: ?>
 														<?php if(!empty($errors['email']['email'])): ?>
-															<div class="alert-danger"><?php echo ($errors['email']['email']); ?></div>
+															<div class="form-control alert-danger"><?php echo ($errors['email']['email']); ?></div>
 														<?php endif; ?>
 													<?php endif; ?>
 												<?php endif; ?>
@@ -91,40 +91,39 @@
 												<div class="input-group" id="show_hide_password">
 													<input type="password" class="form-control border-end-0"
 														id="inputChoosePassword" value=""
-														placeholder="<?php echo e($lang['enter-pass']); ?>" name="password"> <a href="javascript:;"
+														placeholder="<?php echo e($lang['password']); ?>" name="password"> <a href="javascript:;"
 														class="input-group-text bg-transparent"><i
 															class='bx bx-hide'></i></a>
 												</div>
 												<?php if(!empty($errors['password'])): ?>
 													<?php if(!empty($errors['password']['required'])): ?>
-														<div class="alert-danger"><?php echo ($errors['password']['required']); ?></div>
+														<div class="form-control alert-danger"><?php echo ($errors['password']['required']); ?></div>
 													<?php else: ?>
 														<?php if(!empty($errors['password']['password'])): ?>
-															<div class="alert-danger"><?php echo ($errors['password']['password']); ?></div>
+															<div class="form-control alert-danger"><?php echo ($errors['password']['password']); ?></div>
 														<?php endif; ?>
 													<?php endif; ?>
 												<?php endif; ?>
 											</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+											<div class="col-12">
+												<label for="inputChoosePassword" class="form-label"><?php echo e($lang['password-repeat']); ?></label>
+												<div class="input-group" id="show_hide_password">
+													<input type="password" class="form-control border-end-0"
+														id="inputChoosePassword" value=""
+														placeholder="<?php echo e($lang['password-repeat']); ?>" name="rep-pass"><a href="javascript:;"
+														class="input-group-text bg-transparent"><i
+															class='bx bx-hide'></i></a>
+												</div>
+												<?php if(!empty($errors['rep-pass'])): ?>
+													<?php if(!empty($errors['rep-pass']['required'])): ?>
+														<div class="form-control alert-danger"><?php echo ($errors['rep-pass']['required']); ?></div>
+													<?php else: ?>
+														<?php if(!empty($errors['rep-pass']['password'])): ?>
+															<div class="form-control alert-danger"><?php echo ($errors['rep-pass']['password']); ?></div>
+														<?php endif; ?>
+													<?php endif; ?>
+												<?php endif; ?>
+											</div>
 											<div class="col-12">
 												<div class="form-check form-switch">
 													<input class="form-check-input" type="checkbox"
@@ -136,11 +135,14 @@
 												<div class="d-grid">
 													<input type="submit" class="btn btn-primary" value='<?php echo e($lang['register']); ?>' />
 												</div>
+												<?php if(!empty($errorPassNotEq)): ?>
+													<div class="form-control alert-danger"><?php echo $errorPassNotEq; ?></div>
+												<?php endif; ?>
 												<?php if(!empty($errorMessage)): ?>
-													<div class="alert-warning"><?php echo $errorMessage; ?></div>
+													<div class="form-control alert-danger"><?php echo $errorMessage; ?></div>
 												<?php endif; ?>
 												<?php if(!empty($successMessage)): ?>
-													<div class="alert-success"><?php echo $successMessage; ?></div>
+													<div class="form-control alert-success"><?php echo $successMessage; ?></div>
 												<?php endif; ?>
 											</div>
 										</form>

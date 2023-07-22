@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Core\System\Helpers\databaseHelper;
 use Exception;
 use Core\System\Helpers\QueryBuilder;
 use App\Exception\QueryBuilderException;
@@ -13,7 +14,7 @@ class Users
     private $db;
     private $table = 'users';
     private $fillableStatus = true;
-    private $fillable = ['id', 'email', 'first_name', 'last_name', 'password'];
+    private $fillable = ['id', 'email', 'first_name', 'last_name', 'password', 'user_type'];
 
     public function __construct()
     {
@@ -23,7 +24,7 @@ class Users
         }
     }
 
-    public function get($conditions = [])
+    public function get(array $conditions = [])
     {
         try {
             $db = $this->db->from($this->table)->select($this->fillable);
@@ -39,13 +40,13 @@ class Users
         }
     }
 
-    public function check($request)
+    public function check(array $request)
     {
         $db = $this->db->from($this->table)->where('username', $request['name'])->where('password', $request['password']);
         return $db->first();
     }
 
-    public function insert($data = [])
+    public function insert(array $data = [])
     {
         $exception = new QueryBuilderException();
         try {
@@ -55,26 +56,21 @@ class Users
         }
     }
 
-    public function update($field, $value, $newValue)
+    public function update(int $where, array $data = [])
+    {
+        $db = new databaseHelper();
+        if ($db->pdoUpdate($this->table, $data, 'id = ' . $where)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function delete(int $where)
     {
         try {
-            $this->db->from($this->table)->where($field, $value)->update([$field => $newValue]);
+            $this->db->from($this->table)->where('id', $where)->delete();
         } catch (Exception $e) {
             return $e->getCode();
         }
-    }
-
-    public function delete($field, $value)
-    {
-        try {
-            $this->db->from($this->table)->where($field, $value)->delete();
-        } catch (Exception $e) {
-            return $e->getCode();
-        }
-    }
-
-    public function boot()
-    {
-        echo 'boot';
     }
 }

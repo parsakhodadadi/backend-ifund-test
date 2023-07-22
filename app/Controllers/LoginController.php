@@ -29,7 +29,7 @@ class LoginController extends controller
         $this->blade = blade();
         $this->model = new users();
         $lang = $this->configHelper::getConfig('default-language');
-        $this->lang = loadLang('fa', 'login');
+        $this->lang = loadLang($lang, 'login');
     }
 
     public function form()

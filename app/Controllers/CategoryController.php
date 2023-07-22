@@ -101,6 +101,9 @@ class CategoryController extends controller
     {
         $this->errorMessage = null;
         $this->errorMessage = $this->categories->delete($itemId);
+        if (!empty($this->errorMessage)) {
+            exit('error deleting user.');
+        }
         redirect('/admin/category/list');
     }
 }

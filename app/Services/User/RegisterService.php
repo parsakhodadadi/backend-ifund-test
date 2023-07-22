@@ -4,9 +4,9 @@ namespace App\Services\User;
 
 use App\Services\User\DesignPatterns\Strategy\Interfaces\RegisterInterface;
 
-class RegisterAuth
+class RegisterService
 {
-    private $registerMethod;
+    private object $registerMethod;
     public function __construct(RegisterInterface $registerMethod)
     {
         $this->registerMethod = $registerMethod;
@@ -18,7 +18,7 @@ class RegisterAuth
      */
     private static $instances = [];
 
-    public static function getInstance($strategy): RegisterAuth
+    public static function getInstance($strategy): RegisterService
     {
         $cls = static::class;
         if (!isset(self::$instances[$cls])) {
@@ -32,8 +32,8 @@ class RegisterAuth
         return $this->registerMethod;
     }
 
-    public function getEmail()
+    public function getData()
     {
-        return $_POST['email'];
+        return $_POST;
     }
 }

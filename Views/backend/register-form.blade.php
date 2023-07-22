@@ -8,22 +8,22 @@
 	<!--favicon-->
 	<link rel="icon" href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/images/favicon-32x32.png" type="image/png" />
 	<!--plugins-->
-	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/vertical/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/vertical/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/vertical/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
 	<!-- loader-->
-	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/css/pace.min.css" rel="stylesheet" />
-	<script src="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/js/pace.min.js"></script>
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/vertical/assets/css/pace.min.css" rel="stylesheet" />
+	<script src="{!! route('') !!}/Others/Themes/Backend/main/vertical/assets/js/pace.min.js"></script>
 	<!-- Bootstrap CSS -->
-	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/css/app.css" rel="stylesheet">
-	<link href="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/css/icons.css" rel="stylesheet">
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/vertical/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/vertical/assets/css/app.css" rel="stylesheet">
+	<link href="{!! route('') !!}/Others/Themes/Backend/main/vertical/assets/css/icons.css" rel="stylesheet">
 	<title>{{ $lang['register'] }}</title>
 </head>
 
 <body class="rtl">
 	<!--wrapper-->
-	<form action="{!! route('/register') !!}" method="post">
+	<form action="{!! route('/register')  !!}" method="post">
 	<div class="wrapper">
 		<div class="authentication-header"></div>
 		<div class="d-flex align-items-center justify-content-center my-5 my-lg-0">
@@ -44,7 +44,7 @@
 									<div class="d-grid">
 										<a class="btn my-4 shadow-sm btn-white" href="javascript:;"> <span
 												class="d-flex justify-content-center align-items-center">
-												<img class="me-2" src="{!! route('') !!}/Others/Themes/Backend/main/horizontal/assets/images/icons/search.svg" width="16"
+												<img class="me-2" src="{!! route('') !!}/Others/Themes/Backend/main/vertical/assets/images/icons/search.svg" width="16"
 													 alt="Image Description">
 												<span>{{ $lang['register-google'] }}</span>
 											</span>
@@ -61,7 +61,7 @@
 												<input type="text" class="form-control" id="inputFirstName"
 													placeholder="{{ $lang['ex-first-name'] }}" name="first_name">
 												@if(!empty($errors['first_name']))
-													<div class="alert-danger">{!! $errors['first_name']['required'] !!}</div>
+													<div class="form-control alert-danger">{!! $errors['first_name']['required'] !!}</div>
 												@endif
 											</div>
 											<div class="col-sm-6">
@@ -69,7 +69,7 @@
 												<input type="text" class="form-control" id="inputLastName"
 													placeholder="{{ $lang['ex-last-name'] }}" name="last_name">
 												@if(!empty($errors['last_name']))
-													<div class="alert-danger">{!! ($errors['last_name']['required']) !!}</div>
+													<div class="form-control alert-danger">{!! ($errors['last_name']['required']) !!}</div>
 												@endif
 											</div>
 											<div class="col-12">
@@ -78,10 +78,10 @@
 													placeholder="example@user.com" name="email">
 												@if(!empty($errors['email']))
 													@if(!empty($errors['email']['required']))
-														<div class="alert-danger">{!! ($errors['email']['required']) !!}</div>
+														<div class="form-control alert-danger">{!! ($errors['email']['required']) !!}</div>
 													@else
 														@if(!empty($errors['email']['email']))
-															<div class="alert-danger">{!! ($errors['email']['email']) !!}</div>
+															<div class="form-control alert-danger">{!! ($errors['email']['email']) !!}</div>
 														@endif
 													@endif
 												@endif
@@ -91,40 +91,39 @@
 												<div class="input-group" id="show_hide_password">
 													<input type="password" class="form-control border-end-0"
 														id="inputChoosePassword" value=""
-														placeholder="{{ $lang['enter-pass'] }}" name="password"> <a href="javascript:;"
+														placeholder="{{ $lang['password'] }}" name="password"> <a href="javascript:;"
 														class="input-group-text bg-transparent"><i
 															class='bx bx-hide'></i></a>
 												</div>
 												@if(!empty($errors['password']))
 													@if(!empty($errors['password']['required']))
-														<div class="alert-danger">{!! ($errors['password']['required']) !!}</div>
+														<div class="form-control alert-danger">{!! ($errors['password']['required']) !!}</div>
 													@else
 														@if(!empty($errors['password']['password']))
-															<div class="alert-danger">{!! ($errors['password']['password']) !!}</div>
+															<div class="form-control alert-danger">{!! ($errors['password']['password']) !!}</div>
 														@endif
 													@endif
 												@endif
 											</div>
-{{--											<div class="col-12">--}}
-{{--												<label for="inputEmailAddress" class="form-label">{{ $lang['password-repeat'] }}</label>--}}
-{{--												<input type="password" class="form-control" id="inputEmailAddress"--}}
-{{--													   placeholder="example@user.com" name="confirm_password">--}}
-{{--												@if(!empty($errors['password']))--}}
-{{--													@if(!empty($errors['password']['repeat']))--}}
-{{--														<div class="alert-danger">{!! ($errors['password']['repeat']) !!}</div>--}}
-{{--													@endif--}}
-{{--												@endif--}}
-{{--											</div>--}}
-{{--											<div class="col-12">--}}
-{{--												<label for="inputSelectCountry" class="form-label">{{ $lang['country'] }}</label>--}}
-{{--												<select class="form-select" id="inputSelectCountry"--}}
-{{--													aria-label="{ { $lang['examples'] }}" name="country">--}}
-{{--													<option value="{{ $lang['iran'] }}">{{ $lang['iran'] }}</option>--}}
-{{--													<option value="{{ $lang['turkey'] }}">{{ $lang['turkey'] }}</option>--}}
-{{--													<option value="{{ $lang['china'] }}">{{ $lang['china'] }}</option>--}}
-{{--													<option value="{{ $lang['canada'] }}">{{ $lang['canada'] }}</option>--}}
-{{--												</select>--}}
-{{--											</div>--}}
+											<div class="col-12">
+												<label for="inputChoosePassword" class="form-label">{{ $lang['password-repeat'] }}</label>
+												<div class="input-group" id="show_hide_password">
+													<input type="password" class="form-control border-end-0"
+														id="inputChoosePassword" value=""
+														placeholder="{{ $lang['password-repeat'] }}" name="rep-pass"><a href="javascript:;"
+														class="input-group-text bg-transparent"><i
+															class='bx bx-hide'></i></a>
+												</div>
+												@if(!empty($errors['rep-pass']))
+													@if(!empty($errors['rep-pass']['required']))
+														<div class="form-control alert-danger">{!! ($errors['rep-pass']['required']) !!}</div>
+													@else
+														@if(!empty($errors['rep-pass']['password']))
+															<div class="form-control alert-danger">{!! ($errors['rep-pass']['password']) !!}</div>
+														@endif
+													@endif
+												@endif
+											</div>
 											<div class="col-12">
 												<div class="form-check form-switch">
 													<input class="form-check-input" type="checkbox"
@@ -136,11 +135,14 @@
 												<div class="d-grid">
 													<input type="submit" class="btn btn-primary" value='{{ $lang['register'] }}' />
 												</div>
+												@if(!empty($errorPassNotEq))
+													<div class="form-control alert-danger">{!! $errorPassNotEq !!}</div>
+												@endif
 												@if(!empty($errorMessage))
-													<div class="alert-warning">{!! $errorMessage !!}</div>
+													<div class="form-control alert-danger">{!! $errorMessage !!}</div>
 												@endif
 												@if(!empty($successMessage))
-													<div class="alert-success">{!! $successMessage !!}</div>
+													<div class="form-control alert-success">{!! $successMessage !!}</div>
 												@endif
 											</div>
 										</form>

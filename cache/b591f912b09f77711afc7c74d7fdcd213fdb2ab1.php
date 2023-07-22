@@ -100,7 +100,7 @@
         </ul>
     </li>
     <li>
-        <a href="<?php route('logout') ?>">
+        <a href="<?php route('/logout') ?>">
             <div class="parent-icon"><i class='bx bx-user-pin'></i>
             </div>
             <div class="menu-title">خروج</div>

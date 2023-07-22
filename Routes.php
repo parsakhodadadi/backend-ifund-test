@@ -18,25 +18,34 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
 
     $router->post('/register', "RegisterController@register");
 
-    $router->get('/verifyEmail', "RegisterController@verifyEmail");
-    $router->post('/verifyEmail', "RegisterController@verifyEmail");
+    $router->get('/emailVerification', "RegisterController@emailVerification");
+    $router->post('/emailVerification', "RegisterController@emailVerification");
 
-    $router->get('/checkLogin', "userController@checkLoginInfo");
+//    $router->get('/checkLogin', "userController@checkLoginInfo");
 
     $router->get('/admin', "PanelController@panel");
     $router->get('/admin/category', "CategoryController@create");
-
     $router->post('/admin/category', 'CategoryController@create');
 
-    $router->get('admin/category/list', "CategoryController@show");
+    $router->get('/admin/user/list', "UserController@show");
+    $router->get('/admin/changePassword', "UserController@changePassword");
+    $router->post('/admin/changePassword', "UserController@changePassword");
+    $router->get('/admin/editProfile', "UserController@editProfile");
+    $router->post('/admin/editProfile', "UserController@editProfile");
+    $router->get('/admin/user/list/editAccess/(\d+)', "UserController@editAccess");
+    $router->post('/admin/user/list/editAccess/(\d+)', "UserController@editAccess");
+    $router->get('/admin/user/list/delete/(\d+)', "UserController@delete");
 
+    $router->get('admin/category/list', "CategoryController@show");
     $router->get('admin/category/list/edit/(\d+)', "CategoryController@edit");
     $router->post('admin/category/list/edit/(\d+)', "CategoryController@edit");
-
     $router->get('admin/category/list/delete/(\d+)', "CategoryController@delete");
 
     $router->before('GET|POST', '/admin', 'LoginController@checkLogin');
     $router->before('GET|POST', '/admin/.*', 'LoginController@checkLogin');
+
+    $router->before('GET|POST', '/admin/user', 'UserController@checkAdmin');
+    $router->before('GET|POST', '/admin/user.*', 'UserController@checkAdmin');
 
     $router->set404(function () {
 //        header('HTTP/1.1 404 Not Found');

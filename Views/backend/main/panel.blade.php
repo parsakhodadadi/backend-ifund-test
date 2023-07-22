@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-hey
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -26,16 +25,18 @@ hey
     {!! $content !!}
     {{--    {{ $content }}--}}
     <!--end header -->
-    <!--start page wrapper -->
-    {{--{{ $view->make('Backend/main/layout/page-wrapper') }}--}}
-    {{--<!--end page wrapper -->--}}
-    {{--    <!--start overlay-->--}}
-    {{--{{ $view->make('Backend/main/layout/overlay') }}--}}
-    {{--<!--end overlay-->--}}
-    {{--    <!--Start Back To Top Button-->--}}
-    {{--{{ $view->make('Backend/main/layout/back-to-top-button') }}--}}
+{{--    <!--start page wrapper -->--}}
+{{--    {{ $view->make('Backend/main/layout/page-wrapper') }}--}}
+{{--    <!--end page wrapper -->--}}
+    <!--start overlay-->
+    {{ $view->make('Backend/main/layout/overlay') }}
+    <!--end overlay-->
+    <!--Start Back To Top Button-->
+    {{ $view->make('Backend/main/layout/back-to-top-button') }}
     <!--End Back To Top Button-->
+    <!-- start footer-->
     {{ $view->make('Backend/main/layout/footer') }}
+    <!-- end footer -->
 </div>
 <!--end wrapper-->
 <!--start switcher-->

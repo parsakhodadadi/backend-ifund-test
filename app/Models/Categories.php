@@ -40,7 +40,7 @@ class Categories
         }
     }
 
-    public function insert($data = [])
+    public function insert(array $data = [])
     {
         $exception = new QueryBuilderException();
         try {
@@ -66,10 +66,5 @@ class Categories
         } catch (Exception $e) {
             return $e->getCode();
         }
-    }
-
-    public function boot()
-    {
-        echo 'boot';
     }
 }

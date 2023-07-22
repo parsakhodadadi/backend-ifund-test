@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\User\DesignPatterns\Strategy\Methods;
+namespace App\Services\User\DesignPatterns\Strategy\Methods\Login;
 
 use App\Services\User\DesignPatterns\Strategy\Interfaces\LoginInerface;
 

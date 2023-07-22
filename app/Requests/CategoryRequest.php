@@ -11,7 +11,6 @@ class CategoryRequest extends Validation
         return [
             'title' => 'required',
             'description' => 'required',
-            'tags' => 'required',
         ];
     }
 
@@ -20,7 +19,6 @@ class CategoryRequest extends Validation
         return [
             'title.required' => 'عنوان را پر کنید',
             'description.required' => 'توضیحات را پر کنید',
-            'tags.required' => 'تگ ها را پر کنید',
         ];
     }
 

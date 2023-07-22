@@ -83,16 +83,16 @@
 											<div class="col-md-6 text-end"> <a
 													href="<?php echo route('/login'); ?>"><?php echo e($lang['forget_password']); ?></a>
 											</div>
-										    <div class="col-md-6">
-												<?php if(!empty($errorMessage)): ?>
-													<div class="alert-danger"><?php echo e($errorMessage); ?></div>
-												<?php endif; ?>
-									     	</div>
 											<div class="col-12">
 												<div class="d-grid">
 													<button type="submit" class="btn btn-primary"><?php echo $lang['sign_in']; ?></button>
 												</div>
 											</div>
+									    	<div class="col-12">
+									     		<?php if(!empty($errorMessage)): ?>
+										    		<div class="form-control alert-danger"><?php echo e($errorMessage); ?></div>
+										    	<?php endif; ?>
+										    </div>
 									</div>
 									</form>
 								</div>

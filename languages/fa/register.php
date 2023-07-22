@@ -38,4 +38,8 @@ return [
     'confirm-code' => 'تایید',
     'email-verification-subject' => 'کد فعالسازی',
     'password-repeat' => 'تکرار رمز عبور',
+    'not-equal-pass' => 'رمزعبو های وارد شده مطابقت ندارند',
+    'rep-pass-required' => 'لطفا تکرار رمز عبور را وارد کنید.',
+    'rep-pass-password' => 'تکرار رمز عبور معتبر نمی باشد.',
+    'wrong-verification-code' => 'کد وارد شده اشتباه است.'
 ];

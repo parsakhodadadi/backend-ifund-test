@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '0d4d6e9a18b77b291dff862d85b390b809b6d546',
+        'reference' => '9f6443db3413ffa7b0616d8b4d8fee9721ec25c7',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '0d4d6e9a18b77b291dff862d85b390b809b6d546',
+            'reference' => '9f6443db3413ffa7b0616d8b4d8fee9721ec25c7',
             'dev_requirement' => false,
         ),
         'bramus/router' => array(
@@ -193,8 +193,8 @@
         'psr/container-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '^1.0 || ^2.0',
-                1 => '1.0',
+                0 => '1.0',
+                1 => '^1.0 || ^2.0',
             ),
         ),
         'psr/log' => array(

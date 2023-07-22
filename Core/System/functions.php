@@ -4,6 +4,7 @@ use Helper\Directives;
 use Helper\MyClass;
 use Jenssegers\Blade\Blade;
 use Core\System\Helpers\ConfigHelper;
+use App\Controllers\RegisterDataController;
 
 use function Helper\globalfn1;
 

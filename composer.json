@@ -3,12 +3,15 @@
     "files": [
       "Configs/config.php",
       "Core/System/functions.php",
-      "Routes.php"
+      "Routes.php",
+      "staticTest.php"
     ],
     "classmap": [
+      "app",
       "Core/System",
       "Helpers",
-      "db"
+      "db",
+      "BramusRouter.php"
     ]
   },
   "psr-4": {
