@@ -54,11 +54,13 @@ class Validation {
         }
     }
 
-    public function min($value) {
+    public function min($value)
+    {
         echo $value;
     }
 
-    public function max($value) : bool{
+    public function max($value) : bool
+    {
         if (strlen($value) >= 8) {
             return true;
         } else {
@@ -74,10 +76,16 @@ class Validation {
         return false;
     }
 
-    public function password(string $value) : bool {
+    public function password(string $value) : bool
+    {
         if (strlen($value) >= 8) {
             return true;
         }
         return false;
+    }
+
+    public function url(string $value) : bool
+    {
+
     }
 }

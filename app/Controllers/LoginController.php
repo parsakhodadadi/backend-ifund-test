@@ -4,8 +4,8 @@ namespace App\Controllers;
 
 use App\Models\Users;
 use App\Services\User\LoginAuth;
-use App\Services\User\DesignPatterns\Strategy\Methods\EmailLogin;
-use App\Services\User\DesignPatterns\Strategy\Methods\OtpLogin;
+use App\Services\User\DesignPatterns\Strategy\Methods\Login\EmailLogin;
+use App\Services\User\DesignPatterns\Strategy\Methods\Login\OtpLogin;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
 use Core\System\Helpers\databaseHelper;

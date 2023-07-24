@@ -3,8 +3,7 @@
     "files": [
       "Configs/config.php",
       "Core/System/functions.php",
-      "Routes.php",
-      "staticTest.php"
+      "Routes.php"
     ],
     "classmap": [
       "app",

@@ -6,11 +6,21 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router = new BramusRouter();
     $router->setNamespace('\App\Controllers');
     //Define routes
-    $router->get('/', 'HomeController@form');
+    $router->get('/', 'HomeController@show');
+    $router->get('/admin/posts/edit/(\d+)', "PostController@editPost");
+    $router->post('/admin/posts/edit/(\d+)', "PostController@editPost");
+
+
     $router->get('/login', "LoginController@form");
     $router->post('/login', "LoginController@form");
     $router->get('/logout', "LoginController@logout");
     $router->get('/add-menu', "panelController@addMenu");
+
+    $router->get('/admin/posts/editPostsStatus', "PostController@editPostsStatus");
+    $router->post('/admin/posts/editPostsStatus', "PostController@editPostsStatus");
+
+    $router->get('/admin/posts/editPostsStatus/approve/(\d+)', "PostController@approve");
+    $router->get('/admin/posts/editPostsStatus/delete/(\d+)', "PostController@delete");
 
     $router->post('/add-menu', "panelController@addMenu");
 
@@ -26,6 +36,9 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/admin', "PanelController@panel");
     $router->get('/admin/category', "CategoryController@create");
     $router->post('/admin/category', 'CategoryController@create');
+
+    $router->get('/admin/post/create', "PostController@create");
+    $router->post('/admin/post/create', "PostController@create");
 
     $router->get('/admin/user/list', "UserController@show");
     $router->get('/admin/changePassword', "UserController@changePassword");

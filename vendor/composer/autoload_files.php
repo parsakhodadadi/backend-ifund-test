@@ -22,5 +22,4 @@ return array(
     '047074ac0f0087a32c81ed46cbca2e7d' => $baseDir . '/Configs/config.php',
     '6dd382580aa6f7f6b026ef7c5f356c02' => $baseDir . '/Core/System/functions.php',
     '3f41224959c476e823f0ea7833cce8f3' => $baseDir . '/Routes.php',
-    '6a6be971e74b3ace465cc966f87e51e7' => $baseDir . '/staticTest.php',
 );

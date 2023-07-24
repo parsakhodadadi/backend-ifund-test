@@ -135,7 +135,7 @@ class UserController extends controller
             }
             echo $this->blade->render('backend/email-verification', [
                 'lang' => loadLang(ConfigHelper::getConfig('default-language'), 'register'),
-                'action' => '/admin/editProfile',
+                'action' => 'admin/editProfile',
                 'successMessage' => $successMessage,
                 'errorMessage' => $errorMessage,
             ]);

@@ -1,5 +1,7 @@
 <?php
 
+//error_reporting(0);
+
 $configs = [
     'login-method' => new \App\Services\User\DesignPatterns\Strategy\Methods\Login\UserPasswordLogin(),
     'register-form' => new \App\Services\User\DesignPatterns\Strategy\Methods\Register\RegisterForm(),
