@@ -238,6 +238,8 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
     );
 
     public static $classMap = array (
+        'App\\Controllers\\AuthorController' => __DIR__ . '/../..' . '/app/Controllers/AuthorController.php',
+        'App\\Controllers\\BookController' => __DIR__ . '/../..' . '/app/Controllers/BookController.php',
         'App\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Controllers/CategoryController.php',
         'App\\Controllers\\ErrorController' => __DIR__ . '/../..' . '/app/Controllers/ErrorController.php',
         'App\\Controllers\\GlobalController' => __DIR__ . '/../..' . '/app/Controllers/GlobalController.php',
@@ -255,14 +257,19 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'App\\DesingnPatterns\\Proxy\\Wallet\\Interface\\WalletInterface' => __DIR__ . '/../..' . '/app/DesignPatterns/Proxy/Wallet/Interfaces/WalletInterface.php',
         'App\\DesingnPatterns\\Proxy\\Wallet\\Interface\\WalletProxy' => __DIR__ . '/../..' . '/app/DesignPatterns/Proxy/Wallet/WalletProxy.php',
         'App\\Exception\\QueryBuilderException' => __DIR__ . '/../..' . '/app/exceptions/QueryBuilderException.php',
+        'App\\Middlewares\\AuthorMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/AuthorMiddleware.php',
         'App\\Middlewares\\LoginMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/LoginMiddleware.php',
+        'App\\Middlewares\\PostMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/PostMiddleware.php',
         'App\\Middlewares\\RegisterMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/RegisterMiddleware.php',
         'App\\Middlewares\\UsersMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/UsersMiddleware.php',
+        'App\\Model\\Authors' => __DIR__ . '/../..' . '/app/Models/authors.php',
+        'App\\Models\\Books' => __DIR__ . '/../..' . '/app/Models/books.php',
         'App\\Models\\Categories' => __DIR__ . '/../..' . '/app/Models/Categories.php',
         'App\\Models\\Menus' => __DIR__ . '/../..' . '/app/Models/menus.php',
         'App\\Models\\Posts' => __DIR__ . '/../..' . '/app/Models/posts.php',
         'App\\Models\\Users' => __DIR__ . '/../..' . '/app/Models/users.php',
         'App\\Models\\xss' => __DIR__ . '/../..' . '/app/Models/xss.php',
+        'App\\Request\\AuthorRequest' => __DIR__ . '/../..' . '/app/Requests/AuthorRequest.php',
         'App\\Request\\CategoryRequest' => __DIR__ . '/../..' . '/app/Requests/CategoryRequest.php',
         'App\\Request\\ChangePasswordRequest' => __DIR__ . '/../..' . '/app/Requests/ChangePasswordRequest.php',
         'App\\Request\\EditProfileRequest' => __DIR__ . '/../..' . '/app/Requests/EditProfileRequest.php',

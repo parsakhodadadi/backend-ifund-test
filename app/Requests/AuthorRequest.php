@@ -4,13 +4,13 @@ namespace App\Request;
 
 use Core\System\Validation;
 
-class PostRequest extends Validation
+class AuthorRequest extends Validation
 {
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
+            'name' => 'required',
+            'about' => 'required',
             'files' => 'photo'
         ];
     }
@@ -18,9 +18,9 @@ class PostRequest extends Validation
     public function messages()
     {
         return [
-            'title.required' => __('posts.title-required'),
-            'description.required' => __('posts.description-required'),
-            'files.photo' => __('posts.files-photo')
+            'name.required' => __('authors.name-required'),
+            'about.required' => __('authors.about-required'),
+            'files.photo' => __('authors.files-photo')
         ];
     }
 

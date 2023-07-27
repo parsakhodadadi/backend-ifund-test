@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Middlewares\PostMiddleware;
 use App\Models\Posts;
 use App\Models\Users;
 use App\Request\PostRequest;
@@ -40,8 +41,7 @@ class PostController extends controller
     {
         $errorMessage = null;
         $successMessage = null;
-        $errors = null;
-//        $errors = $this->request(PostRequest::class);
+        $errors = $this->request(PostRequest::class);
         if (!empty($this->request) && empty($errors)) {
             if (!empty($_FILES['photo']['name'])) {
                 $tmpFile = $_FILES['photo']['tmp_name'];
@@ -105,8 +105,7 @@ class PostController extends controller
     {
         $errorMessage = null;
         $successMessage = null;
-        $errors = null;
-        $newPhoto = null;
+        $errors = $this->request(PostRequest::class);
         $postToEditData = current($this->posts->get(['id' => $itemId]));
         if (!empty($this->request) && empty($errors)) {
             if (!empty($_FILES['photo']['name'])) {
@@ -139,7 +138,7 @@ class PostController extends controller
                     }
                 }
             } else {
-                if ($this->currentUser->user_type == 'fulladmin') {
+                if ($this->currentUser->user_type != 'user') {
                     $status = 'approved';
                 } else {
                     $status = 'disapproved';
@@ -205,6 +204,12 @@ class PostController extends controller
             exit('errorMessage');
         }
         redirect('/admin/posts/editPostsStatus');
+    }
+
+    public function checkAdmin()
+    {
+        $postMiddleware = new PostMiddleware();
+        $postMiddleware->boot();
     }
 
     public function uploadFile() {

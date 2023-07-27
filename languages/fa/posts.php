@@ -23,4 +23,7 @@ return [
     'edit-post' => 'ویرایش محتوا',
     'written-at' => 'نوشته شده در',
     'last-edited-at' => 'آخرین ویرایش در',
+    'title-required' => 'لطفا عنوان را پر کنید',
+    'description-required' => 'لطفا توضیحات را پر کنید',
+    'files-photo' => 'فایل آپلود شده باید فقط از نوع عکس باشد',
 ];

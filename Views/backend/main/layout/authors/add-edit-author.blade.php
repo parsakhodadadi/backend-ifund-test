@@ -9,7 +9,7 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $lang['add-new-post'] }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $lang['add-new-author'] }}</li>
                     </ol>
                 </nav>
             </div>
@@ -34,7 +34,7 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-body p-4">
-                <h5 class="card-title">{{ $lang['edit-post'] }}</h5>
+                <h5 class="card-title">{{ $lang['author-identities-form'] }}</h5>
                 <hr/>
                 <div class="form-body mt-4">
                     <div class="row">
@@ -42,30 +42,34 @@
                             <div class="border border-3 p-4 rounded">
                                 <form action="{{ route('') . $action }}" method="post" enctype="multipart/form-data">
                                     <div class="mb-3">
-                                        <label for="inputProductTitle" class="form-label">{{ $lang['title'] }}</label>
-                                        <input type="text" name="title" class="form-control" id="inputProductTitle"
-                                               placeholder="{{ $lang['enter-title'] }}"
-                                               value="@if(!empty($data)) {{ $data->title }} @endif">
-                                        @if(!empty($errors['title']))
-                                            @if(!empty($errors['title']['required']))
-                                                <div class="form-control alert-danger">{{ $errors['title']['required'] }}</div>
+                                        <label for="inputProductTitle" class="form-label">{{ $lang['name'] }}</label>
+                                        <input type="text" name="name" class="form-control" id="inputProductTitle"
+                                               placeholder="{{ $lang['enter-name'] }}"
+                                               value="@if(!empty($data)) {{ $data->name }} @endif">
+                                        @if(!empty($errors['name']))
+                                            @if(!empty($errors['name']['required']))
+                                                <div class="form-control alert-danger">{{ $errors['name']['required'] }}</div>
                                             @endif
                                         @endif
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription"
-                                               class="form-label">{{ $lang['description'] }}</label>
-                                        <textarea name="description" class="form-control" id="myCKEditortextarea"
-                                                  rows="3">@if(!empty($data)) {{$data->description}} @endif</textarea>
-                                        @if(!empty($errors['description']))
-                                            @if(!empty($errors['description']['required']))
-                                                <div class="form-control alert-danger">{{ $errors['description']['required'] }}</div>
+                                               class="form-label">{{ $lang['about'] }}</label>
+                                        <textarea name="about" class="form-control" id="myCKEditortextarea"
+                                                  rows="3">
+                                            @if(!empty($data))
+                                                {{ $data->about }}
+                                            @endif
+                                        </textarea>
+                                        @if(!empty($errors['about']))
+                                            @if(!empty($errors['about']['required']))
+                                                <div class="form-control alert-danger">{{ $errors['about']['required'] }}</div>
                                             @endif
                                         @endif
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription"
-                                               class="form-label">{{ $lang['add-new-file'] }}</label>
+                                               class="form-label">{{ $lang['add-photo'] }}</label>
                                         <input class="form-control" value="@if(!empty($data)) @if(!empty($data->photo)) {{ $data->photo }} @endif @endif"
                                                id="image-uploadify" name="photo" type="file"
                                                accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf"
@@ -85,7 +89,7 @@
                                             @endif
                                         @endif
                                     </div>
-                                    <input type="submit" class="btn btn-primary px-4" value="{{ $lang['send'] }}">
+                                    <input type="submit" class="btn btn-primary px-4" value="{{ $lang['register-data'] }}">
                                 </form>
                             </div>
                             @if(!empty($successMessage))
@@ -102,6 +106,7 @@
         </div>
     </div>
 </div>
+<!--end page wrapper -->
 <script src="{{ route('/Others/Themes/Backend/main/vertical/') }}assets/js/bootstrap.bundle.min.js"></script>
 <!--plugins-->
 <script src="{{ route('/Others/Themes/Backend/main/vertical/') }}assets/js/jquery.min.js"></script>
@@ -138,4 +143,5 @@
 </script>
 <script src="{{ route('/Others/Themes/Backend/main/vertical/') }}assets/js/app.js"></script>
 <!--end page wrapper -->
+
 

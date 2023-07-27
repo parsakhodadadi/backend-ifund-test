@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Model\Authors;
 use App\Models\Posts;
 use App\Models\Users;
 use Core\System\controller;
@@ -18,7 +19,9 @@ class HomeController extends controller
     private $users;
     private $userId;
     private $queryBuilder;
-    private $lang;
+    private $postsLang;
+    private $authorsLang;
+    private $authors;
 
     public function __construct()
     {
@@ -27,19 +30,37 @@ class HomeController extends controller
         $this->queryBuilder = $this->queryBuilder();
         $this->posts = loadModel(Posts::class);
         $this->users = loadModel(Users::class);
+        $this->authors = loadModel(Authors::class);
         $this->userId = $_SESSION['USERID'];
         $lang = ConfigHelper::getConfig('default-language');
-        $this->lang = loadLang($lang, 'posts');
+        $this->postsLang = loadLang($lang, 'posts');
+        $this->authorsLang = loadLang($lang, 'authors');
     }
 
-    public function show()
+    public function showPosts()
     {
         $postsToShow = $this->posts->get();
 
         $view = $this->blade->render('backend/main/layout/posts/posts-list',[
-            'lang' => $this->lang,
+            'lang' => $this->postsLang,
             'posts' => $postsToShow,
             'users' => $this->users,
+            'status' => 'approved',
+            'user_id' => $this->userId,
+        ]);
+
+        echo $this->blade->render('backend/main/panel', [
+            'view' => $this->blade,
+            'content' => $view,
+        ]);
+    }
+
+    public function showAuthors() {
+        $authorsToShow = $this->authors->get();
+
+        $view = $this->blade->render('backend/main/layout/authors/list', [
+            'lang' => $this->authorsLang,
+            'authors' => $authorsToShow,
             'status' => 'approved',
             'user_id' => $this->userId,
         ]);

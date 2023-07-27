@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controllers\\AuthorController' => $baseDir . '/app/Controllers/AuthorController.php',
+    'App\\Controllers\\BookController' => $baseDir . '/app/Controllers/BookController.php',
     'App\\Controllers\\CategoryController' => $baseDir . '/app/Controllers/CategoryController.php',
     'App\\Controllers\\ErrorController' => $baseDir . '/app/Controllers/ErrorController.php',
     'App\\Controllers\\GlobalController' => $baseDir . '/app/Controllers/GlobalController.php',
@@ -23,14 +25,19 @@ return array(
     'App\\DesingnPatterns\\Proxy\\Wallet\\Interface\\WalletInterface' => $baseDir . '/app/DesignPatterns/Proxy/Wallet/Interfaces/WalletInterface.php',
     'App\\DesingnPatterns\\Proxy\\Wallet\\Interface\\WalletProxy' => $baseDir . '/app/DesignPatterns/Proxy/Wallet/WalletProxy.php',
     'App\\Exception\\QueryBuilderException' => $baseDir . '/app/exceptions/QueryBuilderException.php',
+    'App\\Middlewares\\AuthorMiddleware' => $baseDir . '/app/Middlewares/AuthorMiddleware.php',
     'App\\Middlewares\\LoginMiddleware' => $baseDir . '/app/Middlewares/LoginMiddleware.php',
+    'App\\Middlewares\\PostMiddleware' => $baseDir . '/app/Middlewares/PostMiddleware.php',
     'App\\Middlewares\\RegisterMiddleware' => $baseDir . '/app/Middlewares/RegisterMiddleware.php',
     'App\\Middlewares\\UsersMiddleware' => $baseDir . '/app/Middlewares/UsersMiddleware.php',
+    'App\\Model\\Authors' => $baseDir . '/app/Models/authors.php',
+    'App\\Models\\Books' => $baseDir . '/app/Models/books.php',
     'App\\Models\\Categories' => $baseDir . '/app/Models/Categories.php',
     'App\\Models\\Menus' => $baseDir . '/app/Models/menus.php',
     'App\\Models\\Posts' => $baseDir . '/app/Models/posts.php',
     'App\\Models\\Users' => $baseDir . '/app/Models/users.php',
     'App\\Models\\xss' => $baseDir . '/app/Models/xss.php',
+    'App\\Request\\AuthorRequest' => $baseDir . '/app/Requests/AuthorRequest.php',
     'App\\Request\\CategoryRequest' => $baseDir . '/app/Requests/CategoryRequest.php',
     'App\\Request\\ChangePasswordRequest' => $baseDir . '/app/Requests/ChangePasswordRequest.php',
     'App\\Request\\EditProfileRequest' => $baseDir . '/app/Requests/EditProfileRequest.php',
