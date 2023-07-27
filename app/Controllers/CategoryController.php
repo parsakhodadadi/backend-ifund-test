@@ -57,6 +57,8 @@ class CategoryController extends controller
             'lang' => $this->lang,
             'successMessage' => $this->successMessage,
             'errorMessage' => $this->errorMessage,
+            'action' => '/admin/category',
+            'type' => 'add_category',
         ]);
 
         echo $this->blade->render('backend/main/panel', ['view' => $this->blade, 'content' => $view]);
@@ -74,8 +76,6 @@ class CategoryController extends controller
 
     public function edit(int $itemId)
     {
-//        $this->errorMessage = null;
-//        $this->request = request();
         $this->validationErrors = null;
         $this->errorMessage = null;
         $this->validationErrors = $this->request(CategoryRequest::class);
@@ -88,11 +88,13 @@ class CategoryController extends controller
             }
         }
 
-        $view = $this->blade->render('backend/main/layout/category/edit', [
+        $view = $this->blade->render('backend/main/layout/category/create', [
             'lang' => $this->lang,
-            'category' => $categoryToEdit,
+            'data' => $categoryToEdit,
             'successMessage' => $this->successMessage,
             'errorMessage' => $this->errorMessage,
+            'action' => '/admin/category/list/edit/' . $categoryToEdit->id,
+            'type' => 'edit_category',
         ]);
         echo $this->blade->render('backend/main/panel', ['view' => $this->blade, 'content' => $view]);
     }

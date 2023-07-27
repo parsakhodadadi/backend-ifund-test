@@ -42,11 +42,12 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/emailVerification', "RegisterController@emailVerification");
     $router->post('/emailVerification', "RegisterController@emailVerification");
 
-//    $router->get('/checkLogin', "userController@checkLoginInfo");
-
     $router->get('/admin', "PanelController@panel");
     $router->get('/admin/category', "CategoryController@create");
     $router->post('/admin/category', 'CategoryController@create');
+
+    $router->get('/admin/category/list/add-sub/(\d+)', "SubcategoryController@create");
+    $router->post('/admin/category/list/add-sub/(\d+)', "SubcategoryController@create");
 
     $router->get('/admin/post/create', "PostController@create");
     $router->post('/admin/post/create', "PostController@create");

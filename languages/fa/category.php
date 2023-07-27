@@ -3,6 +3,10 @@
 // category language list
 
 return [
+    'create-category' => 'ایجاد دسته بندی جدید',
+    'edit-category' => 'ویرایش دسته بندی',
+    'edit-sub-category' => 'ویرایش زیر دسته بندی',
+    'aaron-website' => 'مجله ارون',
     'title' => 'عنوان',
     'name' => 'نام',
     'description' => 'توضیحات',
@@ -12,4 +16,7 @@ return [
     'kon-class' => 'کنکوراز -ایجاد دسته بندی جدید',
     'success' => 'دسته بندی   با موفقیت ایجاد شد.',
     'error' => 'این دسته بندی قبلا به ثبت رسیده است.',
+    'categories-list' => 'لیست دسته بندی ها',
+    'add-sub-category' => 'ایجاد زیر دسته بندی جدید',
+    'sub-cat-added-suc' => 'زیردسته بندی شما با موفقیت ایجاد شد',
 ];

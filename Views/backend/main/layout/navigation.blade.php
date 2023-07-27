@@ -23,21 +23,6 @@
             </li>
         </ul>
     </li>
-{{--    <li>--}}
-{{--        <a href="javascript:;" class="has-arrow">--}}
-{{--            <div class="parent-icon"><i class='bx bx-spa'></i>--}}
-{{--            </div>--}}
-{{--            <div class="menu-title">خروج</div>--}}
-{{--        </a>--}}
-{{--    </li>--}}
-{{--    <li class="menu-label">عناصر UI</li>--}}
-{{--    <li>--}}
-{{--        <a href="{{ route('/Others/Themes/Backend/main/vertical/') }}widgets.html">--}}
-{{--            <div class="parent-icon"><i class='bx bx-briefcase-alt-2'></i>--}}
-{{--            </div>--}}
-{{--            <div class="menu-title">ویجت ها</div>--}}
-{{--        </a>--}}
-{{--    </li>--}}
     <li>
         <a href="javascript:;" class="has-arrow">
             <div class="parent-icon"><i class='bx bx-cart-alt'></i>
@@ -100,7 +85,7 @@
         </ul>
     </li>
     <li>
-        <a href="<?php route('/logout') ?>">
+        <a href="{{ route('/logout') }}">
             <div class="parent-icon"><i class='bx bx-user-pin'></i>
             </div>
             <div class="menu-title">خروج</div>

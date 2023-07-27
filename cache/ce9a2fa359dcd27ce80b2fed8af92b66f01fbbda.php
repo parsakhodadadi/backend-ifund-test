@@ -3,13 +3,13 @@
         <div class="page-content">
             <!--breadcrumb-->
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3">{{ $lang['aaron-website']  }}</div>
+                <div class="breadcrumb-title pe-3"><?php echo e($lang['aaron-website']); ?></div>
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
                             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ $lang['categories-list'] }}</li>
+                            <li class="breadcrumb-item active" aria-current="page"><?php echo e($lang['categories-list']); ?></li>
                         </ol>
                     </nav>
                 </div>
@@ -47,25 +47,25 @@
                                         </tr>
                                     </table>
                                 </li>
-                                @foreach($categories as $category)
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li class="list-group-item">
                                         <div>
                                             <table>
                                                 <tr>
-                                                    <td width="33%" align="center">{{ $category->title }}</td>
+                                                    <td width="33%" align="center"><?php echo e($category->title); ?></td>
                                                     <td>|</td>
-                                                    <td width="33%" align="center">{{ $category->description }}</td>
+                                                    <td width="33%" align="center"><?php echo e($category->description); ?></td>
                                                     <td>|</td>
                                                     <td width="33%" align="center">
-                                                        <a target="_self" href="{{ route("/admin/category/list/edit/") . $category->id }}">ویرایش</a>
-                                                        <a target="_self" href="{{ route("/admin/category/list/delete/") . $category->id }}">حذف</a>
-                                                        <a target="_self" href="{{ route("/admin/category/list/add-sub/") . $category->id }}">ایجادزیردسته بندی</a>
+                                                        <a target="_self" href="<?php echo e(route("/admin/category/list/edit/") . $category->id); ?>">ویرایش</a>
+                                                        <a target="_self" href="<?php echo e(route("/admin/category/list/delete/") . $category->id); ?>">حذف</a>
+                                                        <a target="_self" href="<?php echo e(route("/admin/category/list/add-sub/") . $category->id); ?>">ایجادزیردسته بندی</a>
                                                     </td>
                                                 </tr>
                                             </table>
                                         </div>
                                     </li>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </div>
                     </div>
@@ -91,3 +91,4 @@
 <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
 <!--app JS-->
 <script src="assets/js/app.js"></script>
+<?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/backend/main/layout/category/list.blade.php ENDPATH**/ ?>
