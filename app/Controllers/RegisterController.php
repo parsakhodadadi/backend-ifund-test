@@ -2,25 +2,17 @@
 
 namespace App\Controllers;
 
-use App\Middlewares\LoginMiddleware;
 use App\Models\Users;
 use App\Request\RegisterRequest;
 use App\Services\User\RegisterService;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
-use Jenssegers\Blade\Blade;
-use Requtize\QueryBuilder\QueryBuilder\QueryBuilder;
-
 
 class RegisterController extends controller
 {
-    use \Core\System\Helpers\QueryBuilder;
-
-    private object $loginMiddleware;
     private $lang;
     private object $blade;
     private $request;
-    private $queryBuilder;
     private $configHelper;
     private object $registerService;
 
@@ -33,7 +25,6 @@ class RegisterController extends controller
         }
 
         $this->request = request();
-        $this->queryBuilder = $this->queryBuilder();
         $this->configHelper = new ConfigHelper();
         $lang = $this->configHelper::getConfig('default-language');
         $registerMethod = $_SESSION['REGISTER_METHOD'];

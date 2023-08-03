@@ -1291,61 +1291,6 @@
             "install-path": "../psr/simple-cache"
         },
         {
-            "name": "requtize/query-builder",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/requtize/query-builder.git",
-                "reference": "cf90413fa7a8abc7c23a796b1995993693e0d6e6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/requtize/query-builder/zipball/cf90413fa7a8abc7c23a796b1995993693e0d6e6",
-                "reference": "cf90413fa7a8abc7c23a796b1995993693e0d6e6",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~5.5 || ^7.0 || ~8.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.9.4",
-                "phpunit/phpunit": "^4.8"
-            },
-            "time": "2021-03-12T06:32:17+00:00",
-            "default-branch": true,
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "Requtize\\QueryBuilder\\": "src/QueryBuilder/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Adam Banaszkiewicz",
-                    "homepage": "http://adambanaszkiewicz.pl",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Fast, simple and dependency-free query builder for PHP.",
-            "homepage": "https://github.com/requtize/query-builder",
-            "keywords": [
-                "database",
-                "query builder",
-                "sql"
-            ],
-            "support": {
-                "issues": "https://github.com/requtize/query-builder/issues",
-                "source": "https://github.com/requtize/query-builder/tree/master"
-            },
-            "install-path": "../requtize/query-builder"
-        },
-        {
             "name": "robmorgan/phinx",
             "version": "0.13.4",
             "version_normalized": "0.13.4.0",

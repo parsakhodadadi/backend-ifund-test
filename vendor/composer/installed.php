@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9f6443db3413ffa7b0616d8b4d8fee9721ec25c7',
+        'reference' => 'eb9fbb8de14037467d15fc7b2d8944350b8bca52',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9f6443db3413ffa7b0616d8b4d8fee9721ec25c7',
+            'reference' => 'eb9fbb8de14037467d15fc7b2d8944350b8bca52',
             'dev_requirement' => false,
         ),
         'bramus/router' => array(
@@ -193,8 +193,8 @@
         'psr/container-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0',
-                1 => '^1.0 || ^2.0',
+                0 => '^1.0 || ^2.0',
+                1 => '1.0',
             ),
         ),
         'psr/log' => array(
@@ -219,17 +219,6 @@
             'install_path' => __DIR__ . '/../psr/simple-cache',
             'aliases' => array(),
             'reference' => '408d5eafb83c57f6365a3ca330ff23aa4a5fa39b',
-            'dev_requirement' => false,
-        ),
-        'requtize/query-builder' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../requtize/query-builder',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
-            'reference' => 'cf90413fa7a8abc7c23a796b1995993693e0d6e6',
             'dev_requirement' => false,
         ),
         'robmorgan/phinx' => array(

@@ -56,11 +56,32 @@ class databaseHelper
         }
     }
 
-    public static function pdoSelect($tableName, $where = 1, $fetchMode = 2)
+    public static function pdoSelect($tableName, $where = [], $fetchMode = 5)
     {
+        $statement = null;
+
         $conn = self::pdoOpen();
-        $query = $conn->prepare('SELECT * FROM ' . $tableName . ' where ' . $where);
-        $query->execute();
+
+        $counter = 0;
+        $count = count($where);
+
+        if (is_array($where) && !empty($where)) {
+            foreach ($where as $field => $value) {
+                $counter ++;
+                if ($count == 1 || $count == $counter) {
+                    $statement .= $field . '=' . "'$value'";
+                } else {
+                    $statement .= $field . '=' . "'$value'" . ' AND ';
+                }
+            }
+
+            $query = $conn->prepare('SELECT * FROM ' . $tableName . ' where ' . $statement);
+            $query->execute();
+        } else {
+            $query = $conn->prepare('SELECT * FROM ' . $tableName);
+            $query->execute();
+        }
+
         return $query->fetchAll($fetchMode);
     }
 
@@ -73,20 +94,10 @@ class databaseHelper
             foreach ($data as $field => $value) {
                 $fields .= $field . ',';
                 $values .= "'$value',";
-                echo $field;
-                echo ' : ';
-                echo $value;
-                echo '<br>';
-                echo '---------';
-                echo '<br>';
             }
 
             $fields = substr($fields, 0, -1);
             $values = substr($values, 0, -1);
-
-            print_r($fields);
-            echo '<br>';
-            print_r($values);
 
             $conn = self::pdoOpen();
 
@@ -101,14 +112,31 @@ class databaseHelper
     public function pdoUpdate($tableName, $data = [], $where = 1)
     {
         $fields = null;
+        $condition = null;
+
+        $counter = 0;
+        $count = count($where);
 
         foreach ($data as $field => $value) {
             $fields .= $field . "='$value',";
         }
 
+        if (is_array($where) && !empty($where)) {
+            foreach ($where as $field => $value) {
+                $counter ++;
+                if ($counter == $count || $counter == 1) {
+                    $condition .= $field . '=' . $value;
+                } else {
+                    $condition .= $field . '=' . $value . ' AND ';
+                }
+            }
+        } else {
+            $condition = 1;
+        }
+
         $fields = substr($fields, 0, -1);
         $conn = self::pdoOpen();
-        $query = $conn->prepare('UPDATE ' . $tableName . ' SET ' . $fields . ' WHERE ' . $where);
+        $query = $conn->prepare('UPDATE ' . $tableName . ' SET ' . $fields . ' WHERE ' . $condition);
         $query->execute();
         return true;
     }

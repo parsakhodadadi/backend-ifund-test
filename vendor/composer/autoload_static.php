@@ -46,10 +46,6 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Config\\' => 25,
         ),
-        'R' => 
-        array (
-            'Requtize\\QueryBuilder\\' => 22,
-        ),
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
@@ -142,10 +138,6 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'Symfony\\Component\\Config\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/config',
-        ),
-        'Requtize\\QueryBuilder\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/requtize/query-builder/src/QueryBuilder',
         ),
         'Psr\\SimpleCache\\' => 
         array (
@@ -258,15 +250,12 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'App\\DesingnPatterns\\Proxy\\Wallet\\Interface\\WalletInterface' => __DIR__ . '/../..' . '/app/DesignPatterns/Proxy/Wallet/Interfaces/WalletInterface.php',
         'App\\DesingnPatterns\\Proxy\\Wallet\\Interface\\WalletProxy' => __DIR__ . '/../..' . '/app/DesignPatterns/Proxy/Wallet/WalletProxy.php',
         'App\\Exception\\QueryBuilderException' => __DIR__ . '/../..' . '/app/exceptions/QueryBuilderException.php',
-        'App\\Middlewares\\AuthorMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/AuthorMiddleware.php',
+        'App\\Middlewares\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/AdminMiddleware.php',
         'App\\Middlewares\\LoginMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/LoginMiddleware.php',
-        'App\\Middlewares\\PostMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/PostMiddleware.php',
-        'App\\Middlewares\\RegisterMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/RegisterMiddleware.php',
-        'App\\Middlewares\\UsersMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/UsersMiddleware.php',
+        'App\\Middlewares\\ManagerMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/ManagerMiddleware.php',
         'App\\Model\\Authors' => __DIR__ . '/../..' . '/app/Models/authors.php',
         'App\\Models\\Books' => __DIR__ . '/../..' . '/app/Models/books.php',
-        'App\\Models\\Categories' => __DIR__ . '/../..' . '/app/Models/Categories.php',
-        'App\\Models\\Menus' => __DIR__ . '/../..' . '/app/Models/menus.php',
+        'App\\Models\\Categories' => __DIR__ . '/../..' . '/app/Models/categories.php',
         'App\\Models\\Posts' => __DIR__ . '/../..' . '/app/Models/posts.php',
         'App\\Models\\Subcategories' => __DIR__ . '/../..' . '/app/Models/subcategories.php',
         'App\\Models\\Users' => __DIR__ . '/../..' . '/app/Models/users.php',
@@ -296,7 +285,6 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'Bramus\\Router\\BramusRouter' => __DIR__ . '/../..' . '/BramusRouter.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Core\\System\\Helpers\\ConfigHelper' => __DIR__ . '/../..' . '/Core/System/Helpers/ConfigHelper.php',
-        'Core\\System\\Helpers\\QueryBuilder' => __DIR__ . '/../..' . '/Core/System/Helpers/QueryBuilder.php',
         'Core\\System\\Helpers\\databaseHelper' => __DIR__ . '/../..' . '/Core/System/Helpers/databaseHelper.php',
         'Core\\System\\Validation' => __DIR__ . '/../..' . '/Core/System/Helpers/Validation.php',
         'Core\\System\\View' => __DIR__ . '/../..' . '/Core/System/Helpers/View.php',

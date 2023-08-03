@@ -8,12 +8,11 @@ use Core\System\Helpers\ConfigHelper;
 
 class LoginMiddleware extends controller
 {
-    private object $authService;
-    private $configHelper;
+    private $authService;
+
     public function __construct()
     {
-        $this->configHelper = new ConfigHelper();
-        $this->authService = LoginAuth::getInstance($this->configHelper::getConfig('login-method'));
+        $this->authService = LoginAuth::getInstance(ConfigHelper::getConfig('login-method'));
     }
 
     public function boot()

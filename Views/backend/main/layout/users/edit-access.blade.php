@@ -33,8 +33,8 @@
                                         <img src="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/images/logo-img.png" width="180" alt="">
                                     </div>
                                     <h4 class="mt-5 font-weight-bold">{{ $lang['edit-access'] }}</h4>
-                                    <form action="{{ route('/admin/user/list/editAccess/') . $user->id }}" method="post">
-                                        <div class="mb-6 mt-5">
+                                    <form action="{{ route('/panel/management/users/editAccess/') . $user->id }}" method="post">
+                                        <div class="mb-6 mt-3">
                                             <label class="user-type">{{ $lang['user_type'] }}</label>
                                             <select name="user_type" id="user-type" class="form-select">
                                                 @if($user->user_type == "user")
@@ -46,24 +46,26 @@
                                                 @endif
                                             </select>
                                         </div>
-                                        <div class="mb-6 mt-5">
-                                            <label class="form-label">{{ $lang['block-status'] }}</label>
+                                        <div class="mb-6 mt-3">
+                                            <label class="form-label">{{ $lang['status'] }}</label>
                                             <select name="blocked" id="user-type" class="form-select">
                                                 @if($user->blocked == "yes")
                                                     <option value="yes" selected="selected">{{ $lang['blocked'] }}</option>
-                                                    <option value="no">--</option>
+                                                    <option value="no">{{ $lang['active'] }}</option>
                                                 @else
-                                                    <option value="no" selected="selected">--</option>
+                                                    <option value="no" selected="selected">{{ $lang['active'] }}</option>
                                                     <option value="yes">{{ $lang['blocked'] }}</option>
                                                 @endif
                                             </select>
                                         </div>
+                                        <br>
                                         <div class="d-grid gap-2">
                                             <input type="submit" class="btn btn-primary" value='{{ $lang['apply'] }}' />
                                         </div>
                                         @if(!empty($successMessage))
-                                            <div class="alert-success">{{ $successMessage }}</div>
+                                            <div class="form-control alert-success">{{ $successMessage }}</div>
                                         @endif
+                                        <a href="{{ route('/panel/management/users') }}">{{ $lang['back-to-users-list'] }}</a>
                                     </form>
                                 </div>
                             </div>

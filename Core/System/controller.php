@@ -13,6 +13,7 @@
 namespace Core\System;
 
 use App\Exception\QueryBuilderException;
+use App\Models\Categories;
 use Core\System;
 use App\Middlewares\LoginMiddleware;
 use http\Env\Request;
@@ -62,6 +63,14 @@ class controller
     public function queryBuilderException()
     {
         return new QueryBuilderException();
+    }
+
+    public function loadNavigation()
+    {
+        $categories = loadModel(Categories::class);
+         return $this->view()->blade()->render('backend/main/layout/navigation', [
+            'categories' => $categories->get(),
+        ]);
     }
 
 //    static public function view($name, $data = null)

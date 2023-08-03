@@ -2,38 +2,29 @@
 
 namespace App\Models;
 
-use Core\System\Helpers\databaseHelper;
 use Exception;
-use Core\System\Helpers\QueryBuilder;
-use App\Exception\QueryBuilderException;
+use Core\System\Helpers\databaseHelper;
 
 class Posts
 {
-    use QueryBuilder;
-
     private $db;
     private $table = 'posts';
-    private $fillableStatus = true;
-    private $fillable = ['id', 'title', 'description', 'photo', 'status', 'user_id', 'date', 'time', 'edited'];
 
     public function __construct()
     {
-        $this->db = $this->queryBuilder();
-        if (!($this->fillableStatus)) {
-            $this->fillable = ['*'];
-        }
+        $this->db = new databaseHelper();
     }
 
     public function get($conditions = [])
     {
         try {
-            $db = $this->db->from($this->table)->select($this->fillable);
+            $db = $this->db::pdoSelect($this->table);
             if (!empty($conditions)) {
                 foreach ($conditions as $element => $value) {
-                    $db = $db->where($element, $value);
+                    $db = $this->db::pdoSelect($this->table, $conditions);
                 }
             }
-            return $db->all();
+            return $db;
         } catch (Exception $exception) {
             echo $exception->getMessage();
             exit();
@@ -42,27 +33,25 @@ class Posts
 
     public function insert(array $data = [])
     {
-        $exception = new QueryBuilderException();
         try {
-            $exception->handle($data, $this->db->from($this->table));
+            $this->db::pdoInsert($this->table, $data);
         } catch (Exception $e) {
             return $e->getCode();
         }
     }
 
-    public function update(int $where, array $data = [])
+    public function update(int $id, array $data = [])
     {
-        $db = new databaseHelper();
-        if ($db->pdoUpdate($this->table, $data, 'id = ' . $where)) {
+        if ($this->db->pdoUpdate($this->table, $data, 'id = ' . $id)) {
             return true;
         }
         return false;
     }
 
-    public function delete(int $where)
+    public function delete($id)
     {
         try {
-            $this->db->from($this->table)->where('id', $where)->delete();
+            $this->db->pdoDelete($this->table, "id = $id");
         } catch (Exception $e) {
             return $e->getCode();
         }

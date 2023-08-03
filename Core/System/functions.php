@@ -4,7 +4,7 @@ use Helper\Directives;
 use Helper\MyClass;
 use Jenssegers\Blade\Blade;
 use Core\System\Helpers\ConfigHelper;
-use App\Controllers\RegisterDataController;
+use App\Models\Categories;
 
 use function Helper\globalfn1;
 
@@ -102,7 +102,9 @@ function redirect($route = null)
     global $configs;
     $configHelper = new ConfigHelper();
     $configHelper::checkFileExist("Configs/config.php");
+    header_remove();
     header('location:' . $configs['base-url'] . $route);
+
 }
 
 function request()
@@ -143,5 +145,3 @@ function displayError($errors = [], $element = null)
         }
     }
 }
-
-

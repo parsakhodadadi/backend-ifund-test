@@ -4,13 +4,9 @@ namespace App\Controllers;
 
 use App\Models\Users;
 use App\Services\User\LoginAuth;
-use App\Services\User\DesignPatterns\Strategy\Methods\Login\EmailLogin;
-use App\Services\User\DesignPatterns\Strategy\Methods\Login\OtpLogin;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
-use Core\System\Helpers\databaseHelper;
 use App\Middlewares\LoginMiddleware;
-use Couchbase\User;
 
 class LoginController extends controller
 {
@@ -18,7 +14,7 @@ class LoginController extends controller
     private object $authService;
     private $lang;
     private $blade;
-    private $model;
+    private $users;
     private $configHelper;
     private $errorMessage;
 
@@ -27,7 +23,7 @@ class LoginController extends controller
         $this->configHelper = new ConfigHelper();
         $this->authService = LoginAuth::getInstance($this->configHelper::getConfig('login-method'));
         $this->blade = blade();
-        $this->model = new users();
+        $this->users = loadModel(Users::class);
         $lang = $this->configHelper::getConfig('default-language');
         $this->lang = loadLang($lang, 'login');
     }
@@ -42,7 +38,7 @@ class LoginController extends controller
                 if (!empty($request)) {
                     die(json_encode(['code' => 200, 'message' => 'success', 'status' => true]));
                 } else {
-                    redirect('/admin');
+                    redirect('/panel');
                 }
             }
 
@@ -75,9 +71,7 @@ class LoginController extends controller
 
                 $password = $request['password'];
                 unset($request['password']);
-
-                $users = loadModel(Users::class);
-                $user = current($users->get($request));
+                $user = current($this->users->get($request));
 
                 if (!password_verify($password, $user->password)) {
                     $errorMessage = $this->lang['wrong-credential'];
@@ -89,7 +83,7 @@ class LoginController extends controller
                     ]));
                 }
 
-                if (empty($users)) {
+                if (empty($this->users)) {
                     if ($this->security()->attempt()) {
                         $this->event()->blockUserPerTime(15);
                         if (!$this->event()->decayUserPerTime('attempt')) {
@@ -104,14 +98,14 @@ class LoginController extends controller
                     }
                 }
 
-                if (is_int($users)) {
-                    die(self::view()->blade()->render("backend/errors/$users"));
+                if (is_int($this->users)) {
+                    die(self::view()->blade()->render("backend/errors/$this->users"));
                 } else {
                     $_SESSION['USERID'] = $user->id;
                     echo json_encode(['code' => 200, 'message' => 'success', 'status' => true]);
                 }
 
-                redirect('/admin');
+                redirect('/panel');
             } else {
                 echo self::view()->blade()->render("backend/$loginViewName", [
                     'errors' => [],
@@ -135,9 +129,7 @@ class LoginController extends controller
 
     public function logout()
     {
-//        if(empty(session_id()) && !headers_sent()){
-            session_start();
-//        }
+        session_start();
         if (isset($_SESSION['USERID'])) {
             unset($_SESSION['USERID']);
             redirect('/login');

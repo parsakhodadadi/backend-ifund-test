@@ -14,8 +14,6 @@ return [
     'user_type' => 'نوع کاربر',
     'user' => 'کاربر',
     'admin' => 'ادمین',
-    'block-status' => 'مسدودی',
-    'blocked' => 'مسدود',
     'apply' => 'اعمال',
     'change-pass-success' => 'رمز عبور شما با موفقیت به روز رسانی شد',
     'set-new-pass' => 'تعریف رمز عبور جدید',
@@ -44,6 +42,11 @@ return [
     'edit-data' => 'ذخیره اطلاعات',
     'enter-first-name' => 'نام جدید خود را وارد کنید',
     'enter-last-name' => 'نام خانوادگی جدید خود را وارد کنید',
-    'edit-profile-success' => 'پروفایل شما با موفقیت به روز رسانی شد'
-
+    'edit-profile-success' => 'پروفایل شما با موفقیت به روز رسانی شد',
+    'aaron-magazine' => 'مجله ارون',
+    'users-table' => 'جدول کاربران',
+    'status' => 'وضعیت',
+    'active' => 'فعال',
+    'blocked' => 'مسدود',
+    'back-to-users-list' => 'بازگشت به لیست کاربران',
 ];

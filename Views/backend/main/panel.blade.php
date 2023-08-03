@@ -16,7 +16,7 @@
     <div class="sidebar-wrapper" data-simplebar="true">
         {{ $view->make('Backend/main/layout/sidebar-header') }}
         <!--navigation-->
-        {{ $view->make('Backend/main/layout/navigation') }}
+        {!! $navigation !!}
         <!--end navigation-->
     </div>
     <!--end sidebar wrapper -->

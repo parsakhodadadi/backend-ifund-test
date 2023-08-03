@@ -2,30 +2,22 @@
 
 namespace App\Controllers;
 
-use App\Middlewares\UsersMiddleware;
+use App\Middlewares\AdminMiddleware;
+use App\Middlewares\ManagerMiddleware;
 use App\Models\Users;
 use App\Request\ChangePasswordRequest;
 use App\Request\EditProfileRequest;
-use App\Request\RegisterRequest;
 use App\Services\User\EditProfileService;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
-use Core\System\Helpers\databaseHelper;
-use Core\System\Helpers\QueryBuilder;
 
 class UserController extends controller
 {
-    use QueryBuilder;
-
-    private $configHelper;
     private $blade;
     private $lang;
     private $users;
-    private $user_id;
     private $currentUser;
     private $request;
-    private $validationErrors = null;
-    private $queryBuilder;
     private $editProfileService;
 
     public function __construct()
@@ -35,26 +27,25 @@ class UserController extends controller
         }
 
         $this->request = request();
-        $this->configHelper = new ConfigHelper();
         $this->blade = blade();
-        $this->queryBuilder = $this->queryBuilder();
         $this->editProfileService = EditProfileService::getInstance(ConfigHelper::getConfig($_SESSION['EDIT_PROFILE_METHOD']));
         $this->users = loadModel(Users::class);
         $this->currentUser = current($this->users->get(['id' => $_SESSION['USERID']]));
-        $lang = $this->configHelper::getConfig('default-language');
+        $lang = ConfigHelper::getConfig('default-language');
         $this->lang = loadLang($lang, 'users');
     }
 
     public function show()
     {
         $usersList = $this->users->get();
-        $view = $this->blade->render('backend/main/layout/users/users-list', [
+        $view = $this->blade->render('backend/main/layout/users/list', [
             'users' => $usersList,
             'lang' => $this->lang,
         ]);
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
             'content' => $view,
+            'navigation' => $this->loadNavigation(),
         ]);
     }
 
@@ -66,6 +57,7 @@ class UserController extends controller
         if (!empty($this->request)) {
             $updateProcess = $this->users->update($userToEdit->id, $this->request);
             if ($updateProcess) {
+                $userToEdit = current($this->users->get(['id' => $itemId]));
                 $successMessage = __('users.edit-access-success');
             } else {
                 $errorMessage = 'error';
@@ -115,6 +107,7 @@ class UserController extends controller
             echo $this->blade->render('backend/main/panel', [
                 'view' => $this->blade,
                 'content' => $view,
+                'navigation' => $this->loadNavigation(),
             ]);
         } elseif ($editProfileView == 'email-verification') {
             $verificationCode = rand(100000, 999999);
@@ -146,7 +139,6 @@ class UserController extends controller
     {
         $successMessage = null;
         $errorMessage = null;
-        $errors = null;
         $errors = $this->request(ChangePasswordRequest::class);
 
         if (!empty($this->request) && empty($errors)) {
@@ -178,17 +170,22 @@ class UserController extends controller
 
     public function delete(int $itemId)
     {
-        $this->errorMessage = null;
-        $this->errorMessage = $this->users->delete($itemId);
-        if (!empty($this->errorMessage)) {
+        $errorMessage = $this->users->delete($itemId);
+        if (!empty($errorMessage)) {
             exit('error in deleting');
         }
-        redirect('/admin/user/list');
+        redirect('/panel/management/users');
     }
 
     public function checkAdmin()
     {
-        $usersMiddleware = new UsersMiddleware();
-        $usersMiddleware->boot();
+        $adminMiddleware = new AdminMiddleware();
+        $adminMiddleware->boot();
+    }
+
+    public function checkFullAdmin()
+    {
+        $managerMiddleware = new ManagerMiddleware();
+        $managerMiddleware->boot();
     }
 }

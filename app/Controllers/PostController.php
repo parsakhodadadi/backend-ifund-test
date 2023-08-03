@@ -2,22 +2,17 @@
 
 namespace App\Controllers;
 
-use App\Middlewares\PostMiddleware;
 use App\Models\Posts;
 use App\Models\Users;
 use App\Request\PostRequest;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
-use Core\System\Helpers\QueryBuilder;
 
 class PostController extends controller
 {
-    use QueryBuilder;
-
     private $request;
     private $lang;
     private object $blade;
-    private $queryBuilder;
     private $posts;
     private $users;
     private $userId;
@@ -27,14 +22,12 @@ class PostController extends controller
     {
         $this->request = request();
         $this->blade = $this->view()->blade();
-        $this->queryBuilder = $this->queryBuilder();
         $lang = ConfigHelper::getConfig('default-language');
         $this->lang = loadLang($lang, 'posts');
         $this->userId = $_SESSION['USERID'];
         $this->users = loadModel(Users::class);
         $this->currentUser = current($this->users->get(['id' => $this->userId]));
         $this->posts = loadModel(Posts::class);
-
     }
 
     public function create()
@@ -83,25 +76,26 @@ class PostController extends controller
                 }
             }
         }
-        $view = $this->blade->render('backend/main/layout/posts/add-post', [
+        $view = $this->blade->render('backend/main/layout/posts/create', [
             'lang' => $this->lang,
             'errors' => $errors,
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,
             'posts' => $this->posts,
-            'action' => '/admin/post/create',
+            'action' => '/panel/admin/posts/create',
             'data' => [],
-            'method' => 'create'
+            'method' => 'create',
         ]);
 
 
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
             'content' => $view,
+            'navigation' => $this->loadNavigation(),
         ]);
     }
 
-    public function editPost(int $itemId)
+    public function edit(int $itemId)
     {
         $errorMessage = null;
         $successMessage = null;
@@ -159,24 +153,25 @@ class PostController extends controller
             }
         }
 
-        $view = $this->blade->render('backend/main/layout/posts/add-post', [
+        $view = $this->blade->render('backend/main/layout/posts/create', [
             'lang' => $this->lang,
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,
-            'action' => '/admin/posts/edit/' . $itemId,
+            'action' => '/panel/admin/posts/edit/' . $itemId,
             'data' => $postToEditData,
             'method' => 'update',
         ]);
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
-            'content' => $view
+            'content' => $view,
+            'navigation' => $this->loadNavigation(),
         ]);
     }
 
-    public function editPostsStatus()
+    public function show()
     {
         $postsToEdit = $this->posts->get();
-        $view = $this->blade->render('backend/main/layout/posts/posts-list', [
+        $view = $this->blade->render('backend/main/layout/posts/list', [
             'lang' => $this->lang,
             'posts' => $postsToEdit,
             'users' => $this->users,
@@ -186,6 +181,7 @@ class PostController extends controller
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
             'content' => $view,
+            'navigation' => $this->loadNavigation(),
         ]);
     }
 
@@ -194,7 +190,7 @@ class PostController extends controller
         if (!$this->posts->update($itemId, ['status' => 'approved'])) {
             exit('error');
         }
-        redirect('/admin/posts/editPostsStatus');
+        redirect('/panel/management/posts');
     }
 
     public function delete(int $itemId)
@@ -203,17 +199,7 @@ class PostController extends controller
         if (!empty($errorMessage)) {
             exit('errorMessage');
         }
-        redirect('/admin/posts/editPostsStatus');
-    }
-
-    public function checkAdmin()
-    {
-        $postMiddleware = new PostMiddleware();
-        $postMiddleware->boot();
-    }
-
-    public function uploadFile() {
-
+        redirect('/panel/management/posts');
     }
 
 }

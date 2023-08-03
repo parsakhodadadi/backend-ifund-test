@@ -2,19 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Middlewares\AuthorMiddleware;
 use App\Model\Authors;
-use App\Models\Posts;
 use App\Models\Users;
 use App\Request\AuthorRequest;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
-use Core\System\Helpers\QueryBuilder;
 
 class AuthorController extends controller
 {
-    use QueryBuilder;
-
     private $request;
     private $authors;
     private object $blade;
@@ -35,7 +30,7 @@ class AuthorController extends controller
         $this->authors = loadModel(Authors::class);
     }
 
-    public function addAuthor()
+    public function create()
     {
         $errorMessage = null;
         $successMessage = null;
@@ -76,22 +71,23 @@ class AuthorController extends controller
             }
         }
 
-        $view = $this->blade->render('backend/main/layout/authors/add-edit-author', [
+        $view = $this->blade->render('backend/main/layout/authors/create', [
             'lang' => $this->lang,
             'errorMessage' => $errorMessage,
             'successMessage' => $successMessage,
-            'action' => '/admin/authors/add-new',
-            'method' => 'insert',
+            'action' => '/panel/admin/authors/create',
+            'method' => 'create',
             'errors' => $errors,
         ]);
 
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
             'content' => $view,
+            'navigation' => $this->loadNavigation(),
         ]);
     }
 
-    public function editAuthorsStatus()
+    public function show()
     {
         $authorsToShow = $this->authors->get();
         $view = $this->blade->render('backend/main/layout/authors/list', [
@@ -104,6 +100,7 @@ class AuthorController extends controller
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
             'content' => $view,
+            'navigation' => $this->loadNavigation(),
         ]);
     }
 
@@ -112,7 +109,7 @@ class AuthorController extends controller
         $authorToApprove = current($this->authors->get(['id' => $itemId]));
         $approveProcess = $this->authors->update($authorToApprove->id, ['status' => 'approved']);
         if ($approveProcess) {
-            redirect('/admin/authors/editAuthorsStatus');
+            redirect('/panel/management/authors');
         } else {
             exit('error');
         }
@@ -121,34 +118,18 @@ class AuthorController extends controller
     public function delete(int $itemId)
     {
         if ($this->authors->delete($itemId)) {
-            redirect('/admin/authors/list');
+            redirect('/panel/management/authors');
         } else {
             exit('error');
         }
     }
 
-    public function checkFullAdmin()
-    {
-        $authorMiddleware = new AuthorMiddleware();
-        $authorMiddleware->boot(['admin', 'user']);
-    }
-
-    public function checkAdmin()
-    {
-        $authorMiddleware = new AuthorMiddleware();
-        $authorMiddleware->boot(['user']);
-    }
-
-    public function editAuthor(int $itemId)
+    public function edit(int $itemId)
     {
         $errorMessage = null;
         $successMessage = null;
         $errors = $this->request(AuthorRequest::class);
         $authorToEdit = current($this->authors->get(['id' => $itemId]));
-
-        if (!empty($this->request)) {
-            exit(print_r($this->request));
-        }
 
         if (!empty($this->request) && empty($errorMessage)) {
             if ($this->currentUser->user_type == 'fulladmin') {
@@ -185,11 +166,11 @@ class AuthorController extends controller
             }
         }
 
-        $view = $this->blade->render('backend/main/layout/authors/add-edit-author', [
+        $view = $this->blade->render('backend/main/layout/authors/create', [
             'lang' => $this->lang,
             'errorMessage' => $errorMessage,
             'successMessage' => $successMessage,
-            'action' => '/admin/authors/edit-author/' . $itemId,
+            'action' => '/panel/management/authors/edit/' . $itemId,
             'data' => $authorToEdit,
             'method' => 'update',
             'error' => $errors,
@@ -198,7 +179,7 @@ class AuthorController extends controller
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
             'content' => $view,
+            'navigation' => $this->loadNavigation(),
         ]);
     }
-
 }

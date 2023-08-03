@@ -6,11 +6,9 @@ use App\Models\Subcategories;
 use App\Request\CategoryRequest;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
-use Core\System\Helpers\QueryBuilder;
 
 class SubcategoryController extends controller
 {
-    use QueryBuilder;
 
     private object $blade;
     private $userId;
@@ -42,17 +40,47 @@ class SubcategoryController extends controller
             }
         }
 
-        $view = $this->blade->render('backend/main/layout/category/create', [
+        $view = $this->blade->render('backend/main/layout/categories/create', [
             'lang' => $this->lang,
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,
-            'action' => '/admin/category/list/add-sub/'. $categoryId,
+            'action' => '/panel/admin/categories/create/'. $categoryId,
             'errors' => $errors,
-            'type' => 'add_sub_category',
+            'method' => 'create_sub',
         ]);
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
             'content' => $view,
+            'navigation' => $this->loadNavigation(),
+        ]);
+    }
+
+    public function edit(int $subcategoryId)
+    {
+        $successMessage = null;
+        $errorMessage = null;
+        $errors = $this->request(CategoryRequest::class);
+        if (!empty($this->request) && empty($errors)) {
+            $updateProcess = $this->subCategories->update($subcategoryId, $this->request);
+            if ($updateProcess) {
+                $successMessage = __('category.sub-cat-upd-suc');
+            } else {
+                exit('error saving data to database');
+            }
+        }
+
+        $view = $this->blade->render('backend/main/layout/categories/create', [
+            'lang' => $this->lang,
+            'successMessage' => $successMessage,
+            'errorMessage' => $errorMessage,
+            'action' => '/panel/admin/categories/create/'. $subcategoryId,
+            'errors' => $errors,
+            'method' => 'edit_sub',
+        ]);
+        echo $this->blade->render('backend/main/panel', [
+            'view' => $this->blade,
+            'content' => $view,
+            'navigation' => $this->loadNavigation(),
         ]);
     }
 }
