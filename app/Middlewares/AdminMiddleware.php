@@ -18,7 +18,7 @@ class AdminMiddleware
     public function boot()
     {
         if (isset($_SESSION['USERID'])) {
-            if (current($this->users->get(['id' => $_SESSION['USERID']]))->usertype == 'user') {
+            if (current($this->users->get(['id' => $_SESSION['USERID']]))->user_type == 'user') {
                 redirect('/panel');
             }
         }

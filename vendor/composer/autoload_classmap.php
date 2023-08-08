@@ -15,6 +15,7 @@ return array(
     'App\\Controllers\\LoginController' => $baseDir . '/app/Controllers/LoginController.php',
     'App\\Controllers\\PanelController' => $baseDir . '/app/Controllers/PanelController.php',
     'App\\Controllers\\PostController' => $baseDir . '/app/Controllers/PostController.php',
+    'App\\Controllers\\ProfileController' => $baseDir . '/app/Controllers/ProfileController.php',
     'App\\Controllers\\RegisterController' => $baseDir . '/app/Controllers/RegisterController.php',
     'App\\Controllers\\SubcategoryController' => $baseDir . '/app/Controllers/SubcategoryController.php',
     'App\\Controllers\\UserController' => $baseDir . '/app/Controllers/UserController.php',

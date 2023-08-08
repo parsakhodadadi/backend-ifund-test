@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'user-profile' => 'پروفایل کاربر',
+    'row' => 'ردیف',
+    'first-name' => 'نام',
+    'last-name' => 'نام خانوادگی',
+    'email-address' => 'آدرس ایمیل',
+    'phone-number' => 'شماره تماس',
+    'mobile-number' => 'موبایل',
+    'profile-photo' => 'عکس پروفایل',
+    'new-profile-photo' => 'بارگذاری پروفایل جدید',
+    'user-type' => 'نوع کاربر',
+    'settings' => 'تنظیمات',
+    'email' => 'ایمیل',
+    'first_name-required' => 'لطفا نام را وارد کنید',
+    'last_name-required' => 'لطفا نام خانوادگی را وارد کنید',
+    'mobile_number-required' => 'لطفا شماره موبایل را وارد کنید',
+    'mobile_number-mobile' => 'شماره موبایل معتبر نمی باشد',
+    'files-photo' => 'فایل آپلود شده فقط باید از نوع عکس باشد',
+    'website-user' => 'کاربر سایت',
+    'website-admin' => 'ادمین سایت',
+    'website-full-admin' => 'مدیر کل سایت',
+    'submit-changes' => 'ذخیره تغییرات',
+];

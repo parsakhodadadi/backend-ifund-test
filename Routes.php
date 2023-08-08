@@ -39,6 +39,9 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/emailVerification', "RegisterController@emailVerification");
     $router->post('/emailVerification', "RegisterController@emailVerification");
 
+    $router->get('/panel/edit-profile', "ProfileController@editProfile");
+    $router->post('/panel/edit-profile', "ProfileController@editProfile");
+
     $router->get('/panel/admin/categories/create', "CategoryController@create");
     $router->post('/panel/admin/categories/create', 'CategoryController@create');
 

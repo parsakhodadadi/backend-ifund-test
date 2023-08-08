@@ -80,7 +80,7 @@
                                         </label>
                                         <input class="form-control" value="@if(!empty($data)) @if(!empty($data->photo)) {{ $data->photo }} @endif @endif"
                                                id="image-uploadify" name="photo" type="file"
-                                               accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf"
+                                               accept="image/*"
                                                multiple>
                                         @if($method == 'update')
                                             @if(!empty($data->photo))

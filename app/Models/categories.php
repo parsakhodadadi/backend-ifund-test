@@ -38,9 +38,9 @@ class Categories
         }
     }
 
-    public function update(int $id, array $data = [])
+    public function update($where = [], array $data = [])
     {
-        if ($this->db->pdoUpdate($this->table, $data, 'id = ' . $id)) {
+        if ($this->db->pdoUpdate($this->table, $data, $where)) {
             return true;
         }
         return false;

@@ -3,13 +3,13 @@
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">{{ $lang['user-profile'] }}</div>
+            <div class="breadcrumb-title pe-3"><?php echo e($lang['user-profile']); ?></div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $lang['user-profile'] }}</li>
+                        <li class="breadcrumb-item active" aria-current="page"><?php echo e($lang['user-profile']); ?></li>
                     </ol>
                 </nav>
             </div>
@@ -39,18 +39,21 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="{{ route('/') . $user->photo }}" alt="Admin"
+                                    <img src="<?php echo e(route('/') . $user->photo); ?>" alt="Admin"
                                          class="rounded-circle p-1 bg-primary" width="110">
                                     <div class="mt-3">
-                                        <h4>{{ $user->first_name }} {{ $user->last_name }}</h4>
+                                        <h4><?php echo e($user->first_name); ?> <?php echo e($user->last_name); ?></h4>
                                         <p class="text-secondary mb-1">
-                                            @if($user->user_type == 'user')
-                                                {{ $lang['website-user'] }}
-                                            @elseif($user->user_type == 'admin')
-                                                {{ $lang['website-admin'] }}
-                                            @else
-                                                {{ $lang['website-full-admin'] }}
-                                            @endif
+                                            <?php if($user->user_type == 'user'): ?>
+                                                <?php echo e($lang['website-user']); ?>
+
+                                            <?php elseif($user->user_type == 'admin'): ?>
+                                                <?php echo e($lang['website-admin']); ?>
+
+                                            <?php else: ?>
+                                                <?php echo e($lang['website-full-admin']); ?>
+
+                                            <?php endif; ?>
                                         </p>
                                         <p class="text-muted font-size-sm">ایران، تهران</p>
                                         <button class="btn btn-primary">دنبال کردن</button>
@@ -149,69 +152,72 @@
                     <div class="col-lg-8">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('/panel/edit-profile') }}" method="post" enctype="multipart/form-data">
+                                <form action="<?php echo e(route('/panel/edit-profile')); ?>" method="post" enctype="multipart/form-data">
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">{{ $lang['first-name'] }}</h6>
+                                            <h6 class="mb-0"><?php echo e($lang['first-name']); ?></h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" name="first_name" value="{{ $user->first_name }}"/>
+                                            <input type="text" class="form-control" name="first_name" value="<?php echo e($user->first_name); ?>"/>
                                         </div>
                                         <div class="col-sm-3"></div>
                                         <div class="col-sm-9">
-                                            @if(!empty($errors['first_name']))
-                                                @if(!empty($errors['first_name']['required']))
+                                            <?php if(!empty($errors['first_name'])): ?>
+                                                <?php if(!empty($errors['first_name']['required'])): ?>
                                                     <div class="form-select alert-danger">
-                                                        {{ $errors['first_name']['required'] }}
+                                                        <?php echo e($errors['first_name']['required']); ?>
+
                                                     </div>
-                                                @endif
-                                            @endif
+                                                <?php endif; ?>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">{{ $lang['last-name'] }}</h6>
+                                            <h6 class="mb-0"><?php echo e($lang['last-name']); ?></h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" name="last_name" value="{{ $user->last_name }}"/>
+                                            <input type="text" class="form-control" name="last_name" value="<?php echo e($user->last_name); ?>"/>
                                         </div>
                                         <div class="col-sm-3"></div>
                                         <div class="col-sm-9">
-                                            @if(!empty($errors['last_name']))
-                                                @if(!empty($errors['last_name']['required']))
+                                            <?php if(!empty($errors['last_name'])): ?>
+                                                <?php if(!empty($errors['last_name']['required'])): ?>
                                                     <div class="form-select alert-danger">
-                                                        {{ $errors['last_name']['required'] }}
+                                                        <?php echo e($errors['last_name']['required']); ?>
+
                                                     </div>
-                                                @endif
-                                            @endif
+                                                <?php endif; ?>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">{{ $lang['email'] }}</h6>
+                                            <h6 class="mb-0"><?php echo e($lang['email']); ?></h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <label type="text" class="form-control">{{ $user->email }}</label>
+                                            <label type="text" class="form-control"><?php echo e($user->email); ?></label>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">{{ $lang['mobile-number'] }}</h6>
+                                            <h6 class="mb-0"><?php echo e($lang['mobile-number']); ?></h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
-                                            <input type="text" class="form-control" name="mobile_number" value="{{ $user->mobile_number }}"/>
+                                            <input type="text" class="form-control" name="mobile_number" value="<?php echo e($user->mobile_number); ?>"/>
                                         </div>
-                                        @if(!empty($errors['mobile_number']))
-                                            @if(!empty($errors['mobile_number']['mobile']))
+                                        <?php if(!empty($errors['mobile_number'])): ?>
+                                            <?php if(!empty($errors['mobile_number']['mobile'])): ?>
                                                 <div class="form-select alert-danger">
-                                                    {{ $errors['mobile']['mobile'] }}
+                                                    <?php echo e($errors['mobile']['mobile']); ?>
+
                                                 </div>
-                                            @endif
-                                        @endif
+                                            <?php endif; ?>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-sm-3">
-                                            <h6 class="mb-0">{{ $lang['new-profile-photo'] }}</h6>
+                                            <h6 class="mb-0"><?php echo e($lang['new-profile-photo']); ?></h6>
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input class="form-control"
@@ -219,28 +225,30 @@
                                                    accept="image/*"
                                                    multiple>
                                         </div>
-                                        @if(!empty($errors['files']))
-                                            @if(!empty($errors['files']['photo']))
+                                        <?php if(!empty($errors['files'])): ?>
+                                            <?php if(!empty($errors['files']['photo'])): ?>
                                                 <div class="form-select alert-danger">
-                                                    {{ $errors['files']['photo'] }}
+                                                    <?php echo e($errors['files']['photo']); ?>
+
                                                 </div>
-                                            @endif
-                                        @endif
+                                            <?php endif; ?>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-3"></div>
                                         <div class="col-sm-9 text-secondary">
                                             <input type="submit" class="btn btn-primary px-4"
-                                                   value="{{ $lang['submit-changes'] }}"/>
+                                                   value="<?php echo e($lang['submit-changes']); ?>"/>
                                         </div>
                                     </div>
                                     <br>
                                     <div class="row">
-                                        @if(!empty($successMessage))
+                                        <?php if(!empty($successMessage)): ?>
                                             <div class="form-control alert-success">
-                                                {{ $successMessage }}
+                                                <?php echo e($successMessage); ?>
+
                                             </div>
-                                        @endif
+                                        <?php endif; ?>
                                     </div>
                                 </form>
                             </div>
@@ -301,4 +309,4 @@
 <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
 <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
 <!--app JS-->
-<script src="assets/js/app.js"></script>
+<script src="assets/js/app.js"></script><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/backend/main/layout/users/edit-profile.blade.php ENDPATH**/ ?>

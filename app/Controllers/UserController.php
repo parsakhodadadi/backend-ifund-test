@@ -22,10 +22,6 @@ class UserController extends controller
 
     public function __construct()
     {
-        if (!isset($_SESSION['EDIT_PROFILE_METHOD'])) {
-            $_SESSION['EDIT_PROFILE_METHOD'] = 'edit-profile';
-        }
-
         $this->request = request();
         $this->blade = blade();
         $this->editProfileService = EditProfileService::getInstance(ConfigHelper::getConfig($_SESSION['EDIT_PROFILE_METHOD']));
@@ -46,6 +42,7 @@ class UserController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 
@@ -72,69 +69,6 @@ class UserController extends controller
         ]);
     }
 
-    public function editProfile()
-    {
-        $successMessage = null;
-        $errorMessage = null;
-        $errors = null;
-        $editProfileView = $this->editProfileService->method()->getViewName();
-        if ($editProfileView == 'edit-profile') {
-            $errors = $this->request(EditProfileRequest::class);
-            if (!empty($this->request) && empty($errors)) {
-                if ($this->request['email'] != $this->currentUser->email) {
-                    $_SESSION['EDIT_PROFILE_METHOD'] = 'email-verification-edit-prof';
-                    $_SESSION['EDIT_PROFILE_DATA'] = $this->request;
-                    redirect('/admin/editProfile');
-                } else {
-                    $updateProcess = $this->users->update($this->currentUser->id, $this->request);
-                    if ($updateProcess) {
-                        $successMessage = __('users.edit-profile-success');
-                        $this->currentUser = current($this->users->get(['id' => $this->currentUser->id]));
-                    } else {
-                        $errorMessage = 'error';
-                    }
-                }
-            }
-
-            $view = $this->blade->render('backend/main/layout/users/edit-profile', [
-                'errors' => $errors,
-                'lang' => $this->lang,
-                'successMessage' => $successMessage,
-                'errorMessage' => $errorMessage,
-                'user' => $this->currentUser
-            ]);
-
-            echo $this->blade->render('backend/main/panel', [
-                'view' => $this->blade,
-                'content' => $view,
-                'navigation' => $this->loadNavigation(),
-            ]);
-        } elseif ($editProfileView == 'email-verification') {
-            $verificationCode = rand(100000, 999999);
-            if (!empty($this->request)) {
-                $editProfileData = $_SESSION['EDIT_PROFILE_DATA'];
-                unset($_SESSION['EDIT_PROFILE_DATA']);
-//                if ($this->request['verification-code'] == $verificationCode) {
-                $updateProcess = $this->users->update($this->currentUser->id, $editProfileData);
-                if ($updateProcess) {
-                    $successMessage = __('users.edit-profile-success');
-                    $_SESSION['EDIT_PROFILE_METHOD'] = 'edit-profile';
-//                    $this->currentUser = current($this->users->get(['id' => $this->currentUser->id]));
-                } else {
-                    $errorMessage = 'error';
-                }
-//                }
-                $_SESSION['EDIT_PROFILE_METHOD'] = 'edit-profile';
-            }
-            echo $this->blade->render('backend/email-verification', [
-                'lang' => loadLang(ConfigHelper::getConfig('default-language'), 'register'),
-                'action' => 'admin/editProfile',
-                'successMessage' => $successMessage,
-                'errorMessage' => $errorMessage,
-            ]);
-        }
-    }
-
     public function changePassword()
     {
         $successMessage = null;
@@ -145,7 +79,7 @@ class UserController extends controller
             if (password_verify($this->request['password'], $this->currentUser->password)) {
                 if ($this->request['new-pass'] == $this->request['rep-new-pass']) {
                     $this->request['new-pass'] = password_hash($this->request['new-pass'], PASSWORD_DEFAULT);
-                    $editPassProcess = $this->users->update($this->currentUser->id,
+                    $editPassProcess = $this->users->update(['id' => $this->currentUser->id],
                         ['password' => $this->request['new-pass']]);
                     if ($editPassProcess) {
                         $successMessage = __('users.change-pass-success');

@@ -11,7 +11,7 @@ class PostRequest extends Validation
         return [
             'title' => 'required',
             'description' => 'required',
-            'files' => 'photo'
+            'files' => 'photo',
         ];
     }
 

@@ -14,6 +14,7 @@ namespace Core\System;
 
 use App\Exception\QueryBuilderException;
 use App\Models\Categories;
+use App\Models\Users;
 use Core\System;
 use App\Middlewares\LoginMiddleware;
 use http\Env\Request;
@@ -71,6 +72,23 @@ class controller
          return $this->view()->blade()->render('backend/main/layout/navigation', [
             'categories' => $categories->get(),
         ]);
+    }
+
+    public function loadHeader()
+    {
+        $users = loadModel(Users::class);
+        $currentUser = current($users->get(['id' => $_SESSION['USERID']]));
+        return $this->view()->blade()->render('backend/main/layout/header', [
+            'user' => $currentUser,
+        ]);
+    }
+
+    public function uploadPhoto($tmpFile, $fileName)
+    {
+        if (!move_uploaded_file($tmpFile, $fileName)) {
+            return false;
+        }
+        return true;
     }
 
 //    static public function view($name, $data = null)

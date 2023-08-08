@@ -92,6 +92,7 @@ class PostController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 
@@ -144,7 +145,7 @@ class PostController extends controller
                 $this->request['date'] = date("Y/m/d");
                 $this->request['time'] = date("h:i:sa");
                 $this->request['edited'] = 'yes';
-                $updateProcess = $this->posts->update($itemId, $this->request);
+                $updateProcess = $this->posts->update(['id' => $itemId], $this->request);
                 if ($updateProcess) {
                     $successMessage = __('posts.updated-success');
                 } else {
@@ -165,6 +166,7 @@ class PostController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 

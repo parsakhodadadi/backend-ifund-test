@@ -11,17 +11,18 @@ class EditProfileRequest extends Validation
         return [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|email',
+            'mobile_number' => 'mobile',
+            'files' => 'photo',
         ];
     }
 
     public function messages()
     {
         return [
-            'email.required' => __('users.email-required'),
-            'email.email' => __('users.email-email'),
-            'first_name.required' => __('users.first_name-required'),
-            'last_name.required' => __('users.last_name-required'),
+            'first_name.required' => __('profile.first_name-required'),
+            'last_name.required' => __('profile.last_name-required'),
+            'mobile_number.mobile' => __('profile.mobile_number-mobile'),
+            'files.photo' => __('profile.files-photo'),
         ];
     }
 

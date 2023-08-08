@@ -22,7 +22,7 @@ class SubcategoryController extends controller
         $this->blade = $this->view()->blade();
         $this->userId = $_SESSION['USERID'];
         $this->subCategories = loadModel(Subcategories::class);
-        $this->lang = loadLang(ConfigHelper::getConfig('default-language'), 'category');
+        $this->lang = loadLang(ConfigHelper::getConfig('default-language'), 'categories');
     }
 
     public function create(int $categoryId)
@@ -52,6 +52,7 @@ class SubcategoryController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 
@@ -61,7 +62,7 @@ class SubcategoryController extends controller
         $errorMessage = null;
         $errors = $this->request(CategoryRequest::class);
         if (!empty($this->request) && empty($errors)) {
-            $updateProcess = $this->subCategories->update($subcategoryId, $this->request);
+            $updateProcess = $this->subCategories->update(['id' => $subcategoryId], $this->request);
             if ($updateProcess) {
                 $successMessage = __('category.sub-cat-upd-suc');
             } else {
@@ -81,6 +82,7 @@ class SubcategoryController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 }

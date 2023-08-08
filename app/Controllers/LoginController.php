@@ -32,7 +32,6 @@ class LoginController extends controller
     {
         $loginViewName = $this->authService->method()->getViewName();
         if ($loginViewName == 'user-password-login' || $loginViewName == 'otp-login') {
-                session_start();
             $request = request();
             if (isset($_SESSION['USERID'])) {
                 if (!empty($request)) {

@@ -67,6 +67,8 @@ class HomeController extends controller
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
             'content' => $view,
+            'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 }

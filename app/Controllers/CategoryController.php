@@ -27,8 +27,6 @@ class CategoryController extends controller
         $this->users = loadModel(Users::class);
         $this->userId = $_SESSION['USERID'];
         $this->currentUser = current($this->users->get(['id' => $this->userId]));
-        $this->loginMiddleware = new LoginMiddleware();
-        $this->loginMiddleware->boot();
         $lang = ConfigHelper::getConfig('default-language');
         $this->lang = loadLang($lang, 'categories');
         $this->blade = $this->view()->blade();
@@ -66,6 +64,7 @@ class CategoryController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 
@@ -80,6 +79,7 @@ class CategoryController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 
@@ -92,7 +92,7 @@ class CategoryController extends controller
         $this->categories = loadModel(categories::class);
 
         if (!empty($this->request) && empty($errors)) {
-            $updateProcess = $this->categories->update($categoryToEdit->id, $this->request);
+            $updateProcess = $this->categories->update(['id' => $categoryToEdit->id], $this->request);
             if ($updateProcess) {
                 $categoryToEdit = current($this->categories->get(['id' => $itemId]));
                 $successMessage = __('categories.update-success');
@@ -113,6 +113,7 @@ class CategoryController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 
@@ -125,4 +126,3 @@ class CategoryController extends controller
         redirect('/panel/management/categories');
     }
 }
-

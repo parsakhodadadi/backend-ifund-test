@@ -17,7 +17,6 @@ class ManagerMiddleware
     {
         if (isset($_SESSION['USERID'])) {
             if (current($this->users->get(['id' => $_SESSION['USERID']]))->user_type != 'fulladmin') {
-//                exit(current($this->users->get(['id' => $_SESSION['USERID']]))->user_type);
                 redirect('/panel');
             }
         }

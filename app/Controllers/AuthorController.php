@@ -84,6 +84,7 @@ class AuthorController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 
@@ -101,6 +102,7 @@ class AuthorController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 
@@ -147,7 +149,7 @@ class AuthorController extends controller
                     $this->request['photo'] = $newFile;
                     $this->request['status'] = $status;
 
-                    $updateProcess = $this->authors->update($itemId, $this->request);
+                    $updateProcess = $this->authors->update(['id' => $itemId], $this->request);
                     if ($updateProcess) {
                         $successMessage = __('authors.updated-success');
                     } else {
@@ -180,6 +182,7 @@ class AuthorController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 }

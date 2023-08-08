@@ -27,7 +27,7 @@ return [
     'last_name-required' => 'لطفا نام خانوادگی رو وارد نمایید.',
     'password-required' => 'لطفا پسورد انتخابی خود را وارد نمایید.',
     'country-required' => 'لطفا کشور خود را وارد نمایید.',
-    'success' => 'حساب کاربری شما با موفقیت ساخته شد.',
+    'create-success' => 'حساب کاربری شما با موفقیت ساخته شد.',
     'password-password' => 'پسورد انتخاب شده معتبر نمی باشد.',
     'email-verification' => 'فعالسازی ایمیل',
     'verification-code' => 'کدفعالسازی',

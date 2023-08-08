@@ -17,11 +17,9 @@ class PanelController extends controller
         $lang = loadLang('fa', 'login');
         $blade = self::view()->blade();
         echo $blade->render(
-            'backend/main/panel',
-            [
+            'backend/main/panel', [
                 'view' => $blade,
                 'lang' => $lang,
-            ]
-        );
+            ]);
     }
 }

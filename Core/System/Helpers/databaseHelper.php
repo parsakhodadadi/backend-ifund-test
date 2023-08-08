@@ -3,37 +3,11 @@
 namespace Core\System\Helpers;
 
 use PDO;
+use PDOException;
 use Core\System\Helpers\ConfigHelper;
-use Requtize\QueryBuilder\Connection;
-use Requtize\QueryBuilder\QueryBuilder\QueryBuilderFactory;
-use Requtize\QueryBuilder\ConnectionAdapters\PdoBridge;
 
 class databaseHelper
 {
-    public static function queryBuilder()
-    {
-        // Somewhere in our application we have created PDO instance
-        global $configs;
-        $configHelper = new ConfigHelper();
-        $configHelper::checkFileExist('Configs/config.php');
-        $databaseDetails = call_user_func_array(
-            ['Core\System\Helpers\ConfigHelper','getConfig'],
-            ['all',$configs['default-database']]
-        );
-
-        $pdo = new PDO(
-            "mysql:host={$databaseDetails['server']};dbname={$databaseDetails['database']}",
-            $databaseDetails['user'],
-            $databaseDetails['password']
-        );
-
-        // Build Connection object with PdoBridge ad Adapter
-        $conn = new Connection(new PdoBridge($pdo));
-
-        // Pass this connection to Factory
-        return new QueryBuilderFactory($conn);
-    }
-
     /**
      * @return PDO
      *
@@ -58,29 +32,11 @@ class databaseHelper
 
     public static function pdoSelect($tableName, $where = [], $fetchMode = 5)
     {
-        $statement = null;
+        $conditions = explodeWhere($where);
 
         $conn = self::pdoOpen();
-
-        $counter = 0;
-        $count = count($where);
-
-        if (is_array($where) && !empty($where)) {
-            foreach ($where as $field => $value) {
-                $counter ++;
-                if ($count == 1 || $count == $counter) {
-                    $statement .= $field . '=' . "'$value'";
-                } else {
-                    $statement .= $field . '=' . "'$value'" . ' AND ';
-                }
-            }
-
-            $query = $conn->prepare('SELECT * FROM ' . $tableName . ' where ' . $statement);
-            $query->execute();
-        } else {
-            $query = $conn->prepare('SELECT * FROM ' . $tableName);
-            $query->execute();
-        }
+        $query = $conn->prepare('SELECT * FROM ' . $tableName . ' where ' . $conditions);
+        $query->execute();
 
         return $query->fetchAll($fetchMode);
     }
@@ -109,42 +65,28 @@ class databaseHelper
         }
     }
 
-    public function pdoUpdate($tableName, $data = [], $where = 1)
+    public function pdoUpdate($tableName, $data = [], $where = [])
     {
         $fields = null;
-        $condition = null;
-
-        $counter = 0;
-        $count = count($where);
 
         foreach ($data as $field => $value) {
             $fields .= $field . "='$value',";
         }
 
-        if (is_array($where) && !empty($where)) {
-            foreach ($where as $field => $value) {
-                $counter ++;
-                if ($counter == $count || $counter == 1) {
-                    $condition .= $field . '=' . $value;
-                } else {
-                    $condition .= $field . '=' . $value . ' AND ';
-                }
-            }
-        } else {
-            $condition = 1;
-        }
+        $conditions = explodeWhere($where);
 
         $fields = substr($fields, 0, -1);
         $conn = self::pdoOpen();
-        $query = $conn->prepare('UPDATE ' . $tableName . ' SET ' . $fields . ' WHERE ' . $condition);
+        $query = $conn->prepare('UPDATE ' . $tableName . ' SET ' . $fields . ' WHERE ' . $conditions);
         $query->execute();
         return true;
     }
 
-    public function pdoDelete($tableName, $where)
+    public function pdoDelete($tableName, $where = [])
     {
+        $conditions = explodeWhere($where);
         $conn = self::pdoOpen();
-        $query = $conn->prepare('DELETE FROM ' . $tableName . ' WHERE ' . $where);
+        $query = $conn->prepare('DELETE FROM ' . $tableName . ' WHERE ' . $conditions);
         $query->execute();
         return true;
     }

@@ -36,27 +36,10 @@ function view($view = null, $data = [])
     }
 }
 
-
 function loadController($controllerName = null)
 {
     return new $controllerName();
 }
-
-//function lang($lang, $languageNames = ['home']): array {
-//    if (!empty(is_dir("languages/$lang"))) {
-//        if (!empty($languageNames)) {
-//            foreach ($languageNames as $languageName) {
-//                $langFile = "languages/$lang/$languageName.php";
-//                if (file_exists($langFile)) {
-//                    $allLanguages[$languageName] = include $langFile;
-//                } else {
-//                    exit("$languageName does not exist");
-//                }
-//            }
-//            return $allLanguages;
-//        }
-//    } else exit("$lang directory does not exist");
-//}
 
 function loadLang($lang = 'fa', $file = null)
 {
@@ -71,9 +54,6 @@ function loadLang($lang = 'fa', $file = null)
 function loadModel($modelName)
 {
     return new $modelName();
-//    include "Models/$modelName.php";
-//    $modelAddress = '\App\Models\\'.$modelName;
-//    return $modelAddress;
 }
 
 function route($route)
@@ -81,21 +61,6 @@ function route($route)
     $configHelper = new ConfigHelper();
     return $configHelper->setURL($route);
 }
-
-//function showSubMenus($model, $menu) {
-//    $parentId = $menu->parent_id;
-//    while (True) {
-//        $subMenus = $model->from('menus')->where('parent_id', $parentId);
-//        if (!empty($subMenus)) {
-//            foreach ($subMenus as $subMenu) {
-//                echo '<li>';
-//                echo "<a href='$subMenu->route'> $subMenu->name </a>";
-//                echo '</li>';
-//                $parentId = $subMenu->parent_id;
-//            }
-//        }
-//    }
-//}
 
 function redirect($route = null)
 {
@@ -144,4 +109,26 @@ function displayError($errors = [], $element = null)
             }
         }
     }
+}
+
+function explodeWhere($where) {
+    $conditions = null;
+
+    $counter = 0;
+    $count = count($where);
+
+    if (is_array($where) && !empty($where)) {
+        foreach ($where as $field => $value) {
+            $counter ++;
+            if ($counter == $count || $counter == 1) {
+                $conditions .= $field . '=' . $value;
+            } else {
+                $conditions .= $field . '=' . $value . ' AND ';
+            }
+        }
+    } else {
+        $conditions = 1;
+    }
+
+    return $conditions;
 }

@@ -67,4 +67,12 @@ class Validation {
         }
         return true;
     }
+
+    public function mobile($number) : bool {
+
+        if ($number != null && !preg_match("/^[0-9]{11}$/", strval($number))) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -38,10 +38,10 @@ class Authors
         }
     }
 
-    public function update($condition = [], array $data = [])
+    public function update($where = [], array $data = [])
     {
         try {
-            $this->db->pdoUpdate($this->table, $data, $condition);
+            $this->db->pdoUpdate($this->table, $data, $where);
         } catch (Exception $e) {
             return $e->getCode();
         }
