@@ -38,7 +38,7 @@
                     <div class="card-body">
                         @if(!empty($user_id))
                             @if($post->user_id == $user_id)
-                                <a href="{{ route('/admin/posts/edit/') . $post->id }}" class="form-control">{{ $lang['edit'] }}</a>
+                                <a href="{{ route('/panel/admin/posts/edit/') . $post->id }}" class="form-control">{{ $lang['edit'] }}</a>
                             @endif
                         @endif
                         <div class="card-title">
@@ -81,8 +81,8 @@
                     @if($post->status == 'disapproved')
                         <table>
                             <tr>
-                                <td><a class="form-control" href="{{ route('/admin/posts/editPostsStatus/approve/') .  $post->id }}">{{ $lang['approve'] }}</a></td>
-                                <td><a class="form-control" href="{{ route('/admin/posts/editPostsStatus/delete/') .  $post->id }}">{{ $lang['delete'] }}</a></td>
+                                <td><a class="form-control" href="{{ route('/panel/management/posts/approve/') .  $post->id }}">{{ $lang['approve'] }}</a></td>
+                                <td><a class="form-control" href="{{ route('/panel/management/posts/delete/') .  $post->id }}">{{ $lang['delete'] }}</a></td>
                             </tr>
                         </table>
                     @endif

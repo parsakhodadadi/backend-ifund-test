@@ -383,22 +383,24 @@
             <div class="user-box dropdown border-light-2">
                 <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="<?php echo e(route('/') . $user->photo); ?>" class="user-img" alt="user avatar">
-                    <div class="user-info ps-3">
-                        <p class="user-name mb-0 text-white"><?php echo e($user->first_name . ' ' .$user->last_name); ?></p>
-                        <p class="designattion mb-0">
-                            <?php if($user->user_type == 'user'): ?>
-                                <?php echo e(__('profile.website-user')); ?>
+                    <?php if(!empty($user)): ?>
+                        <img src="<?php echo e(route('/') . $user->photo); ?>" class="user-img" alt="user avatar">
+                        <div class="user-info ps-3">
+                            <p class="user-name mb-0 text-white"><?php echo e($user->first_name . ' ' .$user->last_name); ?></p>
+                            <p class="designattion mb-0">
+                                <?php if($user->user_type == 'user'): ?>
+                                    <?php echo e(__('profile.website-user')); ?>
 
-                            <?php elseif($user->user_type == 'admin'): ?>
-                                <?php echo e(__('profile.website-admin')); ?>
+                                <?php elseif($user->user_type == 'admin'): ?>
+                                    <?php echo e(__('profile.website-admin')); ?>
 
-                            <?php else: ?>
-                                <?php echo e(__('profile.website-full-admin')); ?>
+                                <?php else: ?>
+                                    <?php echo e(__('profile.website-full-admin')); ?>
 
-                            <?php endif; ?>
-                        </p>
-                    </div>
+                                <?php endif; ?>
+                            </p>
+                        </div>
+                    <?php endif; ?>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="javascript:;"><i

@@ -65,8 +65,8 @@
             @if($author->status == 'disapproved')
             <table>
                 <tr>
-                    <td><a class="form-control" href="{{ route('/admin/authors/editAuthorsStatus/approve/') .  $author->id }}">{{ $lang['approve'] }}</a></td>
-                    <td><a class="form-control" href="{{ route('/admin/posts/editPostsStatus/delete/') .  $author->id }}">{{ $lang['delete'] }}</a></td>
+                    <td><a class="form-control" href="{{ route('/panel/management/authors/approve/') .  $author->id }}">{{ $lang['approve'] }}</a></td>
+                    <td><a class="form-control" href="{{ route('/panel/management/authors/delete/') .  $author->id }}">{{ $lang['delete'] }}</a></td>
                 </tr>
             </table>
             @endif

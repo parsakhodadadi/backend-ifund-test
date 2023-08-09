@@ -184,12 +184,13 @@ class PostController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 
     public function approve(int $itemId)
     {
-        if (!$this->posts->update($itemId, ['status' => 'approved'])) {
+        if (!$this->posts->update(['id' => $itemId], ['status' => 'approved'])) {
             exit('error');
         }
         redirect('/panel/management/posts');
@@ -197,7 +198,7 @@ class PostController extends controller
 
     public function delete(int $itemId)
     {
-        $errorMessage = $this->posts->delete($itemId);
+        $errorMessage = $this->posts->delete(['id' => $itemId]);
         if (!empty($errorMessage)) {
             exit('errorMessage');
         }

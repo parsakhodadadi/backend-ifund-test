@@ -48,10 +48,10 @@ class Posts
         return false;
     }
 
-    public function delete($id)
+    public function delete($where = [])
     {
         try {
-            $this->db->pdoDelete($this->table, "id = $id");
+            $this->db->pdoDelete($this->table, $where);
         } catch (Exception $e) {
             return $e->getCode();
         }

@@ -1,119 +1,123 @@
-
-    <!--start page wrapper -->
-    <div class="page-wrapper">
-        <div class="page-content">
-            <!--breadcrumb-->
-            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div class="breadcrumb-title pe-3"><?php echo e($lang['aaron-magazine']); ?></div>
-                <div class="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-                            </li>
-                            <li class="breadcrumb-item active" aria-current="page"><?php echo e($lang['users-table']); ?></li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="ms-auto">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-primary">تنظیمات</button>
-                        <button type="button"
-                                class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown"> <span class="visually-hidden">فهرست کشویی</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"> <a
-                                    class="dropdown-item" href="javascript:;">عمل</a>
-                            <a class="dropdown-item" href="javascript:;">عمل دیگر</a>
-                            <a class="dropdown-item" href="javascript:;">هر چیز دیگر اینجا</a>
-                            <div class="dropdown-divider"></div> <a class="dropdown-item" href="javascript:;">لینک
-                                جدا کننده</a>
-                        </div>
-                    </div>
-                </div>
+<!--start page wrapper -->
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3"><?php echo e($lang['aaron-magazine']); ?></div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page"><?php echo e($lang['users-table']); ?></li>
+                    </ol>
+                </nav>
             </div>
-            <!--end breadcrumb-->
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="example2" class="table table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th><?php echo e($lang['row']); ?></th>
-                                <th><?php echo e($lang['first-name']); ?></th>
-                                <th><?php echo e($lang['last-name']); ?></th>
-                                <th><?php echo e($lang['email-address']); ?></th>
-                                <th><?php echo e($lang['user-type']); ?></th>
-                                <th><?php echo e($lang['status']); ?></th>
-                                <th><?php echo e($lang['settings']); ?> </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <tr>
-                                    <td>radif</td>
-                                    <td><?php echo e($user->first_name); ?></td>
-                                    <td><?php echo e($user->last_name); ?></td>
-                                    <td><?php echo e($user->email); ?></td>
-                                    <td><?php echo e($user->user_type); ?></td>
-                                    <td>
-                                        <?php if($user->blocked == 'no'): ?>
-                                            <?php echo e($lang['active']); ?>
-
-                                        <?php else: ?>
-                                            <?php echo e($lang['blocked']); ?>
-
-                                        <?php endif; ?>
-                                    </td>
-                                    <td>
-                                        <?php if($user->user_type != 'fulladmin'): ?>
-                                            <a target="_self" href="<?php echo e(route("/panel/management/users/editAccess/") . $user->id); ?>"><?php echo e($lang['edit']); ?></a>
-                                            <a target="_self" href="<?php echo e(route("/panel/management/users/delete/") . $user->id); ?>"><?php echo e($lang['delete']); ?></a>
-                                        <?php endif; ?>
-                                    </td>
-                                </tr>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <th><?php echo e($lang['row']); ?></th>
-                                <th><?php echo e($lang['first-name']); ?></th>
-                                <th><?php echo e($lang['last-name']); ?></th>
-                                <th><?php echo e($lang['email-address']); ?></th>
-                                <th><?php echo e($lang['user-type']); ?></th>
-                                <th><?php echo e($lang['status']); ?></th>
-                                <th><?php echo e($lang['settings']); ?> </th>
-                            </tr>
-                            </tfoot>
-                        </table>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">تنظیمات</button>
+                    <button type="button"
+                            class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown"><span class="visually-hidden">فهرست کشویی</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"><a
+                                class="dropdown-item" href="javascript:;">عمل</a>
+                        <a class="dropdown-item" href="javascript:;">عمل دیگر</a>
+                        <a class="dropdown-item" href="javascript:;">هر چیز دیگر اینجا</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="javascript:;">لینک
+                            جدا کننده</a>
                     </div>
                 </div>
             </div>
         </div>
+        <!--end breadcrumb-->
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example2" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th><?php echo e($lang['row']); ?></th>
+                            <th><?php echo e($lang['first-name']); ?></th>
+                            <th><?php echo e($lang['last-name']); ?></th>
+                            <th><?php echo e($lang['email-address']); ?></th>
+                            <th><?php echo e($lang['user-type']); ?></th>
+                            <th><?php echo e($lang['status']); ?></th>
+                            <th><?php echo e($lang['settings']); ?> </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php ($row = 0); ?>
+                        <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr>
+                                <?php ($row++); ?>
+                                <td><?php echo e($row); ?></td>
+                                <td><?php echo e($user->first_name); ?></td>
+                                <td><?php echo e($user->last_name); ?></td>
+                                <td><?php echo e($user->email); ?></td>
+                                <td><?php echo e($user->user_type); ?></td>
+                                <td>
+                                    <?php if($user->blocked == 'no'): ?>
+                                        <?php echo e($lang['active']); ?>
+
+                                    <?php else: ?>
+                                        <?php echo e($lang['blocked']); ?>
+
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php if($user->user_type != 'fulladmin'): ?>
+                                        <a target="_self"
+                                           href="<?php echo e(route("/panel/management/users/editAccess/") . $user->id); ?>"><?php echo e($lang['edit']); ?></a>
+                                        <a target="_self"
+                                           href="<?php echo e(route("/panel/management/users/delete/") . $user->id); ?>"><?php echo e($lang['delete']); ?></a>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <th><?php echo e($lang['row']); ?></th>
+                            <th><?php echo e($lang['first-name']); ?></th>
+                            <th><?php echo e($lang['last-name']); ?></th>
+                            <th><?php echo e($lang['email-address']); ?></th>
+                            <th><?php echo e($lang['user-type']); ?></th>
+                            <th><?php echo e($lang['status']); ?></th>
+                            <th><?php echo e($lang['settings']); ?> </th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <!--end page wrapper -->
-    <!--start overlay-->
-    <div class="overlay toggle-icon"></div>
-    <!--end overlay-->
-    <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
-                class='bx bxs-up-arrow-alt'></i></a>
-    <!--End Back To Top Button-->
-    <footer class="page-footer">
-        <p class="mb-0">کپی رایت © 2021. تمامی حقوق محفوظ است.</p>
-    </footer>
+</div>
+<!--end page wrapper -->
+<!--start overlay-->
+<div class="overlay toggle-icon"></div>
+<!--end overlay-->
+<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i
+            class='bx bxs-up-arrow-alt'></i></a>
+<!--End Back To Top Button-->
+<footer class="page-footer">
+    <p class="mb-0">کپی رایت © 2021. تمامی حقوق محفوظ است.</p>
+</footer>
 
 <!--end wrapper-->
 <!--start switcher-->
 <div class="switcher-wrapper">
-    <div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
+    <div class="switcher-btn"><i class='bx bx-cog bx-spin'></i>
     </div>
     <div class="switcher-body">
         <div class="d-flex align-items-center">
             <h5 class="mb-0 text-uppercase">سفارشی ساز قالب</h5>
             <button type="button" class="btn-close ms-auto close-switcher" aria-label="Close"></button>
         </div>
-        <hr />
+        <hr/>
         <h6 class="mb-0">استایل های قالب</h6>
-        <hr />
+        <hr/>
         <div class="d-flex align-items-center justify-content-between">
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="lightmode" checked>
@@ -128,14 +132,14 @@
                 <label class="form-check-label" for="semidark">نیمه تاریک</label>
             </div>
         </div>
-        <hr />
+        <hr/>
         <div class="form-check">
             <input class="form-check-input" type="radio" id="minimaltheme" name="flexRadioDefault">
             <label class="form-check-label" for="minimaltheme">تِم مینیمال</label>
         </div>
-        <hr />
+        <hr/>
         <h6 class="mb-0">رنگ هدر</h6>
-        <hr />
+        <hr/>
         <div class="header-colors-indigators">
             <div class="row row-cols-auto g-3">
                 <div class="col">
@@ -164,9 +168,9 @@
                 </div>
             </div>
         </div>
-        <hr />
+        <hr/>
         <h6 class="mb-0">پس زمینه سایدبار</h6>
-        <hr />
+        <hr/>
         <div class="header-colors-indigators">
             <div class="row row-cols-auto g-3">
                 <div class="col">

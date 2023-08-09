@@ -121,11 +121,13 @@ function explodeWhere($where) {
         foreach ($where as $field => $value) {
             $counter ++;
             if ($counter == $count || $counter == 1) {
-                $conditions .= $field . '=' . $value;
+                $conditions .= $field . '=' . "'$value'";
             } else {
-                $conditions .= $field . '=' . $value . ' AND ';
+                $conditions .= $field . '=' . "'$value'" . ' AND ';
             }
         }
+
+
     } else {
         $conditions = 1;
     }

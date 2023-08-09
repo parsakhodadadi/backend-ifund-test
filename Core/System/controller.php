@@ -77,6 +77,9 @@ class controller
     public function loadHeader()
     {
         $users = loadModel(Users::class);
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $currentUser = current($users->get(['id' => $_SESSION['USERID']]));
         return $this->view()->blade()->render('backend/main/layout/header', [
             'user' => $currentUser,

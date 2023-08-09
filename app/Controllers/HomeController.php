@@ -51,6 +51,7 @@ class HomeController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 

@@ -125,6 +125,9 @@
 												<?php endif; ?>
 											</div>
 											<div class="col-12">
+												<label for="city" class="form-label"><?php echo e($lang['password-repeat']); ?></label>
+											</div>
+											<div class="col-12">
 												<div class="form-check form-switch">
 													<input class="form-check-input" type="checkbox"
 														id="flexSwitchCheckChecked">

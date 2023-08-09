@@ -46,9 +46,11 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php ($row = 0); ?>
                             <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                    <td>radif</td>
+                                    <?php ($row++); ?>
+                                    <td><?php echo e($row); ?></td>
                                     <td><?php echo e($category->title); ?></td>
                                     <td><?php echo e($category->description); ?></td>
                                     <?php if($category->status == 'approved'): ?>

@@ -38,7 +38,7 @@
                     <div class="card-body">
                         <?php if(!empty($user_id)): ?>
                             <?php if($post->user_id == $user_id): ?>
-                                <a href="<?php echo e(route('/admin/posts/edit/') . $post->id); ?>" class="form-control"><?php echo e($lang['edit']); ?></a>
+                                <a href="<?php echo e(route('/panel/admin/posts/edit/') . $post->id); ?>" class="form-control"><?php echo e($lang['edit']); ?></a>
                             <?php endif; ?>
                         <?php endif; ?>
                         <div class="card-title">
@@ -92,8 +92,8 @@
                     <?php if($post->status == 'disapproved'): ?>
                         <table>
                             <tr>
-                                <td><a class="form-control" href="<?php echo e(route('/admin/posts/editPostsStatus/approve/') .  $post->id); ?>"><?php echo e($lang['approve']); ?></a></td>
-                                <td><a class="form-control" href="<?php echo e(route('/admin/posts/editPostsStatus/delete/') .  $post->id); ?>"><?php echo e($lang['delete']); ?></a></td>
+                                <td><a class="form-control" href="<?php echo e(route('/panel/management/posts/approve/') .  $post->id); ?>"><?php echo e($lang['approve']); ?></a></td>
+                                <td><a class="form-control" href="<?php echo e(route('/panel/management/posts/delete/') .  $post->id); ?>"><?php echo e($lang['delete']); ?></a></td>
                             </tr>
                         </table>
                     <?php endif; ?>

@@ -119,7 +119,8 @@ class AuthorController extends controller
 
     public function delete(int $itemId)
     {
-        if ($this->authors->delete($itemId)) {
+        $errorMessage = $this->authors->delete(['id' => $itemId]);
+        if (empty($errorMessage)) {
             redirect('/panel/management/authors');
         } else {
             exit('error');

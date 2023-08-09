@@ -9,7 +9,7 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page"><?php echo e($lang['add-new-post']); ?></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?php echo e($lang['add-new-author']); ?></li>
                     </ol>
                 </nav>
             </div>
@@ -34,15 +34,7 @@
         <!--end breadcrumb-->
         <div class="card">
             <div class="card-body p-4">
-                <h5 class="card-title">
-                    <?php if($method == 'create'): ?>
-                        <?php echo e($lang['add-new-post']); ?>
-
-                    <?php else: ?>
-                        <?php echo e($lang['edit-post']); ?>
-
-                    <?php endif; ?>
-                </h5>
+                <h5 class="card-title"><?php echo e($lang['author-identities-form']); ?></h5>
                 <hr/>
                 <div class="form-body mt-4">
                     <div class="row">
@@ -50,41 +42,38 @@
                             <div class="border border-3 p-4 rounded">
                                 <form action="<?php echo e(route('') . $action); ?>" method="post" enctype="multipart/form-data">
                                     <div class="mb-3">
-                                        <label for="inputProductTitle" class="form-label"><?php echo e($lang['title']); ?></label>
-                                        <input type="text" name="title" class="form-control" id="inputProductTitle"
-                                               placeholder="<?php echo e($lang['enter-title']); ?>"
-                                               value="<?php if(!empty($data)): ?> <?php echo e($data->title); ?> <?php endif; ?>">
-                                        <?php if(!empty($errors['title'])): ?>
-                                            <?php if(!empty($errors['title']['required'])): ?>
-                                                <div class="form-control alert-danger"><?php echo e($errors['title']['required']); ?></div>
+                                        <label for="inputProductTitle" class="form-label"><?php echo e($lang['name']); ?></label>
+                                        <input type="text" name="name" class="form-control" id="inputProductTitle"
+                                               placeholder="<?php echo e($lang['enter-name']); ?>"
+                                               value="<?php if(!empty($data)): ?> <?php echo e($data->name); ?> <?php endif; ?>">
+                                        <?php if(!empty($errors['name'])): ?>
+                                            <?php if(!empty($errors['name']['required'])): ?>
+                                                <div class="form-control alert-danger"><?php echo e($errors['name']['required']); ?></div>
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription"
-                                               class="form-label"><?php echo e($lang['description']); ?></label>
-                                        <textarea name="description" class="form-control" id="myCKEditortextarea"
-                                                  rows="3"><?php if(!empty($data)): ?> <?php echo e($data->description); ?> <?php endif; ?></textarea>
-                                        <?php if(!empty($errors['description'])): ?>
-                                            <?php if(!empty($errors['description']['required'])): ?>
-                                                <div class="form-control alert-danger"><?php echo e($errors['description']['required']); ?></div>
+                                               class="form-label"><?php echo e($lang['about']); ?></label>
+                                        <textarea name="about" class="form-control" id="myCKEditortextarea"
+                                                  rows="3">
+                                            <?php if(!empty($data)): ?>
+                                                <?php echo e($data->about); ?>
+
+                                            <?php endif; ?>
+                                        </textarea>
+                                        <?php if(!empty($errors['about'])): ?>
+                                            <?php if(!empty($errors['about']['required'])): ?>
+                                                <div class="form-control alert-danger"><?php echo e($errors['about']['required']); ?></div>
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription"
-                                               class="form-label">
-                                            <?php if($method == 'create'): ?>
-                                                <?php echo e($lang['add-photo']); ?>
-
-                                            <?php else: ?>
-                                                <?php echo e($lang['add-new-photo']); ?>
-
-                                            <?php endif; ?>
-                                        </label>
+                                               class="form-label"><?php echo e($lang['add-photo']); ?></label>
                                         <input class="form-control" value="<?php if(!empty($data)): ?> <?php if(!empty($data->photo)): ?> <?php echo e($data->photo); ?> <?php endif; ?> <?php endif; ?>"
                                                id="image-uploadify" name="photo" type="file"
-                                               accept="image/*"
+                                               accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf"
                                                multiple>
                                         <?php if($method == 'update'): ?>
                                             <?php if(!empty($data->photo)): ?>
@@ -101,7 +90,7 @@
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     </div>
-                                    <input type="submit" class="btn btn-primary px-4" value="<?php echo e($lang['send']); ?>">
+                                    <input type="submit" class="btn btn-primary px-4" value="<?php echo e($lang['register-data']); ?>">
                                 </form>
                             </div>
                             <?php if(!empty($successMessage)): ?>
@@ -118,6 +107,7 @@
         </div>
     </div>
 </div>
+<!--end page wrapper -->
 <script src="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>assets/js/bootstrap.bundle.min.js"></script>
 <!--plugins-->
 <script src="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>assets/js/jquery.min.js"></script>
@@ -155,4 +145,5 @@
 <script src="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>assets/js/app.js"></script>
 <!--end page wrapper -->
 
-<?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/backend/main/layout/posts/create.blade.php ENDPATH**/ ?>
+
+<?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/backend/main/layout/authors/create.blade.php ENDPATH**/ ?>

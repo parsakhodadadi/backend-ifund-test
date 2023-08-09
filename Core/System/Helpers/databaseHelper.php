@@ -33,11 +33,9 @@ class databaseHelper
     public static function pdoSelect($tableName, $where = [], $fetchMode = 5)
     {
         $conditions = explodeWhere($where);
-
         $conn = self::pdoOpen();
         $query = $conn->prepare('SELECT * FROM ' . $tableName . ' where ' . $conditions);
         $query->execute();
-
         return $query->fetchAll($fetchMode);
     }
 

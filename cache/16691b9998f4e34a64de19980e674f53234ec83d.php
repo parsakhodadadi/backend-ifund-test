@@ -68,8 +68,8 @@
             <?php if($author->status == 'disapproved'): ?>
             <table>
                 <tr>
-                    <td><a class="form-control" href="<?php echo e(route('/admin/authors/editAuthorsStatus/approve/') .  $author->id); ?>"><?php echo e($lang['approve']); ?></a></td>
-                    <td><a class="form-control" href="<?php echo e(route('/admin/posts/editPostsStatus/delete/') .  $author->id); ?>"><?php echo e($lang['delete']); ?></a></td>
+                    <td><a class="form-control" href="<?php echo e(route('/panel/management/authors/approve/') .  $author->id); ?>"><?php echo e($lang['approve']); ?></a></td>
+                    <td><a class="form-control" href="<?php echo e(route('/panel/management/authors/delete/') .  $author->id); ?>"><?php echo e($lang['delete']); ?></a></td>
                 </tr>
             </table>
             <?php endif; ?>

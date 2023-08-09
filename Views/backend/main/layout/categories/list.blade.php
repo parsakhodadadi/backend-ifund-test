@@ -46,9 +46,11 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @php($row = 0)
                             @foreach($categories as $category)
                                 <tr>
-                                    <td>radif</td>
+                                    @php($row++)
+                                    <td>{{ $row }}</td>
                                     <td>{{ $category->title }}</td>
                                     <td>{{ $category->description }}</td>
                                     @if($category->status == 'approved')
