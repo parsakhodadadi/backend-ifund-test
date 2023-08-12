@@ -23,6 +23,9 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/panel/admin/authors/edit/(\d+)', "AuthorController@edit");
     $router->post('/panel/admin/authors/edit/(\d+)', "AuthorController@edit");
 
+    $router->get('/panel/books/create', "BookController@create");
+    $router->post('/panel/books/create', "BookController@create");
+
     $router->get('/panel/management/authors', "AuthorController@show");
     $router->get('/panel/management/authors/approve/(\d+)', "AuthorController@approve");
     $router->get('/panel/management/authors/delete/(\d+)', "AuthorController@delete");

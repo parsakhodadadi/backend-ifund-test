@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'aaron-website' => 'مجله ارون',
+    'add-new-book' => 'ایجاد کتاب جدید',
+    'book-info-form' => 'فرم اطلاعات کتاب',
+    'name' => 'نام کتاب',
+    'enter-name' => 'نام کتاب را وارد کنید',
+    'description' => 'توضیحات',
+    'add-photo' => 'افزودن عکس',
+    'register-data' => 'ثبت اطلاعات',
+    'subject' => 'موضوع',
+    'category' => 'دسته بندی',
+    'author' => 'نویسنده',
+    'choose-cat' => 'دسته بندی را انتخاب کنید',
+    'choose-sub-cat' => 'موضوع را انتخاب کنید',
+    'choose-author' => 'نویسنده را انتخاب کنید',
+    'name-required' => 'لطفا نام کتاب را وارد کنید',
+    'description-required' => 'لطفا توضیحات کتاب را وارد کنید',
+    'category-required' => 'لطفا دسته بندی را انتخاب کنید',
+    'sub_category-required' => 'لطفا موضوع را انتخاب کنید',
+    'author-required' => 'لطفا نویسنده را انتخاب کنید',
+    'files-file_required' => 'لطفا عکس را انتخاب کنید',
+    'files-photo' => 'فایل انتخاب شده فقط باید از نوع عکس باشد',
+    'category-valid' => 'دسته بندی معتبر نمی باشد',
+    'sub_category-valid' => 'موضوع معتبر نمی باشد',
+    'author-valid' => 'نویسنده معتبر نمی باشد',
+    'book-added-suc-admin' => 'کتاب شما با موفقیت ثبت شد',
+    'book-added-suc-user' => 'کتاب شما با موفقیت ثبت شد و پس از تایید مدیریت قابل مشاهده خواهد بود',
+
+];

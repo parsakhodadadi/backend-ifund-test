@@ -19,17 +19,6 @@
 
             </div>
         </a>
-
-
-
-
-
-
-
-
-
-
-
     </li>
     <li>
         <a href="javascript:;" class="has-arrow">

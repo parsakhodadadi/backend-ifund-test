@@ -38,6 +38,7 @@ return array(
     'App\\Models\\Users' => $baseDir . '/app/Models/users.php',
     'App\\Models\\xss' => $baseDir . '/app/Models/xss.php',
     'App\\Request\\AuthorRequest' => $baseDir . '/app/Requests/AuthorRequest.php',
+    'App\\Request\\BookRequest' => $baseDir . '/app/Requests/BookRequest.php',
     'App\\Request\\CategoryRequest' => $baseDir . '/app/Requests/CategoryRequest.php',
     'App\\Request\\ChangePasswordRequest' => $baseDir . '/app/Requests/ChangePasswordRequest.php',
     'App\\Request\\EditProfileRequest' => $baseDir . '/app/Requests/EditProfileRequest.php',

@@ -46,10 +46,10 @@ class Categories
         return false;
     }
 
-    public function delete($id)
+    public function delete($condition = [], array $data = [])
     {
         try {
-            $this->db->pdoDelete($this->table, "id = $id");
+            $this->db->pdoDelete($this->table, $data);
         } catch (Exception $e) {
             return $e->getCode();
         }

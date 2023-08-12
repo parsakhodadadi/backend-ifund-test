@@ -2,6 +2,10 @@
 
 namespace Core\System;
 
+use App\Model\Authors;
+use App\Models\Categories;
+use App\Models\Subcategories;
+
 class Validation {
 
     public function check($rules = [], $request = [], $messages = [])
@@ -25,6 +29,48 @@ class Validation {
     {
         if (!empty($value)) {
             return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function category_valid($value)
+    {
+        if (is_numeric($value)) {
+            $category = current(loadModel(Categories::class)->get(['id' => $value]));
+            if (!empty($category)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function sub_category_valid($value)
+    {
+        if (is_numeric($value)) {
+            $sub_category = current(loadModel(Subcategories::class)->get(['id' => $value]));
+            if (!empty($sub_category)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function author_valid($value)
+    {
+        if (is_numeric($value)) {
+            $author = current(loadModel(Authors::class)->get(['id' => $value]));
+            if (!empty($author)) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
@@ -68,11 +114,21 @@ class Validation {
         return true;
     }
 
-    public function mobile($number) : bool {
+    public function mobile($number) : bool
+    {
 
         if ($number != null && !preg_match("/^[0-9]{11}$/", strval($number))) {
             return false;
         }
         return true;
+    }
+
+    public function file_required(array $files): bool
+    {
+        if (!empty($files['photo']['tmp_name'])) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

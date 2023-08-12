@@ -262,6 +262,7 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'App\\Models\\Users' => __DIR__ . '/../..' . '/app/Models/users.php',
         'App\\Models\\xss' => __DIR__ . '/../..' . '/app/Models/xss.php',
         'App\\Request\\AuthorRequest' => __DIR__ . '/../..' . '/app/Requests/AuthorRequest.php',
+        'App\\Request\\BookRequest' => __DIR__ . '/../..' . '/app/Requests/BookRequest.php',
         'App\\Request\\CategoryRequest' => __DIR__ . '/../..' . '/app/Requests/CategoryRequest.php',
         'App\\Request\\ChangePasswordRequest' => __DIR__ . '/../..' . '/app/Requests/ChangePasswordRequest.php',
         'App\\Request\\EditProfileRequest' => __DIR__ . '/../..' . '/app/Requests/EditProfileRequest.php',
