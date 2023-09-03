@@ -71,6 +71,8 @@ class databaseHelper
             $fields .= $field . "='$value',";
         }
 
+//        exit(print_r($fields));
+
         $conditions = explodeWhere($where);
 
         $fields = substr($fields, 0, -1);

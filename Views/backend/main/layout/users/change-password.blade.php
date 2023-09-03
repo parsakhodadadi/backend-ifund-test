@@ -1,93 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--favicon-->
-    <link rel="icon" href="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/images/favicon-32x32.png" type="image/png" />
-    <!-- loader-->
-    <link href="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/css/pace.min.css" rel="stylesheet" />
-    <script src="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/js/pace.min.js"></script>
-    <!-- Bootstrap CSS -->
-    <link href="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/css/app.css" rel="stylesheet">
-    <link href="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/css/icons.css" rel="stylesheet">
-</head>
-
-<body>
-<!-- wrapper -->
-<div class="wrapper">
-    <div class="authentication-header"></div>
-    <div class="authentication-reset-password d-flex align-items-center justify-content-center">
-        <div class="row">
-            <div class="col-12 col-lg-10 mx-auto">
-                <div class="card">
-                    <div class="row g-0">
-                        <div class="col-lg-5 border-end">
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">{{ $lang['aaron-magazine'] }}</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $lang['change-password'] }}</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">تنظیمات</button>
+                    <button type="button"
+                            class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown"><span class="visually-hidden">فهرست کشویی</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"><a
+                                class="dropdown-item" href="javascript:;">عمل</a>
+                        <a class="dropdown-item" href="javascript:;">عمل دیگر</a>
+                        <a class="dropdown-item" href="javascript:;">هر چیز دیگر اینجا</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="javascript:;">لینک
+                            جدا کننده</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+        <div class="container">
+            <div class="main-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
                             <div class="card-body">
-                                <div class="p-5">
-                                    <div class="text-start">
-                                        <img src="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/images/logo-img.png" width="180" alt="">
-                                    </div>
-                                    <h4 class="mt-5 font-weight-bold">{{ $lang['set-new-pass'] }}</h4>
-                                    <form action="{{ route('/admin/changePassword') }}" method="post">
-                                        <div class="mb-3 mt-5">
-                                            <label class="form-label">{{ $lang['curr-password'] }}</label>
-                                            <input type="password" name="password" class="form-control"
-                                                   placeholder="{{ $lang['enter-curr-pass'] }}" />
+{{--                                <h5 class="d-flex align-items-center mb-3">{{ $lang['change-password-form'] }}</h5>--}}
+                                <br>
+                                <form action="{{ route('/panel/change-password') }}" method="post">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">{{ $lang['current-password'] }}</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input name="password" type="password" class="form-control" placeholder="{{ $lang['enter-curr-pass'] }}" />
                                             @if(!empty($errors['password']))
                                                 @if(!empty($errors['password']['required']))
-                                                    <div class="alert-danger">{{ $errors['password']['required'] }}</div>
-                                                @endif
-                                                @if(!empty($errors['password']['password']))
-                                                    <div class="alert-danger">{{ $errors['password']['password'] }}</div>
+                                                    <div class="form-control alert-danger">
+                                                        {{ $errors['password']['required'] }}
+                                                    </div>
+                                                @else
+                                                    <div class="form-control alert-danger">
+                                                        {{ $errors['password']['password'] }}
+                                                    </div>
                                                 @endif
                                             @endif
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">{{ $lang['new-password'] }}</label>
-                                            <input type="password" name="new-pass" class="form-control"
-                                                   placeholder="{{ $lang['enter-new-pass'] }}" />
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">{{ $lang['new-password'] }}</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input name="new-pass" type="password" class="form-control" placeholder="{{ $lang['enter-new-pass'] }}" />
                                             @if(!empty($errors['new-pass']))
                                                 @if(!empty($errors['new-pass']['required']))
-                                                    <div class="alert-danger">{{ $errors['new-pass']['required'] }}</div>
-                                                @endif
-                                                @if(!empty($errors['new-pass']['password']))
-                                                    <div class="alert-danger">{{ $errors['new-pass']['password'] }}</div>
+                                                    <div class="form-control alert-danger">
+                                                        {{ $errors['new-pass']['required'] }}
+                                                    </div>
+                                                @else
+                                                    <div class="form-control alert-danger">
+                                                        {{ $errors['new-pass']['password'] }}
+                                                    </div>
                                                 @endif
                                             @endif
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">{{ $lang['rep-new-pass'] }}</label>
-                                            <input type="password" name="rep-new-pass" class="form-control"
-                                                   placeholder="{{ $lang['rep-new-pass'] }}" />
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0">{{ $lang['repeat-new-password'] }}</h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input name="rep-new-pass" type="password" class="form-control" placeholder="{{ $lang['enter-new-pass-repeat'] }}" />
                                             @if(!empty($errors['rep-new-pass']))
                                                 @if(!empty($errors['rep-new-pass']['required']))
-                                                    <div class="alert-danger">{{ $errors['rep-new-pass']['required'] }}</div>
-                                                @endif
-                                                @if(!empty($errors['rep-new-pass']['password']))
-                                                    <div class="alert-danger">{{ $errors['rep-new-pass']['password'] }}</div>
+                                                    <div class="form-control alert-danger">
+                                                        {{ $errors['rep-new-pass']['required'] }}
+                                                    </div>
+                                                @else
+                                                    <div class="form-control alert-danger">
+                                                        {{ $errors['rep-new-pass']['password'] }}
+                                                    </div>
                                                 @endif
                                             @endif
                                         </div>
-                                        <div class="d-grid gap-2">
-                                            <input type="submit" class="btn btn-primary" value="{{ $lang['change-pass'] }}" />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="submit" class="btn btn-primary px-4"
+                                                   value="{{ $lang['submit'] }}"/>
                                         </div>
-                                        @if(!empty($successMessage))
-                                            <div class="form-control alert-success">{{ $successMessage }}</div>
-                                        @endif
-                                        @if(!empty($errorMessage))
-                                            <div class="form-control alert-danger">{{ $errorMessage }}</div>
-                                        @endif
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <img src="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/images/login-images/forgot-password-frent-img.jpg"
-                                 class="card-img login-img h-100" alt="...">
+                            @if(!empty($successMessage))
+                                <div class="form-control alert-success">
+                                    {{ $successMessage }}
+                                </div>
+                            @endif
+                            @if(!empty($errorMessage))
+                                <div class="form-control alert-danger">
+                                    {{ $errorMessage }}
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -95,7 +123,12 @@
         </div>
     </div>
 </div>
-<!-- end wrapper -->
-</body>
-
-</html>
+<!-- Bootstrap JS -->
+<script src="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/js/bootstrap.bundle.min.js"></script>
+<!--plugins-->
+<script src="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/js/jquery.min.js"></script>
+<script src="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/plugins/simplebar/js/simplebar.min.js"></script>
+<script src="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+<script src="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+<!--app JS-->
+<script src="{{ route('') }}/Others/Themes/Backend/main/vertical/assets/js/app.js"></script>

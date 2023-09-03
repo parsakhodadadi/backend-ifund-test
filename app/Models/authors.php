@@ -47,10 +47,10 @@ class Authors
         }
     }
 
-    public function delete($condition = [], array $data = [])
+    public function delete($where = [])
     {
         try {
-            $this->db->pdoDelete($this->table, $data);
+            $this->db->pdoDelete($this->table, $where);
         } catch (Exception $e) {
             return $e->getCode();
         }

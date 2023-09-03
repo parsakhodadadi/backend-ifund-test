@@ -12,10 +12,10 @@
                                 <?php echo e($lang['edit-category']); ?>
 
                             <?php elseif($method == 'create_sub'): ?>
-                                <?php echo e($lang['add-sub-category']); ?>
+                                <?php echo e($lang['create-subject']); ?>
 
                             <?php elseif($method == 'edit_sub'): ?>
-                                <?php echo e($lang['edit-sub-category']); ?>
+                                <?php echo e($lang['edit-subject']); ?>
 
                             <?php endif; ?>
 						</h4>
@@ -52,7 +52,8 @@
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input type="text" name="title" class="form-control"
-                                                   placeholder="<?php echo e($lang['title']); ?>" value="<?php if(!empty($category)): ?><?php echo e($category->title); ?><?php endif; ?>"/>
+                                                   placeholder="<?php echo e($lang['title']); ?>"
+                                                   value="<?php if(!empty($category)): ?><?php echo e($category->title); ?><?php endif; ?>"/>
                                             <?php if(!empty($errors['title'])): ?>
                                                 <div class="form-control alert-danger"><?php echo ($errors['title']['required']); ?></div>
                                             <?php endif; ?>
@@ -64,14 +65,15 @@
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input class="form-control" name="description"
-                                                   placeholder="<?php echo e($lang['description']); ?>" value="<?php if(!empty($category)): ?><?php echo e($category->description); ?><?php endif; ?>"/>
+                                                   placeholder="<?php echo e($lang['description']); ?>"
+                                                   value="<?php if(!empty($category)): ?><?php echo e($category->description); ?><?php endif; ?>"/>
                                             <?php if(!empty($errors['description'])): ?>
                                                 <div class="form-control alert-danger"><?php echo ($errors['description']['required']); ?></div>
                                             <?php endif; ?>
                                         </div>
                                     </div>
-                                        <?php if($method == 'update'): ?>
-                                            <?php if($user->user_type == 'fulladmin'): ?>
+                                    <?php if($method == 'update'): ?>
+                                        <?php if($_SERVER['REQUEST_URI'] == '/ParsaFramework/panel/categories-management/edit/' . $category->id && $user->user_type == 'fulladmin'): ?>
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
                                                     <h6 class="mb-0"><?php echo e($lang['status']); ?></h6>
@@ -79,10 +81,12 @@
                                                 <div class="col-sm-9 text-secondary">
                                                     <select class="form-select" name="status">
                                                         <?php if($category->status == 'approved'): ?>
-                                                            <option value="approved" selected><?php echo e($lang['approved']); ?></option>
+                                                            <option value="approved"
+                                                                    selected><?php echo e($lang['approved']); ?></option>
                                                             <option value="disapproved"><?php echo e($lang['disapproved']); ?></option>
                                                         <?php else: ?>
-                                                            <option value="disapproved" selected><?php echo e($lang['disapproved']); ?></option>
+                                                            <option value="disapproved"
+                                                                    selected><?php echo e($lang['disapproved']); ?></option>
                                                             <option value="approved"><?php echo e($lang['approved']); ?></option>
                                                         <?php endif; ?>
                                                     </select>
@@ -91,26 +95,24 @@
                                                     <?php endif; ?>
                                                 </div>
                                             </div>
-                                            <?php endif; ?>
                                         <?php endif; ?>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-sm-3"></div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <input type="submit" class="btn btn-primary px-4"
-                                                   value="<?php echo e($lang['send']); ?>"/>
-                                        </div>
-                                    </div>
-                                <div>
-                                    <?php if(!empty($errorMessage)): ?>
-                                        <div class="form-control alert-danger"><?php echo $errorMessage; ?></div>
-                                    <?php endif; ?>
-                                    <?php if(!empty($successMessage)): ?>
-                                        <div class="form-control alert-success"><?php echo $successMessage; ?></div>
                                     <?php endif; ?>
                                 </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="submit" class="btn btn-primary px-4"
+                                               value="<?php echo e($lang['send']); ?>"/>
+                                    </div>
                                 </div>
+                                <?php if(!empty($errorMessage)): ?>
+                                    <div class="form-control alert-danger"><?php echo $errorMessage; ?></div>
+                                <?php endif; ?>
+                                <?php if(!empty($successMessage)): ?>
+                                    <div class="form-control alert-success"><?php echo $successMessage; ?></div>
+                                <?php endif; ?>
                             </div>
+                        </div>
                     </form>
                 </div>
             </div>

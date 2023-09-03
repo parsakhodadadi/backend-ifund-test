@@ -2,8 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Middlewares\LoginMiddleware;
+use App\Models\Books;
 use App\Models\Categories;
+use App\Models\Subjects;
 use App\Models\Users;
 use App\Request\CategoryRequest;
 use Core\System\controller;
@@ -11,7 +12,6 @@ use Core\System\Helpers\ConfigHelper;
 
 class CategoryController extends controller
 {
-    private object $loginMiddleware;
     private $lang;
     private object $blade;
     private array $request;
@@ -19,12 +19,16 @@ class CategoryController extends controller
     private $users;
     private $currentUser;
     private $userId;
+    private $subjects;
+    private $books;
 
     public function __construct()
     {
         $this->request = request();
         $this->categories = loadModel(Categories::class);
         $this->users = loadModel(Users::class);
+        $this->subjects = loadModel(Subjects::class);
+        $this->books = loadModel(Books::class);
         $this->userId = $_SESSION['USERID'];
         $this->currentUser = current($this->users->get(['id' => $this->userId]));
         $lang = ConfigHelper::getConfig('default-language');
@@ -38,7 +42,7 @@ class CategoryController extends controller
         $errorMessage = null;
         $errors = $this->request(CategoryRequest::class);
         if (!empty($this->request) && empty($errors)) {
-            $this->request['user_id'] = $_SESSION['USERID'];
+            $this->request['user_id'] = $this->userId;
             if ($this->currentUser->user_type == 'fulladmin') {
                 $this->request['status'] = 'approved';
             } else {
@@ -46,7 +50,11 @@ class CategoryController extends controller
             }
             $errorMessage = $this->categories->insert($this->request);
             if (empty($errorMessage)) {
-                $successMessage = __('categories.category-create-success');
+                if ($this->currentUser->user_type == 'admin') {
+                    $successMessage = __('categories.add-suc-admin');
+                } else {
+                    $successMessage = __('categories.add-suc-fulladmin');
+                }
             }
         }
 
@@ -55,7 +63,7 @@ class CategoryController extends controller
             'lang' => $this->lang,
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,
-            'action' => '/panel/admin/categories/create',
+            'action' => '/panel/add-category',
             'user' => $this->currentUser,
             'method' => 'create',
         ]);
@@ -68,12 +76,27 @@ class CategoryController extends controller
         ]);
     }
 
-    public function show()
+    public function userCategories()
     {
-        $categoriesList = $this->categories->get();
-        $view = $this->blade->render('backend/main/layout/categories/list', [
+        $categories = $this->categories->get(['user_id' => $this->userId]);
+        $view = $this->blade->render('backend/main/layout/categories/user-categories', [
             'lang' => $this->lang,
-            'categories' => $categoriesList,
+            'categories' => $categories,
+        ]);
+        echo $this->blade->render('backend/main/panel', [
+            'view' => $this->blade,
+            'content' => $view,
+            'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
+        ]);
+    }
+
+    public function management()
+    {
+        $categories = $this->categories->get();
+        $view = $this->blade->render('backend/main/layout/categories/management', [
+            'lang' => $this->lang,
+            'categories' => $categories,
         ]);
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
@@ -88,23 +111,34 @@ class CategoryController extends controller
         $successMessage = null;
         $errorMessage = null;
         $errors = $this->request(CategoryRequest::class);
-        $categoryToEdit = current($this->categories->get(['id' => $itemId]));
-        $this->categories = loadModel(categories::class);
-
+        $category = current($this->categories->get(['id' => $itemId]));
+        if ($category->user_id != $this->userId) {
+            exit('Invalid Access');
+        }
+        $this->categories = loadModel(Categories::class);
         if (!empty($this->request) && empty($errors)) {
-            $updateProcess = $this->categories->update(['id' => $categoryToEdit->id], $this->request);
-            if ($updateProcess) {
-                $categoryToEdit = current($this->categories->get(['id' => $itemId]));
-                $successMessage = __('categories.update-success');
+            if ($this->currentUser->user_type == 'admin') {
+                $this->request['status'] = 'disapproved';
+            } else {
+                $this->request['status'] = 'approved';
+            }
+            $errorMessage = $this->categories->update(['id' => $category->id], $this->request);
+            if (empty($errorMessage)) {
+                $category = current($this->categories->get(['id' => $itemId]));
+                if ($this->currentUser->user_type == 'admin') {
+                    $successMessage = __('categories.update-suc-admin');
+                } else {
+                    $successMessage = __('categories.update-suc-fulladmin');
+                }
             }
         }
 
         $view = $this->blade->render('backend/main/layout/categories/create', [
             'lang' => $this->lang,
-            'category' => $categoryToEdit,
+            'category' => $category,
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,
-            'action' => '/panel/admin/categories/edit/' . $categoryToEdit->id,
+            'action' => '/panel/my-categories/edit/' . $itemId,
             'user' => $this->currentUser,
             'method' => 'update',
         ]);
@@ -117,12 +151,46 @@ class CategoryController extends controller
         ]);
     }
 
+    public function approve(int $itemId)
+    {
+        $errorMessage = $this->categories->update(['id' => $itemId], ['status' => 'approved']);
+        if (!empty($errorMessage)) {
+            exit('error editing status');
+        }
+        redirect('/panel/categories-management');
+    }
+
     public function delete(int $itemId)
     {
-        $errorMessage = $this->categories->delete($itemId);
-        if (!empty($errorMessage)) {
-            exit('error');
+        $category = current($this->categories->get(['id' => $itemId]));
+        $categorySubjects = $this->subjects->get(['category_id' => $itemId]);
+        if ($_SERVER['REQUEST_URI'] == '/ParsaFramework/panel/my-categories/delete/' . $itemId) {
+            $route = '/panel/my-categories';
+            if ($category->user_id != $this->userId) {
+                exit('Access denied');
+            }
+        } else {
+            $route = '/panel/categories-management';
         }
-        redirect('/panel/management/categories');
+        if (!empty($categorySubjects)) {
+            foreach ($categorySubjects as $categorySubject) {
+                if (!empty($this->books->get(['subject_id' => $categorySubject->id]))) {
+                    $errorMessageBooks = $this->books->delete(['subject_id' => $categorySubject->id]);
+                    if (!empty($errorMessageBooks)) {
+                        exit('error deleting related books from database');
+                    }
+                }
+            }
+            $errorMessageSub = $this->subjects->delete(['category_id' => $itemId]);
+            if (!empty($errorMessageSub)) {
+                exit('error deleting related subjects from database');
+            }
+        }
+        $this->subjects->delete(['category_id' => $itemId]);
+        $errorMessage = $this->categories->delete(['id' => $itemId]);
+        if (!empty($errorMessage)) {
+            exit('error deleting category from database');
+        }
+        redirect($route);
     }
 }

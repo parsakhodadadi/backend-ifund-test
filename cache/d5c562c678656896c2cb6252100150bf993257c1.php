@@ -1,82 +1,322 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--favicon-->
-    <link rel="icon" href="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/images/favicon-32x32.png" type="image/png" />
-    <!-- loader-->
-    <link href="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/css/pace.min.css" rel="stylesheet" />
-    <script src="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/js/pace.min.js"></script>
-    <!-- Bootstrap CSS -->
-    <link href="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/css/app.css" rel="stylesheet">
-    <link href="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/css/icons.css" rel="stylesheet">
-    <title>ویرایش دسترسی</title>
-</head>
-
-<body>
-<!-- wrapper -->
-<div class="wrapper">
-    <div class="authentication-header"></div>
-    <div class="authentication-reset-password d-flex align-items-center justify-content-center">
-        <div class="row-cols-xxl-auto">
-            <div class="col-xxl-auto col-xxl-auto">
-                <div class="card">
-                    <div class="row g-0">
-                        <div class="col-lg-12 border-end">
+<!--start page wrapper -->
+<div class="page-wrapper">
+    <div class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3"><?php echo e($lang['aaron-magazine']); ?></div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page"><?php echo e($lang['user-profile']); ?></li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">تنظیمات</button>
+                    <button type="button"
+                            class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown"><span class="visually-hidden">فهرست کشویی</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"><a
+                                class="dropdown-item" href="javascript:;">عمل</a>
+                        <a class="dropdown-item" href="javascript:;">عمل دیگر</a>
+                        <a class="dropdown-item" href="javascript:;">هر چیز دیگر اینجا</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="javascript:;">لینک
+                            جدا کننده</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+        <div class="container">
+            <div class="main-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
                             <div class="card-body">
-                                <div class="p-5">
-                                    <div class="text-start">
-                                        <img src="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/images/logo-img.png" width="180" alt="">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img src="<?php echo e(route('/') . $user->photo); ?>" alt="Admin"
+                                         class="rounded-circle p-1 bg-primary" width="110">
+                                    <div class="mt-3">
+                                        <h4><?php echo e($user->first_name); ?> <?php echo e($user->last_name); ?></h4>
+                                        <p class="text-secondary mb-1">
+                                            <?php if($user->user_type == 'user'): ?>
+                                                <?php echo e($lang['website-user']); ?>
+
+                                            <?php elseif($user->user_type == 'admin'): ?>
+                                                <?php echo e($lang['website-admin']); ?>
+
+                                            <?php else: ?>
+                                                <?php echo e($lang['website-full-admin']); ?>
+
+                                            <?php endif; ?>
+                                        </p>
+                                        <p class="text-muted font-size-sm">ایران، تهران</p>
+                                        <button class="btn btn-primary">دنبال کردن</button>
+                                        <button class="btn btn-outline-primary">پیام</button>
                                     </div>
-                                    <h4 class="mt-5 font-weight-bold"><?php echo e($lang['edit-access']); ?></h4>
-                                    <form action="<?php echo e(route('/panel/management/users/editAccess/') . $user->id); ?>" method="post">
-                                        <div class="mb-6 mt-3">
-                                            <label class="user-type"><?php echo e($lang['user_type']); ?></label>
+                                </div>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="<?php echo e(route('/panel/users-management/edit-access/') . $user->id); ?>"
+                                      method="post" enctype="multipart/form-data">
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0"><?php echo e($lang['first-name']); ?></h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <label type="text" class="form-control"><?php echo e($user->first_name); ?></label>
+                                        </div>
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-9">
+                                            <?php if(!empty($errors['first_name'])): ?>
+                                                <?php if(!empty($errors['first_name']['required'])): ?>
+                                                    <div class="form-select alert-danger">
+                                                        <?php echo e($errors['first_name']['required']); ?>
+
+                                                    </div>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0"><?php echo e($lang['last-name']); ?></h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <label type="text" class="form-control"><?php echo e($user->last_name); ?></label>
+                                        </div>
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-9">
+                                            <?php if(!empty($errors['last_name'])): ?>
+                                                <?php if(!empty($errors['last_name']['required'])): ?>
+                                                    <div class="form-select alert-danger">
+                                                        <?php echo e($errors['last_name']['required']); ?>
+
+                                                    </div>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0"><?php echo e($lang['email']); ?></h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <label type="text" class="form-control"><?php echo e($user->email); ?></label>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0"><?php echo e($lang['user_type']); ?></h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
                                             <select name="user_type" id="user-type" class="form-select">
                                                 <?php if($user->user_type == "user"): ?>
-                                                    <option value="user" selected="selected"><?php echo e($lang['user']); ?></option>
+                                                    <option value="user"
+                                                            selected="selected"><?php echo e($lang['user']); ?></option>
                                                     <option value="admin"><?php echo e($lang['admin']); ?></option>
                                                 <?php else: ?>
-                                                    <option value="admin" selected="selected"><?php echo e($lang['admin']); ?></option>
+                                                    <option value="admin"
+                                                            selected="selected"><?php echo e($lang['admin']); ?></option>
                                                     <option value="user"><?php echo e($lang['user']); ?></option>
                                                 <?php endif; ?>
                                             </select>
                                         </div>
-                                        <div class="mb-6 mt-3">
-                                            <label class="form-label"><?php echo e($lang['status']); ?></label>
+                                        <?php if(!empty($errors['user_type'])): ?>
+                                            <div class="form-control alert-danger"><?php echo e($errors['user_type']['user_type']); ?></div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-3">
+                                            <h6 class="mb-0"><?php echo e($lang['status']); ?></h6>
+                                        </div>
+                                        <div class="col-sm-9 text-secondary">
                                             <select name="blocked" id="user-type" class="form-select">
                                                 <?php if($user->blocked == "yes"): ?>
-                                                    <option value="yes" selected="selected"><?php echo e($lang['blocked']); ?></option>
+                                                    <option value="yes"
+                                                            selected="selected"><?php echo e($lang['blocked']); ?></option>
                                                     <option value="no"><?php echo e($lang['active']); ?></option>
                                                 <?php else: ?>
-                                                    <option value="no" selected="selected"><?php echo e($lang['active']); ?></option>
+                                                    <option value="no"
+                                                            selected="selected"><?php echo e($lang['active']); ?></option>
                                                     <option value="yes"><?php echo e($lang['blocked']); ?></option>
                                                 <?php endif; ?>
                                             </select>
                                         </div>
-                                        <br>
-                                        <div class="d-grid gap-2">
-                                            <input type="submit" class="btn btn-primary" value='<?php echo e($lang['apply']); ?>' />
-                                        </div>
-                                        <?php if(!empty($successMessage)): ?>
-                                            <div class="form-control alert-success"><?php echo e($successMessage); ?></div>
+                                        <?php if(!empty($errors['blocked'])): ?>
+                                            <div class="form-control alert-danger"><?php echo e($errors['blocked']['blocked']); ?></div>
                                         <?php endif; ?>
-                                        <a href="<?php echo e(route('/panel/management/users')); ?>"><?php echo e($lang['back-to-users-list']); ?></a>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-9 text-secondary">
+                                            <input type="submit" class="btn btn-primary px-4"
+                                                   value="<?php echo e($lang['submit-changes']); ?>"/>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </form>
                             </div>
+                            <?php if(!empty($successMessage)): ?>
+                                <div class="form-control alert-success">
+                                    <?php echo e($successMessage); ?>
+
+                                </div>
+                            <?php endif; ?>
+                            <?php if(!empty($errorMessage)): ?>
+                                <div class="form-control alert-success">
+                                    <?php echo e($errorMessage); ?>
+
+                                </div>
+                            <?php endif; ?>
                         </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- end wrapper -->
-</body>
-
-</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/backend/main/layout/users/edit-access.blade.php ENDPATH**/ ?>
+</div>
+<!--end page wrapper -->
+<!-- Bootstrap JS -->
+<script src="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/js/bootstrap.bundle.min.js"></script>
+<!--plugins-->
+<script src="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/js/jquery.min.js"></script>
+<script src="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/plugins/simplebar/js/simplebar.min.js"></script>
+<script src="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+<script src="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+<!--app JS-->
+<script src="<?php echo e(route('')); ?>/Others/Themes/Backend/main/vertical/assets/js/app.js"></script><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/backend/main/layout/users/edit-access.blade.php ENDPATH**/ ?>

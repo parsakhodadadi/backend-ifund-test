@@ -35,10 +35,14 @@ class HomeController extends controller
         $this->authorsLang = loadLang($lang, 'authors');
     }
 
+    public function frontEnd()
+    {
+        echo $this->blade->render('Frontend/main/index');
+    }
+
     public function showPosts()
     {
         $postsToShow = $this->posts->get();
-
         $view = $this->blade->render('backend/main/layout/posts/list',[
             'lang' => $this->postsLang,
             'posts' => $postsToShow,

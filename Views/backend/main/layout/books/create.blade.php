@@ -45,7 +45,7 @@
                                         <label for="inputProductTitle" class="form-label">{{ $lang['name'] }}</label>
                                         <input type="text" name="name" class="form-control" id="inputProductTitle"
                                                placeholder="{{ $lang['enter-name'] }}"
-                                               value="@if(!empty($data)) {{ $data->name }} @endif">
+                                               value="@if(!empty($book)) {{ $book->name }} @endif">
                                         @if(!empty($errors['name']))
                                             @if(!empty($errors['name']['required']))
                                                 <div class="form-control alert-danger">{{ $errors['name']['required'] }}</div>
@@ -57,8 +57,8 @@
                                                class="form-label">{{ $lang['description'] }}</label>
                                         <textarea name="description" class="form-control" id="myCKEditortextarea"
                                                   rows="3">
-                                            @if(!empty($data))
-                                                {{ $data->about }}
+                                            @if(!empty($book))
+                                                {{ $book->description }}
                                             @endif
                                         </textarea>
                                         @if(!empty($errors['description']))
@@ -71,10 +71,20 @@
                                         <label for="category"
                                                class="form-label">{{ $lang['category'] }}</label>
                                         <select class="form-select" id="category" name="category_id">
-                                            <option value="">{{ $lang['choose-cat'] }}</option>
-                                            @foreach($categories->get() as $category)
-                                                <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                            @endforeach
+                                            @if(!empty($book))
+                                                @foreach($categories->get() as $category)
+                                                    @if(current($subjects->get(['id' => $book->subject_id]))->category_id == $category->id)
+                                                        <option value="{{ $category->id }}" selected>{{ $category->title }}</option>
+                                                    @else
+                                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                <option value="">{{ $lang['choose-cat'] }}</option>
+                                                @foreach($categories->get() as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                                @endforeach
+                                            @endif
                                         </select>
                                         @if(!empty($errors['category_id']))
                                             @if(!empty($errors['category_id']['required']))
@@ -85,21 +95,31 @@
                                         @endif
                                     </div>
                                     <div class="mb-3">
-                                        <label for="sub_category"
+                                        <label for="subject"
                                                class="form-label">{{ $lang['subject'] }}</label>
-                                        <select class="form-select" name="sub_category_id">
-                                            <option value="">{{ $lang['choose-sub-cat'] }}</option>
-                                            @foreach($sub_categories->get() as $sub_category)
-                                                <option class="form-control" value="{{ $sub_category->id }}">{{ $sub_category->title }}</option>
-                                            @endforeach
+                                        <select class="form-select" name="subject_id">
+                                            @if(!empty($book))
+                                                @foreach($subjects->get() as $subject)
+                                                    @if($book->subject_id == $subject->id)
+                                                        <option value="{{ $subject->id }}" selected>{{ $subject->title }}</option>
+                                                    @else
+                                                        <option value="{{ $subject->id }}">{{ $subject->title }}</option>
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                <option value="">{{ $lang['choose-sub-cat'] }}</option>
+                                                @foreach($subjects->get() as $subject)
+                                                    <option value="{{ $subject->id }}">{{ $subject->title }}</option>
+                                                @endforeach
+                                            @endif
                                         </select>
-                                        @if(!empty($errors['sub_category_id']) || $sub_category_Err == 1)
-                                            @if($sub_category_Err == 1)
-                                                <div class="form-control alert-danger">{{ $lang['sub_category-valid'] }}</div>
-                                            @elseif(!empty($errors['sub_category_id']['required']))
-                                                <div class="form-control alert-danger">{{ $errors['sub_category_id']['required'] }}</div>
-                                            @elseif(!empty($errors['sub_category_id']['sub_category_valid']))
-                                                <div class="form-control alert-danger">{{ $errors['sub_category_id']['sub_category_valid'] }}</div>
+                                        @if(!empty($errors['subject_id']) || $subject_Err == 1)
+                                            @if($subject_Err == 1)
+                                                <div class="form-control alert-danger">{{ $lang['subject-valid'] }}</div>
+                                            @elseif(!empty($errors['subject_id']['required']))
+                                                <div class="form-control alert-danger">{{ $errors['subject_id']['required'] }}</div>
+                                            @elseif(!empty($errors['subject_id']['subject_valid']))
+                                                <div class="form-control alert-danger">{{ $errors['subject_id']['subject_valid'] }}</div>
                                             @endif
                                         @endif
                                     </div>
@@ -107,31 +127,39 @@
                                         <label for="author"
                                                class="form-label">{{ $lang['author'] }}</label>
                                         <select class="form-select" name="author_id">
-                                            <option value="">{{ $lang['choose-author'] }}</option>
-                                            @foreach($authors->get() as $author)
-                                                <option class="form-control" value="{{ $author->id }}">{{ $author->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        @if(!empty($errors['author_id']))
-                                            @if(!empty($errors['author_id']['required']))
-                                                <div class="form-control alert-danger">{{ $errors['author_id']['required'] }}</div>
-                                            @elseif(!empty($errors['author_id']['author_valid']))
-                                                <div class="form-control alert-danger">{{ $errors['author_id']['author_valid'] }}</div>
+                                            @if(!empty($book))
+                                                @foreach($authors->get() as $author)
+                                                    @if($book->author_id == $auhtor->id)
+                                                        <option value="{{ $author->id }}" selected>{{ $author->name }}</option>
+                                                    @else
+                                                        <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                                    @endif
+                                                @endforeach
+                                            @else
+                                                <option value="">{{ $lang['choose-author'] }}</option>
+                                                @foreach($authors->get() as $author)
+                                                    <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                                @endforeach
                                             @endif
-                                        @endif
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription"
-                                               class="form-label">{{ $lang['add-photo'] }}</label>
-                                        <input class="form-control" value="@if(!empty($data)) @if(!empty($data->photo)) {{ $data->photo }} @endif @endif"
-                                               id="image-uploadify" name="photo" type="file"
+                                               class="form-label">
+                                            @if($method == 'update')
+                                                {{ $lang['add-new-photo'] }}
+                                            @else
+                                                {{ $lang['add-photo'] }}
+                                            @endif
+                                        </label>
+                                        <input class="form-control" id="image-uploadify" name="photo" type="file"
                                                accept="image/*"
                                                multiple>
                                         @if($method == 'update')
-                                            @if(!empty($data->photo))
+                                            @if(!empty($book->photo))
                                                 <div class="card-body">
                                                 <span>
-                                                    <img src="{{ route('/') . $data->photo }}" width="200" height="auto" alt="">
+                                                    <img src="{{ route('/') . $book->photo }}" width="200" height="auto" alt="">
                                                 </span>
                                                 </div>
                                             @endif

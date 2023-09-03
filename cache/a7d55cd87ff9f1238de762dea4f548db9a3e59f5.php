@@ -9,7 +9,11 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page"><?php echo e($lang['add-new-author']); ?></li>
+                        <?php if($method == 'create'): ?>
+                            <li class="breadcrumb-item active" aria-current="page"><?php echo e($lang['add-new-author']); ?></li>
+                        <?php else: ?>
+                            <li class="breadcrumb-item active" aria-current="page"><?php echo e($lang['edit-author']); ?></li>
+                        <?php endif; ?>
                     </ol>
                 </nav>
             </div>
@@ -45,7 +49,7 @@
                                         <label for="inputProductTitle" class="form-label"><?php echo e($lang['name']); ?></label>
                                         <input type="text" name="name" class="form-control" id="inputProductTitle"
                                                placeholder="<?php echo e($lang['enter-name']); ?>"
-                                               value="<?php if(!empty($data)): ?> <?php echo e($data->name); ?> <?php endif; ?>">
+                                               value="<?php if(!empty($author)): ?> <?php echo e($author->name); ?> <?php endif; ?>">
                                         <?php if(!empty($errors['name'])): ?>
                                             <?php if(!empty($errors['name']['required'])): ?>
                                                 <div class="form-control alert-danger"><?php echo e($errors['name']['required']); ?></div>
@@ -57,8 +61,8 @@
                                                class="form-label"><?php echo e($lang['about']); ?></label>
                                         <textarea name="about" class="form-control" id="myCKEditortextarea"
                                                   rows="3">
-                                            <?php if(!empty($data)): ?>
-                                                <?php echo e($data->about); ?>
+                                            <?php if(!empty($author)): ?>
+                                                <?php echo e($author->about); ?>
 
                                             <?php endif; ?>
                                         </textarea>
@@ -70,16 +74,24 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription"
-                                               class="form-label"><?php echo e($lang['add-photo']); ?></label>
-                                        <input class="form-control" value="<?php if(!empty($data)): ?> <?php if(!empty($data->photo)): ?> <?php echo e($data->photo); ?> <?php endif; ?> <?php endif; ?>"
+                                               class="form-label">
+                                            <?php if($method == 'create'): ?>
+                                                <?php echo e($lang['add-photo']); ?>
+
+                                            <?php else: ?>
+                                                <?php echo e($lang['add-new-photo']); ?>
+
+                                            <?php endif; ?>
+                                        </label>
+                                        <input class="form-control" value="<?php if(!empty($author)): ?> <?php if(!empty($author->photo)): ?> <?php echo e($author->photo); ?> <?php endif; ?> <?php endif; ?>"
                                                id="image-uploadify" name="photo" type="file"
-                                               accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf"
+                                               accept="image/*"
                                                multiple>
                                         <?php if($method == 'update'): ?>
-                                            <?php if(!empty($data->photo)): ?>
+                                            <?php if(!empty($author->photo)): ?>
                                                 <div class="card-body">
                                                 <span>
-                                                    <img src="<?php echo e(route('/') . $data->photo); ?>" width="200" height="auto" alt="">
+                                                    <img src="<?php echo e(route('/') . $author->photo); ?>" width="200" height="auto" alt="">
                                                 </span>
                                                 </div>
                                             <?php endif; ?>

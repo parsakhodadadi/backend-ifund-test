@@ -10,9 +10,9 @@
                             @elseif($method == 'update')
                                 {{ $lang['edit-category'] }}
                             @elseif($method == 'create_sub')
-                                {{ $lang['add-sub-category'] }}
+                                {{ $lang['create-subject'] }}
                             @elseif($method == 'edit_sub')
-                                {{ $lang['edit-sub-category'] }}
+                                {{ $lang['edit-subject'] }}
                             @endif
 						</h4>
 					</span>
@@ -48,7 +48,8 @@
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input type="text" name="title" class="form-control"
-                                                   placeholder="{{ $lang['title'] }}" value="@if(!empty($category)){{ $category->title }}@endif"/>
+                                                   placeholder="{{ $lang['title'] }}"
+                                                   value="@if(!empty($category)){{ $category->title }}@endif"/>
                                             @if(!empty($errors['title']))
                                                 <div class="form-control alert-danger">{!! ($errors['title']['required']) !!}</div>
                                             @endif
@@ -60,14 +61,15 @@
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input class="form-control" name="description"
-                                                   placeholder="{{ $lang['description'] }}" value="@if(!empty($category)){{ $category->description }}@endif"/>
+                                                   placeholder="{{ $lang['description'] }}"
+                                                   value="@if(!empty($category)){{ $category->description }}@endif"/>
                                             @if(!empty($errors['description']))
                                                 <div class="form-control alert-danger">{!! ($errors['description']['required']) !!}</div>
                                             @endif
                                         </div>
                                     </div>
-                                        @if($method == 'update')
-                                            @if($user->user_type == 'fulladmin')
+                                    @if($method == 'update')
+                                        @if($_SERVER['REQUEST_URI'] == '/ParsaFramework/panel/categories-management/edit/' . $category->id && $user->user_type == 'fulladmin')
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
                                                     <h6 class="mb-0">{{ $lang['status'] }}</h6>
@@ -75,10 +77,12 @@
                                                 <div class="col-sm-9 text-secondary">
                                                     <select class="form-select" name="status">
                                                         @if($category->status == 'approved')
-                                                            <option value="approved" selected>{{ $lang['approved'] }}</option>
+                                                            <option value="approved"
+                                                                    selected>{{ $lang['approved'] }}</option>
                                                             <option value="disapproved">{{ $lang['disapproved'] }}</option>
                                                         @else
-                                                            <option value="disapproved" selected>{{ $lang['disapproved'] }}</option>
+                                                            <option value="disapproved"
+                                                                    selected>{{ $lang['disapproved'] }}</option>
                                                             <option value="approved">{{ $lang['approved'] }}</option>
                                                         @endif
                                                     </select>
@@ -87,26 +91,24 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                            @endif
                                         @endif
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-sm-3"></div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <input type="submit" class="btn btn-primary px-4"
-                                                   value="{{ $lang['send'] }}"/>
-                                        </div>
-                                    </div>
-                                <div>
-                                    @if(!empty($errorMessage))
-                                        <div class="form-control alert-danger">{!! $errorMessage !!}</div>
-                                    @endif
-                                    @if(!empty($successMessage))
-                                        <div class="form-control alert-success">{!! $successMessage !!}</div>
                                     @endif
                                 </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="submit" class="btn btn-primary px-4"
+                                               value="{{ $lang['send'] }}"/>
+                                    </div>
                                 </div>
+                                @if(!empty($errorMessage))
+                                    <div class="form-control alert-danger">{!! $errorMessage !!}</div>
+                                @endif
+                                @if(!empty($successMessage))
+                                    <div class="form-control alert-success">{!! $successMessage !!}</div>
+                                @endif
                             </div>
+                        </div>
                     </form>
                 </div>
             </div>

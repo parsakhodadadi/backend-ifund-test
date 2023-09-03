@@ -36,57 +36,61 @@ class PostController extends controller
         $successMessage = null;
         $errors = $this->request(PostRequest::class);
         if (!empty($this->request) && empty($errors)) {
+            if ($this->currentUser->user_type == 'fulladmin') {
+                $status = 'approved';
+            } else {
+                $status = 'disapproved';
+            }
+
             if (!empty($_FILES['photo']['name'])) {
                 $tmpFile = $_FILES['photo']['tmp_name'];
                 $newFile = 'files/' . $_FILES['photo']['name'];
                 $result = move_uploaded_file($tmpFile, $newFile);
                 if ($result) {
-                    if ($this->currentUser->user_type == 'fulladmin') {
-                        $status = 'approved';
-                    } else {
-                        $status = 'disapproved';
-                    }
-                    $data = [
-                        'title' => $this->request['title'],
-                        'description' => $this->request['description'],
-                        'photo' => $newFile,
-                        'user_id' => $this->userId,
-                        'status' => $status,
-                        'date' => date("Y/m/d"),
-                        'time' => date("h:i:sa"),
-                        'edited' => 'no',
-                    ];
-                    $errorMessage = $this->posts->insert($data);
+                    $this->request['photo'] = $newFile;
+                    $this->request['user_id'] = $this->userId;
+                    $this->request['status'] = $status;
+                    $this->request['date'] = date("Y/m/d");
+                    $this->request['time'] = date("h:i:sa");
+                    $this->request['edited'] = 'no';
+                    unset($this->request['files']);
+                    $errorMessage = $this->posts->insert($this->request);
                     if (empty($errorMessage)) {
-                        $successMessage = __('posts.added-success');
+                        if ($this->currentUser->user_type == 'admin') {
+                            $successMessage = __('posts.add-suc-admin');
+                        } else {
+                            $successMessage = __('posts.add-suc-fulladmin');
+                        }
                     }
                 }
             } else {
-                $data = [
-                    'title' => $this->request['title'],
-                    'description' => $this->request['description'],
-                    'status' => 'disapproved',
-                    'user_id' => $this->userId,
-                    'date' => date("Y/m/d"),
-                    'time' => date("h:i:sa"),
-                ];
-                $errorMessage = $this->posts->insert($data);
+                $this->request['status'] = $status;
+                $this->request['user_id'] = $this->userId;
+                $this->request['date'] = date("Y/m/d");
+                $this->request['time'] = date("h:i:sa");
+                $this->request['edited'] = 'no';
+                unset($this->request['files']);
+                $errorMessage = $this->posts->insert($this->request);
                 if (empty($errorMessage)) {
-                    $successMessage = __('posts.added-success');
+                    if ($this->currentUser->user_type == 'admin') {
+                        $successMessage = __('posts.add-suc-admin');
+                    } else {
+                        $successMessage = __('posts.add-suc-fulladmin');
+                    }
                 }
             }
         }
+
         $view = $this->blade->render('backend/main/layout/posts/create', [
             'lang' => $this->lang,
             'errors' => $errors,
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,
             'posts' => $this->posts,
-            'action' => '/panel/admin/posts/create',
+            'action' => '/panel/add-post',
             'data' => [],
             'method' => 'create',
         ]);
-
 
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
@@ -101,11 +105,10 @@ class PostController extends controller
         $errorMessage = null;
         $successMessage = null;
         $errors = $this->request(PostRequest::class);
-        $postToEditData = current($this->posts->get(['id' => $itemId]));
+        $post = current($this->posts->get(['id' => $itemId]));
         if (!empty($this->request) && empty($errors)) {
             if (!empty($_FILES['photo']['name'])) {
                 //delete current photo
-                unlink($postToEditData->photo);
                 $tmpFile = $_FILES['photo']['tmp_name'];
                 $newFile = 'files/' . $_FILES['photo']['name'];
                 $result = move_uploaded_file($tmpFile, $newFile);
@@ -115,19 +118,22 @@ class PostController extends controller
                     } else {
                         $status = 'disapproved';
                     }
-                    $data = [
-                        'title' => $this->request['title'],
-                        'description' => $this->request['description'],
-                        'photo' => $newFile,
-                        'user_id' => $this->userId,
-                        'status' => $status,
-                        'date' => date("Y/m/d"),
-                        'time' => date("h:i:sa"),
-                        'edited' => 'yes'
-                    ];
-                    $updateProcess = $this->posts->update($itemId, $data);
+                    unset($this->request['files']);
+                    $this->request['photo'] = $newFile;
+                    $this->request['user_id'] = $this->userId;
+                    $this->request['status'] = $status;
+                    $this->request['date'] = date("Y/m/d");
+                    $this->request['time'] = date("h:i:sa");
+                    $this->request['edited'] = 'yes';
+                    $updateProcess = $this->posts->update(['id' => $itemId], $this->request);
+                    unlink($post->photo);
                     if ($updateProcess) {
-                        $successMessage = __('posts.updated-success');
+                        $post = current($this->posts->get(['id' => $itemId]));
+                        if ($this->currentUser->user_type == 'admin') {
+                            $successMessage = __('posts.updated-success-admin');
+                        } else {
+                            $successMessage = __('posts.updated-success-fulladmin');
+                        }
                     } else {
                         exit('error');
                     }
@@ -139,7 +145,7 @@ class PostController extends controller
                     $status = 'disapproved';
                 }
                 unset($this->request['files']);
-                $this->request['photo'] = $postToEditData->photo;
+                $this->request['photo'] = $post->photo;
                 $this->request['status'] = $status;
                 $this->request['user_id'] = $this->userId;
                 $this->request['date'] = date("Y/m/d");
@@ -147,7 +153,12 @@ class PostController extends controller
                 $this->request['edited'] = 'yes';
                 $updateProcess = $this->posts->update(['id' => $itemId], $this->request);
                 if ($updateProcess) {
-                    $successMessage = __('posts.updated-success');
+                    $post = current($this->posts->get(['id' => $itemId]));
+                    if ($this->currentUser->user_type == 'admin') {
+                        $successMessage = __('posts.updated-success-admin');
+                    } else {
+                        $successMessage = __('posts.updated-success-fulladmin');
+                    }
                 } else {
                     exit('error for updating');
                 }
@@ -158,8 +169,8 @@ class PostController extends controller
             'lang' => $this->lang,
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,
-            'action' => '/panel/admin/posts/edit/' . $itemId,
-            'data' => $postToEditData,
+            'action' => '/panel/my-posts/edit/' . $itemId,
+            'data' => $post,
             'method' => 'update',
         ]);
         echo $this->blade->render('backend/main/panel', [
@@ -170,14 +181,30 @@ class PostController extends controller
         ]);
     }
 
-    public function show()
+    public function adminPosts()
+    {
+        $posts = $this->posts->get(['user_id' => $this->userId]);
+        $view = $this->blade->render('backend/main/layout/posts/admin-posts', [
+            'lang' => $this->lang,
+            'posts' => $posts,
+            'users' => $this->users,
+        ]);
+
+        echo $this->blade->render('backend/main/panel', [
+            'view' => $this->blade,
+            'content' => $view,
+            'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
+        ]);
+    }
+
+    public function management()
     {
         $postsToEdit = $this->posts->get();
-        $view = $this->blade->render('backend/main/layout/posts/list', [
+        $view = $this->blade->render('backend/main/layout/posts/management', [
             'lang' => $this->lang,
             'posts' => $postsToEdit,
             'users' => $this->users,
-            'status' => 'disapproved',
         ]);
 
         echo $this->blade->render('backend/main/panel', [
@@ -193,7 +220,7 @@ class PostController extends controller
         if (!$this->posts->update(['id' => $itemId], ['status' => 'approved'])) {
             exit('error');
         }
-        redirect('/panel/management/posts');
+        redirect('/panel/posts-management');
     }
 
     public function delete(int $itemId)
@@ -202,7 +229,16 @@ class PostController extends controller
         if (!empty($errorMessage)) {
             exit('errorMessage');
         }
-        redirect('/panel/management/posts');
+        redirect('/panel/posts-management');
+    }
+
+    public function remove(int $itemId)
+    {
+        $errorMessage = $this->posts->delete(['id' => $itemId]);
+        if (!empty($errorMessage)) {
+            exit('errorMessage');
+        }
+        redirect('/panel/my-posts');
     }
 
 }

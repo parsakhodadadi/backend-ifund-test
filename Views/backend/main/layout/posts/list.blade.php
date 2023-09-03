@@ -9,7 +9,7 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $lang['info'] }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $lang['posts'] }}</li>
                     </ol>
                 </nav>
             </div>
@@ -33,61 +33,51 @@
         </div>
         <!--end breadcrumb-->
         @foreach($posts as $post)
-            @if($post->status == $status)
-                <div class="card">
-                    <div class="card-body">
-                        @if(!empty($user_id))
-                            @if($post->user_id == $user_id)
-                                <a href="{{ route('/panel/admin/posts/edit/') . $post->id }}" class="form-control">{{ $lang['edit'] }}</a>
-                            @endif
+            <div class="card">
+                <div class="card-body">
+                    @if(!empty($user_id))
+                        @if($post->user_id == $user_id)
+                            <a href="{{ route('/panel/admin/posts/edit/') . $post->id }}"
+                               class="form-control">{{ $lang['edit'] }}</a>
                         @endif
-                        <div class="card-title">
-                            <h5 class="mb-0">{{ $post->title }}</h5>
-                        </div>
-                        <hr/>
-                        @if(!empty($post->photo))
-                            <div class="card-body">
-                                <img src="{{ route('/') . $post->photo }}"  width="100%" alt="">
-                            </div>
-                        @endif
-                        <div class="card-body">
-                            {{ $post->description }}
-                        </div>
-                        <div class="card-footer">
-                            {{ $lang['by'] }}
-                            {{ current($users->get(['id' => $post->user_id]))->first_name }}
-                            {{ current($users->get(['id' => $post->user_id]))->last_name }}
-                            <br>
-                            @if($post->status == "disapproved")
-                                {{ $lang['email'] . ' : ' . current($users->get(['id' => $post->user_id]))->email}}
-                            @endif
-                            <br>
-                            @if(current($users->get(['id' => $post->user_id]))->user_type == 'user')
-                                {{ $lang['user'] }}
-                            @elseif(current($users->get(['id' => $post->user_id]))->user_type == 'admin')
-                                {{ $lang['admin'] }}
-                            @else
-                                {{ $lang['fulladmin'] }}
-                            @endif
-                            <br>
-                            @if($post->edited == 'yes')
-                                {{ $lang['written-at'] }}
-                            @else
-                                {{ $lang['last-edited-at'] }}
-                            @endif
-                            {{ $post->date . ' ' . $post->time }}
-                        </div>
-                    </div>
-                    @if($post->status == 'disapproved')
-                        <table>
-                            <tr>
-                                <td><a class="form-control" href="{{ route('/panel/management/posts/approve/') .  $post->id }}">{{ $lang['approve'] }}</a></td>
-                                <td><a class="form-control" href="{{ route('/panel/management/posts/delete/') .  $post->id }}">{{ $lang['delete'] }}</a></td>
-                            </tr>
-                        </table>
                     @endif
+                    <div class="card-title">
+                        <h5 class="mb-0">{{ $post->title }}</h5>
+                    </div>
+                    <hr/>
+                    @if(!empty($post->photo))
+                        <div class="card-body">
+                            <img src="{{ route('/') . $post->photo }}" width="100%" alt="">
+                        </div>
+                    @endif
+                    <div class="card-body">
+                        {{ $post->description }}
+                    </div>
+                    <div class="card-footer">
+                        {{ $lang['by'] }}
+                        {{ current($users->get(['id' => $post->user_id]))->first_name }}
+                        {{ current($users->get(['id' => $post->user_id]))->last_name }}
+                        <br>
+                        @if($post->status == "disapproved")
+                            {{ $lang['email'] . ' : ' . current($users->get(['id' => $post->user_id]))->email }}
+                        @endif
+                        @if(current($users->get(['id' => $post->user_id]))->user_type == 'user')
+                            {{ $lang['user'] }}
+                        @elseif(current($users->get(['id' => $post->user_id]))->user_type == 'admin')
+                            {{ $lang['admin'] }}
+                        @else
+                            {{ $lang['fulladmin'] }}
+                        @endif
+                        <br>
+                        @if($post->edited == 'yes')
+                            {{ $lang['written-at'] }}
+                        @else
+                            {{ $lang['last-edited-at'] }}
+                        @endif
+                        {{ $post->date . ' ' . $post->time }}
+                    </div>
                 </div>
-            @endif
+            </div>
         @endforeach
     </div>
 </div>

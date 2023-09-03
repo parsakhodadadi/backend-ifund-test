@@ -9,7 +9,13 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $lang['add-new-post'] }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            @if($method == 'create')
+                                {{ $lang['add-post'] }}
+                            @else
+                                {{ $lang['edit-post'] }}
+                            @endif
+                        </li>
                     </ol>
                 </nav>
             </div>
@@ -35,11 +41,7 @@
         <div class="card">
             <div class="card-body p-4">
                 <h5 class="card-title">
-                    @if($method == 'create')
-                        {{ $lang['add-new-post'] }}
-                    @else
-                        {{ $lang['edit-post'] }}
-                    @endif
+                    {{ $lang['post-info-form'] }}
                 </h5>
                 <hr/>
                 <div class="form-body mt-4">

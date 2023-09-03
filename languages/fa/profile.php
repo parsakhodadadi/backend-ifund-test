@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'aaron-magazine' => 'مجله ارون',
     'user-profile' => 'پروفایل کاربر',
     'row' => 'ردیف',
     'first-name' => 'نام',

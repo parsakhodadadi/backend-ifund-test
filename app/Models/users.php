@@ -15,12 +15,12 @@ class Users
         $this->db = new databaseHelper();
     }
 
-    public function get($conditions = [])
+    public function get($conditions = [], $fetchMode = 5)
     {
         try {
-            $db = $this->db::pdoSelect($this->table);
+            $db = $this->db::pdoSelect($this->table, [], $fetchMode);
             if (!empty($conditions)) {
-                $db = $this->db::pdoSelect($this->table, $conditions);
+                $db = $this->db::pdoSelect($this->table, $conditions, $fetchMode);
             }
             return $db;
         } catch (Exception $exception) {
@@ -40,16 +40,17 @@ class Users
 
     public function update($where = [], array $data = [])
     {
-        if ($this->db->pdoUpdate($this->table, $data, $where)) {
-            return true;
+        try {
+            $this->db->pdoUpdate($this->table, $data, $where);
+        } catch (Exception $e) {
+            return $e->getCode();
         }
-        return false;
     }
 
-    public function delete($id)
+    public function delete($where = [])
     {
         try {
-            $this->db->pdoDelete($this->table, "id = $id");
+            $this->db->pdoDelete($this->table, $where);
         } catch (Exception $e) {
             return $e->getCode();
         }

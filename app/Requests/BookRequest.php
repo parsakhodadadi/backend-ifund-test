@@ -12,7 +12,7 @@ class BookRequest extends Validation
             'name' => 'required',
             'description' => 'required',
             'category_id' => 'required|category_valid',
-            'sub_category_id' => 'required|sub_category_valid',
+            'subject_id' => 'required|subject_valid',
             'author_id' => 'required|author_valid',
             'files' => 'photo|file_required',
         ];
@@ -25,8 +25,8 @@ class BookRequest extends Validation
             'description.required' => __('books.description-required'),
             'category_id.required' => __('books.category-required'),
             'category_id.category_valid' => __('books.category-valid'),
-            'sub_category_id.required' => __('books.sub_category-required'),
-            'sub_category_id.sub_category_valid' => __('books.sub_category-valid'),
+            'subject_id.required' => __('books.subject-required'),
+            'subject_id.sub_category_valid' => __('books.subject-valid'),
             'author_id.required' => __('books.author-required'),
             'author_id.author_valid' => __('books.author-valid'),
             'files.photo' => __('books.files-photo'),
@@ -37,7 +37,6 @@ class BookRequest extends Validation
     public function boot($request)
     {
         $errors = $this->check($this->rules(), $request, $this->messages());
-
         if (!empty($errors)) {
             return $errors;
         }

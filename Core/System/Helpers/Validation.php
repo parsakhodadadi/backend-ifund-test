@@ -4,10 +4,10 @@ namespace Core\System;
 
 use App\Model\Authors;
 use App\Models\Categories;
-use App\Models\Subcategories;
+use App\Models\Subjects;
 
-class Validation {
-
+class Validation
+{
     public function check($rules = [], $request = [], $messages = [])
     {
         $errors = [];
@@ -34,6 +34,22 @@ class Validation {
         }
     }
 
+    public function user_type($value)
+    {
+        if ($value != 'user' && $value != 'admin') {
+            return false;
+        }
+        return true;
+    }
+
+    public function blocked($value)
+    {
+        if ($value != 'yes' && $value != 'no') {
+            return false;
+        }
+        return true;
+    }
+
     public function category_valid($value)
     {
         if (is_numeric($value)) {
@@ -48,11 +64,11 @@ class Validation {
         }
     }
 
-    public function sub_category_valid($value)
+    public function subject_valid($value)
     {
         if (is_numeric($value)) {
-            $sub_category = current(loadModel(Subcategories::class)->get(['id' => $value]));
-            if (!empty($sub_category)) {
+            $subject = current(loadModel(Subjects::class)->get(['id' => $value]));
+            if (!empty($subject)) {
                 return true;
             } else {
                 return false;
@@ -81,7 +97,7 @@ class Validation {
         echo $value;
     }
 
-    public function max($value) : bool
+    public function max($value): bool
     {
         if (strlen($value) >= 8) {
             return true;
@@ -90,7 +106,7 @@ class Validation {
         }
     }
 
-    public function email(string $value) : bool
+    public function email(string $value): bool
     {
         if (filter_var($value, FILTER_VALIDATE_EMAIL)) {
             return true;
@@ -98,7 +114,7 @@ class Validation {
         return false;
     }
 
-    public function password(string $value) : bool
+    public function password(string $value): bool
     {
         if (strlen($value) >= 8) {
             return true;
@@ -106,15 +122,15 @@ class Validation {
         return false;
     }
 
-    public function photo(array $files) : bool
+    public function photo(array $files): bool
     {
-        if (!empty($files['photo']['name'])) {
+        if (!empty($files['photo']['tmp_name'])) {
             return (bool)getimagesize($files['photo']['tmp_name']);
         }
         return true;
     }
 
-    public function mobile($number) : bool
+    public function mobile($number): bool
     {
 
         if ($number != null && !preg_match("/^[0-9]{11}$/", strval($number))) {
@@ -125,7 +141,7 @@ class Validation {
 
     public function file_required(array $files): bool
     {
-        if (!empty($files['photo']['tmp_name'])) {
+        if (!empty($files['photo']['name'])) {
             return true;
         } else {
             return false;

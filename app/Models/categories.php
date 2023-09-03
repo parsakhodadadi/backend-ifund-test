@@ -40,16 +40,17 @@ class Categories
 
     public function update($where = [], array $data = [])
     {
-        if ($this->db->pdoUpdate($this->table, $data, $where)) {
-            return true;
+        try {
+            $this->db->pdoUpdate($this->table, $data, $where);
+        } catch (Exception $e) {
+            return $e->getCode();
         }
-        return false;
     }
 
-    public function delete($condition = [], array $data = [])
+    public function delete($where = [])
     {
         try {
-            $this->db->pdoDelete($this->table, $data);
+            $this->db->pdoDelete($this->table, $where);
         } catch (Exception $e) {
             return $e->getCode();
         }

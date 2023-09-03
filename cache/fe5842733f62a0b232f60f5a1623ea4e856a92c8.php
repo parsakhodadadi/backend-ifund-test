@@ -9,7 +9,15 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page"><?php echo e($lang['add-new-post']); ?></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <?php if($method == 'create'): ?>
+                                <?php echo e($lang['add-post']); ?>
+
+                            <?php else: ?>
+                                <?php echo e($lang['edit-post']); ?>
+
+                            <?php endif; ?>
+                        </li>
                     </ol>
                 </nav>
             </div>
@@ -35,13 +43,8 @@
         <div class="card">
             <div class="card-body p-4">
                 <h5 class="card-title">
-                    <?php if($method == 'create'): ?>
-                        <?php echo e($lang['add-new-post']); ?>
+                    <?php echo e($lang['post-info-form']); ?>
 
-                    <?php else: ?>
-                        <?php echo e($lang['edit-post']); ?>
-
-                    <?php endif; ?>
                 </h5>
                 <hr/>
                 <div class="form-body mt-4">

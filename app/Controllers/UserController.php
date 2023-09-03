@@ -6,6 +6,7 @@ use App\Middlewares\AdminMiddleware;
 use App\Middlewares\ManagerMiddleware;
 use App\Models\Users;
 use App\Request\ChangePasswordRequest;
+use App\Request\EditAccessRequest;
 use App\Request\EditProfileRequest;
 use App\Services\User\EditProfileService;
 use Core\System\controller;
@@ -24,19 +25,19 @@ class UserController extends controller
     {
         $this->request = request();
         $this->blade = blade();
-        $this->editProfileService = EditProfileService::getInstance(ConfigHelper::getConfig($_SESSION['EDIT_PROFILE_METHOD']));
         $this->users = loadModel(Users::class);
         $this->currentUser = current($this->users->get(['id' => $_SESSION['USERID']]));
         $lang = ConfigHelper::getConfig('default-language');
         $this->lang = loadLang($lang, 'users');
     }
 
-    public function show()
+    public function management()
     {
-        $usersList = $this->users->get();
-        $view = $this->blade->render('backend/main/layout/users/list', [
-            'users' => $usersList,
+        $users = $this->users->get();
+        $view = $this->blade->render('backend/main/layout/users/management', [
+            'users' => $users,
             'lang' => $this->lang,
+            'currentUser' => $this->currentUser,
         ]);
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
@@ -50,76 +51,38 @@ class UserController extends controller
     {
         $successMessage = null;
         $errorMessage = null;
-        $userToEdit = current($this->users->get(['id' => $itemId]));
-        if (!empty($this->request)) {
-            $updateProcess = $this->users->update($userToEdit->id, $this->request);
-            if ($updateProcess) {
-                $userToEdit = current($this->users->get(['id' => $itemId]));
+        $user = current($this->users->get(['id' => $itemId]));
+        $errors = $this->request(EditAccessRequest::class);
+        if (!empty($this->request) && empty($errors)) {
+            $errorMessage = $this->users->update(['id' => $user->id], $this->request);
+            if (empty($errorMessage)) {
+                $user = current($this->users->get(['id' => $itemId]));
                 $successMessage = __('users.edit-access-success');
-            } else {
-                $errorMessage = 'error';
             }
         }
 
-        echo $this->blade->render('backend/main/layout/users/edit-access', [
+        $view = $this->blade->render('backend/main/layout/users/edit-access', [
+            'errors' => $errors,
             'lang' => $this->lang,
-            'user' => $userToEdit,
+            'user' => $user,
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,
         ]);
-    }
 
-    public function changePassword()
-    {
-        $successMessage = null;
-        $errorMessage = null;
-        $errors = $this->request(ChangePasswordRequest::class);
-
-        if (!empty($this->request) && empty($errors)) {
-            if (password_verify($this->request['password'], $this->currentUser->password)) {
-                if ($this->request['new-pass'] == $this->request['rep-new-pass']) {
-                    $this->request['new-pass'] = password_hash($this->request['new-pass'], PASSWORD_DEFAULT);
-                    $editPassProcess = $this->users->update(['id' => $this->currentUser->id],
-                        ['password' => $this->request['new-pass']]);
-                    if ($editPassProcess) {
-                        $successMessage = __('users.change-pass-success');
-                    } else {
-                        $errorMessage = 'error';
-                    }
-                } else {
-                    $errorMessage = __('users.passwords-not-match');
-                }
-            } else {
-                $errorMessage = __('users.error-curr-pass');
-            }
-        }
-
-        echo $this->blade->render('backend/main/layout/users/change-password', [
-            'errors' => $errors,
-            'lang' => $this->lang,
-            'successMessage' => $successMessage,
-            'errorMessage' => $errorMessage,
+        echo $this->blade->render('backend/main/panel', [
+            'view' => $this->blade,
+            'content' => $view,
+            'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
         ]);
     }
 
     public function delete(int $itemId)
     {
-        $errorMessage = $this->users->delete($itemId);
+        $errorMessage = $this->users->delete(['id' => $itemId]);
         if (!empty($errorMessage)) {
             exit('error in deleting');
         }
-        redirect('/panel/management/users');
-    }
-
-    public function checkAdmin()
-    {
-        $adminMiddleware = new AdminMiddleware();
-        $adminMiddleware->boot();
-    }
-
-    public function checkFullAdmin()
-    {
-        $managerMiddleware = new ManagerMiddleware();
-        $managerMiddleware->boot();
+        redirect('/panel/users-management');
     }
 }

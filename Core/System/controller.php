@@ -13,15 +13,23 @@
 namespace Core\System;
 
 use App\Exception\QueryBuilderException;
-use App\Models\Categories;
+use App\Model\Authors;
 use App\Models\Users;
-use Core\System;
-use App\Middlewares\LoginMiddleware;
-use http\Env\Request;
+use App\Models\Categories;
 
 
 class controller
 {
+    private $users;
+    private $userId = null;
+    private $currentUser = null;
+    private $categories = null;
+
+    public function __construct()
+    {
+
+    }
+
     public function loadController($class)
     {
         return new $class();
@@ -55,10 +63,13 @@ class controller
         }
     }
 
-    public function request($request)
+    public function request($request, $data = [])
     {
+        if (empty($data)) {
+            $data = \request();
+        }
         $request = new $request();
-        return $request->boot(request());
+        return $request->boot($data);
     }
 
     public function queryBuilderException()
@@ -68,19 +79,33 @@ class controller
 
     public function loadNavigation()
     {
+        $users = loadModel(Users::class);
+        $currentUser = null;
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+        if (isset($_SESSION['USERID'])) {
+            $currentUser = current($users->get(['id' => $_SESSION['USERID']]));
+        }
         $categories = loadModel(Categories::class);
-         return $this->view()->blade()->render('backend/main/layout/navigation', [
+        $authors = loadModel(Authors::class);
+        return $this->view()->blade()->render('backend/main/layout/navigation', [
             'categories' => $categories->get(),
+            'authors' => $authors->get(),
+            'user' => $currentUser,
         ]);
     }
 
     public function loadHeader()
     {
         $users = loadModel(Users::class);
-        if (session_status() === PHP_SESSION_NONE) {
+        $currentUser = null;
+        if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
         }
-        $currentUser = current($users->get(['id' => $_SESSION['USERID']]));
+        if (isset($_SESSION['USERID'])) {
+            $currentUser = current($users->get(['id' => $_SESSION['USERID']]));
+        }
         return $this->view()->blade()->render('backend/main/layout/header', [
             'user' => $currentUser,
         ]);
@@ -93,9 +118,4 @@ class controller
         }
         return true;
     }
-
-//    static public function view($name, $data = null)
-//    {
-//        view($name, $data);
-//    }
 }

@@ -9,7 +9,11 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $lang['add-new-author'] }}</li>
+                        @if($method == 'create')
+                            <li class="breadcrumb-item active" aria-current="page">{{ $lang['add-new-author'] }}</li>
+                        @else
+                            <li class="breadcrumb-item active" aria-current="page">{{ $lang['edit-author'] }}</li>
+                        @endif
                     </ol>
                 </nav>
             </div>
@@ -45,7 +49,7 @@
                                         <label for="inputProductTitle" class="form-label">{{ $lang['name'] }}</label>
                                         <input type="text" name="name" class="form-control" id="inputProductTitle"
                                                placeholder="{{ $lang['enter-name'] }}"
-                                               value="@if(!empty($data)) {{ $data->name }} @endif">
+                                               value="@if(!empty($author)) {{ $author->name }} @endif">
                                         @if(!empty($errors['name']))
                                             @if(!empty($errors['name']['required']))
                                                 <div class="form-control alert-danger">{{ $errors['name']['required'] }}</div>
@@ -57,8 +61,8 @@
                                                class="form-label">{{ $lang['about'] }}</label>
                                         <textarea name="about" class="form-control" id="myCKEditortextarea"
                                                   rows="3">
-                                            @if(!empty($data))
-                                                {{ $data->about }}
+                                            @if(!empty($author))
+                                                {{ $author->about }}
                                             @endif
                                         </textarea>
                                         @if(!empty($errors['about']))
@@ -69,16 +73,22 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription"
-                                               class="form-label">{{ $lang['add-photo'] }}</label>
-                                        <input class="form-control" value="@if(!empty($data)) @if(!empty($data->photo)) {{ $data->photo }} @endif @endif"
+                                               class="form-label">
+                                            @if($method == 'create')
+                                                {{ $lang['add-photo'] }}
+                                            @else
+                                                {{ $lang['add-new-photo'] }}
+                                            @endif
+                                        </label>
+                                        <input class="form-control" value="@if(!empty($author)) @if(!empty($author->photo)) {{ $author->photo }} @endif @endif"
                                                id="image-uploadify" name="photo" type="file"
-                                               accept=".xlsx,.xls,image/*,.doc,audio/*,.docx,video/*,.ppt,.pptx,.txt,.pdf"
+                                               accept="image/*"
                                                multiple>
                                         @if($method == 'update')
-                                            @if(!empty($data->photo))
+                                            @if(!empty($author->photo))
                                                 <div class="card-body">
                                                 <span>
-                                                    <img src="{{ route('/') . $data->photo }}" width="200" height="auto" alt="">
+                                                    <img src="{{ route('/') . $author->photo }}" width="200" height="auto" alt="">
                                                 </span>
                                                 </div>
                                             @endif

@@ -18,12 +18,12 @@ class ChangePasswordRequest extends Validation
     public function messages()
     {
         return [
-            'password.required' => __('users.password-required'),
-            'password.password' => __('users.password-password'),
-            'new-pass.required' => __('users.new-pass-required'),
-            'new-pass.password' => __('users.new-pass-password'),
-            'rep-new-pass.required' => __('users.rep-new-pass-required'),
-            'rep-new-pass.password' => __('users.rep-new-pass-password'),
+            'password.required' => __('change-password.password-required'),
+            'password.password' => __('change-password.password-password'),
+            'new-pass.required' => __('change-password.new-pass-required'),
+            'new-pass.password' => __('change-password.new-pass-password'),
+            'rep-new-pass.required' => __('change-password.rep-new-pass-required'),
+            'rep-new-pass.password' => __('change-password.rep-new-pass-password'),
         ];
     }
 

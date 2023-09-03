@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Middlewares\AdminMiddleware;
+use App\Middlewares\ManagerMiddleware;
 use App\Models\Users;
 use App\Services\User\LoginAuth;
 use Core\System\controller;
@@ -30,6 +32,9 @@ class LoginController extends controller
 
     public function form()
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $loginViewName = $this->authService->method()->getViewName();
         if ($loginViewName == 'user-password-login' || $loginViewName == 'otp-login') {
             $request = request();
@@ -124,6 +129,18 @@ class LoginController extends controller
     {
         $loginMiddleware = new LoginMiddleware();
         $loginMiddleware->boot();
+    }
+
+    public function checkAdmin()
+    {
+        $adminMiddleware = new AdminMiddleware();
+        $adminMiddleware->boot();
+    }
+
+    public function checkFullAdmin()
+    {
+        $managerMiddleware = new ManagerMiddleware();
+        $managerMiddleware->boot();
     }
 
     public function logout()

@@ -53,20 +53,27 @@ class AuthorController extends controller
 
                     $errorMessage = $this->authors->insert($this->request);
                     if (empty($errorMessage)) {
-                        $successMessage = __('authors.added-success');
+                        if ($this->currentUser->user_type == 'admin') {
+                            $successMessage = __('authors.added-suc-admin');
+                        } else {
+                            $successMessage = __('authors.added-suc-fulladmin');
+                        }
                     } else {
                         exit('error saving data to database');
                     }
                 }
             } else {
                 unset($this->request['files']);
-                $this->request['photo'] = '';
                 $this->request['status'] = $status;
                 $this->request['user_id'] = $this->userId;
 
                 $errorMessage = $this->authors->insert($this->request);
                 if (empty($errorMessage)) {
-                    $successMessage = __('authors.added-success');
+                    if ($this->currentUser->user_type == 'admin') {
+                        $successMessage = __('authors.added-suc-admin');
+                    } else {
+                        $successMessage = __('authors.added-suc-fulladmin');
+                    }
                 }
             }
         }
@@ -75,7 +82,7 @@ class AuthorController extends controller
             'lang' => $this->lang,
             'errorMessage' => $errorMessage,
             'successMessage' => $successMessage,
-            'action' => '/panel/admin/authors/create',
+            'action' => '/panel/add-author',
             'method' => 'create',
             'errors' => $errors,
         ]);
@@ -88,10 +95,28 @@ class AuthorController extends controller
         ]);
     }
 
-    public function show()
+    public function adminAuthors()
+    {
+        $authors = $this->authors->get(['user_id' => $this->userId]);
+        $view = $this->blade->render('backend/main/layout/authors/admin-authors', [
+            'lang' => $this->lang,
+            'authors' => $authors,
+            'status' => 'disapproved',
+            'users' => $this->users,
+        ]);
+
+        echo $this->blade->render('backend/main/panel', [
+            'view' => $this->blade,
+            'content' => $view,
+            'navigation' => $this->loadNavigation(),
+            'header' => $this->loadHeader(),
+        ]);
+    }
+
+    public function management()
     {
         $authorsToShow = $this->authors->get();
-        $view = $this->blade->render('backend/main/layout/authors/list', [
+        $view = $this->blade->render('backend/main/layout/authors/management', [
             'lang' => $this->lang,
             'authors' => $authorsToShow,
             'status' => 'disapproved',
@@ -109,9 +134,9 @@ class AuthorController extends controller
     public function approve(int $itemId)
     {
         $authorToApprove = current($this->authors->get(['id' => $itemId]));
-        $approveProcess = $this->authors->update($authorToApprove->id, ['status' => 'approved']);
+        $approveProcess = $this->authors->update(['id' => $authorToApprove->id], ['status' => 'approved']);
         if ($approveProcess) {
-            redirect('/panel/management/authors');
+            redirect('/panel/authors-management');
         } else {
             exit('error');
         }
@@ -121,7 +146,7 @@ class AuthorController extends controller
     {
         $errorMessage = $this->authors->delete(['id' => $itemId]);
         if (empty($errorMessage)) {
-            redirect('/panel/management/authors');
+            redirect('/panel/authors-management');
         } else {
             exit('error');
         }
@@ -132,8 +157,7 @@ class AuthorController extends controller
         $errorMessage = null;
         $successMessage = null;
         $errors = $this->request(AuthorRequest::class);
-        $authorToEdit = current($this->authors->get(['id' => $itemId]));
-
+        $author = current($this->authors->get(['id' => $itemId]));
         if (!empty($this->request) && empty($errorMessage)) {
             if ($this->currentUser->user_type == 'fulladmin') {
                 $status = 'approved';
@@ -141,30 +165,40 @@ class AuthorController extends controller
                 $status = 'disapproved';
             }
             if (!empty($_FILES['photo']['name'])) {
-                unlink($authorToEdit->photo);
                 $tmpFile = $_FILES['photo']['tmp_name'];
                 $newFile = 'files/' . $_FILES['photo']['name'];
                 $result = move_uploaded_file($tmpFile, $newFile);
                 if ($result) {
+                    unlink($author->photo);
                     unset($this->request['files']);
                     $this->request['photo'] = $newFile;
                     $this->request['status'] = $status;
-
-                    $updateProcess = $this->authors->update(['id' => $itemId], $this->request);
-                    if ($updateProcess) {
-                        $successMessage = __('authors.updated-success');
+                    $errorMessage = $this->authors->update(['id' => $itemId], $this->request);
+                    if (empty($errorMessage)) {
+                        $author = current($this->authors->get(['id' => $itemId]));
+                        if ($this->currentUser->user_type == 'admin') {
+                            $successMessage = __('authors.updated-suc-admin');
+                        } else {
+                            $successMessage = __('authors.updated-suc-fulladmin');
+                        }
                     } else {
                         exit('error saving data to database');
                     }
                 }
             } else {
                 unset($this->request['files']);
-                $this->request['photo'] = $authorToEdit->photo;
+                $this->request['photo'] = $author->photo;
                 $this->request['status'] = $status;
-
-                $updateProcess = $this->authors->insert($this->request);
-                if ($updateProcess) {
-                    $successMessage = __('authors.updated-success');
+                $errorMessage = $this->authors->update(['id' => $itemId], $this->request);
+                if (empty($errorMessage)) {
+                    $author = current($this->authors->get(['id' => $itemId]));
+                    if ($this->currentUser->user_type == 'admin') {
+                        $successMessage = __('authors.updated-suc-admin');
+                    } else {
+                        $successMessage = __('authors.updated-suc-fulladmin');
+                    }
+                } else {
+                    exit('error saving data to database');
                 }
             }
         }
@@ -173,8 +207,8 @@ class AuthorController extends controller
             'lang' => $this->lang,
             'errorMessage' => $errorMessage,
             'successMessage' => $successMessage,
-            'action' => '/panel/management/authors/edit/' . $itemId,
-            'data' => $authorToEdit,
+            'action' => '/panel/authors-management/edit/' . $itemId,
+            'author' => $author,
             'method' => 'update',
             'error' => $errors,
         ]);

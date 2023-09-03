@@ -45,7 +45,7 @@
                                         <label for="inputProductTitle" class="form-label"><?php echo e($lang['name']); ?></label>
                                         <input type="text" name="name" class="form-control" id="inputProductTitle"
                                                placeholder="<?php echo e($lang['enter-name']); ?>"
-                                               value="<?php if(!empty($data)): ?> <?php echo e($data->name); ?> <?php endif; ?>">
+                                               value="<?php if(!empty($book)): ?> <?php echo e($book->name); ?> <?php endif; ?>">
                                         <?php if(!empty($errors['name'])): ?>
                                             <?php if(!empty($errors['name']['required'])): ?>
                                                 <div class="form-control alert-danger"><?php echo e($errors['name']['required']); ?></div>
@@ -57,8 +57,8 @@
                                                class="form-label"><?php echo e($lang['description']); ?></label>
                                         <textarea name="description" class="form-control" id="myCKEditortextarea"
                                                   rows="3">
-                                            <?php if(!empty($data)): ?>
-                                                <?php echo e($data->about); ?>
+                                            <?php if(!empty($book)): ?>
+                                                <?php echo e($book->description); ?>
 
                                             <?php endif; ?>
                                         </textarea>
@@ -72,10 +72,20 @@
                                         <label for="category"
                                                class="form-label"><?php echo e($lang['category']); ?></label>
                                         <select class="form-select" id="category" name="category_id">
-                                            <option value=""><?php echo e($lang['choose-cat']); ?></option>
-                                            <?php $__currentLoopData = $categories->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option value="<?php echo e($category->id); ?>"><?php echo e($category->title); ?></option>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if(!empty($book)): ?>
+                                                <?php $__currentLoopData = $categories->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if(current($subjects->get(['id' => $book->subject_id]))->category_id == $category->id): ?>
+                                                        <option value="<?php echo e($category->id); ?>" selected><?php echo e($category->title); ?></option>
+                                                    <?php else: ?>
+                                                        <option value="<?php echo e($category->id); ?>"><?php echo e($category->title); ?></option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php else: ?>
+                                                <option value=""><?php echo e($lang['choose-cat']); ?></option>
+                                                <?php $__currentLoopData = $categories->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($category->id); ?>"><?php echo e($category->title); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php endif; ?>
                                         </select>
                                         <?php if(!empty($errors['category_id'])): ?>
                                             <?php if(!empty($errors['category_id']['required'])): ?>
@@ -86,21 +96,31 @@
                                         <?php endif; ?>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="sub_category"
+                                        <label for="subject"
                                                class="form-label"><?php echo e($lang['subject']); ?></label>
-                                        <select class="form-select" name="sub_category_id">
-                                            <option value=""><?php echo e($lang['choose-sub-cat']); ?></option>
-                                            <?php $__currentLoopData = $sub_categories->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sub_category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option class="form-control" value="<?php echo e($sub_category->id); ?>"><?php echo e($sub_category->title); ?></option>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        <select class="form-select" name="subject_id">
+                                            <?php if(!empty($book)): ?>
+                                                <?php $__currentLoopData = $subjects->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subject): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if($book->subject_id == $subject->id): ?>
+                                                        <option value="<?php echo e($subject->id); ?>" selected><?php echo e($subject->title); ?></option>
+                                                    <?php else: ?>
+                                                        <option value="<?php echo e($subject->id); ?>"><?php echo e($subject->title); ?></option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php else: ?>
+                                                <option value=""><?php echo e($lang['choose-sub-cat']); ?></option>
+                                                <?php $__currentLoopData = $subjects->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subject): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($subject->id); ?>"><?php echo e($subject->title); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php endif; ?>
                                         </select>
-                                        <?php if(!empty($errors['sub_category_id']) || $sub_category_Err == 1): ?>
-                                            <?php if($sub_category_Err == 1): ?>
-                                                <div class="form-control alert-danger"><?php echo e($lang['sub_category-valid']); ?></div>
-                                            <?php elseif(!empty($errors['sub_category_id']['required'])): ?>
-                                                <div class="form-control alert-danger"><?php echo e($errors['sub_category_id']['required']); ?></div>
-                                            <?php elseif(!empty($errors['sub_category_id']['sub_category_valid'])): ?>
-                                                <div class="form-control alert-danger"><?php echo e($errors['sub_category_id']['sub_category_valid']); ?></div>
+                                        <?php if(!empty($errors['subject_id']) || $subject_Err == 1): ?>
+                                            <?php if($subject_Err == 1): ?>
+                                                <div class="form-control alert-danger"><?php echo e($lang['subject-valid']); ?></div>
+                                            <?php elseif(!empty($errors['subject_id']['required'])): ?>
+                                                <div class="form-control alert-danger"><?php echo e($errors['subject_id']['required']); ?></div>
+                                            <?php elseif(!empty($errors['subject_id']['subject_valid'])): ?>
+                                                <div class="form-control alert-danger"><?php echo e($errors['subject_id']['subject_valid']); ?></div>
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     </div>
@@ -108,31 +128,41 @@
                                         <label for="author"
                                                class="form-label"><?php echo e($lang['author']); ?></label>
                                         <select class="form-select" name="author_id">
-                                            <option value=""><?php echo e($lang['choose-author']); ?></option>
-                                            <?php $__currentLoopData = $authors->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $author): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option class="form-control" value="<?php echo e($author->id); ?>"><?php echo e($author->name); ?></option>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        </select>
-                                        <?php if(!empty($errors['author_id'])): ?>
-                                            <?php if(!empty($errors['author_id']['required'])): ?>
-                                                <div class="form-control alert-danger"><?php echo e($errors['author_id']['required']); ?></div>
-                                            <?php elseif(!empty($errors['author_id']['author_valid'])): ?>
-                                                <div class="form-control alert-danger"><?php echo e($errors['author_id']['author_valid']); ?></div>
+                                            <?php if(!empty($book)): ?>
+                                                <?php $__currentLoopData = $authors->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $author): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if($book->author_id == $auhtor->id): ?>
+                                                        <option value="<?php echo e($author->id); ?>" selected><?php echo e($author->name); ?></option>
+                                                    <?php else: ?>
+                                                        <option value="<?php echo e($author->id); ?>"><?php echo e($author->name); ?></option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php else: ?>
+                                                <option value=""><?php echo e($lang['choose-author']); ?></option>
+                                                <?php $__currentLoopData = $authors->get(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $author): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($author->id); ?>"><?php echo e($author->name); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             <?php endif; ?>
-                                        <?php endif; ?>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="inputProductDescription"
-                                               class="form-label"><?php echo e($lang['add-photo']); ?></label>
-                                        <input class="form-control" value="<?php if(!empty($data)): ?> <?php if(!empty($data->photo)): ?> <?php echo e($data->photo); ?> <?php endif; ?> <?php endif; ?>"
-                                               id="image-uploadify" name="photo" type="file"
+                                               class="form-label">
+                                            <?php if($method == 'update'): ?>
+                                                <?php echo e($lang['add-new-photo']); ?>
+
+                                            <?php else: ?>
+                                                <?php echo e($lang['add-photo']); ?>
+
+                                            <?php endif; ?>
+                                        </label>
+                                        <input class="form-control" id="image-uploadify" name="photo" type="file"
                                                accept="image/*"
                                                multiple>
                                         <?php if($method == 'update'): ?>
-                                            <?php if(!empty($data->photo)): ?>
+                                            <?php if(!empty($book->photo)): ?>
                                                 <div class="card-body">
                                                 <span>
-                                                    <img src="<?php echo e(route('/') . $data->photo); ?>" width="200" height="auto" alt="">
+                                                    <img src="<?php echo e(route('/') . $book->photo); ?>" width="200" height="auto" alt="">
                                                 </span>
                                                 </div>
                                             <?php endif; ?>
