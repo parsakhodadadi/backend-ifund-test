@@ -31,4 +31,11 @@ return [
     'post-info-form' => 'فرم اطلاعات پست',
     'my-posts' => 'پست های من',
     'posts-management' => 'مدیریت پست ها',
+    'choose-category' => 'دسته بندی را انتخاب کنید',
+    'category' => 'دسته بندی',
+    'files-required' => 'لطفا عکس را بارگذاری کنید',
+    'post_category-required' => 'لطفا دسته بندی را انتخاب کنید',
+    'post_category-valid' => 'دسته بندی وارد شده معتبر نمی باشد',
+    'fulladmin-aaron' => 'مدیرکل مجله ارون',
+    'admin-aaron' => 'مدیریت مجله ارون',
 ];

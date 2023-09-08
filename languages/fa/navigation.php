@@ -8,7 +8,7 @@ return [
     'authentication' => 'احراز هویت',
     'exit' => 'خروج',
     'posts-management' => 'مدیریت پست ها',
-    'categories' => 'لیست موضوعات',
+    'categories' => 'دسته بندی ها',
     'add-post' => 'ایجاد پست جدید',
     'my-posts' => 'پست های من',
     'settings' => 'تنظیمات',

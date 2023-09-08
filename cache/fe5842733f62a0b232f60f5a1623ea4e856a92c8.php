@@ -67,7 +67,10 @@
                                         <label for="inputProductDescription"
                                                class="form-label"><?php echo e($lang['description']); ?></label>
                                         <textarea name="description" class="form-control" id="myCKEditortextarea"
-                                                  rows="3"><?php if(!empty($data)): ?> <?php echo e($data->description); ?> <?php endif; ?></textarea>
+                                                  rows="3"><?php if(!empty($data)): ?>
+                                                <?php echo e($data->description); ?>
+
+                                            <?php endif; ?></textarea>
                                         <?php if(!empty($errors['description'])): ?>
                                             <?php if(!empty($errors['description']['required'])): ?>
                                                 <div class="form-control alert-danger"><?php echo e($errors['description']['required']); ?></div>
@@ -85,7 +88,8 @@
 
                                             <?php endif; ?>
                                         </label>
-                                        <input class="form-control" value="<?php if(!empty($data)): ?> <?php if(!empty($data->photo)): ?> <?php echo e($data->photo); ?> <?php endif; ?> <?php endif; ?>"
+                                        <input class="form-control"
+                                               value="<?php if(!empty($data)): ?> <?php if(!empty($data->photo)): ?> <?php echo e($data->photo); ?> <?php endif; ?> <?php endif; ?>"
                                                id="image-uploadify" name="photo" type="file"
                                                accept="image/*"
                                                multiple>
@@ -93,7 +97,8 @@
                                             <?php if(!empty($data->photo)): ?>
                                                 <div class="card-body">
                                                 <span>
-                                                    <img src="<?php echo e(route('/') . $data->photo); ?>" width="200" height="auto" alt="">
+                                                    <img src="<?php echo e(route('/') . $data->photo); ?>" width="200" height="auto"
+                                                         alt="">
                                                 </span>
                                                 </div>
                                             <?php endif; ?>
@@ -101,6 +106,31 @@
                                         <?php if(!empty($errors['files'])): ?>
                                             <?php if(!empty($errors['files']['photo'])): ?>
                                                 <div class="form-control alert-danger"><?php echo e($errors['files']['photo']); ?></div>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="post_category" class="form-label"><?php echo e($lang['category']); ?></label>
+                                        <select id="post_category" name="post_category_id" class="form-select">
+                                            <?php if($method == 'create'): ?>
+                                                <option value=""><?php echo e($lang['choose-category']); ?></option>
+                                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($category->id); ?>"><?php echo e($category->title); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php else: ?>
+                                            <?php endif; ?>
+                                        </select>
+                                        <?php if(!empty($errors['post_category_id'])): ?>
+                                            <?php if(!empty($errors['post_category_id']['required'])): ?>
+                                                <div class="form-control alert-danger" >
+                                                    <?php echo e($errors['post_category_id']['required']); ?>
+
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="form-control alert-danger">
+                                                    <?php echo e($errors['post_category_id']['post_cat_valid']); ?>
+
+                                                </div>
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     </div>

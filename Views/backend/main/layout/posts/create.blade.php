@@ -64,7 +64,9 @@
                                         <label for="inputProductDescription"
                                                class="form-label">{{ $lang['description'] }}</label>
                                         <textarea name="description" class="form-control" id="myCKEditortextarea"
-                                                  rows="3">@if(!empty($data)) {{$data->description}} @endif</textarea>
+                                                  rows="3">@if(!empty($data))
+                                                {{$data->description}}
+                                            @endif</textarea>
                                         @if(!empty($errors['description']))
                                             @if(!empty($errors['description']['required']))
                                                 <div class="form-control alert-danger">{{ $errors['description']['required'] }}</div>
@@ -80,7 +82,8 @@
                                                 {{ $lang['add-new-photo'] }}
                                             @endif
                                         </label>
-                                        <input class="form-control" value="@if(!empty($data)) @if(!empty($data->photo)) {{ $data->photo }} @endif @endif"
+                                        <input class="form-control"
+                                               value="@if(!empty($data)) @if(!empty($data->photo)) {{ $data->photo }} @endif @endif"
                                                id="image-uploadify" name="photo" type="file"
                                                accept="image/*"
                                                multiple>
@@ -88,7 +91,8 @@
                                             @if(!empty($data->photo))
                                                 <div class="card-body">
                                                 <span>
-                                                    <img src="{{ route('/') . $data->photo }}" width="200" height="auto" alt="">
+                                                    <img src="{{ route('/') . $data->photo }}" width="200" height="auto"
+                                                         alt="">
                                                 </span>
                                                 </div>
                                             @endif
@@ -96,6 +100,29 @@
                                         @if(!empty($errors['files']))
                                             @if(!empty($errors['files']['photo']))
                                                 <div class="form-control alert-danger">{{ $errors['files']['photo'] }}</div>
+                                            @endif
+                                        @endif
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="post_category" class="form-label">{{ $lang['category'] }}</label>
+                                        <select id="post_category" name="post_category_id" class="form-select">
+                                            @if($method == 'create')
+                                                <option value="">{{ $lang['choose-category'] }}</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                                @endforeach
+                                            @else
+                                            @endif
+                                        </select>
+                                        @if(!empty($errors['post_category_id']))
+                                            @if(!empty($errors['post_category_id']['required']))
+                                                <div class="form-control alert-danger" >
+                                                    {{ $errors['post_category_id']['required'] }}
+                                                </div>
+                                            @else
+                                                <div class="form-control alert-danger">
+                                                    {{ $errors['post_category_id']['post_cat_valid'] }}
+                                                </div>
                                             @endif
                                         @endif
                                     </div>

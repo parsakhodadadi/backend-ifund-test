@@ -22,6 +22,25 @@
                     </div>
                 </a>
                 <ul>
+                    <li><a href="javascript:;" class="has-arrow"><i class="bx bx-left-arrow-alt"></i>
+                            <?php echo e(__('navigation.categories')); ?>
+
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="<?php echo e(route('/panel/add-post-category')); ?>"><i class="bx bx-left-arrow-alt"></i>
+                                    <?php echo e(__('navigation.add-category')); ?>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo e(route('/panel/add-post-category')); ?>"><i class="bx bx-left-arrow-alt"></i>
+                                    <?php echo e(__('navigation.categories-management')); ?>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li><a href="<?php echo e(route('/panel/add-post')); ?>"><i class="bx bx-left-arrow-alt"></i>
                             <?php echo e(__('navigation.add-post')); ?>
 

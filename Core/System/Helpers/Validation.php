@@ -4,6 +4,7 @@ namespace Core\System;
 
 use App\Model\Authors;
 use App\Models\Categories;
+use App\Models\PostCategories;
 use App\Models\Subjects;
 
 class Validation
@@ -83,6 +84,20 @@ class Validation
         if (is_numeric($value)) {
             $author = current(loadModel(Authors::class)->get(['id' => $value]));
             if (!empty($author)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function post_cat_valid($value)
+    {
+        if (is_numeric($value)) {
+            $post_cat = current(loadModel(PostCategories::class)->get(['id' => $value]));
+            if (!empty($post_cat)) {
                 return true;
             } else {
                 return false;

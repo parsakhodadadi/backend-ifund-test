@@ -14,6 +14,8 @@ namespace Core\System;
 
 use App\Exception\QueryBuilderException;
 use App\Model\Authors;
+use App\Models\PostCategories;
+use App\Models\Posts;
 use App\Models\Users;
 use App\Models\Categories;
 
@@ -108,6 +110,31 @@ class controller
         }
         return $this->view()->blade()->render('backend/main/layout/header', [
             'user' => $currentUser,
+        ]);
+    }
+
+    public function loadFrontPosts()
+    {
+//        $count = 0;
+        $users = loadModel(Users::class);
+        $posts = loadModel(Posts::class)->get();
+        $categories = loadModel(PostCategories::class);
+//        foreach ($posts as $post) {
+//            $count ++;
+//        }
+//        $count -= 3;
+//        $newCount = 0;
+//        $otherPosts = [];
+//        foreach ($posts as $post) {
+//            $newCount ++;
+//            if ($newCount <= $count) {
+//                $otherPosts[] = $post;
+//            }
+//        }
+        return $this->view()->blade()->render('frontend/main/posts', [
+            'posts' => $posts,
+            'users' => $users,
+            'categories' => $categories,
         ]);
     }
 

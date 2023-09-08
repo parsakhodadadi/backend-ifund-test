@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\PostCategories;
 use App\Models\Posts;
 use App\Models\Users;
 use App\Request\PostRequest;
@@ -17,6 +18,7 @@ class PostController extends controller
     private $users;
     private $userId;
     private $currentUser;
+    private $categories;
 
     public function __construct()
     {
@@ -24,10 +26,14 @@ class PostController extends controller
         $this->blade = $this->view()->blade();
         $lang = ConfigHelper::getConfig('default-language');
         $this->lang = loadLang($lang, 'posts');
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $this->userId = $_SESSION['USERID'];
         $this->users = loadModel(Users::class);
         $this->currentUser = current($this->users->get(['id' => $this->userId]));
         $this->posts = loadModel(Posts::class);
+        $this->categories = loadModel(PostCategories::class);
     }
 
     public function create()
@@ -42,30 +48,13 @@ class PostController extends controller
                 $status = 'disapproved';
             }
 
-            if (!empty($_FILES['photo']['name'])) {
-                $tmpFile = $_FILES['photo']['tmp_name'];
-                $newFile = 'files/' . $_FILES['photo']['name'];
-                $result = move_uploaded_file($tmpFile, $newFile);
-                if ($result) {
-                    $this->request['photo'] = $newFile;
-                    $this->request['user_id'] = $this->userId;
-                    $this->request['status'] = $status;
-                    $this->request['date'] = date("Y/m/d");
-                    $this->request['time'] = date("h:i:sa");
-                    $this->request['edited'] = 'no';
-                    unset($this->request['files']);
-                    $errorMessage = $this->posts->insert($this->request);
-                    if (empty($errorMessage)) {
-                        if ($this->currentUser->user_type == 'admin') {
-                            $successMessage = __('posts.add-suc-admin');
-                        } else {
-                            $successMessage = __('posts.add-suc-fulladmin');
-                        }
-                    }
-                }
-            } else {
-                $this->request['status'] = $status;
+            $tmpFile = $_FILES['photo']['tmp_name'];
+            $newFile = 'files/' . $_FILES['photo']['name'];
+            $result = move_uploaded_file($tmpFile, $newFile);
+            if ($result) {
+                $this->request['photo'] = $newFile;
                 $this->request['user_id'] = $this->userId;
+                $this->request['status'] = $status;
                 $this->request['date'] = date("Y/m/d");
                 $this->request['time'] = date("h:i:sa");
                 $this->request['edited'] = 'no';
@@ -90,6 +79,7 @@ class PostController extends controller
             'action' => '/panel/add-post',
             'data' => [],
             'method' => 'create',
+            'categories' => $this->categories->get(),
         ]);
 
         echo $this->blade->render('backend/main/panel', [
@@ -172,6 +162,7 @@ class PostController extends controller
             'action' => '/panel/my-posts/edit/' . $itemId,
             'data' => $post,
             'method' => 'update',
+            'categories' => $this->categories->get(),
         ]);
         echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
@@ -240,5 +231,4 @@ class PostController extends controller
         }
         redirect('/panel/my-posts');
     }
-
 }

@@ -21,6 +21,22 @@
                     </div>
                 </a>
                 <ul>
+                    <li><a href="javascript:;" class="has-arrow"><i class="bx bx-left-arrow-alt"></i>
+                            {{ __('navigation.categories') }}
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="{{ route('/panel/add-post-category') }}"><i class="bx bx-left-arrow-alt"></i>
+                                    {{ __('navigation.add-category') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('/panel/add-post-category') }}"><i class="bx bx-left-arrow-alt"></i>
+                                    {{ __('navigation.categories-management') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li><a href="{{ route('/panel/add-post') }}"><i class="bx bx-left-arrow-alt"></i>
                             {{ __('navigation.add-post') }}
                         </a>

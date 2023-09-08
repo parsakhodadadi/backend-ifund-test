@@ -3,7 +3,7 @@
 namespace App\Middlewares;
 
 use App\Models\Users;
-use App\Services\User\LoginAuth;
+use App\Services\User\SigninAuth;
 use Core\System\Helpers\ConfigHelper;
 
 class AdminMiddleware

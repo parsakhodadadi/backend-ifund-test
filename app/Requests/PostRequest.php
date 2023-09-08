@@ -11,7 +11,8 @@ class PostRequest extends Validation
         return [
             'title' => 'required',
             'description' => 'required',
-            'files' => 'photo',
+            'files' => 'photo|file_required',
+            'post_category_id' => 'required|post_cat_valid',
         ];
     }
 
@@ -20,7 +21,10 @@ class PostRequest extends Validation
         return [
             'title.required' => __('posts.title-required'),
             'description.required' => __('posts.description-required'),
-            'files.photo' => __('posts.files-photo')
+            'files.photo' => __('posts.files-photo'),
+            'files.required' => __('posts.files-required'),
+            'post_category_id.required' => __('posts.post_category-required'),
+            'post_category_id.post_cat_valid' => __('posts.post_category-valid'),
         ];
     }
 

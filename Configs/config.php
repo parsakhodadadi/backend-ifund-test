@@ -3,8 +3,8 @@
 //error_reporting(0);
 
 $configs = [
-    'login-method' => new \App\Services\User\DesignPatterns\Strategy\Methods\Login\UserPasswordLogin(),
-    'register-form' => new \App\Services\User\DesignPatterns\Strategy\Methods\Register\RegisterForm(),
+    'sign-in-method' => new \App\Services\User\DesignPatterns\Strategy\Methods\Signin\UserPasswordSignin(),
+    'sign-up-form' => new \App\Services\User\DesignPatterns\Strategy\Methods\Signup\SignupForm(),
     'email-verification-register' => new \App\Services\User\DesignPatterns\Strategy\Methods\Register\EmailVerification(),
     'edit-profile' => new \App\Services\User\DesignPatterns\Strategy\Methods\EditProfile\EditProfile(),
     'mobile-verification' => new \App\Services\User\DesignPatterns\Strategy\Methods\EditProfile\EmailVerification(),

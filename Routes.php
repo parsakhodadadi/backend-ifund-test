@@ -8,17 +8,23 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     //Define routes
     $router->get('/', 'HomeController@frontend');
     $router->get('/panel', 'HomeController@showPosts');
-    $router->get('/logout', "LoginController@logout");
+    $router->get('/logout', "SigninController@logout");
 
     //authentication
-    $router->get('/register', "RegisterController@register");
-    $router->post('/register', "RegisterController@register");
+    $router->get('/sign-up', "SignupController@form");
+    $router->post('/sign-up', "SignupController@form");
+
     $router->get('/emailVerification', "RegisterController@emailVerification");
     $router->post('/emailVerification', "RegisterController@emailVerification");
-    $router->get('/login', "LoginController@form");
-    $router->post('/login', "LoginController@form");
+    $router->get('/sign-in', "SigninController@form");
+    $router->post('/sign-in', "SigninController@form");
+
+    //post-categories
+    $router->get('/panel/add-post-category', "PostCategoriesController@create");
+    $router->post('/panel/add-post-category', "PostCategoriesController@create");
 
     //posts
+    $router->get('/posts/(\d+)', "HomeController@postSingle");
     $router->get('/panel/add-post', "PostController@create");
     $router->post('/panel/add-post', "PostController@create");
     $router->before('GET|POST', '/panel/add-post', 'LoginController@checkAdmin');

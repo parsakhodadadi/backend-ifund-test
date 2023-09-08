@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Model\Authors;
 use App\Models\Categories;
+use App\Models\PostCategories;
 use App\Models\Posts;
 use App\Models\Users;
 use Core\System\controller;
@@ -19,6 +20,7 @@ class HomeController extends controller
     private $authorsLang;
     private $authors;
     private $categories;
+    private $postCats;
 
     public function __construct()
     {
@@ -33,17 +35,21 @@ class HomeController extends controller
         $lang = ConfigHelper::getConfig('default-language');
         $this->postsLang = loadLang($lang, 'posts');
         $this->authorsLang = loadLang($lang, 'authors');
+        $this->postCats = loadModel(PostCategories::class);
     }
 
     public function frontEnd()
     {
-        echo $this->blade->render('Frontend/main/index');
+        echo $this->blade->render('frontend/main/main', [
+            'view' => $this->blade,
+            'posts' => $this->loadFrontPosts(),
+        ]);
     }
 
     public function showPosts()
     {
         $postsToShow = $this->posts->get();
-        $view = $this->blade->render('backend/main/layout/posts/list',[
+        $view = $this->blade->render('backend/main/layout/posts/list', [
             'lang' => $this->postsLang,
             'posts' => $postsToShow,
             'users' => $this->users,
@@ -59,7 +65,8 @@ class HomeController extends controller
         ]);
     }
 
-    public function showAuthors() {
+    public function showAuthors()
+    {
         $authorsToShow = $this->authors->get();
 
         $view = $this->blade->render('backend/main/layout/authors/list', [
@@ -74,6 +81,19 @@ class HomeController extends controller
             'content' => $view,
             'navigation' => $this->loadNavigation(),
             'header' => $this->loadHeader(),
+        ]);
+    }
+
+    public function postSingle(int $itemId)
+    {
+        $post = current($this->posts->get(['id' => $itemId]));
+        $user = current($this->users->get(['id' => $post->user_id]));
+        $category = current($this->postCats->get(['id' => $post->post_category_id]));
+        echo $this->blade->render('frontend/main/post', [
+            'view' => $this->blade,
+            'post' => $post,
+            'user' => $user,
+            'category' => $category,
         ]);
     }
 }

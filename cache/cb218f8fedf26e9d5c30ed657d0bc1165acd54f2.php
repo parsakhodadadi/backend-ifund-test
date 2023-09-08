@@ -1,0 +1,1 @@
+<div class="back-top"><i class="bi bi-arrow-up-short"></i></div><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/frontend/main/layout/back-to-top.blade.php ENDPATH**/ ?>
