@@ -69,7 +69,6 @@ function redirect($route = null)
     $configHelper::checkFileExist("Configs/config.php");
     header_remove();
     header('location:' . $configs['base-url'] . $route);
-
 }
 
 function request()
@@ -111,7 +110,8 @@ function displayError($errors = [], $element = null)
     }
 }
 
-function explodeWhere($where) {
+function explodeWhere($where)
+{
     $conditions = null;
 
     $counter = 0;
@@ -119,15 +119,21 @@ function explodeWhere($where) {
 
     if (is_array($where) && !empty($where)) {
         foreach ($where as $field => $value) {
-            $counter ++;
-            if ($counter == $count || $counter == 1) {
-                $conditions .= $field . '=' . "'$value'";
+            $counter++;
+            if ($counter == 1) {
+                if ($counter == $count) {
+                    $conditions = $field . '=' . "'$value'";
+                } else {
+                    $conditions = $field . '=' . "'$value'" . ' AND ';
+                }
             } else {
-                $conditions .= $field . '=' . "'$value'" . ' AND ';
+                if ($counter == $count) {
+                    $conditions .= $field . '=' . "'$value'";
+                } else {
+                    $conditions .= $field . '=' . "'$value'" . ' AND ';
+                }
             }
         }
-
-
     } else {
         $conditions = 1;
     }

@@ -8,7 +8,7 @@ use App\Models\Users;
 use App\Services\User\SigninAuth;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
-use App\Middlewares\signinMiddleware;
+use App\Middlewares\SigninMiddleware;
 
 class SigninController extends controller
 {
@@ -110,7 +110,6 @@ class SigninController extends controller
                     $_SESSION['USERID'] = $user->id;
                     echo json_encode(['code' => 200, 'message' => 'success', 'status' => true]);
                 }
-
                 redirect('/panel');
             } else {
                 echo $this->blade->render("frontend/sign-in/$signinViewName", [
@@ -128,9 +127,9 @@ class SigninController extends controller
         }
     }
 
-    public function checksignin()
+    public function checkSignin()
     {
-        $signinMiddleware = new signinMiddleware();
+        $signinMiddleware = new SigninMiddleware();
         $signinMiddleware->boot();
     }
 

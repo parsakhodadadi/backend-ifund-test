@@ -472,7 +472,7 @@ Header END -->
                             <?php $__currentLoopData = $replyComments->get(['status' => 'approved', 'post_comment_id' => $comment->id]); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $replyComment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="my-4 d-flex ps-2 ps-md-3">
                                     <img class="avatar avatar-md rounded-circle float-start me-3"
-                                         src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/02.jpg"
+                                         src="<?php echo e(route('/') . current($users->get(['id' => $replyComment->user_id]))->photo); ?>"
                                          alt="avatar">
                                     <div>
                                         <div class="mb-2">
@@ -480,15 +480,13 @@ Header END -->
                                             <span class="me-3 small">21<?php echo e($replyComment->date . ' ' . $replyComment->time); ?></span>
                                         </div>
                                         <p>
-                                            <?php echo e($comment->text); ?>
+                                            <?php echo e($replyComment->text); ?>
 
                                         </p>
                                     </div>
                                 </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        <!-- Comment children level 2 -->
-
                         <!-- Comment children level 3 -->
                         <div class="my-4 d-flex ps-3 ps-md-5">
                             <img class="avatar avatar-md rounded-circle float-start me-3"
@@ -646,4 +644,4 @@ JS libraries, plugins and custom scripts -->
 
 </body>
 
-</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/frontend/main/post.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/frontend/main/post.blade.php ENDPATH**/ ?>

@@ -18,7 +18,7 @@ class SigninMiddleware extends controller
     public function boot()
     {
         if (!$this->authService->getUserId()) {
-            redirect('/login');
+            redirect('/sign-in');
         }
     }
 }

@@ -5,10 +5,10 @@ namespace App\Models;
 use Exception;
 use Core\System\Helpers\databaseHelper;
 
-class PostCategories
+class ReplyPostComments
 {
     private $db;
-    private $table = 'post_categories';
+    private $table = 'reply_posts_comments';
 
     public function __construct()
     {

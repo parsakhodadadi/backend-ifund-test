@@ -25,23 +25,29 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
 
     //posts
     $router->get('/posts/(\d+)', "HomeController@postSingle");
+    $router->get('/posts/(\d+)/add-comment', "PostCommentController@create");
+    $router->post('/posts/(\d+)/add-comment', "PostCommentController@create");
+    $router->before("POST", '/posts/(\d+)/add-comment', 'SigninController@checkSignin');
+    $router->get('/posts/(\d+)/reply/(\d+)', "PostCommentController@reply");
+    $router->post('/posts/(\d+)/reply/(\d+)', "PostCommentController@reply");
+    $router->before('GET|POST', '/posts/(\d+)/reply/(\d+)', "SigninController@checkSignin");
     $router->get('/panel/add-post', "PostController@create");
     $router->post('/panel/add-post', "PostController@create");
-    $router->before('GET|POST', '/panel/add-post', 'LoginController@checkAdmin');
+    $router->before('GET|POST', '/panel/add-post', 'SigninController@checkAdmin');
     $router->get('/panel/my-posts', "PostController@adminPosts");
     $router->get('/panel/my-posts/edit/(\d+)', "PostController@edit");
     $router->post('/panel/my-posts/edit/(\d+)', "PostController@edit");
     $router->get('/panel/my-posts/delete/(\d+)', "PostController@remove");
-    $router->before('GET|POST', '/panel/my-posts', 'LoginController@checkAdmin');
-    $router->before('GET|POST', '/panel/my-posts/.*', 'LoginController@checkAdmin');
+    $router->before('GET|POST', '/panel/my-posts', 'SigninController@checkAdmin');
+    $router->before('GET|POST', '/panel/my-posts/.*', 'SigninController@checkAdmin');
     $router->get('/panel/posts-management', "PostController@management");
     $router->post('/panel/posts-management', "PostController@management");
     $router->get('/panel/posts-management/approve/(\d+)', "PostController@approve");
     $router->get('/panel/posts-management/delete/(\d+)', "PostController@delete");
     $router->get('/panel/posts-management/edit/(\d+)', "PostController@edit");
     $router->post('/panel/posts-management/edit/(\d+)', "PostController@edit");
-    $router->before('GET|POST', '/panel/posts-management', 'LoginController@checkFullAdmin');
-    $router->before('GET|POST', '/panel/posts-management/.*', 'LoginController@checkFullAdmin');
+    $router->before('GET|POST', '/panel/posts-management', 'SigninController@checkFullAdmin');
+    $router->before('GET|POST', '/panel/posts-management/.*', 'SigninController@checkFullAdmin');
 
     //books
     $router->get('/panel/add-book', "BookController@create");
@@ -53,26 +59,26 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/panel/books-management', "BookController@management");
     $router->get('/panel/books-management/approve/(\d+)', "BookController@approve");
     $router->get('/panel/books-management/delete/(\d+)', "BookController@delete");
-    $router->before('GET|POST', '/panel/books-management', 'LoginController@checkAdmin');
-    $router->before('GET|POST', '/panel/books-management/.*', 'LoginController@checkAdmin');
+    $router->before('GET|POST', '/panel/books-management', 'SigninController@checkAdmin');
+    $router->before('GET|POST', '/panel/books-management/.*', 'SigninController@checkAdmin');
 
     //authors
     $router->get('/panel/add-author', "AuthorController@create");
     $router->post('/panel/add-author', "AuthorController@create");
-    $router->before('GET|POST', '/panel/add-author', 'LoginController@checkAdmin');
-    $router->before('GET|POST', '/panel/add-author/.*', 'LoginController@checkAdmin');
+    $router->before('GET|POST', '/panel/add-author', 'SigninController@checkAdmin');
+    $router->before('GET|POST', '/panel/add-author/.*', 'SigninController@checkAdmin');
     $router->get('/panel/my-authors', "AuthorController@adminAuthors");
     $router->get('/panel/my-authors/edit/(\d+)', "AuthorController@edit");
     $router->get('/panel/my-authors/delete/(\d+)', "AuthorController@remove");
-    $router->before('GET|POST', '/panel/my-authors', 'LoginController@checkAdmin');
-    $router->before('GET|POST', '/panel/my-authors/.*', 'LoginController@checkAdmin');
+    $router->before('GET|POST', '/panel/my-authors', 'SigninController@checkAdmin');
+    $router->before('GET|POST', '/panel/my-authors/.*', 'SigninController@checkAdmin');
     $router->get('/panel/authors-management', "AuthorController@management");
     $router->get('/panel/authors-management/approve/(\d+)', "AuthorController@approve");
     $router->get('/panel/authors-management/delete/(\d+)', "AuthorController@delete");
     $router->get('/panel/authors-management/edit/(\d+)', "AuthorController@edit");
     $router->post('/panel/authors-management/edit/(\d+)', "AuthorController@edit");
-    $router->before('GET|POST', '/panel/authors-management', 'LoginController@checkFullAdmin');
-    $router->before('GET|POST', '/panel/authors-management/.*', 'LoginController@checkFullAdmin');
+    $router->before('GET|POST', '/panel/authors-management', 'SigninController@checkFullAdmin');
+    $router->before('GET|POST', '/panel/authors-management/.*', 'SigninController@checkFullAdmin');
 
     //Profile
     $router->get('/panel/edit-profile', "ProfileController@edit");
@@ -81,21 +87,21 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     //categories
     $router->get('/panel/add-category', "CategoryController@create");
     $router->post('/panel/add-category', 'CategoryController@create');
-    $router->before('GET|POST', '/panel/add-category', 'LoginController@checkAdmin');
-    $router->before('GET|POST', '/panel/add-category/.*', 'LoginController@checkAdmin');
+    $router->before('GET|POST', '/panel/add-category', 'SigninController@checkAdmin');
+    $router->before('GET|POST', '/panel/add-category/.*', 'SigninController@checkAdmin');
     $router->get('panel/my-categories', "CategoryController@userCategories");
     $router->get('panel/my-categories/edit/(\d+)', "CategoryController@edit");
     $router->post('panel/my-categories/edit/(\d+)', "CategoryController@edit");
     $router->get('panel/my-categories/delete/(\d+)', "CategoryController@delete");
-    $router->before('GET|POST', '/panel/my-categories', 'LoginController@checkAdmin');
-    $router->before('GET|POST', '/panel/my-categories/.*', 'LoginController@checkAdmin');
+    $router->before('GET|POST', '/panel/my-categories', 'SigninController@checkAdmin');
+    $router->before('GET|POST', '/panel/my-categories/.*', 'SigninController@checkAdmin');
     $router->get('panel/categories-management', "CategoryController@management");
     $router->get('panel/categories-management/edit/(\d+)', "CategoryController@edit");
     $router->post('panel/categories-management/edit/(\d+)', "CategoryController@edit");
     $router->get('panel/categories-management/approve/(\d+)', "CategoryController@approve");
     $router->get('panel/categories-management/delete/(\d+)', "CategoryController@delete");
-    $router->before('GET|POST', '/panel/categories-management', 'LoginController@checkFullAdmin');
-    $router->before('GET|POST', '/panel/categories-management/.*', 'LoginController@checkFullAdmin');
+    $router->before('GET|POST', '/panel/categories-management', 'SigninController@checkFullAdmin');
+    $router->before('GET|POST', '/panel/categories-management/.*', 'SigninController@checkFullAdmin');
 
     //subjects
     $router->get('/panel/my-categories/(\d+)/add-subject', "SubjectController@create");
@@ -116,16 +122,16 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/panel/users-management/edit-access/(\d+)', "UserController@editAccess");
     $router->post('/panel/users-management/edit-access/(\d+)', "UserController@editAccess");
     $router->get('/panel/users-management/delete/(\d+)', "UserController@delete");
-    $router->before('GET|POST', '/panel/users-management', 'LoginController@checkAdmin');
-    $router->before('GET|POST', '/panel/users-management/.*', 'LoginController@checkAdmin');
+    $router->before('GET|POST', '/panel/users-management', 'SigninController@checkAdmin');
+    $router->before('GET|POST', '/panel/users-management/.*', 'SigninController@checkAdmin');
 
     //Change Password
     $router->get('/panel/change-password', "ChangePasswordController@changePassword");
     $router->post('/panel/change-password', "ChangePasswordController@changePassword");
 
-    //Login Middleware
-    $router->before('GET|POST', '/panel', 'LoginController@checkLogin');
-    $router->before('GET|POST', '/panel/.*', 'LoginController@checkLogin');
+    //Signin Middleware
+    $router->before('GET|POST', '/panel', 'SigninController@checkSignin');
+    $router->before('GET|POST', '/panel/.*', 'SigninController@checkSignin');
 
     //404
     $router->set404(function () {

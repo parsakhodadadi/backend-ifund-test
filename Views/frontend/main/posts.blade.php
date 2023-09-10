@@ -29,7 +29,7 @@
                                     <a href="#!" class="mb-0 text-body small" tabindex="0" role="button" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="شما این تبلیغ را می بینید زیرا فعالیت شما با مخاطبان مورد نظر سایت ما مطابقت دارد.">
                                         <i class="bi bi-info-circle ps-1"></i> ویژه
                                     </a>
-                                    <h4 class="card-title mt-2"><a href="{{ route('/posts/') . $post->id }}" class="btn-link text-reset">{{ $post->title }}</a></h4>
+                                    <h4 class="card-title mt-2"><a href="{{ route('/posts/') . $post->id . '/add-comment' }}" class="btn-link text-reset">{{ $post->title }}</a></h4>
                                     <p class="card-text">{{ $post->description  }}</p>
                                     <!-- Card info -->
                                     <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
