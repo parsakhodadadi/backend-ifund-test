@@ -18,6 +18,7 @@ use App\Models\PostCategories;
 use App\Models\Posts;
 use App\Models\Users;
 use App\Models\Categories;
+use Core\System\Helpers\ConfigHelper;
 
 
 class controller
@@ -29,7 +30,6 @@ class controller
 
     public function __construct()
     {
-
     }
 
     public function loadController($class)
@@ -98,18 +98,17 @@ class controller
         ]);
     }
 
-    public function loadHeader()
+    public function loadBackendHeader()
     {
         $users = loadModel(Users::class);
-        $currentUser = null;
         if (session_status() !== PHP_SESSION_ACTIVE) {
             session_start();
         }
-        if (isset($_SESSION['USERID'])) {
-            $currentUser = current($users->get(['id' => $_SESSION['USERID']]));
-        }
+        $lang = loadLang(ConfigHelper::getConfig('default-language'), 'back-header');
+        $currentUser = current($users->get(['id' => $_SESSION['USERID']]));
         return $this->view()->blade()->render('backend/main/layout/header', [
             'user' => $currentUser,
+            'lang' => $lang,
         ]);
     }
 

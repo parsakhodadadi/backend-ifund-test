@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Model\Authors;
 use App\Models\Categories;
+use App\Models\Podcasts;
 use App\Models\PostCategories;
 use App\Models\Posts;
 use App\Models\Users;
@@ -21,6 +22,7 @@ class HomeController extends controller
     private $authors;
     private $categories;
     private $postCats;
+    private $podcasts;
 
     public function __construct()
     {
@@ -36,6 +38,7 @@ class HomeController extends controller
         $this->postsLang = loadLang($lang, 'posts');
         $this->authorsLang = loadLang($lang, 'authors');
         $this->postCats = loadModel(PostCategories::class);
+        $this->podcasts = loadModel(Podcasts::class);
     }
 
     public function frontEnd()
@@ -94,6 +97,13 @@ class HomeController extends controller
             'post' => $post,
             'user' => $user,
             'category' => $category,
+        ]);
+    }
+
+    public function podcastPage()
+    {
+        echo $this->blade->render('frontend/main/podcast-page', [
+            'view' => $this->blade,
         ]);
     }
 }

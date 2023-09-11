@@ -29,4 +29,4 @@
             </div>
         </div>
     </div>
-</footer>
+</footer><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/backend/main/layout/footer.blade.php ENDPATH**/ ?>

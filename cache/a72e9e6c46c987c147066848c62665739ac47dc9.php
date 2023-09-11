@@ -70,23 +70,25 @@
     </script>
 
     <!-- Plugins CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/font-awesome/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/apexcharts/css/apexcharts.css">
-    <link rel="stylesheet" type="text/css" href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/overlay-scrollbar/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/apexcharts/css/apexcharts.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/overlay-scrollbar/css/OverlayScrollbars.min.css">
 
     <!-- Theme CSS -->
-    <link id="style-switch" rel="stylesheet" type="text/css" href="{{ route('/Others/Themes/Frontend/Theme/assets/css') }}/style-rtl.css">
+    <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/css')); ?>/style-rtl.css">
 
 </head>
 
 <body>
 <!-- Preloader START -->
-{{ $view->make('backend/main/layout/preloader') }}
+<?php echo e($view->make('backend/main/layout/preloader')); ?>
+
 <!-- Preloader END -->
 <!-- =======================
 Header START -->
-{!! $header !!}
+<?php echo $header; ?>
+
 <!-- =======================
 Header END -->
 
@@ -201,7 +203,7 @@ Header END -->
                                 <!-- Blog item -->
                                 <div class="col-12">
                                     <div class="d-flex align-items-center position-relative">
-                                        <img class="w-60 rounded" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/1by1/01.jpg" alt="product">
+                                        <img class="w-60 rounded" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/1by1/01.jpg" alt="product">
                                         <div class="ms-3">
                                             <a href="#" class="h6 stretched-link">رازهای کوچک کثیف در مورد صنعت تجارت</a>
                                             <p class="small mb-0">17 تیر، 1400</p>
@@ -215,7 +217,7 @@ Header END -->
                                 <!-- Blog item -->
                                 <div class="col-12">
                                     <div class="d-flex align-items-center position-relative">
-                                        <img class="w-60 rounded" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/1by1/02.jpg" alt="product">
+                                        <img class="w-60 rounded" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/1by1/02.jpg" alt="product">
                                         <div class="ms-3">
                                             <a href="#" class="h6 stretched-link">فیلم‌های بالیوودی الگوی ضدانقلاب شده!</a>
                                             <p class="small mb-0">11 دی، 1400</p>
@@ -229,7 +231,7 @@ Header END -->
                                 <!-- Blog item -->
                                 <div class="col-12">
                                     <div class="d-flex align-items-center position-relative">
-                                        <img class="w-60 rounded" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/1by1/03.jpg" alt="product">
+                                        <img class="w-60 rounded" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/1by1/03.jpg" alt="product">
                                         <div class="ms-3">
                                             <a href="#" class="h6 stretched-link">عادات بدی که افراد در صنعت باید آنها را ترک کنند!</a>
                                             <p class="small mb-0">1 خرداد، 1400</p>
@@ -266,7 +268,7 @@ Header END -->
                                     <div class="d-flex align-items-center position-relative">
                                         <!-- Avatar -->
                                         <div class="avatar avatar-lg flex-shrink-0">
-                                            <img class="avatar-img rounded-2" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/06.jpg" alt="avatar">
+                                            <img class="avatar-img rounded-2" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/06.jpg" alt="avatar">
                                         </div>
                                         <!-- Info -->
                                         <div class="ms-3">
@@ -286,7 +288,7 @@ Header END -->
                                     <div class="d-flex align-items-center position-relative">
                                         <!-- Avatar -->
                                         <div class="avatar avatar-lg flex-shrink-0">
-                                            <img class="avatar-img rounded-2" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/08.jpg" alt="avatar">
+                                            <img class="avatar-img rounded-2" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/08.jpg" alt="avatar">
                                         </div>
                                         <!-- Info -->
                                         <div class="ms-3">
@@ -306,7 +308,7 @@ Header END -->
                                     <div class="d-flex align-items-center position-relative">
                                         <!-- Avatar -->
                                         <div class="avatar avatar-lg flex-shrink-0">
-                                            <img class="avatar-img rounded-2" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/04.jpg" alt="avatar">
+                                            <img class="avatar-img rounded-2" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/04.jpg" alt="avatar">
                                         </div>
                                         <!-- Info -->
                                         <div class="ms-3">
@@ -326,7 +328,7 @@ Header END -->
                                     <div class="d-flex align-items-center position-relative">
                                         <!-- Avatar -->
                                         <div class="avatar avatar-lg flex-shrink-0">
-                                            <img class="avatar-img rounded-2" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/05.jpg" alt="avatar">
+                                            <img class="avatar-img rounded-2" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/05.jpg" alt="avatar">
                                         </div>
                                         <!-- Info -->
                                         <div class="ms-3">
@@ -752,7 +754,8 @@ Header END -->
 
 <!-- =======================
 Footer START -->
-{{ $view->make('backend/main/layout/footer') }}
+<?php echo e($view->make('backend/main/layout/footer')); ?>
+
 <!-- =======================
 Footer END -->
 
@@ -763,15 +766,15 @@ Footer END -->
 JS libraries, plugins and custom scripts -->
 
 <!-- Bootstrap JS -->
-<script src="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Vendors -->
-<script src="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/apexcharts/js/apexcharts.min.js"></script>
-<script src="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/overlay-scrollbar/js/OverlayScrollbars.min.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/apexcharts/js/apexcharts.min.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/overlay-scrollbar/js/OverlayScrollbars.min.js"></script>
 
 <!-- Template Functions -->
-<script src="{{ route('/Others/Themes/Frontend/Theme/assets/js') }}/functions.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/js')); ?>/functions.js"></script>
 
 </body>
 
-</html>
+</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/backend/main/layout/dashboard.blade.php ENDPATH**/ ?>

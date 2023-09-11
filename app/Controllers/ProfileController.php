@@ -55,20 +55,15 @@ class ProfileController extends controller
             }
         }
 
-        $view = $this->blade->render('backend/main/layout/users/edit-profile', [
+        echo $this->blade->render('backend/main/layout/users/edit-profile', [
             'errors' => $errors,
             'lang' => $this->lang,
             'successMessage' => $successMessage,
             'errorMessage' => $errorMessage,
             'user' => $this->currentUser,
             'profile_photo' => $profilePhoto,
-        ]);
-
-        echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
-            'content' => $view,
-            'navigation' => $this->loadNavigation(),
-            'header' => $this->loadHeader(),
+            'header' => $this->loadBackendHeader(),
         ]);
     }
 }

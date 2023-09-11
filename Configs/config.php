@@ -14,7 +14,7 @@ $configs = [
 
     'default-database' => 'myDatabase',
 
-    'default-controller' => new App\Controllers\PanelController(),
+//    'default-controller' => new App\Controllers\,
 
     'default-method' => 'show',
 

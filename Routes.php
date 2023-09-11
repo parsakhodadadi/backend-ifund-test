@@ -7,7 +7,6 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->setNamespace('\App\Controllers');
     //Define routes
     $router->get('/', 'HomeController@frontend');
-    $router->get('/panel', 'HomeController@showPosts');
     $router->get('/logout', "SigninController@logout");
 
     //authentication
@@ -18,6 +17,7 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->post('/emailVerification', "RegisterController@emailVerification");
     $router->get('/sign-in', "SigninController@form");
     $router->post('/sign-in', "SigninController@form");
+    $router->get('/panel', 'PanelController@dashboard');
 
     //post-categories
     $router->get('/panel/add-post-category', "PostCategoriesController@create");
@@ -48,6 +48,9 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->post('/panel/posts-management/edit/(\d+)', "PostController@edit");
     $router->before('GET|POST', '/panel/posts-management', 'SigninController@checkFullAdmin');
     $router->before('GET|POST', '/panel/posts-management/.*', 'SigninController@checkFullAdmin');
+
+    //podcasts
+    $router->get('/podcast', 'HomeController@podcastPage');
 
     //books
     $router->get('/panel/add-book', "BookController@create");

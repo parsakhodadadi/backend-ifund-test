@@ -24,7 +24,7 @@
 
                     <!-- Nav item 2 Post -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i><?php echo e($lang['posts']); ?></a>
+                        <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i>اخبار</a>
                         <ul class="dropdown-menu" aria-labelledby="postMenu">
                             <!-- dropdown submenu -->
                             <li> <a class="dropdown-item" href="<?php echo e(route('/Others/Themes/Frontend/Theme/')); ?>dashboard-post-list.html">لیست</a> </li>
@@ -162,7 +162,7 @@
                 <div class="nav-item ms-2 ms-md-3 dropdown">
                     <!-- Avatar -->
                     <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img class="avatar-img rounded-circle" src="<?php echo e(route('/') . $user->photo); ?>" alt="avatar">
+                        <img class="avatar-img rounded-circle" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/03.jpg" alt="avatar">
                     </a>
 
                     <!-- Profile dropdown START -->
@@ -172,20 +172,20 @@
                             <div class="d-flex align-items-center">
                                 <!-- Avatar -->
                                 <div class="avatar me-3">
-                                    <img class="avatar-img rounded-circle shadow" src="<?php echo e(route('/') . $user->photo); ?>" alt="avatar">
+                                    <img class="avatar-img rounded-circle shadow" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/03.jpg" alt="avatar">
                                 </div>
                                 <div>
-                                    <a class="h6 mt-2 mt-sm-0" href="#"> <?php echo e($user->first_name . ' ' . $user->last_name); ?></a>
+                                    <a class="h6 mt-2 mt-sm-0" href="#"> علیرضا مرادی</a>
                                     <p class="small m-0"><?php echo e($user->email); ?></p>
                                 </div>
                             </div>
                             <hr>
                         </li>
                         <!-- Links -->
-                        <li><a class="dropdown-item" href="<?php echo e(route('/panel/edit-profile')); ?>"><i class="bi bi-person fa-fw me-2"></i><?php echo e($lang['edit']); ?></a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i><?php echo e($lang['settings']); ?></a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i><?php echo e($lang['guide']); ?></a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-power fa-fw me-2"></i><?php echo e($lang['logout']); ?></a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>ویرایش</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>تنظیمات</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>راهنما</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-power fa-fw me-2"></i>خروج</a></li>
                         <li class="dropdown-divider mb-3"></li>
                         <li>
                             <div class="dropdown-item">
@@ -204,4 +204,4 @@
         </div>
     </nav>
     <!-- Logo Nav END -->
-</header><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/backend/main/layout/header.blade.php ENDPATH**/ ?>
+</header><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/backend/main/layout/header.blade.php ENDPATH**/ ?>

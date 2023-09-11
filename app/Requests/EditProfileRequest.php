@@ -11,6 +11,7 @@ class EditProfileRequest extends Validation
         return [
             'first_name' => 'required',
             'last_name' => 'required',
+            'email' => 'email|required',
             'files' => 'photo',
         ];
     }
@@ -20,6 +21,8 @@ class EditProfileRequest extends Validation
         return [
             'first_name.required' => __('profile.first_name-required'),
             'last_name.required' => __('profile.last_name-required'),
+            'email.email' => __('profile.email-email'),
+            'email.required' => __('profile.email-required'),
             'files.photo' => __('profile.files-photo'),
         ];
     }

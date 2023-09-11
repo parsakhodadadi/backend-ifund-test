@@ -12,7 +12,7 @@ class SigninMiddleware extends controller
 
     public function __construct()
     {
-        $this->authService = SigninAuth::getInstance(ConfigHelper::getConfig('login-method'));
+        $this->authService = SigninAuth::getInstance(ConfigHelper::getConfig('sign-in-method'));
     }
 
     public function boot()
