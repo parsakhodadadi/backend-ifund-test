@@ -6,4 +6,5 @@ return [
     'guide' => 'راهنما',
     'logout' => 'خروج',
     'posts' => 'مطالب',
+    'category' => 'دسته بندی',
 ];

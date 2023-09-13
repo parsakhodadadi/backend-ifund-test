@@ -28,7 +28,7 @@
                         <ul class="dropdown-menu" aria-labelledby="postMenu">
                             <!-- dropdown submenu -->
                             <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-post-list.html">لیست</a> </li>
-                            <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-post-categories.html">دسته بندی</a> </li>
+                            <li> <a class="dropdown-item" href="{{ route('/panel/post-categories') }}">{{ $lang['category'] }}</a> </li>
                             <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-post-create.html">ایجاد</a> </li>
                             <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-post-edit.html">ویرایش</a> </li>
                         </ul>

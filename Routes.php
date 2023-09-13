@@ -20,8 +20,9 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/panel', 'PanelController@dashboard');
 
     //post-categories
-    $router->get('/panel/add-post-category', "PostCategoriesController@create");
-    $router->post('/panel/add-post-category', "PostCategoriesController@create");
+    $router->get('/panel/add-post-category', "PostCategoryController@create");
+    $router->post('/panel/add-post-category', "PostCategoryController@create");
+    $router->get('/panel/post-categories', "PostCategoryController@show");
 
     //posts
     $router->get('/posts/(\d+)', "HomeController@postSingle");

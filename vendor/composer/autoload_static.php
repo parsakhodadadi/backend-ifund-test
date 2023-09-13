@@ -239,7 +239,7 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Controllers/HomeController.php',
         'App\\Controllers\\PanelController' => __DIR__ . '/../..' . '/app/Controllers/PanelController.php',
         'App\\Controllers\\PodcastController' => __DIR__ . '/../..' . '/app/Controllers/PodcastController.php',
-        'App\\Controllers\\PostCategoriesController' => __DIR__ . '/../..' . '/app/Controllers/PostCategoriesController.php',
+        'App\\Controllers\\PostCategoryController' => __DIR__ . '/../..' . '/app/Controllers/PostCategoryController.php',
         'App\\Controllers\\PostCommentController' => __DIR__ . '/../..' . '/app/Controllers/PostCommentController.php',
         'App\\Controllers\\PostController' => __DIR__ . '/../..' . '/app/Controllers/PostController.php',
         'App\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Controllers/ProfileController.php',

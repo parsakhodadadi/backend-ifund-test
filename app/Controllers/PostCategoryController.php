@@ -2,13 +2,14 @@
 
 namespace App\Controllers;
 
+use App\Models\Posts;
 use App\Models\Users;
 use App\Models\PostCategories;
 use App\Request\CategoryRequest;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
 
-class PostCategoriesController extends controller
+class PostCategoryController extends controller
 {
     private $blade;
     private $categories;
@@ -17,6 +18,7 @@ class PostCategoriesController extends controller
     private $currentUser;
     private $request;
     private $lang;
+    private $posts;
 
     public function __construct() {
         $this->request = request();
@@ -28,8 +30,9 @@ class PostCategoriesController extends controller
         $this->userId = $_SESSION['USERID'];
         $this->currentUser = current($this->users->get(['id' => $this->userId]));
         $this->categories = loadModel(PostCategories::class);
+        $this->posts = loadModel(Posts::class);
         $lang = ConfigHelper::getConfig('default-language');
-        $this->lang = loadLang($lang, 'categories');
+        $this->lang = loadLang($lang, 'post-categories');
     }
 
     public function create() {
@@ -43,20 +46,27 @@ class PostCategoriesController extends controller
             }
         }
 
-        $view = $this->blade->render('backend/main/layout/post-categories/create', [
+        echo $this->blade->render('backend/main/layout/post-categories/create', [
             'successMessage' => $successMessage,
             'errors' => $errors,
             'lang' => $this->lang,
             'method' => 'create',
             'action' => '/panel/add-post-category',
-        ]);
-        echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
-            'content' => $view,
             'navigation' => $this->loadNavigation(),
-            'header' => $this->loadHeader(),
+            'header' => $this->loadBackendHeader(),
         ]);
+    }
 
+    public function show()
+    {
+        echo $this->blade->render('backend/main/layout/post-categories/list', [
+            'posts' => $this->posts,
+            'categories' => $this->categories->get(),
+            'lang' => $this->lang,
+            'view' => $this->blade,
+            'header' => $this->loadBackendHeader(),
+        ]);
     }
 
 }

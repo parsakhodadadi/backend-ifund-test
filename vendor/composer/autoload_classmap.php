@@ -15,7 +15,7 @@ return array(
     'App\\Controllers\\HomeController' => $baseDir . '/app/Controllers/HomeController.php',
     'App\\Controllers\\PanelController' => $baseDir . '/app/Controllers/PanelController.php',
     'App\\Controllers\\PodcastController' => $baseDir . '/app/Controllers/PodcastController.php',
-    'App\\Controllers\\PostCategoriesController' => $baseDir . '/app/Controllers/PostCategoriesController.php',
+    'App\\Controllers\\PostCategoryController' => $baseDir . '/app/Controllers/PostCategoryController.php',
     'App\\Controllers\\PostCommentController' => $baseDir . '/app/Controllers/PostCommentController.php',
     'App\\Controllers\\PostController' => $baseDir . '/app/Controllers/PostController.php',
     'App\\Controllers\\ProfileController' => $baseDir . '/app/Controllers/ProfileController.php',
