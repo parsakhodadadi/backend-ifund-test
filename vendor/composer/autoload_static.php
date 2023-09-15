@@ -261,6 +261,7 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'App\\Model\\Authors' => __DIR__ . '/../..' . '/app/Models/authors.php',
         'App\\Models\\Books' => __DIR__ . '/../..' . '/app/Models/books.php',
         'App\\Models\\Categories' => __DIR__ . '/../..' . '/app/Models/categories.php',
+        'App\\Models\\LikedPosts' => __DIR__ . '/../..' . '/app/Models/likedPosts.php',
         'App\\Models\\Podcasts' => __DIR__ . '/../..' . '/app/Models/podcasts.php',
         'App\\Models\\PostCategories' => __DIR__ . '/../..' . '/app/Models/postCategories.php',
         'App\\Models\\PostComments' => __DIR__ . '/../..' . '/app/Models/postComments.php',

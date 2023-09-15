@@ -1,164 +1,329 @@
-<!--start page wrapper -->
-<div class="page-wrapper">
-    <div class="page-content">
-        <!--breadcrumb-->
-        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3"><?php echo e($lang['aaron-website']); ?></div>
-            <div class="ps-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                            <?php if($method == 'create'): ?>
-                                <?php echo e($lang['add-post']); ?>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 
-                            <?php else: ?>
-                                <?php echo e($lang['edit-post']); ?>
+<head>
+    <title>Blogzine - قالب HTML مجله خبری و وبلاگ</title>
 
-                            <?php endif; ?>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
-            <div class="ms-auto">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary">تنظیمات</button>
-                    <button type="button"
-                            class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split"
-                            data-bs-toggle="dropdown"><span class="visually-hidden">فهرست کشویی</span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end"><a
-                                class="dropdown-item" href="javascript:;">عمل</a>
-                        <a class="dropdown-item" href="javascript:;">عمل دیگر</a>
-                        <a class="dropdown-item" href="javascript:;">هر چیز دیگر اینجا</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:;">لینک
-                            جدا کننده</a>
-                    </div>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Blogzine">
+    <meta name="description" content="قالب وبلاگ و مجله خبری مبتنی بر بوت استرپ">
+
+    <!-- Dark mode -->
+    <script>
+        const storedTheme = localStorage.getItem('theme')
+
+        const getPreferredTheme = () => {
+            if (storedTheme) {
+                return storedTheme
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+
+        const setTheme = function (theme) {
+            if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-bs-theme', 'dark')
+            } else {
+                document.documentElement.setAttribute('data-bs-theme', theme)
+            }
+        }
+
+        setTheme(getPreferredTheme())
+
+        window.addEventListener('DOMContentLoaded', () => {
+            var el = document.querySelector('.theme-icon-active');
+            if (el != 'undefined' && el != null) {
+                const showActiveTheme = theme => {
+                    const activeThemeIcon = document.querySelector('.theme-icon-active use')
+                    const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+                    const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+                    document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+                        element.classList.remove('active')
+                    })
+
+                    btnToActive.classList.add('active')
+                    activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+                }
+
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                    if (storedTheme !== 'light' || storedTheme !== 'dark') {
+                        setTheme(getPreferredTheme())
+                    }
+                })
+
+                showActiveTheme(getPreferredTheme())
+
+                document.querySelectorAll('[data-bs-theme-value]')
+                    .forEach(toggle => {
+                        toggle.addEventListener('click', () => {
+                            const theme = toggle.getAttribute('data-bs-theme-value')
+                            localStorage.setItem('theme', theme)
+                            setTheme(theme)
+                            showActiveTheme(theme)
+                        })
+                    })
+
+            }
+        })
+
+    </script>
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" type="text/css"
+          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css"
+          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/apexcharts/css/apexcharts.css">
+    <link rel="stylesheet" type="text/css"
+          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/quill/css/quill.snow.css">
+
+    <!-- Theme CSS -->
+    <link id="style-switch" rel="stylesheet" type="text/css"
+          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/css')); ?>/style-rtl.css">
+
+</head>
+
+<body>
+<!-- Preloader START -->
+<?php echo e($view->make('backend/main/layout/preloader')); ?>
+
+<!-- Preloader END -->
+
+<!-- =======================
+Header START -->
+<?php echo $header; ?>
+
+<!-- =======================
+Header END -->
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+    <!-- =======================
+    Main contain START -->
+    <section class="py-4">
+        <div class="container">
+            <div class="row pb-4">
+                <div class="col-12">
+                    <!-- Title -->
+                    <h1 class="mb-0 h3"><?php echo e($lang['create-new-post']); ?></h1>
                 </div>
             </div>
-        </div>
-        <!--end breadcrumb-->
-        <div class="card">
-            <div class="card-body p-4">
-                <h5 class="card-title">
-                    <?php echo e($lang['post-info-form']); ?>
-
-                </h5>
-                <hr/>
-                <div class="form-body mt-4">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="border border-3 p-4 rounded">
-                                <form action="<?php echo e(route('') . $action); ?>" method="post" enctype="multipart/form-data">
-                                    <div class="mb-3">
-                                        <label for="inputProductTitle" class="form-label"><?php echo e($lang['title']); ?></label>
-                                        <input type="text" name="title" class="form-control" id="inputProductTitle"
-                                               placeholder="<?php echo e($lang['enter-title']); ?>"
-                                               value="<?php if(!empty($data)): ?> <?php echo e($data->title); ?> <?php endif; ?>">
-                                        <?php if(!empty($errors['title'])): ?>
-                                            <?php if(!empty($errors['title']['required'])): ?>
-                                                <div class="form-control alert-danger"><?php echo e($errors['title']['required']); ?></div>
+            <div class="row">
+                <div class="col-12">
+                    <!-- Chart START -->
+                    <div class="card border">
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <!-- Form START -->
+                            <form action="<?php echo e(route('') . $action); ?>" method="post" enctype="multipart/form-data">
+                                <!-- Main form -->
+                                <div class="row">
+                                    <div class="col-12">
+                                        <!-- Post name -->
+                                        <div class="mb-3">
+                                            <label class="form-label"><?php echo e($lang['title']); ?></label>
+                                            <input required id="con-name" name="title" type="text" class="form-control"
+                                                   placeholder="<?php echo e($lang['post-title']); ?>"
+                                                   value="<?php if(!empty($post)): ?> <?php echo e($post->title); ?> <?php endif; ?>">
+                                            <?php if(!empty($errors['title'])): ?>
+                                                <div class="form-control bg-danger"><?php echo e($errors['title']['required']); ?></div>
                                             <?php endif; ?>
-                                        <?php endif; ?>
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="inputProductDescription"
-                                               class="form-label"><?php echo e($lang['description']); ?></label>
-                                        <textarea name="description" class="form-control" id="myCKEditortextarea"
-                                                  rows="3"><?php if(!empty($data)): ?>
-                                                <?php echo e($data->description); ?>
 
-                                            <?php endif; ?></textarea>
-                                        <?php if(!empty($errors['description'])): ?>
-                                            <?php if(!empty($errors['description']['required'])): ?>
-                                                <div class="form-control alert-danger"><?php echo e($errors['description']['required']); ?></div>
+                                    <!-- Short description -->
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label class="form-label"><?php echo e($lang['short_description']); ?></label>
+                                            <textarea class="form-control" name="short_description" rows="3"
+                                                      placeholder="<?php echo e($lang['short_description-placeholder']); ?>"><?php if(!empty($post)): ?>
+                                                    <?php echo e($post->short_description); ?>
+
+                                                <?php endif; ?></textarea>
+                                            <?php if(!empty($errors['short_description'])): ?>
+                                                <div class="form-control bg-danger"><?php echo e($errors['short_description']['required']); ?></div>
                                             <?php endif; ?>
-                                        <?php endif; ?>
+                                        </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="inputProductDescription"
-                                               class="form-label">
-                                            <?php if($method == 'create'): ?>
-                                                <?php echo e($lang['add-photo']); ?>
 
-                                            <?php else: ?>
-                                                <?php echo e($lang['add-new-photo']); ?>
+                                    <!-- Main toolbar -->
+                                    <div class="col-md-12">
+                                        <!-- Subject -->
+                                        <div class="mb-3">
+                                            <label class="form-label"><?php echo e($lang['text']); ?></label>
+                                            <!-- Editor toolbar -->
+                                            <!-- Main toolbar -->
+                                            <textarea class="form-control" name="text" rows="10"
+                                                      id="myCKEditortextarea"><?php if(!empty($post)): ?>
+                                                    <?php echo e($post->text); ?>
 
+                                                <?php endif; ?></textarea>
+                                            <?php if(!empty($errors['text'])): ?>
+                                                <div class="form-control bg-danger"><?php echo e($errors['text']['required']); ?></div>
                                             <?php endif; ?>
-                                        </label>
-                                        <input class="form-control"
-                                               value="<?php if(!empty($data)): ?> <?php if(!empty($data->photo)): ?> <?php echo e($data->photo); ?> <?php endif; ?> <?php endif; ?>"
-                                               id="image-uploadify" name="photo" type="file"
-                                               accept="image/*"
-                                               multiple>
-                                        <?php if($method == 'update'): ?>
-                                            <?php if(!empty($data->photo)): ?>
-                                                <div class="card-body">
-                                                <span>
-                                                    <img src="<?php echo e(route('/') . $data->photo); ?>" width="200" height="auto"
-                                                         alt="">
-                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <!-- Image -->
+                                            <?php if(!empty($post)): ?>
+                                                <div class="row align-items-center mb-2">
+                                                    <div class="col-4 col-md-2">
+                                                        <div class="position-relative">
+                                                            <img class="rounded" src="<?php echo e(route('/') . $post->photo); ?>"
+                                                                 alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-8 col-md-10 position-relative">
+                                                        <h6 class="my-2"><?php echo e($lang['edit-photo']); ?></h6>
+                                                        <label class="w-100" style="cursor:pointer;">
+                                                            <div class="input-group flex-row-reverse">
+                                                                <input type="text" class="form-control upload-name"/>
+                                                                <span class="btn btn-custom cursor-pointer upload-button"><?php echo e($lang['upload-file']); ?></span>
+                                                            </div>
+                                                            <input class="form-control stretched-link d-none hidden-upload"
+                                                                   type="file" name="photo"
+                                                                   accept="image/gif, image/jpeg, image/png"/>
+                                                            <?php if(!empty($errors['files'])): ?>
+                                                                <?php if(!empty($errors['files']['file_required'])): ?>
+                                                                    <div class="form-control bg-danger"><?php echo e($errors['files']['file_required']); ?></div>
+                                                                <?php else: ?>
+                                                                    <div class="form-control bg-danger"><?php echo e($errors['files']['photo']); ?></div>
+                                                                <?php endif; ?>
+                                                            <?php endif; ?>
+                                                        </label>
+                                                    </div>
+                                                    <p class="small mb-0 mt-2">
+                                                        <b><?php echo e($lang['hint']); ?></b><?php echo e($lang['hint-upload-file']); ?> </p>
                                                 </div>
-                                            <?php endif; ?>
-                                        <?php endif; ?>
-                                        <?php if(!empty($errors['files'])): ?>
-                                            <?php if(!empty($errors['files']['photo'])): ?>
-                                                <div class="form-control alert-danger"><?php echo e($errors['files']['photo']); ?></div>
-                                            <?php endif; ?>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="post_category" class="form-label"><?php echo e($lang['category']); ?></label>
-                                        <select id="post_category" name="post_category_id" class="form-select">
-                                            <?php if($method == 'create'): ?>
-                                                <option value=""><?php echo e($lang['choose-category']); ?></option>
-                                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                    <option value="<?php echo e($category->id); ?>"><?php echo e($category->title); ?></option>
-                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             <?php else: ?>
-                                            <?php endif; ?>
-                                        </select>
-                                        <?php if(!empty($errors['post_category_id'])): ?>
-                                            <?php if(!empty($errors['post_category_id']['required'])): ?>
-                                                <div class="form-control alert-danger" >
-                                                    <?php echo e($errors['post_category_id']['required']); ?>
-
+                                                <div class="position-relative">
+                                                    <h6 class="my-2"><?php echo e($lang['add-photo']); ?></h6>
+                                                    <label class="w-100" style="cursor:pointer;">
+                                                        <div class="input-group flex-row-reverse">
+                                                            <input type="text" class="form-control upload-name"/>
+                                                            <span class="btn btn-custom cursor-pointer upload-button"><?php echo e($lang['upload-file']); ?></span>
+                                                        </div>
+                                                        <input class="form-control stretched-link d-none hidden-upload"
+                                                               type="file" name="photo"
+                                                               accept="image/gif, image/jpeg, image/png"/>
+                                                        <?php if(!empty($errors['files'])): ?>
+                                                            <?php if(!empty($errors['files']['file_required'])): ?>
+                                                                <div class="form-control bg-danger"><?php echo e($errors['files']['file_required']); ?></div>
+                                                            <?php else: ?>
+                                                                <div class="form-control bg-danger"><?php echo e($errors['files']['photo']); ?></div>
+                                                            <?php endif; ?>
+                                                        <?php endif; ?>
+                                                    </label>
                                                 </div>
-                                            <?php else: ?>
-                                                <div class="form-control alert-danger">
-                                                    <?php echo e($errors['post_category_id']['post_cat_valid']); ?>
-
-                                                </div>
+                                                <p class="small mb-0 mt-2">
+                                                    <b><?php echo e($lang['hint']); ?></b><?php echo e($lang['hint-upload-file']); ?> </p>
                                             <?php endif; ?>
-                                        <?php endif; ?>
+                                        </div>
                                     </div>
-                                    <input type="submit" class="btn btn-primary px-4" value="<?php echo e($lang['send']); ?>">
-                                </form>
-                            </div>
-                            <?php if(!empty($successMessage)): ?>
-                                <div class="form-control alert-success"><?php echo e($successMessage); ?></div>
-                            <?php endif; ?>
-                            <?php if(!empty($errorMessage)): ?>
-                                <div class="form-control alert-danger"><?php echo e($errorMessage); ?></div>
-                            <?php endif; ?>
+                                    <div class="col-lg-7">
+                                        <!-- Tags -->
+                                        <div class="mb-3">
+                                            <label class="form-label"><?php echo e($lang['tag']); ?></label>
+                                            <textarea class="form-control" name="tag" rows="1"
+                                                      placeholder="<?php echo e($lang['tag-placeholder']); ?>"><?php if(!empty($post->tag)): ?>
+                                                    <?php echo e($post->tag); ?>
+
+                                                <?php endif; ?></textarea>
+                                            <small><?php echo e($lang['hint-tag']); ?></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <!-- Message -->
+                                        <div class="mb-3">
+                                            <label class="form-label"><?php echo e($lang['category']); ?></label>
+                                            <select class="form-select" name="post_category_id"
+                                                    aria-label="Default select example">
+                                                <?php if(!empty($post)): ?>
+                                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <?php if($category->id == $post->post_category_id): ?>
+                                                            <option value="<?php echo e($category->id); ?>"
+                                                                    selected><?php echo e($category->title); ?></option>
+                                                        <?php else: ?>
+                                                            <option value="<?php echo e($category->id); ?>"><?php echo e($category->title); ?></option>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <?php else: ?>
+                                                    <option selected><?php echo e($lang['select-category']); ?></option>
+                                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <option value="<?php echo e($category->id); ?>"><?php echo e($category->title); ?></option>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <?php endif; ?>
+                                            </select>
+                                            <?php if(!empty($errors['post_category_id'])): ?>
+                                                <?php if(!empty($errors['post_category_id']['required'])): ?>
+                                                    <div class="form-control bg-danger"><?php echo e($errors['post_category_id']['required']); ?></div>
+                                                <?php else: ?>
+                                                    <div class="form-control bg-danger"><?php echo e($errors['post_category_id']['post_cat_valid']); ?></div>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <!-- Create post button -->
+                                    <div class="col-md-12 text-start">
+                                        <button class="btn btn-primary w-100"
+                                                type="submit"><?php echo e($lang['submit-changes']); ?></button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- Form END -->
                         </div>
                     </div>
-                    <!--end row-->
+                    <!-- Chart END -->
+                    <?php if(!empty($successMessage)): ?>
+                        <div class="form-control bg-success"><?php echo e($successMessage); ?></div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<script src="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>assets/js/bootstrap.bundle.min.js"></script>
-<!--plugins-->
-<script src="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>assets/js/jquery.min.js"></script>
-<script src="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>assets/plugins/simplebar/js/simplebar.min.js"></script>
-<script src="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>assets/plugins/metismenu/js/metisMenu.min.js"></script>
-<script src="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-<script src='<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>assets/plugins/tinymce-rtl/tinymce.min.js'></script>
-<script src='<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>assets/plugins/ckeditor/ckeditor.js'></script>
+    </section>
+    <!-- =======================
+    Main contain END -->
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<?php echo e($view->make('backend/main/layout/footer')); ?>
+
+<!-- =======================
+Footer END -->
+
+<!-- Back to top -->
+<div class="back-top"><i class="bi bi-arrow-up-short"></i></div>
+
+<!-- =======================
+JS libraries, plugins and custom scripts -->
+
+<!-- Bootstrap JS -->
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/apexcharts/js/apexcharts.min.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/quill/js/quill.min.js"></script>
+
+<!-- Template Functions -->
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/js')); ?>/functions.js"></script>
+<!-- Btn Upload -->
+<script>
+    document.querySelector(".upload-button").addEventListener("click", () => {
+        //clicks on the file input
+        document.querySelector(".hidden-upload").click();
+    });
+    //adds event listener on the hidden file input to listen for any changes
+    document.querySelector(".hidden-upload").addEventListener("change", (event) => {
+        //gets the file name
+        document.querySelector(".upload-name").value = event.target.files[0].name;
+    });
+</script>
 <script>
     tinymce.init({
         selector: '#mytextarea',
@@ -185,7 +350,6 @@
 
     CKEDITOR.replace('myCKEditortextarea')
 </script>
-<script src="<?php echo e(route('/Others/Themes/Backend/main/vertical/')); ?>assets/js/app.js"></script>
-<!--end page wrapper -->
+</body>
 
-<?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/backend/main/layout/posts/create.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/backend/main/layout/posts/create.blade.php ENDPATH**/ ?>

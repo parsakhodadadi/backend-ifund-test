@@ -69,4 +69,15 @@ class PostCategoryController extends controller
         ]);
     }
 
+    public function categoryPosts(int $categoryId)
+    {
+        echo $this->blade->render('backend/main/layout/post-categories/category-posts', [
+            'posts' => $this->posts->get(['post_category_id' => $categoryId]),
+            'lang' => $this->lang,
+            'view' => $this->blade,
+            'users' => $this->users,
+            'header' => $this->loadBackendHeader(),
+        ]);
+    }
+
 }

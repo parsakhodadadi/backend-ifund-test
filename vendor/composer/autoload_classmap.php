@@ -37,6 +37,7 @@ return array(
     'App\\Model\\Authors' => $baseDir . '/app/Models/authors.php',
     'App\\Models\\Books' => $baseDir . '/app/Models/books.php',
     'App\\Models\\Categories' => $baseDir . '/app/Models/categories.php',
+    'App\\Models\\LikedPosts' => $baseDir . '/app/Models/likedPosts.php',
     'App\\Models\\Podcasts' => $baseDir . '/app/Models/podcasts.php',
     'App\\Models\\PostCategories' => $baseDir . '/app/Models/postCategories.php',
     'App\\Models\\PostComments' => $baseDir . '/app/Models/postComments.php',

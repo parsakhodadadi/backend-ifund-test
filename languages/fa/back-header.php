@@ -7,4 +7,8 @@ return [
     'logout' => 'خروج',
     'posts' => 'مطالب',
     'category' => 'دسته بندی',
+    'list' => 'لیست',
+    'create' => 'ایجاد',
+    'management' => 'مدیریت',
+    'my-posts' => 'مطالب من',
 ];

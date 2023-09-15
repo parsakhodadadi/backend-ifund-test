@@ -137,6 +137,14 @@ class controller
         ]);
     }
 
+    public function loadFrontendHeader()
+    {
+        echo $this->view()->blade()->render('frontend/main/layout/header', [
+            'view' => $this->view()->blade(),
+            'lang' => loadLang(ConfigHelper::getConfig('default-language'), 'front-header')
+        ]);
+    }
+
     public function uploadPhoto($tmpFile, $fileName)
     {
         if (!move_uploaded_file($tmpFile, $fileName)) {

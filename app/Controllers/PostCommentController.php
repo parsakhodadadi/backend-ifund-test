@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\LikedPosts;
 use App\Models\PostCategories;
 use App\Models\PostComments;
 use App\Models\Posts;
@@ -23,6 +24,7 @@ class PostCommentController extends controller
     private $posts;
     private $categories;
     private $replyComments;
+    private $likedPosts;
 
     public function __construct()
     {
@@ -42,10 +44,15 @@ class PostCommentController extends controller
         $this->posts = loadModel(Posts::class);
         $this->categories = loadModel(PostCategories::class);
         $this->replyComments = loadModel(ReplyPostComments::class);
+        $this->likedPosts = loadModel(LikedPosts::class);
     }
 
     public function create(int $postId)
     {
+        $liked = false;
+        if (!empty(current($this->likedPosts->get(['post_id' => $postId, 'user_id' => $this->userId])))) {
+            $liked = true;
+        }
         $successMessage = null;
         $errorMessage = null;
         $post = current($this->posts->get(['id' => $postId]));
@@ -83,8 +90,10 @@ class PostCommentController extends controller
             'category' => $category,
             'comments' => $this->comments->get(['post_id' => $postId, 'status' => 'approved']),
             'users' => $this->users,
+            'liked' => $liked,
             'replyComments' => $this->replyComments,
             'action' => 'posts/' . $post->id . '/add-comment',
+            'header' => $this->loadFrontendHeader(),
         ]);
     }
 
@@ -135,4 +144,6 @@ class PostCommentController extends controller
             'action' => 'posts/' . $post->id . '/reply/' . $commentId,
         ]);
     }
+
+
 }

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Model\Authors;
 use App\Models\Categories;
+use App\Models\LikedPosts;
 use App\Models\Podcasts;
 use App\Models\PostCategories;
 use App\Models\Posts;
@@ -23,6 +24,7 @@ class HomeController extends controller
     private $categories;
     private $postCats;
     private $podcasts;
+    private $likedPosts;
 
     public function __construct()
     {
@@ -39,6 +41,7 @@ class HomeController extends controller
         $this->authorsLang = loadLang($lang, 'authors');
         $this->postCats = loadModel(PostCategories::class);
         $this->podcasts = loadModel(Podcasts::class);
+        $this->likedPosts = loadModel(LikedPosts::class);
     }
 
     public function frontEnd()
@@ -64,7 +67,7 @@ class HomeController extends controller
             'view' => $this->blade,
             'content' => $view,
             'navigation' => $this->loadNavigation(),
-            'header' => $this->loadHeader(),
+            'header' => $this->loadBackendHeader(),
         ]);
     }
 
@@ -89,13 +92,18 @@ class HomeController extends controller
 
     public function postSingle(int $itemId)
     {
-        $post = current($this->posts->get(['id' => $itemId]));
+        $liked = false;
+        if (!empty(current($this->likedPosts->get(['post_id' => $postId, 'user_id' => $this->userId])))) {
+            $liked = true;
+        }
+        $post = current($this->posts->get(['id' => $itemId , 'status' => 'approved']));
         $user = current($this->users->get(['id' => $post->user_id]));
         $category = current($this->postCats->get(['id' => $post->post_category_id]));
         echo $this->blade->render('frontend/main/post', [
             'view' => $this->blade,
             'post' => $post,
             'user' => $user,
+            'liked' => $liked,
             'category' => $category,
         ]);
     }

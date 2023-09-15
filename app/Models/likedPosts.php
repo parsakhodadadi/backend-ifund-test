@@ -5,10 +5,10 @@ namespace App\Models;
 use Exception;
 use Core\System\Helpers\databaseHelper;
 
-class Posts
+class LikedPosts
 {
     private $db;
-    private $table = 'posts';
+    private $table = 'liked_posts';
 
     public function __construct()
     {
@@ -20,9 +20,7 @@ class Posts
         try {
             $db = $this->db::pdoSelect($this->table);
             if (!empty($conditions)) {
-                foreach ($conditions as $element => $value) {
-                    $db = $this->db::pdoSelect($this->table, $conditions);
-                }
+                $db = $this->db::pdoSelect($this->table, $conditions);
             }
             return $db;
         } catch (Exception $exception) {

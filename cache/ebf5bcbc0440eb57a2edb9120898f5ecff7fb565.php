@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Blogzine">
-    <meta name="description" content="قالب وبلاگ و مجله خبری مبتنی بر بوت استرپ">
+    <meta name="short_description" content="قالب وبلاگ و مجله خبری مبتنی بر بوت استرپ">
 
     <!-- Dark mode -->
     <script>
@@ -91,17 +91,12 @@
 
 <body>
 <!-- Preloader START -->
-<div class="preloader">
-    <div class="loader">
-        <div class="sh1"></div>
-        <div class="sh2"></div>
-    </div>
-</div>
+
 <!-- Preloader END -->
 
 <!-- =======================
 Header START -->
-<?php echo e($view->make('frontend/main/layout/header')); ?>
+<?php echo $header; ?>
 
 <!-- =======================
 Header END -->
@@ -110,7 +105,6 @@ Header END -->
 <main>
     <!-- Divider -->
     <div class="border-bottom border-primary border-1 opacity-1"></div>
-
     <!-- =======================
     Inner intro START -->
     <section class="pb-3 pb-lg-5">
@@ -121,7 +115,7 @@ Header END -->
                                 class="fas fa-circle me-2 small fw-bold"></i><?php echo e($category->title); ?></a>
                     <h1><?php echo e($post->title); ?></h1>
                 </div>
-                <p class="lead"><?php echo e($post->description); ?></p>
+                <p class="lead"><?php echo e($post->short_description); ?></p>
             </div>
         </div>
     </section>
@@ -159,8 +153,15 @@ Header END -->
                         <ul class="list-inline list-unstyled">
                             <li class="list-inline-item d-lg-block my-lg-2"><?php echo e($post->date . ' ' . $post->time); ?></li>
                             <li class="list-inline-item d-lg-block my-lg-2">5 دقیقه زمان مطالعه</li>
-                            <li class="list-inline-item d-lg-block my-lg-2"><a href="#" class="text-body"><i
-                                            class="far fa-heart me-1"></i></a> 266
+                            <li class="list-inline-item d-lg-block my-lg-2"><a
+                                        href="<?php echo e(route('/posts/') . $post->id . '/like'); ?>" class="text-body">
+                                    <?php if($liked): ?>
+                                        <i class="bi-heart-fill"></i>
+                                    <?php else: ?>
+                                        <i class="far fa-heart me-1"></i>
+                                    <?php endif; ?>
+                                </a> <?php echo e($post->likes); ?>
+
                             </li>
                             <li class="list-inline-item d-lg-block my-lg-2"><i class="far fa-eye me-1"></i> 2344 بازدید
                             </li>
@@ -193,6 +194,7 @@ Header END -->
                         <a href="<?php echo e(route('/') . $post->photo); ?>" data-glightbox data-gallery="image-popup">
                             <img class="rounded" src="<?php echo e(route('/') . $post->photo); ?>" alt="Image">
                         </a>
+                        <p><?php echo e($post->text); ?></p>
                     </figure>
                     <p>
                     </p>
@@ -464,7 +466,8 @@ Header END -->
                                     <div class="mb-2">
                                         <h5 class="m-0"><?php echo e(current($users->get(['id' => $comment->user_id]))->first_name . ' ' . current($users->get(['id' => $comment->user_id]))->last_name); ?></h5>
                                         <span class="me-3 small"><?php echo e($comment->date . ' ' . $comment->time); ?></span>
-                                        <a href="<?php echo e(route('/') . 'posts/' . $post->id . '/reply/' . $comment->id); ?>" class="text-body fw-normal"><?php echo e(__('comments.reply')); ?></a>
+                                        <a href="<?php echo e(route('/') . 'posts/' . $post->id . '/reply/' . $comment->id); ?>"
+                                           class="text-body fw-normal"><?php echo e(__('comments.reply')); ?></a>
                                     </div>
                                     <p> <?php echo e($comment->text); ?></p>
                                 </div>

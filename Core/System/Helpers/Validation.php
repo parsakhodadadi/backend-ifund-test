@@ -6,6 +6,7 @@ use App\Model\Authors;
 use App\Models\Categories;
 use App\Models\PostCategories;
 use App\Models\Subjects;
+use Core\System\Helpers\ConfigHelper;
 
 class Validation
 {
@@ -33,6 +34,20 @@ class Validation
         } else {
             return false;
         }
+    }
+
+    public function tag_size($value): bool
+    {
+        if (!empty($value)) {
+            if (ConfigHelper::getConfig('default-language') == 'fa') {
+                $separator = '،';
+            }
+            $tagArray = explode($separator, $value);
+            if (count($tagArray) > 14) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public function user_type($value)
@@ -147,7 +162,6 @@ class Validation
 
     public function mobile($number): bool
     {
-
         if ($number != null && !preg_match("/^[0-9]{11}$/", strval($number))) {
             return false;
         }

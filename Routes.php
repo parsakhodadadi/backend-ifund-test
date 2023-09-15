@@ -23,8 +23,12 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/panel/add-post-category', "PostCategoryController@create");
     $router->post('/panel/add-post-category', "PostCategoryController@create");
     $router->get('/panel/post-categories', "PostCategoryController@show");
+    $router->get('/panel/post-categories/(\d+)/posts', "PostCategoryController@categoryPosts");
+    $router->before('GET|POST', '/panel/add-post-category', 'SigninController@checkFullAdmin');
+    $router->before('GET|POST', '/panel/post-categories', 'SigninController@checkAdmin');
 
     //posts
+    $router->get('/posts/(\d+)/like', "PostController@like");
     $router->get('/posts/(\d+)', "HomeController@postSingle");
     $router->get('/posts/(\d+)/add-comment', "PostCommentController@create");
     $router->post('/posts/(\d+)/add-comment', "PostCommentController@create");
@@ -43,6 +47,7 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->before('GET|POST', '/panel/my-posts/.*', 'SigninController@checkAdmin');
     $router->get('/panel/posts-management', "PostController@management");
     $router->post('/panel/posts-management', "PostController@management");
+    $router->get('/panel/posts-management/(\d+)', "PostController@showSingle");
     $router->get('/panel/posts-management/approve/(\d+)', "PostController@approve");
     $router->get('/panel/posts-management/delete/(\d+)', "PostController@delete");
     $router->get('/panel/posts-management/edit/(\d+)', "PostController@edit");

@@ -30,7 +30,7 @@
                                         <i class="bi bi-info-circle ps-1"></i> ویژه
                                     </a>
                                     <h4 class="card-title mt-2"><a href="{{ route('/posts/') . $post->id . '/add-comment' }}" class="btn-link text-reset">{{ $post->title }}</a></h4>
-                                    <p class="card-text">{{ $post->description  }}</p>
+                                    <p class="card-text">{{ $post->short_description  }}</p>
                                     <!-- Card info -->
                                     <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
                                         <li class="nav-item">

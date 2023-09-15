@@ -20,17 +20,17 @@
                 <ul class="navbar-nav navbar-nav-scroll mx-auto">
 
                     <!-- Nav item 1 Demos -->
-                    <li class="nav-item"><a class="nav-link" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard.html"><i class="bi bi-house-door me-1"></i>پیشخوان</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('/panel') }}"><i class="bi bi-house-door me-1"></i>پیشخوان</a></li>
 
                     <!-- Nav item 2 Post -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i>{{ $lang['posts'] }}</a>
                         <ul class="dropdown-menu" aria-labelledby="postMenu">
                             <!-- dropdown submenu -->
-                            <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-post-list.html">لیست</a> </li>
+                            <li> <a class="dropdown-item" href="{{ route('/panel/posts-management') }}">{{ $lang['management'] }}</a> </li>
+                            <li> <a class="dropdown-item" href="{{ route('/panel/my-posts') }}">{{ $lang['my-posts'] }}</a> </li>
                             <li> <a class="dropdown-item" href="{{ route('/panel/post-categories') }}">{{ $lang['category'] }}</a> </li>
-                            <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-post-create.html">ایجاد</a> </li>
-                            <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-post-edit.html">ویرایش</a> </li>
+                            <li> <a class="dropdown-item" href="{{ route('/panel/add-post') }}">{{ $lang['create'] }}</a></li>
                         </ul>
                     </li>
 

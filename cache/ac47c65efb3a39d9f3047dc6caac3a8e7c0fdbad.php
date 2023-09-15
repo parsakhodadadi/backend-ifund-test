@@ -163,7 +163,7 @@ Header END -->
                             <!-- Card body END -->
                             <!-- Card footer -->
                             <div class="card-footer border-top text-center p-3">
-                                <a href="#" class="btn btn-primary-soft w-100 mb-0"><?php echo e($lang['show-posts']); ?></a>
+                                <a href="<?php echo e(route('/panel/post-categories/') . $category->id . '/posts'); ?>" class="btn btn-primary-soft w-100 mb-0"><?php echo e($lang['show-posts']); ?></a>
                             </div>
                         </div>
                         <!-- Category item END -->

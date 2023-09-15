@@ -30,7 +30,7 @@
                                         <i class="bi bi-info-circle ps-1"></i> ویژه
                                     </a>
                                     <h4 class="card-title mt-2"><a href="<?php echo e(route('/posts/') . $post->id . '/add-comment'); ?>" class="btn-link text-reset"><?php echo e($post->title); ?></a></h4>
-                                    <p class="card-text"><?php echo e($post->description); ?></p>
+                                    <p class="card-text"><?php echo e($post->short_description); ?></p>
                                     <!-- Card info -->
                                     <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
                                         <li class="nav-item">

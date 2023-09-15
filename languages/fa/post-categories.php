@@ -10,4 +10,5 @@ return [
     'description' => 'توضیحات',
     'submit-category' => 'ثبت دسته بندی',
     'category-title' => 'عنوان دسته بندی',
+    'by' => 'توسط ',
 ];
