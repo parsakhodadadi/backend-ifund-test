@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Middlewares\AdminMiddleware;
 use App\Middlewares\ManagerMiddleware;
+use App\Models\Posts;
 use App\Models\Users;
 use App\Request\ChangePasswordRequest;
 use App\Request\EditAccessRequest;
@@ -20,6 +21,7 @@ class UserController extends controller
     private $currentUser;
     private $request;
     private $editProfileService;
+    private $posts;
 
     public function __construct()
     {
@@ -29,21 +31,19 @@ class UserController extends controller
         $this->currentUser = current($this->users->get(['id' => $_SESSION['USERID']]));
         $lang = ConfigHelper::getConfig('default-language');
         $this->lang = loadLang($lang, 'users');
+        $this->posts = loadModel(Posts::class);
     }
 
     public function management()
     {
         $users = $this->users->get();
-        $view = $this->blade->render('backend/main/layout/users/management', [
+        echo $this->blade->render('backend/main/layout/users/management', [
             'users' => $users,
             'lang' => $this->lang,
             'currentUser' => $this->currentUser,
-        ]);
-        echo $this->blade->render('backend/main/panel', [
             'view' => $this->blade,
-            'content' => $view,
-            'navigation' => $this->loadNavigation(),
-            'header' => $this->loadHeader(),
+            'posts' => $this->posts,
+            'header' => $this->loadBackendHeader(),
         ]);
     }
 
@@ -75,6 +75,32 @@ class UserController extends controller
             'navigation' => $this->loadNavigation(),
             'header' => $this->loadHeader(),
         ]);
+    }
+
+    public function userSingle(int $itemId)
+    {
+        $user = current($this->users->get(['id' => $itemId]));
+        echo $this->blade->render('backend/main/layout/users/user-single', [
+            'view' => $this->blade,
+            'lang' => $this->lang,
+            'user' => $user,
+            'posts' => $this->posts,
+            'header' => $this->loadBackendHeader(),
+        ]);
+    }
+
+    public function block(int $itemId)
+    {
+        $user = current($this->users->get(['id' => $itemId]));
+        if ($user->blocked == 'no') {
+            $errorMessage = $this->users->update(['id' => $itemId], ['blocked' => 'yes']);
+        } else {
+            $errorMessage = $this->users->update(['id' => $itemId], ['blocked' => 'no']);
+        }
+        if (!empty($errorMessage)) {
+            exit('error');
+        }
+        redirect('/panel/users-management');
     }
 
     public function delete(int $itemId)

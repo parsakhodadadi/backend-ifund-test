@@ -52,6 +52,7 @@ return array(
     'App\\Request\\ChangePasswordRequest' => $baseDir . '/app/Requests/ChangePasswordRequest.php',
     'App\\Request\\CommentRequest' => $baseDir . '/app/Requests/CommentRequest.php',
     'App\\Request\\EditAccessRequest' => $baseDir . '/app/Requests/EditAccessRequest.php',
+    'App\\Request\\EditPersonalInfoRequest' => $baseDir . '/app/Requests/EditPersonalInfoRequest.php',
     'App\\Request\\EditProfileRequest' => $baseDir . '/app/Requests/EditProfileRequest.php',
     'App\\Request\\PodcastRequest' => $baseDir . '/app/Requests/PodcastRequest.php',
     'App\\Request\\PostRequest' => $baseDir . '/app/Requests/PostRequest.php',

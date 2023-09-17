@@ -129,12 +129,22 @@ Header END -->
                                         <h4 class="my-1"><?php echo e($user->first_name . ' ' . $user->last_name); ?> <i
                                                     class="bi bi-patch-check-fill text-info small"></i></h4>
                                         <ul class="list-inline">
-                                            <li class="list-inline-item"><i class="bi bi-person-fill me-1"></i> روزنامه
-                                                نگار Blogzine
+                                            <li class="list-inline-item"><i class="bi bi-person-fill me-1"></i>
+                                                <?php if($user->user_type == 'user'): ?>
+                                                    <?php echo e($lang['user'] . ' ' . $lang['aaron-magazine']); ?>
+
+                                                <?php elseif($user->user_type == 'admin'): ?>
+                                                    <?php echo e($lang['admin'] . ' ' . $lang['aaron-magazine']); ?>
+
+                                                <?php else: ?>
+                                                    <?php echo e($lang['fulladmin'] . ' ' . $lang['aaron-magazine']); ?>
+
+                                                <?php endif; ?>
                                             </li>
                                             <li class="list-inline-item"><i class="bi bi-geo-alt me-1"></i> تهران</li>
-                                            <li class="list-inline-item"><i class="bi bi-calendar2-plus me-1"></i> تاریخ
-                                                عضویت 5 بهمن 1400
+                                            <li class="list-inline-item"><i class="bi bi-calendar2-plus me-1"></i>
+                                                <?php echo e($lang['subscription_date'] . ' ' . $user->subscription_date); ?>
+
                                             </li>
                                         </ul>
                                         <p class="m-0"></p>
@@ -199,12 +209,14 @@ Header END -->
                                 <div class="mb-3">
                                     <label class="form-label"><?php echo e($lang['full-name']); ?></label>
                                     <div class="input-group">
-                                        <input type="text" name="first_name" class="form-control" value="<?php echo e($user->first_name); ?>"
+                                        <input type="text" name="first_name" class="form-control"
+                                               value="<?php echo e($user->first_name); ?>"
                                                placeholder="<?php echo e($lang['first-name']); ?>">
                                         <?php if(!empty($errors['first_name']['required'])): ?>
                                             <div class="form-control bg-danger"><?php echo e($errors['first_name']['required']); ?></div>
                                         <?php endif; ?>
-                                        <input type="text" name="last_name" class="form-control" value="<?php echo e($user->last_name); ?>"
+                                        <input type="text" name="last_name" class="form-control"
+                                               value="<?php echo e($user->last_name); ?>"
                                                placeholder="<?php echo e($lang['last-name']); ?>">
                                         <?php if(!empty($errors['last_name']['required'])): ?>
                                             <div class="form-control bg-danger"><?php echo e($errors['last_name']['required']); ?></div>
@@ -213,17 +225,11 @@ Header END -->
                                 </div>
                                 <!-- Username -->
                                 <div class="mb-3">
-                                    <label class="form-label"><?php echo e($lang['email']); ?></label>
+                                    <label class="form-label"><?php echo e($lang['username']); ?></label>
                                     <div class="input-group">
-                                        <input type="email" name="email" class="form-control" value="<?php echo e($user->email); ?>">
+                                        <input type="text" name="username" class="form-control"
+                                               value="<?php echo e($user->username); ?>">
                                     </div>
-                                    <?php if(!empty($errors['email'])): ?>
-                                        <?php if(!empty($errors['email']['required'])): ?>
-                                            <div class="form-control bg-danger"><?php echo e($errors['email']['required']); ?></div>
-                                        <?php else: ?>
-                                            <div class="form-control bg-danger"><?php echo e($errors['email']['email']); ?></div>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
                                 </div>
                                 <!-- Profile picture -->
                                 <div class="mb-3">
@@ -280,126 +286,194 @@ Header END -->
                                     <button class="btn btn-primary"><?php echo e($lang['save']); ?></button>
                                 </div>
                             </div>
-                            <?php if(!empty($successMessage)): ?>
-                                <div class="form-control bg-success"><?php echo e($successMessage); ?></div>
+                            <?php if(!empty($successMessageProfile)): ?>
+                                <div class="form-control bg-success"><?php echo e($successMessageProfile); ?></div>
                             <?php endif; ?>
                         </div>
                     </form>
                     <!-- Profile END -->
 
                     <!-- Personal information START -->
-                    <div class="card border mb-4">
-                        <div class="card-header border-bottom p-3">
-                            <h4 class="card-header-title mb-0">اطلاعات شخصی</h4>
+                    <form action="<?php echo e(route('/panel/edit-personal-info')); ?>" method="post">
+                        <div class="card border mb-4">
+                            <div class="card-header border-bottom p-3">
+                                <h4 class="card-header-title mb-0"><?php echo e($lang['personal-info']); ?></h4>
+                            </div>
+                            <div class="card-body">
+                                <!-- Skype -->
+                                <div class="mb-3">
+                                    <label class="form-label">Skype</label>
+                                    <input class="form-control" name="skype" type="text" value="<?php echo e($user->skype); ?>">
+                                </div>
+                                <!-- Email -->
+                                <div class="mb-3">
+                                    <label class="form-label"><?php echo e($lang['email']); ?></label>
+                                    <input class="form-control" name="email" type="email" value="<?php echo e($user->email); ?>">
+                                </div>
+                                <!-- Address -->
+                                <div class="mb-3">
+                                    <label class="form-label"><?php echo e($lang['address']); ?></label>
+                                    <input class="form-control" name="address" type="text"
+                                           value="<?php echo e($user->address); ?>">
+                                </div>
+                                <!-- Save button -->
+                                <div class="d-flex justify-content-end mt-4">
+                                    <button type="submit" class="btn btn-primary"><?php echo e($lang['save']); ?></button>
+                                </div>
+                            </div>
+                            <?php if(!empty($successMessagePersonalInfo)): ?>
+                                <div class="form-control bg-success"><?php echo e($successMessagePersonalInfo); ?></div>
+                            <?php endif; ?>
                         </div>
-                        <div class="card-body">
-                            <!-- Skype -->
-                            <div class="mb-3">
-                                <label class="form-label">Skype</label>
-                                <input class="form-control" type="text" value="iamlouisferguson">
-                            </div>
-                            <!-- Email -->
-                            <div class="mb-3">
-                                <label class="form-label">پست الکترونیکی</label>
-                                <input class="form-control" type="email" value="example@gmail.com">
-                            </div>
-                            <!-- Address -->
-                            <div class="mb-3">
-                                <label class="form-label">آدرس</label>
-                                <input class="form-control" type="text"
-                                       value="خیابان شریعتی، جنب مترو ظفر، مجتمع شکوفه پلاک 87">
-                            </div>
-                            <!-- Save button -->
-                            <div class="d-flex justify-content-end mt-4">
-                                <a href="#" class="btn btn-primary">ذخیره</a>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                     <!-- Personal information END -->
 
                     <!-- Social links START -->
-                    <div class="card border mb-4">
-                        <div class="card-header border-bottom p-3">
-                            <h4 class="card-header-title mb-0"> شبکه های اجتماعی</h4>
+                    <form action="<?php echo e(route('/panel/edit-social-media')); ?>" method="post">
+                        <div class="card border mb-4">
+                            <div class="card-header border-bottom p-3">
+                                <h4 class="card-header-title mb-0"><?php echo e($lang['social-media']); ?></h4>
+                            </div>
+                            <div class="card-body">
+                                <!-- Skype -->
+                                <div class="mb-3">
+                                    <label class="form-label">Facebook</label>
+                                    <input class="form-control" name="facebook" type="text"
+                                           value="<?php echo e($user->facebook); ?>">
+                                </div>
+                                <!-- Email -->
+                                <div class="mb-3">
+                                    <label class="form-label">linkedin</label>
+                                    <input class="form-control" name="linkedin" type="text"
+                                           value="<?php echo e($user->linkedin); ?>">
+                                </div>
+                                <!-- Address -->
+                                <div class="mb-3">
+                                    <label class="form-label">Twitter</label>
+                                    <input class="form-control" name="twitter" type="text" value="<?php echo e($user->twitter); ?>">
+                                </div>
+                                <!-- Save button -->
+                                <div class="d-flex justify-content-end mt-4">
+                                    <button type="submit" class="btn btn-primary"><?php echo e($lang['save']); ?></button>
+                                </div>
+                            </div>
+                            <?php if(!empty($successMessageSocialMedia)): ?>
+                                <div class="form-control bg-success"><?php echo e($successMessageSocialMedia); ?></div>
+                            <?php endif; ?>
                         </div>
-                        <div class="card-body">
-                            <!-- Skype -->
-                            <div class="mb-3">
-                                <label class="form-label">Facebook</label>
-                                <input class="form-control" type="text" value="https://facebook.com">
-                            </div>
-                            <!-- Email -->
-                            <div class="mb-3">
-                                <label class="form-label">linkedin</label>
-                                <input class="form-control" type="email" value="https://www.linkedin.com">
-                            </div>
-                            <!-- Address -->
-                            <div class="mb-3">
-                                <label class="form-label">Twitter</label>
-                                <input class="form-control" type="text" value="https://twitter.com">
-                            </div>
-                            <!-- Save button -->
-                            <div class="d-flex justify-content-end mt-4">
-                                <a href="#" class="btn btn-primary">ذخیره</a>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                     <!-- Social links END -->
 
                     <!-- Update password START -->
-                    <div class="card border">
-                        <div class="card-header border-bottom p-3">
-                            <h4 class="card-header-title mb-0">تغییر رمز عبور</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <label class="form-label">رمز عبور فعلی</label>
-                                <input class="form-control" type="password" placeholder="*********">
+                    <form action="<?php echo e(route('/panel/change-password')); ?>" method="post">
+                        <div class="card border">
+                            <div class="card-header border-bottom p-3">
+                                <h4 class="card-header-title mb-0"><?php echo e($lang['change-password']); ?></h4>
                             </div>
-                            <!-- New password -->
-                            <div class="mb-3">
-                                <label class="form-label" id="psw-strength-message"></label>
-                                <div class="input-group">
-                                    <input class="form-control fakepassword" type="password" id="psw-input"
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label"><?php echo e($lang['current-password']); ?></label>
+                                    <input class="form-control" name="current-password" type="password"
                                            placeholder="*********">
-                                    <span class="input-group-text p-0">
+                                    <?php if(!empty($errors['current-password'])): ?>
+                                        <?php if(!empty($errors['current-password']['required'])): ?>
+                                            <div class="form-control bg-danger">
+                                                <?php echo e($errors['current-password']['required']); ?>
+
+                                            </div>
+                                        <?php else: ?>
+                                            <div class="form-control bg-danger">
+                                                <?php echo e($errors['current-password']['password']); ?>
+
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                </div>
+                                <!-- New password -->
+                                <div class="mb-3">
+                                    <label class="form-label"
+                                           id="psw-strength-message"><?php echo e($lang['new-password']); ?></label>
+                                    <div class="input-group">
+                                        <input class="form-control fakepassword" name="new-password" type="password"
+                                               id="psw-input"
+                                               placeholder="*********">
+                                        <span class="input-group-text p-0">
                   <i class="fakepasswordicon far fa-eye cursor-pointer p-2 w-40px"></i>
                 </span>
+                                    </div>
+                                    <?php if(!empty($errors['new-password'])): ?>
+                                        <?php if(!empty($errors['new-password']['required'])): ?>
+                                            <div class="form-control bg-danger">
+                                                <?php echo e($errors['new-password']['required']); ?>
+
+                                            </div>
+                                        <?php else: ?>
+                                            <div class="form-control bg-danger">
+                                                <?php echo e($errors['new-password']['password']); ?>
+
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <div class="rounded mt-1" id="psw-strength"></div>
                                 </div>
-                                <div class="rounded mt-1" id="psw-strength"></div>
-                            </div>
-                            <!-- New password -->
-                            <div>
-                                <label class="form-label">رمز عبور جدید</label>
-                                <input class="form-control" type="password" placeholder="*********">
-                            </div>
-                            <div class="d-flex justify-content-end mt-4">
-                                <a href="#" class="btn btn-primary">ذخیره</a>
+                                <!-- New password -->
+                                <div>
+                                    <label class="form-label"><?php echo e($lang['confirm-password']); ?></label>
+                                    <input class="form-control" name="confirm-password" type="password"
+                                           placeholder="*********">
+                                    <?php if(!empty($errors['confirm-password'])): ?>
+                                        <?php if(!empty($errors['confirm-password']['required'])): ?>
+                                            <div class="form-control bg-danger">
+                                                <?php echo e($errors['confirm-password']['required']); ?>
+
+                                            </div>
+                                        <?php else: ?>
+                                            <div class="form-control bg-danger">
+                                                <?php echo e($errors['confirm-password']['password']); ?>
+
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="d-flex justify-content-end mt-4">
+                                    <button type="submit" class="btn btn-primary"><?php echo e($lang['save']); ?></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
+                    <?php if(!empty($successMessageChangePassword)): ?>
+                        <div class="form-control bg-success"><?php echo e($successMessageChangePassword); ?></div>
+                    <?php endif; ?>
+                    <?php if(!empty($errorMessageChangePassword)): ?>
+                        <div class="form-control alert-danger">
+                            <?php echo e($errorMessageChangePassword); ?>
+
+                        </div>
+                    <?php endif; ?>
                 </div>
                 <!-- Left sidebar END -->
 
                 <!-- Right sidebar START -->
                 <div class="col-lg-5 col-xxl-4">
                     <!-- Profile Setting START -->
-                    <div class="card border mb-4">
-                        <div class="card-header border-bottom p-3">
-                            <h4 class="card-header-title mb-0">تنظیمات حساب کاربری</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-check form-switch form-check-md mb-3">
-                                <input class="form-check-input" type="checkbox" id="availabilityCheck" checked="">
-                                <label class="form-check-label" for="availabilityCheck">نمایش پروفایل برای همه</label>
+                    <form action="<?php echo e(route('/panel/edit-profile-settings')); ?>" method="post">
+                        <div class="card border mb-4">
+                            <div class="card-header border-bottom p-3">
+                                <h4 class="card-header-title mb-0"><?php echo e($lang['account-settings']); ?></h4>
                             </div>
-                            <div class="form-check form-switch form-check-md mb-3">
-                                <input class="form-check-input" type="checkbox" id="proCheck" disabled="">
-                                <label class="form-check-label" for="proCheck">غیرفعالسازی تبلیغات <span
-                                            class="badge bg-primary align-middle">حرفه ای</span></label>
+                            <div class="card-body">
+                                <div class="form-check form-switch form-check-md mb-3">
+                                    <input class="form-check-input" name="show_profile_everyone" type="checkbox" id="availabilityCheck" checked="">
+                                    <label class="form-check-label" for="availabilityCheck"><?php echo e($lang['show-profile-every-one']); ?></label>
+                                </div>
+                                <div class="form-check form-switch form-check-md mb-3">
+                                    <input class="form-check-input" type="checkbox" id="proCheck" disabled="">
+                                    <label class="form-check-label" for="proCheck">غیرفعالسازی تبلیغات <span
+                                                class="badge bg-primary align-middle">حرفه ای</span></label>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <!-- Profile Setting END -->
 
                     <!-- Notifications START -->
@@ -517,41 +591,8 @@ Header END -->
 
 <!-- =======================
 Footer START -->
-<footer class="mb-3">
-    <div class="container">
-        <div class="card card-body bg-light">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-6">
-                    <!-- Copyright -->
-                    <div class="text-center text-lg-start">©2022 ارائه شده در سایت <a href="https://www.rtl-theme.com/"
-                                                                                      class="text-reset btn-link"
-                                                                                      target="_blank">راست چین</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 d-sm-flex align-items-center justify-content-center justify-content-lg-end">
-                    <!-- Language switcher -->
-                    <div class="dropup me-0 me-sm-3 mt-3 mt-md-0 text-center text-sm-end">
-                        <a class="dropdown-toggle text-body" href="#" role="button" id="languageSwitcher"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            زبان
-                        </a>
-                        <ul class="dropdown-menu min-w-auto" aria-labelledby="languageSwitcher">
-                            <li><a class="dropdown-item" href="#">فارسی</a></li>
-                            <li><a class="dropdown-item" href="#">انگلیسی </a></li>
-                            <li><a class="dropdown-item" href="#">فرانسوی</a></li>
-                        </ul>
-                    </div>
-                    <!-- Links -->
-                    <ul class="nav text-center text-sm-end justify-content-center justify-content-center mt-3 mt-md-0">
-                        <li class="nav-item"><a class="nav-link" href="#">شرایط</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">قوانین</a></li>
-                        <li class="nav-item"><a class="nav-link pe-0" href="#">کوکی</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<?php echo e($view->make('backend/main/layout/footer')); ?>
+
 <!-- =======================
 Footer END -->
 

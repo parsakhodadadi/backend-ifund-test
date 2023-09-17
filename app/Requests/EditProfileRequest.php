@@ -11,7 +11,7 @@ class EditProfileRequest extends Validation
         return [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'email|required',
+            'username' => 'required',
             'files' => 'photo',
         ];
     }
@@ -30,7 +30,6 @@ class EditProfileRequest extends Validation
     public function boot($request)
     {
         $errors = $this->check($this->rules(), $request, $this->messages());
-
         if (!empty($errors)) {
             return $errors;
         }

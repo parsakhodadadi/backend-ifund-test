@@ -276,6 +276,7 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'App\\Request\\ChangePasswordRequest' => __DIR__ . '/../..' . '/app/Requests/ChangePasswordRequest.php',
         'App\\Request\\CommentRequest' => __DIR__ . '/../..' . '/app/Requests/CommentRequest.php',
         'App\\Request\\EditAccessRequest' => __DIR__ . '/../..' . '/app/Requests/EditAccessRequest.php',
+        'App\\Request\\EditPersonalInfoRequest' => __DIR__ . '/../..' . '/app/Requests/EditPersonalInfoRequest.php',
         'App\\Request\\EditProfileRequest' => __DIR__ . '/../..' . '/app/Requests/EditProfileRequest.php',
         'App\\Request\\PodcastRequest' => __DIR__ . '/../..' . '/app/Requests/PodcastRequest.php',
         'App\\Request\\PostRequest' => __DIR__ . '/../..' . '/app/Requests/PostRequest.php',

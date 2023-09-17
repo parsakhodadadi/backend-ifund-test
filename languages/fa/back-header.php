@@ -11,4 +11,5 @@ return [
     'create' => 'ایجاد',
     'management' => 'مدیریت',
     'my-posts' => 'مطالب من',
+    'users-management' => 'مدیریت کاربران',
 ];

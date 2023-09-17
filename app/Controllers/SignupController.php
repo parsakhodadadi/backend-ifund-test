@@ -41,15 +41,18 @@ class SignupController extends controller
             $errors = $this->request(SignupRequest::class);
             if (!empty($this->request) && empty($errors)) {
 //                if ($this->request['password'] == $this->request['confirm-password']) {
-                    unset($this->request['confirm-password']);
-                    $this->request['password'] = password_hash($this->request['password'], PASSWORD_DEFAULT);
-                    $this->request['user_type'] = 'user';
-                    $this->request['email_status'] = 'unverified';
-                    $this->request['blocked'] = 'no';
-                    $errorMessage = $this->users->insert($this->request);
-                    if (empty($errorMessage)) {
-                        $successMessage = __('sign-up.create-success');
-                    }
+                unset($this->request['confirm-password']);
+                $this->request['password'] = password_hash($this->request['password'], PASSWORD_DEFAULT);
+                $this->request['user_type'] = 'user';
+                $this->request['email_status'] = 'unverified';
+                $this->request['blocked'] = 'no';
+                $this->request['photo'] = 'files/default-profile.png';
+                $this->request['subscription_date'] = date("Y/m/d");
+                $this->request['subscription_time'] = date("h:i:sa");
+                $errorMessage = $this->users->insert($this->request);
+                if (empty($errorMessage)) {
+                    $successMessage = __('sign-up.create-success');
+                }
 //                    $_SESSION['SIGNUP_METHOD'] = current($this->users->get(['email' => $this->request['email']]))->id;
 //                    $_SESSION['SIGNUP_METHOD'] = 'email-verification-signup';
 //                    redirect('/sign-up');
@@ -70,8 +73,8 @@ class SignupController extends controller
             $verificationCode = rand(100000, 999999);
             if (!empty($this->request)) {
 //                if ($this->request['verification-code'] == $verificationCode) {
-                    $this->users->update(['id' => $_SESSION['SIGNUPID']], ['email_status' => 'verified']);
-                    $successMessage = __('signup.create-success');
+                $this->users->update(['id' => $_SESSION['SIGNUPID']], ['email_status' => 'verified']);
+                $successMessage = __('signup.create-success');
 //                } else {
 //                    $errorMessage = __('signup.wrong-verification-code');
 //                }

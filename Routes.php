@@ -92,6 +92,12 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     //Profile
     $router->get('/panel/edit-profile', "ProfileController@edit");
     $router->post('/panel/edit-profile', "ProfileController@edit");
+    $router->get('/panel/edit-personal-info', "ProfileController@editPersonalInfo");
+    $router->post('/panel/edit-personal-info', "ProfileController@editPersonalInfo");
+    $router->get('/panel/edit-social-media', "ProfileController@editSocialMedia");
+    $router->post('/panel/edit-social-media', "ProfileController@editSocialMedia");
+    $router->get('/panel/change-password', "ProfileController@changePassword");
+    $router->post('/panel/change-password', "ProfileController@changePassword");
 
     //categories
     $router->get('/panel/add-category', "CategoryController@create");
@@ -128,15 +134,12 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
 
     //Users
     $router->get('/panel/users-management', "UserController@management");
-    $router->get('/panel/users-management/edit-access/(\d+)', "UserController@editAccess");
+    $router->get('/panel/users-management/(\d+)', "UserController@userSingle");
+    $router->get('/panel/users-management/block/(\d+)', "UserController@block");
     $router->post('/panel/users-management/edit-access/(\d+)', "UserController@editAccess");
     $router->get('/panel/users-management/delete/(\d+)', "UserController@delete");
     $router->before('GET|POST', '/panel/users-management', 'SigninController@checkAdmin');
     $router->before('GET|POST', '/panel/users-management/.*', 'SigninController@checkAdmin');
-
-    //Change Password
-    $router->get('/panel/change-password', "ChangePasswordController@changePassword");
-    $router->post('/panel/change-password', "ChangePasswordController@changePassword");
 
     //Signin Middleware
     $router->before('GET|POST', '/panel', 'SigninController@checkSignin');

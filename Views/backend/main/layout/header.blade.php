@@ -34,6 +34,8 @@
                         </ul>
                     </li>
 
+                    <li class="nav-item"><a class="nav-link" href="{{ route('/panel/users-management') }}"><i class="bx bx-user"></i>{{ $lang['users-management'] }}</a></li>
+
                     <!-- Nav item 3 Pages -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-folder me-1"></i>صفحات</a>
