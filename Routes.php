@@ -57,8 +57,8 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
 
     //posts-comments
     $router->get('/panel/posts-comments-management', "PostCommentController@management");
-    $router->get('/panel/post-comments-management/delete/(\d+)', "PostCommentController@delete");
-    $router->get('/panel/post-comments-management/approve/(\d+)', "PostCommentController@approve");
+    $router->get('/panel/posts-comments-management/delete/(\d+)', "PostCommentController@delete");
+    $router->get('/panel/posts-comments-management/approve/(\d+)', "PostCommentController@approve");
     $router->before('GET|POST', '/panel/posts-comments-management', 'SigninController@checkAdmin');
     $router->before('GET|POST', '/panel/posts-comments-management/.*', 'SigninController@checkAdmin');
 

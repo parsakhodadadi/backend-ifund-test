@@ -190,14 +190,14 @@ Header END -->
                                                         <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
                                                             aria-labelledby="dropdownReview">
                                                             <?php if($comment->status == 'disapproved'): ?>
-                                                                <li><a class="dropdown-item" href="<?php echo e(route('/panel/post-comments-management/approve/') . $comment->id); ?>"><i
+                                                                <li><a class="dropdown-item" href="<?php echo e(route('/panel/posts-comments-management/approve/') . $comment->id); ?>"><i
                                                                                 class="bi bi-pencil-square fa-fw me-2"></i>
                                                                         <?php echo e($lang['approve']); ?>
 
                                                                     </a>
                                                                 </li>
                                                             <?php endif; ?>
-                                                            <li><a class="dropdown-item" href="<?php echo e(route('/panel/post-comments-management/delete/') . $comment->id); ?>"><i
+                                                            <li><a class="dropdown-item" href="<?php echo e(route('/panel/posts-comments-management/delete/') . $comment->id); ?>"><i
                                                                             class="bi bi-trash fa-fw me-2"></i><?php echo e($lang['delete']); ?></a></li>
                                                         </ul>
                                                     <?php else: ?>

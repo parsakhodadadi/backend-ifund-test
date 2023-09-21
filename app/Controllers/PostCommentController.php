@@ -160,6 +160,12 @@ class PostCommentController extends controller
 
     public function delete(int $itemId)
     {
+        $commentor = current($this->users->get(['id' => current($this->comments->get(['id' => $itemId]))->user_id]));
+        if ($this->currentUser->user_type == 'admin') {
+            if ($commentor->user_type == 'admin') {
+                exit('Invalid Status');
+            }
+        }
         $errorMessage = $this->comments->delete(['id' => $itemId]);
         if (empty($errorMessage)) {
             redirect('/panel/posts-comments-management');
@@ -168,6 +174,12 @@ class PostCommentController extends controller
 
     public function approve(int $itemId)
     {
+        $commentor = current($this->users->get(['id' => current($this->comments->get(['id' => $itemId]))->user_id]));
+        if ($this->currentUser->user_type == 'admin') {
+            if ($commentor->user_type == 'admin') {
+                exit('Invalid Status');
+            }
+        }
         $errorMessage = $this->comments->update(['id' => $itemId], ['status' => 'approved']);
         if (empty($errorMessage)) {
             redirect('/panel/posts-comments-management');

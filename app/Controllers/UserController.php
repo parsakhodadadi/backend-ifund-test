@@ -92,6 +92,11 @@ class UserController extends controller
     public function block(int $itemId)
     {
         $user = current($this->users->get(['id' => $itemId]));
+        if ($this->currentUser->user_type == 'admin') {
+            if ($user->user_type == 'admin') {
+                exit('Invalid Access');
+            }
+        }
         if ($user->blocked == 'no') {
             $errorMessage = $this->users->update(['id' => $itemId], ['blocked' => 'yes']);
         } else {
@@ -105,6 +110,12 @@ class UserController extends controller
 
     public function delete(int $itemId)
     {
+        $user = current($this->users->get(['id' => $itemId]));
+        if ($this->currentUser->user_type == 'admin') {
+            if ($user->user_type == 'admin') {
+                exit('Invalid Access');
+            }
+        }
         $errorMessage = $this->users->delete(['id' => $itemId]);
         if (!empty($errorMessage)) {
             exit('error in deleting');

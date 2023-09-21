@@ -187,13 +187,13 @@ Header END -->
                                                         <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
                                                             aria-labelledby="dropdownReview">
                                                             @if($comment->status == 'disapproved')
-                                                                <li><a class="dropdown-item" href="{{ route('/panel/post-comments-management/approve/') . $comment->id }}"><i
+                                                                <li><a class="dropdown-item" href="{{ route('/panel/posts-comments-management/approve/') . $comment->id }}"><i
                                                                                 class="bi bi-pencil-square fa-fw me-2"></i>
                                                                         {{ $lang['approve'] }}
                                                                     </a>
                                                                 </li>
                                                             @endif
-                                                            <li><a class="dropdown-item" href="{{ route('/panel/post-comments-management/delete/') . $comment->id }}"><i
+                                                            <li><a class="dropdown-item" href="{{ route('/panel/posts-comments-management/delete/') . $comment->id }}"><i
                                                                             class="bi bi-trash fa-fw me-2"></i>{{ $lang['delete'] }}</a></li>
                                                         </ul>
                                                     @else
