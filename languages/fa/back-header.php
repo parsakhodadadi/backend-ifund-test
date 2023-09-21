@@ -12,4 +12,5 @@ return [
     'management' => 'مدیریت',
     'my-posts' => 'مطالب من',
     'users-management' => 'مدیریت کاربران',
+    'comments' => 'نظرات',
 ];

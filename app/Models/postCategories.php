@@ -40,10 +40,11 @@ class PostCategories
 
     public function update($where = [], array $data = [])
     {
-        if ($this->db->pdoUpdate($this->table, $data, $where)) {
-            return true;
+        try {
+            $this->db->pdoUpdate($this->table, $data, $where);
+        } catch (Exception $e) {
+            return $e->getCode();
         }
-        return false;
     }
 
     public function delete($where = [])

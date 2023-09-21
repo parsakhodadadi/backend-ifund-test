@@ -145,5 +145,32 @@ class PostCommentController extends controller
         ]);
     }
 
+    public function management()
+    {
+        echo $this->blade->render('backend/main/layout/post-comments/management', [
+            'view' => $this->blade,
+            'lang' => $this->lang,
+            'comments' => $this->comments->get(),
+            'posts' => $this->posts,
+            'users' => $this->users,
+            'currentUser' => $this->currentUser,
+            'header' => $this->loadBackendHeader(),
+        ]);
+    }
 
+    public function delete(int $itemId)
+    {
+        $errorMessage = $this->comments->delete(['id' => $itemId]);
+        if (empty($errorMessage)) {
+            redirect('/panel/posts-comments-management');
+        }
+    }
+
+    public function approve(int $itemId)
+    {
+        $errorMessage = $this->comments->update(['id' => $itemId], ['status' => 'approved']);
+        if (empty($errorMessage)) {
+            redirect('/panel/posts-comments-management');
+        }
+    }
 }

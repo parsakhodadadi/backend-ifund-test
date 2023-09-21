@@ -31,6 +31,7 @@
                             <li> <a class="dropdown-item" href="<?php echo e(route('/panel/my-posts')); ?>"><?php echo e($lang['my-posts']); ?></a> </li>
                             <li> <a class="dropdown-item" href="<?php echo e(route('/panel/post-categories')); ?>"><?php echo e($lang['category']); ?></a> </li>
                             <li> <a class="dropdown-item" href="<?php echo e(route('/panel/add-post')); ?>"><?php echo e($lang['create']); ?></a></li>
+                            <li> <a class="dropdown-item" href="<?php echo e(route('/panel/posts-comments-management')); ?>"><?php echo e($lang['comments']); ?></a></li>
                         </ul>
                     </li>
 

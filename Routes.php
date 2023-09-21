@@ -55,6 +55,13 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->before('GET|POST', '/panel/posts-management', 'SigninController@checkFullAdmin');
     $router->before('GET|POST', '/panel/posts-management/.*', 'SigninController@checkFullAdmin');
 
+    //posts-comments
+    $router->get('/panel/posts-comments-management', "PostCommentController@management");
+    $router->get('/panel/post-comments-management/delete/(\d+)', "PostCommentController@delete");
+    $router->get('/panel/post-comments-management/approve/(\d+)', "PostCommentController@approve");
+    $router->before('GET|POST', '/panel/posts-comments-management', 'SigninController@checkAdmin');
+    $router->before('GET|POST', '/panel/posts-comments-management/.*', 'SigninController@checkAdmin');
+
     //podcasts
     $router->get('/podcast', 'HomeController@podcastPage');
 

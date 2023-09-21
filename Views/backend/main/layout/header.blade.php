@@ -31,6 +31,7 @@
                             <li> <a class="dropdown-item" href="{{ route('/panel/my-posts') }}">{{ $lang['my-posts'] }}</a> </li>
                             <li> <a class="dropdown-item" href="{{ route('/panel/post-categories') }}">{{ $lang['category'] }}</a> </li>
                             <li> <a class="dropdown-item" href="{{ route('/panel/add-post') }}">{{ $lang['create'] }}</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('/panel/posts-comments-management') }}">{{ $lang['comments'] }}</a></li>
                         </ul>
                     </li>
 

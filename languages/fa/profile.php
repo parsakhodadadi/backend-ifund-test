@@ -59,5 +59,4 @@ return [
     'passwords-not-match' => 'تکرار رمز عبور شما با رمزعبورتان منطبق نمی باشد',
     'account-settings' => 'تنظیمات حساب کاربری',
     'show-profile-every-one' => 'نمایش پروفایل برای همه',
-
 ];
