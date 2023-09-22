@@ -27,7 +27,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i>{{ $lang['posts'] }}</a>
                         <ul class="dropdown-menu" aria-labelledby="postMenu">
                             <!-- dropdown submenu -->
-                            <li> <a class="dropdown-item" href="{{ route('/panel/posts-management') }}">{{ $lang['management'] }}</a> </li>
+                            <li> <a class="dropdown-item" href="{{ route('/panel/posts-management') }}">{{ $lang['posts-management'] }}</a> </li>
+                            <li> <a class="dropdown-item" href="{{ route('/panel/posts-categories-management') }}">{{ $lang['categories-management'] }}</a> </li>
                             <li> <a class="dropdown-item" href="{{ route('/panel/my-posts') }}">{{ $lang['my-posts'] }}</a> </li>
                             <li> <a class="dropdown-item" href="{{ route('/panel/post-categories') }}">{{ $lang['category'] }}</a> </li>
                             <li> <a class="dropdown-item" href="{{ route('/panel/add-post') }}">{{ $lang['create'] }}</a></li>

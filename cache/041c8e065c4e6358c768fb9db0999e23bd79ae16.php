@@ -27,7 +27,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i><?php echo e($lang['posts']); ?></a>
                         <ul class="dropdown-menu" aria-labelledby="postMenu">
                             <!-- dropdown submenu -->
-                            <li> <a class="dropdown-item" href="<?php echo e(route('/panel/posts-management')); ?>"><?php echo e($lang['management']); ?></a> </li>
+                            <li> <a class="dropdown-item" href="<?php echo e(route('/panel/posts-management')); ?>"><?php echo e($lang['posts-management']); ?></a> </li>
+                            <li> <a class="dropdown-item" href="<?php echo e(route('/panel/posts-categories-management')); ?>"><?php echo e($lang['categories-management']); ?></a> </li>
                             <li> <a class="dropdown-item" href="<?php echo e(route('/panel/my-posts')); ?>"><?php echo e($lang['my-posts']); ?></a> </li>
                             <li> <a class="dropdown-item" href="<?php echo e(route('/panel/post-categories')); ?>"><?php echo e($lang['category']); ?></a> </li>
                             <li> <a class="dropdown-item" href="<?php echo e(route('/panel/add-post')); ?>"><?php echo e($lang['create']); ?></a></li>

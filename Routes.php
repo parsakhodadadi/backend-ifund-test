@@ -26,6 +26,12 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/panel/post-categories/(\d+)/posts', "PostCategoryController@categoryPosts");
     $router->before('GET|POST', '/panel/add-post-category', 'SigninController@checkFullAdmin');
     $router->before('GET|POST', '/panel/post-categories', 'SigninController@checkAdmin');
+    $router->get('/panel/posts-categories-management', "PostCategoryController@management");
+    $router->get('/panel/posts-categories-management/delete/(\d+)', "PostCategoryController@delete");
+    $router->get('/panel/posts-categories-management/edit/(\d+)', "PostCategoryController@edit");
+    $router->post('/panel/posts-categories-management/edit/(\d+)', "PostCategoryController@edit");
+    $router->before('GET|POST', '/panel/posts-categories-management', 'SigninController@checkFullAdmin');
+    $router->before('GET|POST', '/panel/posts-categories-management/.*', 'SigninController@checkAdmin');
 
     //posts
     $router->get('/posts/(\d+)/like', "PostController@like");

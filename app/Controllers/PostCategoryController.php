@@ -20,7 +20,8 @@ class PostCategoryController extends controller
     private $lang;
     private $posts;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->request = request();
         $this->blade = $this->view()->blade();
         if (session_status() === PHP_SESSION_NONE) {
@@ -35,7 +36,8 @@ class PostCategoryController extends controller
         $this->lang = loadLang($lang, 'post-categories');
     }
 
-    public function create() {
+    public function create()
+    {
         $successMessage = null;
         $errors = $this->request(CategoryRequest::class);
         if (!empty($this->request) && empty($errors)) {
@@ -72,7 +74,7 @@ class PostCategoryController extends controller
     public function categoryPosts(int $categoryId)
     {
         echo $this->blade->render('backend/main/layout/post-categories/category-posts', [
-            'posts' => $this->posts->get(['post_category_id' => $categoryId]),
+            'posts' => array_reverse($this->posts->get(['post_category_id' => $categoryId])),
             'lang' => $this->lang,
             'view' => $this->blade,
             'users' => $this->users,
@@ -80,4 +82,50 @@ class PostCategoryController extends controller
         ]);
     }
 
+    public function management()
+    {
+        echo $this->blade->render('backend/main/layout/post-categories/management', [
+            'categories' => array_reverse($this->categories->get()),
+            'lang' => $this->lang,
+            'view' => $this->blade,
+            'header' => $this->loadBackendHeader(),
+        ]);
+    }
+
+    public function edit(int $itemId)
+    {
+        $successMessage = null;
+        $errorMessage = null;
+        $category = current($this->categories->get(['id' => $itemId]));
+        if (!empty($category)) {
+            $errors = $this->request(CategoryRequest::class);
+            if (!empty($this->request) && empty($errors)) {
+                $errorMessage = $this->categories->update(['id' => $itemId], $this->request);
+                if (empty($errorMessage)) {
+                    $successMessage = __('post-categories.updated-suc');
+                }
+            }
+            echo $this->blade->render('backend/main/layout/post-categories/create', [
+                'method' => 'update',
+                'view' => $this->blade,
+                'lang' => $this->lang,
+                'category' => current($this->categories->get(['id' => $itemId])),
+                'action' => '/panel/posts-categories-management/edit/' . $itemId ,
+                'header' => $this->loadBackendHeader(),
+                'successMessage' => $successMessage,
+                'errorMessage' => $errorMessage,
+            ]);
+        } else {
+            exit('Invalid category');
+        }
+    }
+
+    public function delete(int $itemId)
+    {
+        $errorMessage = $this->categories->delete(['id' => $itemId]);
+        if (!empty($errorMessage)) {
+            exit('error deleting category');
+        }
+        redirect('/panel/posts-categories-management');
+    }
 }

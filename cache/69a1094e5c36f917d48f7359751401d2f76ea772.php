@@ -119,7 +119,7 @@ Header END -->
                         <!-- Card body -->
                         <div class="card-body">
                             <!-- Form START -->
-                            <form action="<?php echo e(route('/panel/add-post-category')); ?>" method="post">
+                            <form action="<?php echo e(route('') . $action); ?>" method="post">
                                 <!-- Main form -->
                                 <div class="row">
                                     <div class="col-12">
@@ -127,7 +127,7 @@ Header END -->
                                         <div class="mb-3">
                                             <label class="form-label"><?php echo e($lang['title']); ?></label>
                                             <input required id="con-name" name="title" type="text" class="form-control"
-                                                   placeholder="<?php echo e($lang['category-title']); ?>">
+                                                   placeholder="<?php echo e($lang['category-title']); ?>" value="<?php if(!empty($category)): ?> <?php echo e($category->title); ?> <?php endif; ?>">
                                             <?php if(!empty($errors['title'])): ?>
                                                 <div class="form-control bg-danger"><?php echo e($errors['title']['required']); ?></div>
                                             <?php endif; ?>
@@ -140,7 +140,7 @@ Header END -->
                                             <label class="form-label"><?php echo e($lang['description']); ?></label>
                                             <!-- Editor toolbar -->
                                             <!-- Main toolbar -->
-                                            <textarea class="form-control" id="myCKEditortextarea" name="description"></textarea>
+                                            <textarea class="form-control" id="myCKEditortextarea" name="description"><?php if(!empty($category)): ?> <?php echo e($category->description); ?> <?php endif; ?></textarea>
                                             <?php if(!empty($errors['description'])): ?>
                                                 <div class="form-control bg-danger"><?php echo e($errors['description']['required']); ?></div>
                                             <?php endif; ?>
@@ -148,7 +148,15 @@ Header END -->
                                     </div>
                                     <!-- Create post button -->
                                     <div class="col-md-12 text-start">
-                                        <button class="btn btn-primary w-100" type="submit"><?php echo e($lang['submit-category']); ?></button>
+                                        <button class="btn btn-primary w-100" type="submit">
+                                            <?php if($method == 'create'): ?>
+                                                <?php echo e($lang['submit-category']); ?>
+
+                                            <?php else: ?>
+                                                <?php echo e($lang['save-changes']); ?>
+
+                                            <?php endif; ?>
+                                        </button>
                                     </div>
                                 </div>
                             </form>

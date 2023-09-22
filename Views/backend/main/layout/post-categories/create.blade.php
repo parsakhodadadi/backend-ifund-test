@@ -117,7 +117,7 @@ Header END -->
                         <!-- Card body -->
                         <div class="card-body">
                             <!-- Form START -->
-                            <form action="{{ route('/panel/add-post-category') }}" method="post">
+                            <form action="{{ route('') . $action }}" method="post">
                                 <!-- Main form -->
                                 <div class="row">
                                     <div class="col-12">
@@ -125,7 +125,7 @@ Header END -->
                                         <div class="mb-3">
                                             <label class="form-label">{{ $lang['title'] }}</label>
                                             <input required id="con-name" name="title" type="text" class="form-control"
-                                                   placeholder="{{ $lang['category-title'] }}">
+                                                   placeholder="{{ $lang['category-title'] }}" value="@if(!empty($category)) {{ $category->title }} @endif">
                                             @if(!empty($errors['title']))
                                                 <div class="form-control bg-danger">{{ $errors['title']['required'] }}</div>
                                             @endif
@@ -138,7 +138,7 @@ Header END -->
                                             <label class="form-label">{{ $lang['description'] }}</label>
                                             <!-- Editor toolbar -->
                                             <!-- Main toolbar -->
-                                            <textarea class="form-control" id="myCKEditortextarea" name="description"></textarea>
+                                            <textarea class="form-control" id="myCKEditortextarea" name="description">@if(!empty($category)) {{ $category->description }} @endif</textarea>
                                             @if(!empty($errors['description']))
                                                 <div class="form-control bg-danger">{{ $errors['description']['required'] }}</div>
                                             @endif
@@ -146,7 +146,13 @@ Header END -->
                                     </div>
                                     <!-- Create post button -->
                                     <div class="col-md-12 text-start">
-                                        <button class="btn btn-primary w-100" type="submit">{{ $lang['submit-category'] }}</button>
+                                        <button class="btn btn-primary w-100" type="submit">
+                                            @if($method == 'create')
+                                                {{ $lang['submit-category'] }}
+                                            @else
+                                                {{ $lang['save-changes'] }}
+                                            @endif
+                                        </button>
                                     </div>
                                 </div>
                             </form>
