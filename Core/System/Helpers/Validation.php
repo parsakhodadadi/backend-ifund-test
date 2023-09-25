@@ -6,10 +6,22 @@ use App\Model\Authors;
 use App\Models\Categories;
 use App\Models\PostCategories;
 use App\Models\Subjects;
+use App\Models\Users;
 use Core\System\Helpers\ConfigHelper;
 
 class Validation
 {
+    private $userId;
+    private $users;
+    private $currentUser;
+
+    public function __construct()
+    {
+        $this->userId = $_SESSION['USERID'];
+        $this->users = loadModel(Users::class);
+        $this->currentUser = current($this->users->get(['id' => $this->userId]));
+    }
+
     public function check($rules = [], $request = [], $messages = [])
     {
         $errors = [];
@@ -168,12 +180,60 @@ class Validation
         return true;
     }
 
-    public function file_required(array $files): bool
+    public function photo_required(array $files): bool
     {
         if (!empty($files['photo']['name'])) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public function podcast_required(array $files): bool
+    {
+        if (!empty($files['podcast']['name'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function no_rule($value): bool
+    {
+        return true;
+    }
+
+    public function podcast(array $files): bool
+    {
+        if ($files['podcast']['tmp_name'] != null) {
+//            if (!preg_match('/audio/i', $files['podcast']['type'])) {
+//                return false;
+//            }
+            $nameArray = explode('.', $files['podcast']['name']);
+            if (end($nameArray) != 'mp4') {
+                return false;
+            }
+        } else {
+            exit(print_r($files));
+            return false;
+        }
+        return true;
+    }
+
+    public function status_valid($value): bool
+    {
+        if (empty($value)) {
+            return false;
+        }
+        if ($this->currentUser->user_type == 'fulladmin') {
+            if ($value != 'approved' && $value != 'pre-written') {
+                return false;
+            }
+        } else {
+            if ($value != 'disapproved' && $value != 'pre-written') {
+                return false;
+            }
+        }
+        return true;
     }
 }

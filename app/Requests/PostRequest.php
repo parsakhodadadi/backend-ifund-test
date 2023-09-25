@@ -13,7 +13,7 @@ class PostRequest extends Validation
             'short_description' => 'required',
             'text' => 'required',
             'tag' => 'tag_size',
-            'files' => 'photo|file_required',
+            'files' => 'photo|photo_required',
             'post_category_id' => 'required|post_cat_valid',
         ];
     }

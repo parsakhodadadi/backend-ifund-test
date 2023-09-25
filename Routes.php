@@ -70,6 +70,9 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
 
     //podcasts
     $router->get('/podcast', 'HomeController@podcastPage');
+    $router->get('/panel/add-podcast', "PodcastController@create");
+    $router->post('/panel/add-podcast', "PodcastController@create");
+    $router->before('GET|POST', '/panel/add-podcast', 'SigninController@checkAdmin');
 
     //books
     $router->get('/panel/add-book', "BookController@create");

@@ -15,4 +15,6 @@ return [
     'comments' => 'نظرات',
     'posts-management' => 'مدیریت مطالب',
     'categories-management' => 'مدیریت دسته بندی ها',
+    'aaron-cast' => 'ارون کست',
+    'create-new-podcast' => 'ایجاد پادکست جدید',
 ];
