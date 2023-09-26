@@ -11,7 +11,7 @@
                         <a class="nav-link" href="#"><?php echo e(__('front-header.aaron-book')); ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo e(route('/podcast')); ?>"><?php echo e(__('front-header.aaron-cast')); ?></a>
+                        <a class="nav-link" href="<?php echo e(route('/podcasts')); ?>"><?php echo e(__('front-header.aaron-cast')); ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo e(route('/sign-in')); ?>"><?php echo e(__('front-header.login/sign-up')); ?></a>

@@ -69,10 +69,19 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->before('GET|POST', '/panel/posts-comments-management/.*', 'SigninController@checkAdmin');
 
     //podcasts
-    $router->get('/podcast', 'HomeController@podcastPage');
+    $router->get('/podcasts', 'HomeController@showPodcasts');
+    $router->get('/podcasts/(\d+)', 'HomeController@podcastSingle');
     $router->get('/panel/add-podcast', "PodcastController@create");
     $router->post('/panel/add-podcast', "PodcastController@create");
     $router->before('GET|POST', '/panel/add-podcast', 'SigninController@checkAdmin');
+
+    //podcast-comments
+    $router->get('/podcasts/(\d+)/add-comment', "PodcastCommentController@create");
+    $router->post('/podcasts/(\d+)/add-comment', "PodcastCommentController@create");
+    $router->get('/podcasts/(\d+)/reply/(\d+)', "PodcastCommentController@reply");
+    $router->post('/podcasts/(\d+)/reply/(\d+)', "PodcastCommentController@reply");
+    $router->before('GET|POST', '/podcasts/(\d+)/.*', "SinginController@checkSignin");
+
 
     //books
     $router->get('/panel/add-book', "BookController@create");

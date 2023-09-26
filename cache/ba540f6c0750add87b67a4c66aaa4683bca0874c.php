@@ -71,27 +71,29 @@
     </script>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/favicon.ico">
+    <link rel="shortcut icon" href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/favicon.ico">
 
     <!-- Plugins CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/font-awesome/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/tiny-slider/tiny-slider.css">
-    <link rel="stylesheet" type="text/css" href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/glightbox/css/glightbox.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/tiny-slider/tiny-slider.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/glightbox/css/glightbox.css">
 
     <!-- Theme CSS -->
-    <link id="style-switch" rel="stylesheet" type="text/css" href="{{ route('/Others/Themes/Frontend/Theme/assets/css') }}/style-rtl.css">
+    <link id="style-switch" rel="stylesheet" type="text/css" href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/css')); ?>/style-rtl.css">
 
 </head>
 
 <body>
 <!-- Preloader START -->
-{{ $view->make('frontend/main/layout/preloader') }}
+<?php echo e($view->make('frontend/main/layout/preloader')); ?>
+
 <!-- Preloader END -->
 
 <!-- =======================
 Header START -->
-{{ $view->make('frontend/main/layout/header') }}
+<?php echo e($view->make('frontend/main/layout/header')); ?>
+
 <!-- =======================
 Header END -->
 
@@ -105,7 +107,7 @@ Header END -->
             <div class="row g-4 align-items-center justify-content-between pb-lg-5">
                 <div class="col-lg-6 mt-0 position-relative">
                     <!-- Hero image -->
-                    <img class="rounded" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/1by1/12.jpg" alt="">
+                    <img class="rounded" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/1by1/12.jpg" alt="">
                     <!-- Hero info -->
                     <div class="mt-lg-n5 d-none d-sm-block">
                         <div class="col-4 position-absolute bottom-0 end-0 me-4 mb-3 mb-lg-0 me-lg-n5">
@@ -124,12 +126,12 @@ Header END -->
                     <!-- Listen on -->
                     <ul class="list-unstyled d-flex gap-1 gap-sm-2 align-items-center mt-4">
                         <li class="h5 mb-0">گوش کنید به:</li>
-                        <li class="ms-2"><a href="#"> <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/apple-podcasts.svg" alt=""> </a></li>
-                        <li class="ms-2"><a href="#"> <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/divider-icon.svg" alt=""> </a></li>
-                        <li class="ms-2"><a href="#"> <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/spotify.svg" alt=""> </a></li>
-                        <li class="ms-2"><a href="#"> <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/google-podcasts.svg" alt=""> </a></li>
-                        <li class="ms-2"><a href="#"> <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/pocket.svg" alt=""> </a></li>
-                        <li class="ms-2"><a href="#"> <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/sound-cloud.svg" alt=""> </a></li>
+                        <li class="ms-2"><a href="#"> <img src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/apple-podcasts.svg" alt=""> </a></li>
+                        <li class="ms-2"><a href="#"> <img src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/divider-icon.svg" alt=""> </a></li>
+                        <li class="ms-2"><a href="#"> <img src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/spotify.svg" alt=""> </a></li>
+                        <li class="ms-2"><a href="#"> <img src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/google-podcasts.svg" alt=""> </a></li>
+                        <li class="ms-2"><a href="#"> <img src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/pocket.svg" alt=""> </a></li>
+                        <li class="ms-2"><a href="#"> <img src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/sound-cloud.svg" alt=""> </a></li>
                     </ul>
                 </div>
             </div>
@@ -145,139 +147,60 @@ Header END -->
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Title -->
-                    <h2 class="mb-4">پادکست های مهم</h2>
-                    <!-- Episodes Item START -->
-                    <div class="card border rounded-3 p-3 mb-4">
-                        <div class="row g-4">
-                            <!-- Image -->
-                            <div class="col-md-5">
-                                <div class="position-relative">
-                                    <img class="rounded-3" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/4by3/31.jpg" alt="Card image">
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <!-- Episode -->
-                                    <a href="podcast-single.html" class="badge text-bg-danger mb-2">قسمت 3</a>
-                                    <span> <i class="bi bi-clock-fill"></i> 4ساعت 5دقیقه</span>
-                                </div>
-                                <!-- Title -->
-                                <h4 class="card-title">
-                                    <a href="podcast-single.html" class="btn-link text-reset">همه چیزهایی که می دانم (تا کنون) در UI/UX</a>
-                                </h4>
-                                <!-- Author info -->
-                                <div class="d-flex align-items-center position-relative">
-                                    <div class="avatar avatar-xs me-2">
-                                        <img class="avatar-img  rounded-circle" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/01.jpg" alt="avatar">
-                                    </div>
-                                    <h6 class="mb-0"><a href="#" class="stretched-link text-reset btn-link">سارا زارعی</a></h6>
-                                </div>
-                                <!-- Play Episode -->
-                                <div class="d-xl-flex align-items-center justify-content-between mt-4">
-                                    <a class="btn btn-sm btn-primary" href="podcast-single.html">پخش</a>
-                                    <ul class="list-unstyled d-flex gap-2 align-items-center">
-                                        <li class="h6 mb-0">گوش کنید به:</li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/apple-podcasts.svg" alt=""> </a></li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/divider-icon.svg" alt=""> </a></li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/spotify.svg" alt=""> </a></li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/pocket.svg" alt=""> </a></li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/sound-cloud.svg" alt=""> </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Episodes Item END -->
+                    <h2 class="mb-4">لیست اپیزودها</h2>
 
-                    <!-- Episodes Item START -->
-                    <div class="card border rounded-3 p-3 mb-4">
-                        <div class="row g-4">
-                            <!-- Image -->
-                            <div class="col-md-5">
-                                <div class="position-relative">
-                                    <img class="rounded-3" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/4by3/32.jpg" alt="Card image">
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <!-- Episode -->
-                                    <a href="podcast-single.html" class="badge text-bg-danger mb-2">قسمت 2</a>
-                                    <span> <i class="bi bi-clock-fill"></i> 5ساعت</span>
-                                </div>
-                                <!-- Title -->
-                                <h4 class="card-title">
-                                    <a href="podcast-single.html" class="btn-link text-reset">مشکلات طراحی انیمیشن می تواند پاسخ دهد!</a>
-                                </h4>
-                                <!-- Author info -->
-                                <div class="d-flex align-items-center position-relative">
-                                    <div class="avatar avatar-xs me-2">
-                                        <img class="avatar-img  rounded-circle" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/02.jpg" alt="avatar">
+                    <?php $__currentLoopData = $episodes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $episode): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <!-- Episodes Item START -->
+                        <div class="card border rounded-3 p-3 mb-4">
+                            <div class="row g-4">
+                                <!-- Image -->
+                                <div class="col-md-5">
+                                    <div class="position-relative">
+                                        <img class="rounded-3" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/4by3/31.jpg" alt="Card image">
                                     </div>
-                                    <h6 class="mb-0"><a href="#" class="stretched-link text-reset btn-link">آرش کریمی</a></h6>
                                 </div>
-                                <!-- Play Episode -->
-                                <div class="d-xl-flex align-items-center justify-content-between mt-4">
-                                    <a class="btn btn-sm btn-primary" href="podcast-single.html">پخش</a>
-                                    <ul class="list-unstyled d-flex gap-2 align-items-center">
-                                        <li class="h6 mb-0">گوش کنید به:</li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/apple-podcasts.svg" alt=""> </a></li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/spotify.svg" alt=""> </a></li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/sound-cloud.svg" alt=""> </a></li>
-                                    </ul>
+                                <div class="col-md-7">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <!-- Episode -->
+                                        <a href="podcast-single.html" class="badge text-bg-danger mb-2"> قسمت<?php echo e($episodeNum); ?></a>
+                                        <span> <i class="bi bi-clock-fill"></i> 4ساعت 5دقیقه</span>
+                                    </div>
+                                    <!-- Title -->
+                                    <h4 class="card-title">
+                                        <a href="podcast-single.html" class="btn-link text-reset"><?php echo e($episode->title); ?></a>
+                                    </h4>
+                                    <!-- Author info -->
+                                    <div class="d-flex align-items-center position-relative">
+                                        <div class="avatar avatar-xs me-2">
+                                            <img class="avatar-img  rounded-circle" src="<?php echo e(route('/') . current($users->get(['id' => $episode->user_id]))->photo); ?>" alt="avatar">
+                                        </div>
+                                        <h6 class="mb-0"><a href="#" class="stretched-link text-reset btn-link"><?php echo e(current($users->get(['id' => $episode->user_id]))->first_name . ' ' . current($users->get(['id' => $episode->user_id]))->last_name); ?></a></h6>
+                                    </div>
+                                    <!-- Play Episode -->
+                                    <div class="d-xl-flex align-items-center justify-content-between mt-4">
+                                        <a class="btn btn-sm btn-primary" href="<?php echo e(route('/podcasts/') . $episode->id); ?>">پخش</a>
+                                        <ul class="list-unstyled d-flex gap-2 align-items-center">
+                                            <li class="h6 mb-0">گوش کنید به:</li>
+                                            <li><a href="#"> <img class="h-20" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/apple-podcasts.svg" alt=""> </a></li>
+                                            <li><a href="#"> <img class="h-20" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/divider-icon.svg" alt=""> </a></li>
+                                            <li><a href="#"> <img class="h-20" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/spotify.svg" alt=""> </a></li>
+                                            <li><a href="#"> <img class="h-20" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/pocket.svg" alt=""> </a></li>
+                                            <li><a href="#"> <img class="h-20" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/sound-cloud.svg" alt=""> </a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Episodes Item END -->
-
-                    <!-- Episodes Item START -->
-                    <div class="card border rounded-3 p-3 mb-4">
-                        <div class="row g-4">
-                            <!-- Image -->
-                            <div class="col-md-5">
-                                <div class="position-relative">
-                                    <img class="rounded-3" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/4by3/33.jpg" alt="Card image">
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <!-- Episode -->
-                                    <a href="podcast-single.html" class="badge text-bg-danger mb-2">قسمت 1</a>
-                                    <span> <i class="bi bi-clock-fill"></i> 22دقیقه</span>
-                                </div>
-                                <!-- Title -->
-                                <h4 class="card-title">
-                                    <a href="podcast-single.html" class="btn-link text-reset">آموزش و پیکربندی سایت فروشگاهی</a>
-                                </h4>
-                                <!-- Author info -->
-                                <div class="d-flex align-items-center position-relative">
-                                    <div class="avatar avatar-xs me-2">
-                                        <img class="avatar-img  rounded-circle" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/03.jpg" alt="avatar">
-                                    </div>
-                                    <h6 class="mb-0"><a href="#" class="stretched-link text-reset btn-link">مسعود خالدی</a></h6>
-                                </div>
-                                <!-- Play Episode -->
-                                <div class="d-xl-flex align-items-center justify-content-between mt-4">
-                                    <a class="btn btn-sm btn-primary" href="podcast-single.html">پخش</a>
-                                    <ul class="list-unstyled d-flex gap-2 align-items-center">
-                                        <li class="h6 mb-0">گوش کنید به:</li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/apple-podcasts.svg" alt=""> </a></li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/divider-icon.svg" alt=""> </a></li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/spotify.svg" alt=""> </a></li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/google-podcasts.svg" alt=""> </a></li>
-                                        <li><a href="#"> <img class="h-20" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/sound-cloud.svg" alt=""> </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <!-- Episodes Item END -->
+                        <?php ($episodeNum--); ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
                 <!-- Episodes Item END -->
 
                 <!-- Sidebar START -->
                 <div class="col-lg-4">
                     <!-- Card START -->
-                    <div class="card card-overlay-bottom h-400" style="background-image:url({{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/1by1/11.jpg); background-position: center left; background-size: cover;">
+                    <div class="card card-overlay-bottom h-400" style="background-image:url(<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/1by1/11.jpg); background-position: center left; background-size: cover;">
                         <!-- Card featured -->
                         <span class="card-featured" title="Featured post"><i class="fas fa-star"></i></span>
                         <!-- Card Image overlay -->
@@ -441,7 +364,7 @@ Header END -->
                             <!-- Guest item -->
                             <div>
                                 <div class="card bg-transparent">
-                                    <img class="card-img" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/01.jpg" alt="card image">
+                                    <img class="card-img" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/01.jpg" alt="card image">
                                     <div class="card-body ps-0">
                                         <h5 class="mb-0">نیلوفر عظیمی</h5>
                                         <small>دستیار دفتر</small>
@@ -451,7 +374,7 @@ Header END -->
                             <!-- Guest item -->
                             <div>
                                 <div class="card bg-transparent">
-                                    <img class="card-img" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/02.jpg" alt="card image">
+                                    <img class="card-img" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/02.jpg" alt="card image">
                                     <div class="card-body ps-0">
                                         <h5 class="mb-0">رضا کریمی</h5>
                                         <small>مدیر فروش</small>
@@ -461,7 +384,7 @@ Header END -->
                             <!-- Guest item -->
                             <div>
                                 <div class="card bg-transparent">
-                                    <img class="card-img" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/03.jpg" alt="card image">
+                                    <img class="card-img" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/03.jpg" alt="card image">
                                     <div class="card-body ps-0">
                                         <h5 class="mb-0">احمد حسینی</h5>
                                         <small>مهندس نرم افزار</small>
@@ -471,7 +394,7 @@ Header END -->
                             <!-- Guest item -->
                             <div>
                                 <div class="card bg-transparent">
-                                    <img class="card-img" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/04.jpg" alt="card image">
+                                    <img class="card-img" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/04.jpg" alt="card image">
                                     <div class="card-body ps-0">
                                         <h5 class="mb-0">علی ستاری</h5>
                                         <small>پزشک پرستار</small>
@@ -481,7 +404,7 @@ Header END -->
                             <!-- Guest item -->
                             <div>
                                 <div class="card bg-transparent">
-                                    <img class="card-img" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/05.jpg" alt="card image">
+                                    <img class="card-img" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/05.jpg" alt="card image">
                                     <div class="card-body ps-0">
                                         <h5 class="mb-0">مریم ترابی</h5>
                                         <small>مدیر بازاریابی</small>
@@ -491,7 +414,7 @@ Header END -->
                             <!-- Guest item -->
                             <div>
                                 <div class="card bg-transparent">
-                                    <img class="card-img" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/06.jpg" alt="card image">
+                                    <img class="card-img" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/06.jpg" alt="card image">
                                     <div class="card-body ps-0">
                                         <h5 class="mb-0">نازنین رزاق</h5>
                                         <small>دستیار اجرایی</small>
@@ -501,7 +424,7 @@ Header END -->
                             <!-- Guest item -->
                             <div>
                                 <div class="card bg-transparent">
-                                    <img class="card-img" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/07.jpg" alt="card image">
+                                    <img class="card-img" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/avatar/07.jpg" alt="card image">
                                     <div class="card-body ps-0">
                                         <h5 class="mb-0">ملینا حقیقت نژاد</h5>
                                         <small>بازیگر</small>
@@ -532,7 +455,7 @@ Header END -->
 
                 <!-- Card big START -->
                 <div class="col-12">
-                    <div class="card card-overlay-bottom h-400" style="background-image:url({{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/16by9/10.jpg); background-position: center left; background-size: cover;">
+                    <div class="card card-overlay-bottom h-400" style="background-image:url(<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/16by9/10.jpg); background-position: center left; background-size: cover;">
                         <!-- Card Image overlay -->
                         <div class="card-img-overlay d-flex flex-column p-3 p-sm-5">
                             <!-- Card play button -->
@@ -562,7 +485,7 @@ Header END -->
                     <div class="card bg-transparent overflow-hidden">
                         <!-- Card img -->
                         <div class="position-relative rounded-3 overflow-hidden">
-                            <img class="card-img" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/16by9/small/05.jpg" alt="Card image">
+                            <img class="card-img" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/16by9/small/05.jpg" alt="Card image">
                             <div class="card-img-overlay d-flex align-items-start flex-column p-3">
                                 <!-- Card overlay -->
                                 <div class="w-100 my-auto">
@@ -594,7 +517,7 @@ Header END -->
                     <div class="card bg-transparent overflow-hidden">
                         <!-- Card img -->
                         <div class="position-relative rounded-3 overflow-hidden">
-                            <img class="card-img" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/16by9/small/06.jpg" alt="Card image">
+                            <img class="card-img" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/16by9/small/06.jpg" alt="Card image">
                             <div class="card-img-overlay d-flex align-items-start flex-column p-3">
                                 <!-- Card overlay -->
                                 <div class="w-100 my-auto">
@@ -626,7 +549,7 @@ Header END -->
                     <div class="card bg-transparent overflow-hidden">
                         <!-- Card img -->
                         <div class="position-relative rounded-3 overflow-hidden">
-                            <img class="card-img" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/16by9/small/07.jpg" alt="Card image">
+                            <img class="card-img" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/16by9/small/07.jpg" alt="Card image">
                             <div class="card-img-overlay d-flex align-items-start flex-column p-3">
                                 <!-- Card overlay -->
                                 <div class="w-100 my-auto">
@@ -658,7 +581,7 @@ Header END -->
                     <div class="card bg-transparent overflow-hidden">
                         <!-- Card img -->
                         <div class="position-relative rounded-3 overflow-hidden">
-                            <img class="card-img" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/16by9/small/08.jpg" alt="Card image">
+                            <img class="card-img" src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/16by9/small/08.jpg" alt="Card image">
                             <div class="card-img-overlay d-flex align-items-start flex-column p-3">
                                 <!-- Card overlay -->
                                 <div class="w-100 my-auto">
@@ -698,7 +621,7 @@ Header END -->
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <a href="#" class="card-img-flash d-block">
-                        <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/adv-1.png" alt="adv">
+                        <img src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/adv-1.png" alt="adv">
                     </a>
                     <div class="smaller text-end mt-2">تبلیغ در سایت <a href="#" class="text-body"><u>انتخاب</u></a></div>
                 </div>
@@ -713,7 +636,8 @@ Header END -->
 
 <!-- =======================
 Footer START -->
-{{ $view->make('frontend/main/layout/footer') }}
+<?php echo e($view->make('frontend/main/layout/footer')); ?>
+
 <!-- =======================
 Footer END -->
 
@@ -724,15 +648,15 @@ Footer END -->
 JS libraries, plugins and custom scripts -->
 
 <!-- Bootstrap JS -->
-<script src="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Vendors -->
-<script src="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/tiny-slider/tiny-slider-rtl.js"></script>
-<script src="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/glightbox/js/glightbox.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/tiny-slider/tiny-slider-rtl.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/glightbox/js/glightbox.js"></script>
 
 <!-- Template Functions -->
-<script src="{{ route('/Others/Themes/Frontend/Theme/assets/js') }}/functions.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/js')); ?>/functions.js"></script>
 
 </body>
 
-</html>
+</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/views/frontend/main/podcasts.blade.php ENDPATH**/ ?>

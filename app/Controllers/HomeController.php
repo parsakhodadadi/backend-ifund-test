@@ -5,9 +5,11 @@ namespace App\Controllers;
 use App\Model\Authors;
 use App\Models\Categories;
 use App\Models\LikedPosts;
+use App\Models\PodcastComments;
 use App\Models\Podcasts;
 use App\Models\PostCategories;
 use App\Models\Posts;
+use App\Models\ReplyPodcastComments;
 use App\Models\Users;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
@@ -108,10 +110,32 @@ class HomeController extends controller
         ]);
     }
 
-    public function podcastPage()
+    public function showPodcasts()
     {
-        echo $this->blade->render('frontend/main/podcast-page', [
+        echo $this->blade->render('frontend/main/podcasts', [
             'view' => $this->blade,
+            'episodes' => array_reverse($this->podcasts->get()),
+            'users' => $this->users,
+            'episodeNum' => count($this->podcasts->get()),
+        ]);
+    }
+
+    public function podcastSingle(int $itemId)
+    {
+        $comments = loadModel(PodcastComments::class);
+        $replyComments = loadModel(ReplyPodcastComments::class);
+        $episode = current($this->podcasts->get(['id' => $itemId]));
+        $publisher = current($this->users->get(['id' => $episode->user_id]));
+        echo $this->blade->render('frontend/main/podcast-single', [
+            'view' => $this->blade,
+            'episode' => $episode,
+            'header' => $this->loadFrontendHeader(),
+            'publisher' => $publisher,
+            'comments' => $comments->get(['podcast_id' => $itemId]),
+            'users' => $this->users,
+            'action' => '/podcasts/' . $itemId . '/add-comment',
+            'reply' => '0',
+            'replyComments' => $replyComments,
         ]);
     }
 }

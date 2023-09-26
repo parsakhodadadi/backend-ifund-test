@@ -11,7 +11,7 @@
                         <a class="nav-link" href="#">{{ __('front-header.aaron-book') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('/podcast') }}">{{ __('front-header.aaron-cast') }}</a>
+                        <a class="nav-link" href="{{ route('/podcasts') }}">{{ __('front-header.aaron-cast') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('/sign-in') }}">{{ __('front-header.login/sign-up')  }}</a>
