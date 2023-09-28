@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\PodcastComments;
 use App\Models\Podcasts;
+use App\Models\ReplyPodcastComments;
 use App\Models\Users;
 use App\Request\PodcastRequest;
 use Core\System\controller;
@@ -17,6 +19,8 @@ class PodcastController extends controller
     private $lang;
     private $users;
     private $currentUser;
+    private $comments;
+    private $replyComments;
 
     public function __construct()
     {
@@ -31,6 +35,8 @@ class PodcastController extends controller
         $this->users = loadModel(Users::class);
         $this->currentUser = current($this->users->get(['id' => $this->userId]));
         $this->podcasts = loadModel(Podcasts::class);
+        $this->comments = loadModel(PodcastComments::class);
+        $this->replyComments = loadModel(ReplyPodcastComments::class);
     }
 
     public function create()
@@ -39,7 +45,15 @@ class PodcastController extends controller
         $errorMessage = null;
         $errors = $this->request(PodcastRequest::class);
         if (!empty($this->request) && empty($errors)) {
+            $tmpFile = $_FILES['photo']['tmp_name'];
+            $newFile = 'files/' . $_FILES['photo']['name'];
+            if (!move_uploaded_file($tmpFile, $newFile)) {
+                exit('error uploading file');
+            }
+            $this->request['photo'] = $newFile;
             $this->request['user_id'] = $this->userId;
+            $this->request['date'] = date("Y/m/d");
+            $this->request['time'] = date("h:i:sa");
             $tmpName = $_FILES['podcast']['tmp_name'];
             $fileName = 'files/' . $_FILES['podcast']['name'];
             if ($this->uploadPhoto($tmpName, $fileName)) {
@@ -71,5 +85,83 @@ class PodcastController extends controller
             'errors' => $errors,
             'successMessage' => $successMessage,
         ]);
+    }
+
+    public function management()
+    {
+        echo $this->blade->render('backend/main/layout/podcasts/management', [
+            'view' => $this->blade,
+            'header' => $this->loadBackendHeader(),
+            'episodes' => array_reverse($this->podcasts->get()),
+            'users' => $this->users,
+        ]);
+    }
+
+    public function podcastSingle(int $itemId)
+    {
+        $episode = current($this->podcasts->get(['id' => $itemId]));
+        if ($_SERVER['REQUEST_URI'] == '/ParsaFramework/panel/my-podcasts/' . $itemId) {
+            if ($episode->user_id != $this->userId) {
+                exit('invalid access');
+            }
+        }
+        $comments = loadModel(PodcastComments::class);
+        $replyComments = loadModel(ReplyPodcastComments::class);
+        $publisher = current($this->users->get(['id' => $episode->user_id]));
+        echo $this->blade->render('backend/main/layout/podcasts/podcast-single', [
+            'view' => $this->blade,
+            'episode' => $episode,
+            'header' => $this->loadBackendHeader(),
+            'publisher' => $publisher,
+            'comments' => $comments->get(['podcast_id' => $itemId]),
+            'users' => $this->users,
+            'action' => '/podcasts/' . $itemId . '/add-comment',
+            'reply' => '0',
+            'replyComments' => $replyComments,
+        ]);
+    }
+
+    public function approve(int $itemId)
+    {
+        $episode = current($this->podcasts->get(['id' => $itemId]));
+        if ($episode->status == 'pre-written') {
+            exit('this status can not be deleted');
+        } elseif ($episode->status == 'approved') {
+            $errorMessage = $this->podcasts->update(['id' => $itemId], ['status' => 'disapproved']);
+        } else {
+            $errorMessage = $this->podcasts->update(['id' => $itemId], ['status' => 'approved']);
+        }
+        if (!empty($errorMessage)) {
+            exit('error');
+        }
+
+        redirect('/panel/podcasts-management');
+    }
+
+    public function delete(int $itemId)
+    {
+        $episode = current($this->podcasts->get(['id' => $itemId]));
+        if ($_SERVER['REQUEST_URI'] == '/ParsaFramework/panel/podcasts-management/delete/' . $itemId) {
+            $route = '/panel/podcasts-management';
+        } else {
+            if ($episode->user_id != $this->userId) {
+                exit('invalid access');
+            }
+            $route = '/panel/my-podcasts';
+        }
+        $relatedComments = $this->comments->get(['podcast_id' => $itemId]);
+        foreach ($relatedComments as $relatedComment) {
+            if ($this->replyComments->delete(['podcast_comment_id' => $relatedComment->id])) {
+                exit('error');
+            }
+        }
+        if ($this->comments->delete(['podcast_id' => $itemId])) {
+            exit('error');
+        }
+        $errorMessage = $this->podcasts->delete(['id' => $itemId]);
+        if (!empty($errorMessage)) {
+            exit('error');
+        }
+        redirect($route);
     }
 }

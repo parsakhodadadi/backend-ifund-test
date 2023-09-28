@@ -73,6 +73,10 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/podcasts/(\d+)', 'HomeController@podcastSingle');
     $router->get('/panel/add-podcast', "PodcastController@create");
     $router->post('/panel/add-podcast', "PodcastController@create");
+    $router->get('/panel/podcasts-management', "PodcastController@management");
+    $router->get('/panel/podcasts-management/(\d+)', "PodcastController@podcastSingle");
+    $router->get('/panel/podcasts-management/approve/(\d+)', "PodcastController@approve");
+    $router->get('/panel/podcasts-management/delete/(\d+)', "PodcastController@delete");
     $router->before('GET|POST', '/panel/add-podcast', 'SigninController@checkAdmin');
 
     //podcast-comments
@@ -81,7 +85,6 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/podcasts/(\d+)/reply/(\d+)', "PodcastCommentController@reply");
     $router->post('/podcasts/(\d+)/reply/(\d+)', "PodcastCommentController@reply");
     $router->before('GET|POST', '/podcasts/(\d+)/.*', "SinginController@checkSignin");
-
 
     //books
     $router->get('/panel/add-book', "BookController@create");

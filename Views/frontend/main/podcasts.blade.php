@@ -154,7 +154,7 @@ Header END -->
                                 <!-- Image -->
                                 <div class="col-md-5">
                                     <div class="position-relative">
-                                        <img class="rounded-3" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/4by3/31.jpg" alt="Card image">
+                                        <img class="rounded-3" src="{{ route('/') . $episode->photo}}" alt="Card image">
                                     </div>
                                 </div>
                                 <div class="col-md-7">

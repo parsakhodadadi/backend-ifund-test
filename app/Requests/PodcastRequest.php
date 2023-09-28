@@ -12,7 +12,7 @@ class PodcastRequest extends Validation
             'title' => 'required',
             'short_description' => 'required',
             'text' => 'no_rule',
-            'files' => 'podcast|podcast_required',
+            'files' => 'podcast|podcast_required|photo|photo_required',
             'tag' => 'tag_size',
             'status' => 'status_valid',
         ];
@@ -23,8 +23,10 @@ class PodcastRequest extends Validation
         return [
             'title.required' => __('podcasts.title-required'),
             'short_description.required' => __('podcasts.description-required'),
-            'files.podcast' => __('podcasts.files-podcast'),
-            'files.file_required' => __('podcasts.files-required'),
+            'files.podcast' => __('podcasts.podcast-podcast'),
+            'files.podcast_required' => __('podcasts.podcast-required'),
+            'files.photo' => __('podcasts.photo-photo'),
+            'files.photo_required' => __('podcasts.photo-required'),
             'tag.tag_size' => __('podcasts.tag_size'),
             'status.status_valid' => __('podcasts.status_valid'),
         ];

@@ -37,9 +37,10 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="<?php echo e(route('/panel/add-podcast')); ?>"><i class="fa fa-podcast"></i>  <?php echo e($lang['aaron-cast']); ?></a>
+                        <a class="nav-link dropdown-toggle" href=""><i class="fa fa-podcast"></i>  <?php echo e($lang['aaron-cast']); ?></a>
                         <ul class="dropdown-menu">
                             <li> <a class="dropdown-item" href="<?php echo e(route('/panel/add-podcast')); ?>"><?php echo e($lang['create-new-podcast']); ?></a> </li>
+                            <li> <a class="dropdown-item" href="<?php echo e(route('/panel/podcasts-management')); ?>">مدیریت پادکست ها</a> </li>
                         </ul>
                     </li>
 

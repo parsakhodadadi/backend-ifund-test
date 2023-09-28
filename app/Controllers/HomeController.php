@@ -112,11 +112,12 @@ class HomeController extends controller
 
     public function showPodcasts()
     {
+        $podcasts = $this->podcasts->get(['status' => 'approved']);
         echo $this->blade->render('frontend/main/podcasts', [
             'view' => $this->blade,
-            'episodes' => array_reverse($this->podcasts->get()),
+            'episodes' => array_reverse($podcasts),
             'users' => $this->users,
-            'episodeNum' => count($this->podcasts->get()),
+            'episodeNum' => count($podcasts),
         ]);
     }
 

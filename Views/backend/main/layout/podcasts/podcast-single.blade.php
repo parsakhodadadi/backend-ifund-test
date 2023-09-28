@@ -72,34 +72,31 @@
 
     <!-- Plugins CSS -->
     <link rel="stylesheet" type="text/css"
-          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/font-awesome/css/all.min.css">
+          href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/font-awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css"
-          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/bootstrap-icons/bootstrap-icons.css">
+          href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css"
-          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/plyr/plyr.css">
+          href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/plyr/plyr.css">
 
     <!-- Theme CSS -->
     <link id="style-switch" rel="stylesheet" type="text/css"
-          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/css')); ?>/style-rtl.css">
+          href="{{ route('/Others/Themes/Frontend/Theme/assets/css') }}/style-rtl.css">
 
 </head>
 
 <body>
 <!-- Preloader START -->
-<?php echo e($view->make('frontend/main/layout/preloader')); ?>
-
+{{ $view->make('frontend/main/layout/preloader') }}
 <!-- Preloader END -->
 
 <!-- =======================
 Header START -->
-<?php echo $header; ?>
-
+{!! $header !!}
 <!-- =======================
 Header END -->
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
-
     <!-- =======================
     Podcast single START -->
     <section class="pt-4">
@@ -109,12 +106,12 @@ Header END -->
                     <!-- Podcast image -->
                     <div class="mb-3">
                         <img class="rounded"
-                             src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/16by9/big/06.jpg"
+                             src="{{ route('/') . $episode->photo }}"
                              alt="">
                     </div>
                     <!-- Podcast title -->
                     <a href="#" class="badge text-bg-danger mb-2">جدید</a>
-                    <h1><?php echo e($episode->title); ?></h1>
+                    <h1>{{ $episode->title }}</h1>
                     <!-- Podcast avatar -->
                     <div class="row align-items-center mb-2">
                         <div class="col-lg-6">
@@ -122,10 +119,10 @@ Header END -->
                                 <div class="d-flex align-items-center position-relative me-3">
                                     <div class="avatar avatar-xs me-2">
                                         <img class="avatar-img  rounded-circle"
-                                             src="<?php echo e(route('/') . $publisher->photo); ?>" alt="avatar">
+                                             src="{{ route('/') . $publisher->photo }}" alt="avatar">
                                     </div>
                                     <h6 class="mb-0"><a href="#"
-                                                        class="stretched-link text-reset btn-link"><?php echo e($publisher->first_name . ' ' . $publisher->last_name); ?></a>
+                                                        class="stretched-link text-reset btn-link">{{ $publisher->first_name . ' ' . $publisher->last_name }}</a>
                                     </h6>
                                 </div>
                                 <span> <i class="bi bi-clock-fill me-2"></i>4ساعت و 12دقیقه</span>
@@ -136,35 +133,35 @@ Header END -->
                             <ul class="list-unstyled d-flex justify-content-md-end gap-1 gap-sm-2 align-items-center mt-3 mb-sm-4">
                                 <li class="h5 mb-0">گوش کنید به:</li>
                                 <li class="ms-2"><a href="#"> <img
-                                                src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/apple-podcasts.svg"
+                                                src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/apple-podcasts.svg"
                                                 alt=""> </a></li>
                                 <li class="ms-2"><a href="#"> <img
-                                                src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/divider-icon.svg"
+                                                src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/divider-icon.svg"
                                                 alt=""> </a></li>
                                 <li class="ms-2"><a href="#"> <img
-                                                src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/spotify.svg"
+                                                src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/spotify.svg"
                                                 alt=""> </a></li>
                                 <li class="ms-2"><a href="#"> <img
-                                                src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/google-podcasts.svg"
+                                                src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/google-podcasts.svg"
                                                 alt=""> </a></li>
                                 <li class="ms-2"><a href="#"> <img
-                                                src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/pocket.svg"
+                                                src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/pocket.svg"
                                                 alt=""> </a></li>
                                 <li class="ms-2"><a href="#"> <img
-                                                src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/icon/sound-cloud.svg"
+                                                src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/icon/sound-cloud.svg"
                                                 alt=""> </a></li>
                             </ul>
                         </div>
                     </div>
                     <!-- Podcast short description -->
-                    <p class="lead"><?php echo e($episode->short_description); ?></p>
+                    <p class="lead">{{ $episode->short_description }}</p>
                     <!-- Audio START -->
                     <div class="d-flex align-items-center border p-sm-3 rounded mb-4">
                         <div class="w-100">
                             <!-- Audio START -->
                             <div class="player-wrapper bg-light rounded">
                                 <audio class="player-audio" crossorigin>
-                                    <source src="<?php echo e(route('/') . $episode->podcast); ?>" type="audio/mp3">
+                                    <source src="{{ route('/') . $episode->podcast }}" type="audio/mp3">
                                 </audio>
                             </div>
                             <!-- Audio END -->
@@ -176,105 +173,99 @@ Header END -->
             <div class="row g-4">
                 <div class="col-lg-8">
                     <!-- Episode Description -->
-                    <?php if($episode->text != null): ?>
+                    @if($episode->text != null)
                         <h3 class="mb-3">توضیحات</h3>
                         <p><span class="dropcap bg-success bg-opacity-10 text-success px-2 rounded">S</span>
-                        <p><?php echo e($episode->text); ?></p>
+                        <p>{{ $episode->text  }}</p>
                         <br>
-                    <?php endif; ?>
+                    @endif
                     <div>
                         <h3>
-                            <?php ($num = 0); ?>
-                            <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php ($num++); ?>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            <?php echo e($num . ' ' . __('comments.comment')); ?>
-
+                            @php($num = 0)
+                            @foreach($comments as $comment)
+                                @php($num++)
+                            @endforeach
+                            {{ $num . ' ' . __('comments.comment')}}
                         </h3>
                         <!-- Comment level 1-->
-                        <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        @foreach($comments as $comment)
                             <div class="my-4 d-flex">
                                 <img class="avatar avatar-md rounded-circle float-start me-3"
-                                     src="<?php echo e(route('/') . current($users->get(['id' => $comment->user_id]))->photo); ?>"
+                                     src="{{ route('/') . current($users->get(['id' => $comment->user_id]))->photo }}"
                                      alt="avatar">
                                 <div>
                                     <div class="mb-2">
-                                        <h5 class="m-0"><?php echo e(current($users->get(['id' => $comment->user_id]))->first_name . ' ' . current($users->get(['id' => $comment->user_id]))->last_name); ?></h5>
-                                        <span class="me-3 small"><?php echo e($comment->date . ' ' . $comment->time); ?></span>
-                                        <a href="<?php echo e(route('/') . 'podcasts/' . $episode->id . '/reply/' . $comment->id); ?>"
-                                           class="text-body fw-normal"><?php echo e(__('comments.reply')); ?></a>
+                                        <h5 class="m-0">{{ current($users->get(['id' => $comment->user_id]))->first_name . ' ' . current($users->get(['id' => $comment->user_id]))->last_name }}</h5>
+                                        <span class="me-3 small">{{ $comment->date . ' ' . $comment->time }}</span>
+                                        <a href="{{ route('/') . 'podcasts/' . $episode->id . '/reply/' . $comment->id }}"
+                                           class="text-body fw-normal">{{ __('comments.reply') }}</a>
                                     </div>
-                                    <p> <?php echo e($comment->text); ?></p>
+                                    <p> {{ $comment->text }}</p>
                                 </div>
                             </div>
-                            <?php $__currentLoopData = $replyComments->get(['status' => 'approved', 'podcast_comment_id' => $comment->id]); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $replyComment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            @foreach($replyComments->get(['status' => 'approved', 'podcast_comment_id' => $comment->id]) as $replyComment)
                                 <div class="my-4 d-flex ps-2 ps-md-3">
                                     <img class="avatar avatar-md rounded-circle float-start me-3"
-                                         src="<?php echo e(route('/') . current($users->get(['id' => $replyComment->user_id]))->photo); ?>"
+                                         src="{{ route('/') . current($users->get(['id' => $replyComment->user_id]))->photo }}"
                                          alt="avatar">
                                     <div>
                                         <div class="mb-2">
-                                            <h5 class="m-0"><?php echo e(current($users->get(['id' => $replyComment->user_id]))->first_name . ' ' . current($users->get(['id' => $replyComment->user_id]))->last_name); ?></h5>
-                                            <span class="me-3 small">21<?php echo e($replyComment->date . ' ' . $replyComment->time); ?></span>
+                                            <h5 class="m-0">{{ current($users->get(['id' => $replyComment->user_id]))->first_name . ' ' . current($users->get(['id' => $replyComment->user_id]))->last_name }}</h5>
+                                            <span class="me-3 small">21{{ $replyComment->date . ' ' . $replyComment->time }}</span>
                                         </div>
                                         <p>
-                                            <?php echo e($replyComment->text); ?>
-
+                                            {{ $replyComment->text }}
                                         </p>
                                     </div>
                                 </div>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            <?php if($comment->id == $reply): ?>
-                                <form action="<?php echo e(route('/') . $action); ?>" method="post" class="row g-3 mt-2">
+                            @endforeach
+                            @if($comment->id == $reply)
+                                <form action="{{ route('/') . $action }}" method="post" class="row g-3 mt-2">
                                     <div class="col-12">
                                         <label class="form-label">متن پاسخ *</label>
                                         <textarea name="text" class="form-control" rows="3"></textarea>
-                                        <?php if(!empty($errors['text'])): ?>
+                                        @if(!empty($errors['text']))
                                             <div class="form-control bg-danger">
-                                                <?php echo e($errors['text']['required']); ?>
-
+                                                {{ $errors['text']['required']  }}
                                             </div>
-                                        <?php endif; ?>
+                                        @endif
                                     </div>
                                     <div class="col-12">
                                         <button type="submit"
-                                                class="btn btn-primary"><?php echo e(__('comments.submit')); ?></button>
+                                                class="btn btn-primary">{{ __('comments.submit') }}</button>
                                     </div>
-                                    <?php if(!empty($successMessageReply)): ?>
+                                    @if(!empty($successMessageReply))
                                         <div class="form-control bg-success">
-                                            <?php echo e($successMessageReply); ?>
-
+                                            {{ $successMessageReply  }}
                                         </div>
-                                    <?php endif; ?>
+                                    @endif
                                 </form>
-                            <?php endif; ?>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            @endif
+                        @endforeach
                         <!-- Comment children level 3 -->
                         <!-- Reply START -->
                         <hr>
                         <div>
                             <h3>ثبت دیدگاه</h3>
                             <small>آدرس ایمیل شما منتشر نخواهد شد. فیلدهای الزامی علامت گذاری شده اند *</small>
-                            <form action="<?php echo e(route('/') . $action); ?>" method="post" class="row g-3 mt-2">
+                            <form action="{{ route('/') . $action }}" method="post" class="row g-3 mt-2">
                                 <div class="col-12">
                                     <label class="form-label">متن دیدگاه *</label>
                                     <textarea name="text" class="form-control" rows="3"></textarea>
-                                    <?php if(!empty($errors['text'])): ?>
+                                    @if(!empty($errors['text']))
                                         <div class="form-control bg-danger">
-                                            <?php echo e($errors['text']['required']); ?>
-
+                                            {{ $errors['text']['required']  }}
                                         </div>
-                                    <?php endif; ?>
+                                    @endif
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary"><?php echo e(__('comments.submit')); ?></button>
+                                    <button type="submit" class="btn btn-primary">{{ __('comments.submit') }}</button>
                                 </div>
-                                <?php if(!empty($successMessage)): ?>
+                                @if(!empty($successMessage))
                                     <div class="form-control bg-success">
-                                        <?php echo e($successMessage); ?>
-
+                                        {{ $successMessage  }}
                                     </div>
-                                <?php endif; ?>
+                                @endif
                             </form>
                         </div>
                         <!-- Reply END -->
@@ -293,19 +284,19 @@ Header END -->
                         </div>
                         <!-- Share social END -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        {{--                        <!-- Next episode START -->--}}
+                        {{--                        <div class="mt-5">--}}
+                        {{--                            <div class="bg-primary bg-opacity-10 rounded p-4 d-flex align-items-center position-relative">--}}
+                        {{--                                <!-- Icon -->--}}
+                        {{--                                <div class="ms-auto flex-grow-0">--}}
+                        {{--                                    <a href="#!"--}}
+                        {{--                                       class="icon-md border border-primary d-block text-primary rounded-circle">--}}
+                        {{--                                        <i class="bi bi-play-fill fs-3"></i>--}}
+                        {{--                                    </a>--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
+                        {{--                        <!-- Next episode END -->--}}
                     </div>
                 </div>
             </div>
@@ -319,8 +310,7 @@ Header END -->
 
 <!-- =======================
 Footer START -->
-<?php echo e($view->make('frontend/main/layout/footer')); ?>
-
+{{ $view->make('backend/main/layout/footer') }}
 <!-- =======================
 Footer END -->
 
@@ -331,13 +321,13 @@ Footer END -->
 JS libraries, plugins and custom scripts -->
 
 <!-- Bootstrap JS -->
-<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/plyr/plyr.js"></script>
-<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/sticky-js/sticky.min.js"></script>
+<script src="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/plyr/plyr.js"></script>
+<script src="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/sticky-js/sticky.min.js"></script>
 
 <!-- Template Functions -->
-<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/js')); ?>/functions.js"></script>
+<script src="{{ route('/Others/Themes/Frontend/Theme/assets/js') }}/functions.js"></script>
 
 </body>
 
-</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/frontend/main/podcast-single.blade.php ENDPATH**/ ?>
+</html>

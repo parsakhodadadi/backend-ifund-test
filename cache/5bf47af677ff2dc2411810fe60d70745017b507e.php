@@ -119,7 +119,7 @@ Header END -->
                         <!-- Card body -->
                         <div class="card-body">
                             <!-- Form START -->
-                            <form action="<?php echo e(route('') . $action); ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo e(route('') . $action); ?>" enctype="multipart/form-data" method="post">
                                 <!-- Main form -->
                                 <div class="row">
                                     <div class="col-12">
@@ -155,15 +155,65 @@ Header END -->
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-3">
+                                            <!-- Image -->
+                                            <?php if(!empty($episode)): ?>
+                                                <div class="row align-items-center mb-2">
+                                                    <div class="col-4 col-md-2">
+                                                        <div class="position-relative">
+                                                            <img class="rounded" src="<?php echo e(route('/') . $episode->photo); ?>"
+                                                                 alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-8 col-md-10 position-relative">
+                                                        <h6 class="my-2"><?php echo e($lang['edit-photo']); ?></h6>
+                                                        <label class="w-100" style="cursor:pointer;">
+                                                            <div class="input-group flex-row-reverse">
+                                                                <input type="text" class="form-control upload-name"/>
+                                                                <span class="btn btn-custom cursor-pointer upload-button"><?php echo e($lang['upload-file']); ?></span>
+                                                            </div>
+                                                            <input class="form-control stretched-link d-none hidden-upload"
+                                                                   type="file" name="photo"
+                                                                   accept="image/gif, image/jpeg, image/png"/>
+                                                            <?php if(!empty($errors['files'])): ?>
+                                                                <?php if(!empty($errors['files']['photo_required'])): ?>
+                                                                    <div class="form-control bg-danger"><?php echo e($errors['files']['photo_required']); ?></div>
+                                                                <?php else: ?>
+                                                                    <div class="form-control bg-danger"><?php echo e($errors['files']['photo']); ?></div>
+                                                                <?php endif; ?>
+                                                            <?php endif; ?>
+                                                        </label>
+                                                    </div>
+                                                    <p class="small mb-0 mt-2">
+                                                        <b><?php echo e($lang['hint']); ?></b><?php echo e($lang['hint-upload-file']); ?> </p>
+                                                </div>
+                                            <?php else: ?>
+                                                <div class="position-relative">
+                                                    <h6 class="my-2">عکس</h6>
+                                                    <label class="w-100" style="cursor:pointer;">
+                                                        <input class="form-control"
+                                                               type="file" name="photo"
+                                                               accept="image/gif, image/jpeg, image/png"/>
+                                                        <?php if(!empty($errors['files'])): ?>
+                                                            <?php if(!empty($errors['files']['photo_required'])): ?>
+                                                                <div class="form-control bg-danger"><?php echo e($errors['files']['photo_required']); ?></div>
+                                                            <?php else: ?>
+                                                                <div class="form-control bg-danger"><?php echo e($errors['files']['photo']); ?></div>
+                                                            <?php endif; ?>
+                                                        <?php endif; ?>
+                                                    </label>
+                                                </div>
+                                                <p class="small mb-0 mt-2">
+                                                    <b>نکته: </b>فرمت های مجاز: JPG، JPEG و PNG و ابعاد پیشنهادی ما 600px * 450px است. تصاویر بزرگتر به اندازه 4:3 برش داده می شود تا با تصاویر کوچک/پیش نمایش ما مطابقت داشته باشد</p>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
                                             <!-- file -->
                                             <div class="position-relative">
                                                 <h6 class="my-2"><?php echo e($lang['upload-podcast-file']); ?></h6>
                                                 <label class="w-100" style="cursor:pointer;">
-                                                    <div class="input-group flex-row-reverse">
-                                                        <input type="text" class="form-control upload-name"/>
-                                                        <span class="btn btn-custom cursor-pointer upload-button"><?php echo e($lang['upload-file']); ?></span>
-                                                    </div>
-                                                    <input class="form-control stretched-link d-none hidden-upload"
+                                                    <input class="form-control"
                                                            type="file" name="podcast" accept="audio/mp4"/>
                                                 </label>
                                                 <?php if(!empty($errors['files'])): ?>

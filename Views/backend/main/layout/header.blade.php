@@ -37,9 +37,10 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="{{ route('/panel/add-podcast') }}"><i class="fa fa-podcast"></i>  {{ $lang['aaron-cast'] }}</a>
+                        <a class="nav-link dropdown-toggle" href=""><i class="fa fa-podcast"></i>  {{ $lang['aaron-cast'] }}</a>
                         <ul class="dropdown-menu">
                             <li> <a class="dropdown-item" href="{{ route('/panel/add-podcast') }}">{{ $lang['create-new-podcast'] }}</a> </li>
+                            <li> <a class="dropdown-item" href="{{ route('/panel/podcasts-management') }}">مدیریت پادکست ها</a> </li>
                         </ul>
                     </li>
 

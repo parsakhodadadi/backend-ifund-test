@@ -214,7 +214,6 @@ class Validation
                 return false;
             }
         } else {
-            exit(print_r($files));
             return false;
         }
         return true;

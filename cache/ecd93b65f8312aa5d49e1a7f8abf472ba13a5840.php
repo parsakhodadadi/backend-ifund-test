@@ -99,7 +99,6 @@ Header END -->
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
-
     <!-- =======================
     Podcast single START -->
     <section class="pt-4">
@@ -109,7 +108,7 @@ Header END -->
                     <!-- Podcast image -->
                     <div class="mb-3">
                         <img class="rounded"
-                             src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/16by9/big/06.jpg"
+                             src="<?php echo e(route('/') . $episode->photo); ?>"
                              alt="">
                     </div>
                     <!-- Podcast title -->
@@ -293,19 +292,19 @@ Header END -->
                         </div>
                         <!-- Share social END -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -319,7 +318,7 @@ Header END -->
 
 <!-- =======================
 Footer START -->
-<?php echo e($view->make('frontend/main/layout/footer')); ?>
+<?php echo e($view->make('backend/main/layout/footer')); ?>
 
 <!-- =======================
 Footer END -->
@@ -340,4 +339,4 @@ JS libraries, plugins and custom scripts -->
 
 </body>
 
-</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/frontend/main/podcast-single.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/backend/main/layout/podcasts/podcast-single.blade.php ENDPATH**/ ?>
