@@ -154,7 +154,7 @@ Header END -->
                                 <!-- Image -->
                                 <div class="col-md-5">
                                     <div class="position-relative">
-                                        <img class="rounded-3" src="{{ route('/') . $episode->photo}}" alt="Card image">
+                                        <img class="rounded-3" src="{{ route('/') . $episode->photo }}" alt="Card image">
                                     </div>
                                 </div>
                                 <div class="col-md-7">
@@ -165,7 +165,7 @@ Header END -->
                                     </div>
                                     <!-- Title -->
                                     <h4 class="card-title">
-                                        <a href="podcast-single.html" class="btn-link text-reset">{{ $episode->title }}</a>
+                                        <a href="{{ route('/podcasts/') . $episode->id }}" class="btn-link text-reset">{{ $episode->title }}</a>
                                     </h4>
                                     <!-- Author info -->
                                     <div class="d-flex align-items-center position-relative">

@@ -7,6 +7,7 @@ use App\Models\Podcasts;
 use App\Models\ReplyPodcastComments;
 use App\Models\Users;
 use App\Request\PodcastRequest;
+use App\Request\PostRequest;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
 
@@ -84,6 +85,90 @@ class PodcastController extends controller
             'action' => '/panel/add-podcast',
             'errors' => $errors,
             'successMessage' => $successMessage,
+            'method' => 'create',
+        ]);
+    }
+
+    public function edit(int $itemId)
+    {
+        $episode = current($this->podcasts->get(['id' => $itemId]));
+        if ($episode->user_id != $this->userId) {
+            exit('Invalid Access');
+        }
+        $errorMessage = null;
+        $successMessage = null;
+        $tmpNamePhoto = null;
+        $fileNamePhoto = null;
+        $tmpNameAudio = null;
+        $fileNameAudio = null;
+        $uploadNewPhoto = 0;
+        $uploadNewAudio = 0;
+
+        if (!empty($this->request)) {
+            if (!empty($_FILES['photo']['name'])) {
+                $tmpNamePhoto = $_FILES['photo']['tmp_name'];
+                $fileNamePhoto = 'files/' . $_FILES['photo']['name'];
+                $uploadNewPhoto = 1;
+            } else {
+                $this->request['files']['photo']['name'] = $episode->photo;
+            }
+            if (!empty($_FILES['podcast']['name'])) {
+                $tmpNameAudio = $_FILES['podcast']['tmp_name'];
+                $fileNameAudio = 'files/' . $_FILES['podcast']['name'];
+                $uploadNewAudio = 1;
+            } else {
+                $this->request['files']['podcast']['name'] = $episode->photo;
+            }
+            $errors = $this->request(PodcastRequest::class);
+            if (!empty($errors)) {
+                if ($this->currentUser->user_type != 'admin') {
+                    $status = 'approved';
+                } else {
+                    $status = 'disapproved';
+                }
+
+                if ($uploadNewPhoto == 1) {
+                    if (!$this->uploadPhoto($tmpNamePhoto, $fileNamePhoto)) {
+                        exit('error uploading photo');
+                    }
+                    $this->request['photo'] = $fileNamePhoto;
+                }
+
+                if ($uploadNewAudio == 1) {
+                    if (!$this->uploadPhoto($tmpNameAudio, $fileNameAudio)) {
+                        exit('error uploading photo');
+                    }
+                    $this->request['podcast'] = $fileNameAudio;
+                }
+                unset($this->request['files']);
+                $this->request['user_id'] = $this->userId;
+                $this->request['status'] = $status;
+                $this->request['date'] = date("Y/m/d");
+                $this->request['time'] = date("h:i:sa");
+                $this->request['edited'] = 'yes';
+                $errorMessage = $this->podcasts->update(['id' => $itemId], $this->request);
+                if (empty($errorMessage)) {
+                    $episode = current($this->podcasts->get(['id' => $itemId]));
+                    if ($this->currentUser->user_type == 'admin') {
+                        $successMessage = __('podcasts.update-suc-admin');
+                    } else {
+                        $successMessage = __('podcasts.update-suc-fulladmin');
+                    }
+                } else {
+                    exit('error');
+                }
+            }
+        }
+        echo $this->blade->render('backend/main/layout/podcasts/create', [
+            'lang' => $this->lang,
+            'successMessage' => $successMessage,
+            'errorMessage' => $errorMessage,
+            'action' => '/panel/my-podcasts/edit/' . $itemId,
+            'episode' => $episode,
+            'method' => 'update',
+            'view' => $this->blade,
+            'header' => $this->loadBackendHeader(),
+            'currentUser' => $this->currentUser,
         ]);
     }
 
@@ -102,6 +187,11 @@ class PodcastController extends controller
         $episode = current($this->podcasts->get(['id' => $itemId]));
         if ($_SERVER['REQUEST_URI'] == '/ParsaFramework/panel/my-podcasts/' . $itemId) {
             if ($episode->user_id != $this->userId) {
+                exit('Invalid Access');
+            }
+        }
+        if ($_SERVER['REQUEST_URI'] == '/ParsaFramework/panel/my-podcasts/' . $itemId) {
+            if ($episode->user_id != $this->userId) {
                 exit('invalid access');
             }
         }
@@ -118,6 +208,16 @@ class PodcastController extends controller
             'action' => '/podcasts/' . $itemId . '/add-comment',
             'reply' => '0',
             'replyComments' => $replyComments,
+        ]);
+    }
+
+    public function userPodcasts()
+    {
+        $episodes = $this->podcasts->get(['user_id' => $this->userId]);
+        echo $this->blade->render('backend/main/layout/podcasts/user-podcasts', [
+            'view' => $this->blade,
+            'header' => $this->loadBackendHeader(),
+            'episodes' => array_reverse($episodes),
         ]);
     }
 

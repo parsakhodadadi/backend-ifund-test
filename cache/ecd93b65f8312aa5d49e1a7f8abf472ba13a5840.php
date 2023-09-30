@@ -108,7 +108,7 @@ Header END -->
                     <!-- Podcast image -->
                     <div class="mb-3">
                         <img class="rounded"
-                             src="<?php echo e(route('/') . $episode->photo); ?>"
+                             src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?>/blog/16by9/big/06.jpg"
                              alt="">
                     </div>
                     <!-- Podcast title -->
@@ -181,132 +181,98 @@ Header END -->
                         <p><?php echo e($episode->text); ?></p>
                         <br>
                     <?php endif; ?>
-                    <div>
-                        <h3>
-                            <?php ($num = 0); ?>
-                            <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php ($num++); ?>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            <?php echo e($num . ' ' . __('comments.comment')); ?>
+                </div>
+                <hr>
+                <h3>
+                    <?php echo e(count($comments) . ' ' . __('comments.comment')); ?>
 
-                        </h3>
-                        <!-- Comment level 1-->
-                        <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="my-4 d-flex">
-                                <img class="avatar avatar-md rounded-circle float-start me-3"
-                                     src="<?php echo e(route('/') . current($users->get(['id' => $comment->user_id]))->photo); ?>"
-                                     alt="avatar">
-                                <div>
-                                    <div class="mb-2">
-                                        <h5 class="m-0"><?php echo e(current($users->get(['id' => $comment->user_id]))->first_name . ' ' . current($users->get(['id' => $comment->user_id]))->last_name); ?></h5>
-                                        <span class="me-3 small"><?php echo e($comment->date . ' ' . $comment->time); ?></span>
-                                        <a href="<?php echo e(route('/') . 'podcasts/' . $episode->id . '/reply/' . $comment->id); ?>"
-                                           class="text-body fw-normal"><?php echo e(__('comments.reply')); ?></a>
-                                    </div>
-                                    <p> <?php echo e($comment->text); ?></p>
-                                </div>
-                            </div>
-                            <?php $__currentLoopData = $replyComments->get(['status' => 'approved', 'podcast_comment_id' => $comment->id]); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $replyComment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <div class="my-4 d-flex ps-2 ps-md-3">
-                                    <img class="avatar avatar-md rounded-circle float-start me-3"
-                                         src="<?php echo e(route('/') . current($users->get(['id' => $replyComment->user_id]))->photo); ?>"
-                                         alt="avatar">
-                                    <div>
-                                        <div class="mb-2">
-                                            <h5 class="m-0"><?php echo e(current($users->get(['id' => $replyComment->user_id]))->first_name . ' ' . current($users->get(['id' => $replyComment->user_id]))->last_name); ?></h5>
-                                            <span class="me-3 small">21<?php echo e($replyComment->date . ' ' . $replyComment->time); ?></span>
-                                        </div>
-                                        <p>
-                                            <?php echo e($replyComment->text); ?>
-
-                                        </p>
-                                    </div>
-                                </div>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            <?php if($comment->id == $reply): ?>
-                                <form action="<?php echo e(route('/') . $action); ?>" method="post" class="row g-3 mt-2">
-                                    <div class="col-12">
-                                        <label class="form-label">متن پاسخ *</label>
-                                        <textarea name="text" class="form-control" rows="3"></textarea>
-                                        <?php if(!empty($errors['text'])): ?>
-                                            <div class="form-control bg-danger">
-                                                <?php echo e($errors['text']['required']); ?>
-
-                                            </div>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit"
-                                                class="btn btn-primary"><?php echo e(__('comments.submit')); ?></button>
-                                    </div>
-                                    <?php if(!empty($successMessageReply)): ?>
-                                        <div class="form-control bg-success">
-                                            <?php echo e($successMessageReply); ?>
-
-                                        </div>
-                                    <?php endif; ?>
-                                </form>
-                            <?php endif; ?>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        <!-- Comment children level 3 -->
-                        <!-- Reply START -->
-                        <hr>
+                </h3>
+                <!-- Comment level 1-->
+                <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="my-4 d-flex">
+                        <img class="avatar avatar-md rounded-circle float-start me-3"
+                             src="<?php echo e(route('/') . current($users->get(['id' => $comment->user_id]))->photo); ?>"
+                             alt="avatar">
                         <div>
-                            <h3>ثبت دیدگاه</h3>
-                            <small>آدرس ایمیل شما منتشر نخواهد شد. فیلدهای الزامی علامت گذاری شده اند *</small>
-                            <form action="<?php echo e(route('/') . $action); ?>" method="post" class="row g-3 mt-2">
-                                <div class="col-12">
-                                    <label class="form-label">متن دیدگاه *</label>
-                                    <textarea name="text" class="form-control" rows="3"></textarea>
-                                    <?php if(!empty($errors['text'])): ?>
-                                        <div class="form-control bg-danger">
-                                            <?php echo e($errors['text']['required']); ?>
+                            <div class="mb-2">
+                                <h5 class="m-0"><?php echo e(current($users->get(['id' => $comment->user_id]))->first_name . ' ' . current($users->get(['id' => $comment->user_id]))->last_name); ?></h5>
+                                <span class="me-3 small"><?php echo e($comment->date . ' ' . $comment->time); ?></span>
+                                <a href="<?php echo e(route('/') . 'podcasts/' . $episode->id . '/reply/' . $comment->id); ?>"
+                                   class="text-body fw-normal"><?php echo e(__('comments.reply')); ?></a>
+                            </div>
+                            <p> <?php echo e($comment->text); ?></p>
+                        </div>
+                    </div>
+                    <?php $__currentLoopData = $replyComments->get(['status' => 'approved', 'podcast_comment_id' => $comment->id]); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $replyComment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="my-4 d-flex ps-2 ps-md-3">
+                            <img class="avatar avatar-md rounded-circle float-start me-3"
+                                 src="<?php echo e(route('/') . current($users->get(['id' => $replyComment->user_id]))->photo); ?>"
+                                 alt="avatar">
+                            <div>
+                                <div class="mb-2">
+                                    <h5 class="m-0"><?php echo e(current($users->get(['id' => $replyComment->user_id]))->first_name . ' ' . current($users->get(['id' => $replyComment->user_id]))->last_name); ?></h5>
+                                    <span class="me-3 small">21<?php echo e($replyComment->date . ' ' . $replyComment->time); ?></span>
+                                </div>
+                                <p>
+                                    <?php echo e($replyComment->text); ?>
 
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary"><?php echo e(__('comments.submit')); ?></button>
-                                </div>
-                                <?php if(!empty($successMessage)): ?>
-                                    <div class="form-control bg-success">
-                                        <?php echo e($successMessage); ?>
+                                </p>
+                            </div>
+                        </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <?php if($comment->id == $reply): ?>
+                        <form action="<?php echo e(route('/') . $action); ?>" method="post" class="row g-3 mt-2">
+                            <div class="col-12">
+                                <label class="form-label">متن پاسخ *</label>
+                                <textarea name="text" class="form-control" rows="3"></textarea>
+                                <?php if(!empty($errors['text'])): ?>
+                                    <div class="form-control bg-danger">
+                                        <?php echo e($errors['text']['required']); ?>
 
                                     </div>
                                 <?php endif; ?>
-                            </form>
-                        </div>
-                        <!-- Reply END -->
-
-                        <!-- Share social START -->
-                        <div class="border mt-4 py-2 px-3 rounded">
-                            <div class="list-group-inline list-unstyled">
-                                <h6 class="mt-2 me-4 d-inline-block"><i class="fas fa-share-alt me-2"></i>اشتراک گذاری:
-                                </h6>
-                                <ul class="list-inline list-unstyled d-inline-block mb-0">
-                                    <li class="list-inline-item"><a href="#" class="me-3 text-body">Facebook</a></li>
-                                    <li class="list-inline-item"><a href="#" class="me-3 text-body">Twitter</a></li>
-                                    <li class="list-inline-item"><a href="#" class="me-3 text-body">Dribble</a></li>
-                                </ul>
                             </div>
-                        </div>
-                        <!-- Share social END -->
+                            <div class="col-12">
+                                <button type="submit"
+                                        class="btn btn-primary"><?php echo e(__('comments.submit')); ?></button>
+                            </div>
+                            <?php if(!empty($successMessageReply)): ?>
+                                <div class="form-control bg-success">
+                                    <?php echo e($successMessageReply); ?>
 
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+                                </div>
+                            <?php endif; ?>
+                        </form>
+                    <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <!-- Comment children level 3 -->
+                <!-- Share social START -->
+                <div class="border mt-4 py-2 px-3 rounded">
+                    <div class="list-group-inline list-unstyled">
+                        <h6 class="mt-2 me-4 d-inline-block"><i class="fas fa-share-alt me-2"></i>اشتراک گذاری:
+                        </h6>
+                        <ul class="list-inline list-unstyled d-inline-block mb-0">
+                            <li class="list-inline-item"><a href="#" class="me-3 text-body">Facebook</a></li>
+                            <li class="list-inline-item"><a href="#" class="me-3 text-body">Twitter</a></li>
+                            <li class="list-inline-item"><a href="#" class="me-3 text-body">Dribble</a></li>
+                        </ul>
                     </div>
                 </div>
+                <!-- Share social END -->
+
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
             </div>
         </div>
     </section>

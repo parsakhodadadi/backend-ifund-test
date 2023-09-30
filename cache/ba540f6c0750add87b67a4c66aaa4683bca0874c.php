@@ -167,7 +167,7 @@ Header END -->
                                     </div>
                                     <!-- Title -->
                                     <h4 class="card-title">
-                                        <a href="podcast-single.html" class="btn-link text-reset"><?php echo e($episode->title); ?></a>
+                                        <a href="<?php echo e(route('/podcasts/') . $episode->id); ?>" class="btn-link text-reset"><?php echo e($episode->title); ?></a>
                                     </h4>
                                     <!-- Author info -->
                                     <div class="d-flex align-items-center position-relative">

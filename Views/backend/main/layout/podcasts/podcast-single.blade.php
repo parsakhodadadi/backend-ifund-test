@@ -106,7 +106,7 @@ Header END -->
                     <!-- Podcast image -->
                     <div class="mb-3">
                         <img class="rounded"
-                             src="{{ route('/') . $episode->photo }}"
+                             src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/16by9/big/06.jpg"
                              alt="">
                     </div>
                     <!-- Podcast title -->
@@ -179,126 +179,94 @@ Header END -->
                         <p>{{ $episode->text  }}</p>
                         <br>
                     @endif
-                    <div>
-                        <h3>
-                            @php($num = 0)
-                            @foreach($comments as $comment)
-                                @php($num++)
-                            @endforeach
-                            {{ $num . ' ' . __('comments.comment')}}
-                        </h3>
-                        <!-- Comment level 1-->
-                        @foreach($comments as $comment)
-                            <div class="my-4 d-flex">
-                                <img class="avatar avatar-md rounded-circle float-start me-3"
-                                     src="{{ route('/') . current($users->get(['id' => $comment->user_id]))->photo }}"
-                                     alt="avatar">
-                                <div>
-                                    <div class="mb-2">
-                                        <h5 class="m-0">{{ current($users->get(['id' => $comment->user_id]))->first_name . ' ' . current($users->get(['id' => $comment->user_id]))->last_name }}</h5>
-                                        <span class="me-3 small">{{ $comment->date . ' ' . $comment->time }}</span>
-                                        <a href="{{ route('/') . 'podcasts/' . $episode->id . '/reply/' . $comment->id }}"
-                                           class="text-body fw-normal">{{ __('comments.reply') }}</a>
-                                    </div>
-                                    <p> {{ $comment->text }}</p>
-                                </div>
-                            </div>
-                            @foreach($replyComments->get(['status' => 'approved', 'podcast_comment_id' => $comment->id]) as $replyComment)
-                                <div class="my-4 d-flex ps-2 ps-md-3">
-                                    <img class="avatar avatar-md rounded-circle float-start me-3"
-                                         src="{{ route('/') . current($users->get(['id' => $replyComment->user_id]))->photo }}"
-                                         alt="avatar">
-                                    <div>
-                                        <div class="mb-2">
-                                            <h5 class="m-0">{{ current($users->get(['id' => $replyComment->user_id]))->first_name . ' ' . current($users->get(['id' => $replyComment->user_id]))->last_name }}</h5>
-                                            <span class="me-3 small">21{{ $replyComment->date . ' ' . $replyComment->time }}</span>
-                                        </div>
-                                        <p>
-                                            {{ $replyComment->text }}
-                                        </p>
-                                    </div>
-                                </div>
-                            @endforeach
-                            @if($comment->id == $reply)
-                                <form action="{{ route('/') . $action }}" method="post" class="row g-3 mt-2">
-                                    <div class="col-12">
-                                        <label class="form-label">متن پاسخ *</label>
-                                        <textarea name="text" class="form-control" rows="3"></textarea>
-                                        @if(!empty($errors['text']))
-                                            <div class="form-control bg-danger">
-                                                {{ $errors['text']['required']  }}
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit"
-                                                class="btn btn-primary">{{ __('comments.submit') }}</button>
-                                    </div>
-                                    @if(!empty($successMessageReply))
-                                        <div class="form-control bg-success">
-                                            {{ $successMessageReply  }}
-                                        </div>
-                                    @endif
-                                </form>
-                            @endif
-                        @endforeach
-                        <!-- Comment children level 3 -->
-                        <!-- Reply START -->
-                        <hr>
+                </div>
+                <hr>
+                <h3>
+                    {{ count($comments) . ' ' . __('comments.comment')}}
+                </h3>
+                <!-- Comment level 1-->
+                @foreach($comments as $comment)
+                    <div class="my-4 d-flex">
+                        <img class="avatar avatar-md rounded-circle float-start me-3"
+                             src="{{ route('/') . current($users->get(['id' => $comment->user_id]))->photo }}"
+                             alt="avatar">
                         <div>
-                            <h3>ثبت دیدگاه</h3>
-                            <small>آدرس ایمیل شما منتشر نخواهد شد. فیلدهای الزامی علامت گذاری شده اند *</small>
-                            <form action="{{ route('/') . $action }}" method="post" class="row g-3 mt-2">
-                                <div class="col-12">
-                                    <label class="form-label">متن دیدگاه *</label>
-                                    <textarea name="text" class="form-control" rows="3"></textarea>
-                                    @if(!empty($errors['text']))
-                                        <div class="form-control bg-danger">
-                                            {{ $errors['text']['required']  }}
-                                        </div>
-                                    @endif
+                            <div class="mb-2">
+                                <h5 class="m-0">{{ current($users->get(['id' => $comment->user_id]))->first_name . ' ' . current($users->get(['id' => $comment->user_id]))->last_name }}</h5>
+                                <span class="me-3 small">{{ $comment->date . ' ' . $comment->time }}</span>
+                                <a href="{{ route('/') . 'podcasts/' . $episode->id . '/reply/' . $comment->id }}"
+                                   class="text-body fw-normal">{{ __('comments.reply') }}</a>
+                            </div>
+                            <p> {{ $comment->text }}</p>
+                        </div>
+                    </div>
+                    @foreach($replyComments->get(['status' => 'approved', 'podcast_comment_id' => $comment->id]) as $replyComment)
+                        <div class="my-4 d-flex ps-2 ps-md-3">
+                            <img class="avatar avatar-md rounded-circle float-start me-3"
+                                 src="{{ route('/') . current($users->get(['id' => $replyComment->user_id]))->photo }}"
+                                 alt="avatar">
+                            <div>
+                                <div class="mb-2">
+                                    <h5 class="m-0">{{ current($users->get(['id' => $replyComment->user_id]))->first_name . ' ' . current($users->get(['id' => $replyComment->user_id]))->last_name }}</h5>
+                                    <span class="me-3 small">21{{ $replyComment->date . ' ' . $replyComment->time }}</span>
                                 </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">{{ __('comments.submit') }}</button>
-                                </div>
-                                @if(!empty($successMessage))
-                                    <div class="form-control bg-success">
-                                        {{ $successMessage  }}
+                                <p>
+                                    {{ $replyComment->text }}
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+                    @if($comment->id == $reply)
+                        <form action="{{ route('/') . $action }}" method="post" class="row g-3 mt-2">
+                            <div class="col-12">
+                                <label class="form-label">متن پاسخ *</label>
+                                <textarea name="text" class="form-control" rows="3"></textarea>
+                                @if(!empty($errors['text']))
+                                    <div class="form-control bg-danger">
+                                        {{ $errors['text']['required']  }}
                                     </div>
                                 @endif
-                            </form>
-                        </div>
-                        <!-- Reply END -->
-
-                        <!-- Share social START -->
-                        <div class="border mt-4 py-2 px-3 rounded">
-                            <div class="list-group-inline list-unstyled">
-                                <h6 class="mt-2 me-4 d-inline-block"><i class="fas fa-share-alt me-2"></i>اشتراک گذاری:
-                                </h6>
-                                <ul class="list-inline list-unstyled d-inline-block mb-0">
-                                    <li class="list-inline-item"><a href="#" class="me-3 text-body">Facebook</a></li>
-                                    <li class="list-inline-item"><a href="#" class="me-3 text-body">Twitter</a></li>
-                                    <li class="list-inline-item"><a href="#" class="me-3 text-body">Dribble</a></li>
-                                </ul>
                             </div>
-                        </div>
-                        <!-- Share social END -->
-
-                        {{--                        <!-- Next episode START -->--}}
-                        {{--                        <div class="mt-5">--}}
-                        {{--                            <div class="bg-primary bg-opacity-10 rounded p-4 d-flex align-items-center position-relative">--}}
-                        {{--                                <!-- Icon -->--}}
-                        {{--                                <div class="ms-auto flex-grow-0">--}}
-                        {{--                                    <a href="#!"--}}
-                        {{--                                       class="icon-md border border-primary d-block text-primary rounded-circle">--}}
-                        {{--                                        <i class="bi bi-play-fill fs-3"></i>--}}
-                        {{--                                    </a>--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                        </div>--}}
-                        {{--                        <!-- Next episode END -->--}}
+                            <div class="col-12">
+                                <button type="submit"
+                                        class="btn btn-primary">{{ __('comments.submit') }}</button>
+                            </div>
+                            @if(!empty($successMessageReply))
+                                <div class="form-control bg-success">
+                                    {{ $successMessageReply  }}
+                                </div>
+                            @endif
+                        </form>
+                    @endif
+                @endforeach
+                <!-- Comment children level 3 -->
+                <!-- Share social START -->
+                <div class="border mt-4 py-2 px-3 rounded">
+                    <div class="list-group-inline list-unstyled">
+                        <h6 class="mt-2 me-4 d-inline-block"><i class="fas fa-share-alt me-2"></i>اشتراک گذاری:
+                        </h6>
+                        <ul class="list-inline list-unstyled d-inline-block mb-0">
+                            <li class="list-inline-item"><a href="#" class="me-3 text-body">Facebook</a></li>
+                            <li class="list-inline-item"><a href="#" class="me-3 text-body">Twitter</a></li>
+                            <li class="list-inline-item"><a href="#" class="me-3 text-body">Dribble</a></li>
+                        </ul>
                     </div>
                 </div>
+                <!-- Share social END -->
+
+                {{--                        <!-- Next episode START -->--}}
+                {{--                        <div class="mt-5">--}}
+                {{--                            <div class="bg-primary bg-opacity-10 rounded p-4 d-flex align-items-center position-relative">--}}
+                {{--                                <!-- Icon -->--}}
+                {{--                                <div class="ms-auto flex-grow-0">--}}
+                {{--                                    <a href="#!"--}}
+                {{--                                       class="icon-md border border-primary d-block text-primary rounded-circle">--}}
+                {{--                                        <i class="bi bi-play-fill fs-3"></i>--}}
+                {{--                                    </a>--}}
+                {{--                                </div>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                        <!-- Next episode END -->--}}
             </div>
         </div>
     </section>

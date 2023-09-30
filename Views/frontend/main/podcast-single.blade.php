@@ -177,16 +177,15 @@ Header END -->
                     @if($episode->text != null)
                         <h3 class="mb-3">توضیحات</h3>
                         <p><span class="dropcap bg-success bg-opacity-10 text-success px-2 rounded">S</span>
-                        <p>{{ $episode->text  }}</p>
+                        <p>{{ $episode->text }}</p>
                         <br>
                     @endif
                     <div>
+                        <!-- Comment children level 3 -->
+                        <!-- Reply START -->
+                        <hr>
                         <h3>
-                            @php($num = 0)
-                            @foreach($comments as $comment)
-                                @php($num++)
-                            @endforeach
-                            {{ $num . ' ' . __('comments.comment')}}
+                            {{ count($comments) . ' ' . __('comments.comment')}}
                         </h3>
                         <!-- Comment level 1-->
                         @foreach($comments as $comment)
@@ -243,9 +242,6 @@ Header END -->
                                 </form>
                             @endif
                         @endforeach
-                        <!-- Comment children level 3 -->
-                        <!-- Reply START -->
-                        <hr>
                         <div>
                             <h3>ثبت دیدگاه</h3>
                             <small>آدرس ایمیل شما منتشر نخواهد شد. فیلدهای الزامی علامت گذاری شده اند *</small>

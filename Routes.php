@@ -77,7 +77,16 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/panel/podcasts-management/(\d+)', "PodcastController@podcastSingle");
     $router->get('/panel/podcasts-management/approve/(\d+)', "PodcastController@approve");
     $router->get('/panel/podcasts-management/delete/(\d+)', "PodcastController@delete");
+    $router->get('/panel/my-podcasts', "PodcastController@userPodcasts");
+    $router->get('/panel/my-podcasts/delete/(\d+)', "PodcastController@delete");
+    $router->get('/panel/my-podcasts/edit/(\d+)', "PodcastController@edit");
+    $router->post('/panel/my-podcasts/edit/(\d+)', "PodcastController@edit");
+    $router->get('/panel/my-podcasts/(\d+)', "PodcastController@podcastSingle");
     $router->before('GET|POST', '/panel/add-podcast', 'SigninController@checkAdmin');
+    $router->before('GET|POST', '/panel/podcasts-management', 'SigninController@checkFullAdmin');
+    $router->before('GET|POST', '/panel/podcasts-management/.*', 'SigninController@checkFullAdmin');
+    $router->before('GET|POST', '/panel/my-podcasts', 'SigninController@checkAdmin');
+    $router->before('GET|POST', '/panel/my-podcasts/.*', 'SigninController@checkAdmin');
 
     //podcast-comments
     $router->get('/podcasts/(\d+)/add-comment', "PodcastCommentController@create");

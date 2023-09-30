@@ -107,7 +107,11 @@ Header END -->
             <div class="row pb-4">
                 <div class="col-12">
                     <!-- Title -->
-                    <h1 class="mb-0 h3">{{ $lang['create-new'] }}</h1>
+                    @if($method == 'create')
+                        <h1 class="mb-0 h3">{{ $lang['create-new'] }}</h1>
+                    @else
+                        <h1 class="mb-0 h3">ویرایش پادکست</h1>
+                    @endif
                 </div>
             </div>
             <div class="row">
@@ -125,7 +129,8 @@ Header END -->
                                         <div class="mb-3">
                                             <label class="form-label">{{ $lang['title'] }}</label>
                                             <input id="con-name" name="title" type="text" class="form-control"
-                                                   placeholder="{{ $lang['podcast-title'] }}">
+                                                   placeholder="{{ $lang['podcast-title'] }}"
+                                                   value="@if(!empty($episode)) {{ $episode->title }} @endif">
                                             @if(!empty($errors['title']))
                                                 <div class="form-control bg-danger">{{ $errors['title']['required'] }}</div>
                                             @endif
@@ -136,7 +141,9 @@ Header END -->
                                         <div class="mb-3">
                                             <label class="form-label">{{ $lang['short-description'] }}</label>
                                             <textarea class="form-control" name="short_description" rows="3"
-                                                      placeholder="{{ $lang['write-short-desc-pod'] }}"></textarea>
+                                                      placeholder="{{ $lang['write-short-desc-pod'] }}">@if(!empty($episode))
+                                                    {{ $episode->short_description }}
+                                                @endif</textarea>
                                             @if(!empty($errors['short_description']))
                                                 <div class="form-control bg-danger">{{ $errors['short_description']['required'] }}</div>
                                             @endif
@@ -148,7 +155,9 @@ Header END -->
                                         <div class="mb-3">
                                             <label class="form-label">{{ $lang['text'] }}</label>
                                             <!-- Editor toolbar -->
-                                            <textarea class="form-control" name="text" rows="10"></textarea>
+                                            <textarea class="form-control" name="text" rows="10">@if(!empty($episode))
+                                                    {{ $episode->text }}
+                                                @endif</textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -158,18 +167,15 @@ Header END -->
                                                 <div class="row align-items-center mb-2">
                                                     <div class="col-4 col-md-2">
                                                         <div class="position-relative">
-                                                            <img class="rounded" src="{{ route('/') . $episode->photo }}"
+                                                            <img class="rounded"
+                                                                 src="{{ route('/') . $episode->photo }}"
                                                                  alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-8 col-md-10 position-relative">
-                                                        <h6 class="my-2">{{ $lang['edit-photo'] }}</h6>
+                                                        <h6 class="my-2">ویرایش تصویر</h6>
                                                         <label class="w-100" style="cursor:pointer;">
-                                                            <div class="input-group flex-row-reverse">
-                                                                <input type="text" class="form-control upload-name"/>
-                                                                <span class="btn btn-custom cursor-pointer upload-button">{{ $lang['upload-file'] }}</span>
-                                                            </div>
-                                                            <input class="form-control stretched-link d-none hidden-upload"
+                                                            <input class="form-control"
                                                                    type="file" name="photo"
                                                                    accept="image/gif, image/jpeg, image/png"/>
                                                             @if(!empty($errors['files']))
@@ -182,7 +188,9 @@ Header END -->
                                                         </label>
                                                     </div>
                                                     <p class="small mb-0 mt-2">
-                                                        <b>{{ $lang['hint'] }}</b>{{ $lang['hint-upload-file'] }} </p>
+                                                        <b>نکته: </b>فرمت های مجاز: JPG، JPEG و PNG و ابعاد پیشنهادی ما
+                                                        600px * 450px است. تصاویر بزرگتر به اندازه 4:3 برش داده می شود
+                                                        تا با تصاویر کوچک/پیش نمایش ما مطابقت داشته باشد</p>
                                                 </div>
                                             @else
                                                 <div class="position-relative">
@@ -201,30 +209,61 @@ Header END -->
                                                     </label>
                                                 </div>
                                                 <p class="small mb-0 mt-2">
-                                                    <b>نکته: </b>فرمت های مجاز: JPG، JPEG و PNG و ابعاد پیشنهادی ما 600px * 450px است. تصاویر بزرگتر به اندازه 4:3 برش داده می شود تا با تصاویر کوچک/پیش نمایش ما مطابقت داشته باشد</p>
+                                                    <b>نکته: </b>فرمت های مجاز: JPG، JPEG و PNG و ابعاد پیشنهادی ما
+                                                    600px * 450px است. تصاویر بزرگتر به اندازه 4:3 برش داده می شود تا با
+                                                    تصاویر کوچک/پیش نمایش ما مطابقت داشته باشد</p>
                                             @endif
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-3">
-                                            <!-- file -->
-                                            <div class="position-relative">
-                                                <h6 class="my-2">{{ $lang['upload-podcast-file'] }}</h6>
-                                                <label class="w-100" style="cursor:pointer;">
-                                                    <input class="form-control"
-                                                           type="file" name="podcast" accept="audio/mp4"/>
-                                                </label>
-                                                @if(!empty($errors['files']))
-                                                    @if(!empty($errors['files']['podcast_required']))
-                                                        <div class="form-control bg-danger">{{ $errors['files']['podcast_required'] }}</div>
-                                                    @else
-                                                        <div class="form-control bg-danger">{{ $errors['files']['podcast'] }}</div>
+                                            @if(!empty($episode))
+                                                <div class="player-wrapper bg-light rounded">
+                                                    <audio class="player-audio" crossorigin>
+                                                        <source src=""
+                                                                type="audio/mp4">
+                                                    </audio>
+                                                </div>
+                                                <div class="row align-items-center mb-2">
+                                                    <div class="col-sm-8 col-md-12 position-relative">
+                                                        <h6 class="my-2">ویرایش فایل صوتی</h6>
+                                                        <label class="w-100" style="cursor:pointer;">
+                                                            <input class="form-control"
+                                                                   type="file" name="podcast"
+                                                                   accept="audio/mp4"/>
+                                                            @if(!empty($errors['files']))
+                                                                @if(!empty($errors['files']['podcast_required']))
+                                                                    <div class="form-control bg-danger">{{ $errors['files']['podcast_required'] }}</div>
+                                                                @else
+                                                                    <div class="form-control bg-danger">{{ $errors['files']['podcast'] }}</div>
+                                                                @endif
+                                                            @endif
+                                                        </label>
+                                                    </div>
+                                                    <p class="small mb-0 mt-2">
+                                                        <b>{{ $lang['hint'] }} </b>{{ $lang['rule-uploading-file'] }}
+                                                    </p>
+                                                </div>
+                                            @else
+                                                <!-- file -->
+                                                <div class="position-relative">
+                                                    <h6 class="my-2">{{ $lang['upload-podcast-file'] }}</h6>
+                                                    <label class="w-100" style="cursor:pointer;">
+                                                        <input class="form-control"
+                                                               type="file" name="podcast" accept="audio/mp4"/>
+                                                    </label>
+                                                    @if(!empty($errors['files']))
+                                                        @if(!empty($errors['files']['podcast_required']))
+                                                            <div class="form-control bg-danger">{{ $errors['files']['podcast_required'] }}</div>
+                                                        @else
+                                                            <div class="form-control bg-danger">{{ $errors['files']['podcast'] }}</div>
+                                                        @endif
                                                     @endif
-                                                @endif
-                                            </div>
-                                            <p class="small mb-0 mt-2">
-                                                <b>{{ $lang['hint'] }} </b>{{ $lang['rule-uploading-file'] }}
-                                            </p>
+                                                </div>
+                                                <p class="small mb-0 mt-2">
+                                                    <b>{{ $lang['hint'] }} </b>{{ $lang['rule-uploading-file'] }}
+                                                </p>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -242,16 +281,30 @@ Header END -->
                                     <div class="col-lg-12">
                                         <div class="mb-3">
                                             <label class="form-label">{{ $lang['status'] }}</label>
-                                            @if($currentUser->user_type == 'fulladmin')
-                                                <select class="form-select" name="status">
-                                                    <option value="pre-written">{{ $lang['pre-written'] }}</option>
-                                                    <option value="approved">{{ $lang['active'] }}</option>
-                                                </select>
+                                            @if($method == 'create')
+                                                @if($currentUser->user_type == 'fulladmin')
+                                                    <select class="form-select" name="status">
+                                                        <option value="pre-written">{{ $lang['pre-written'] }}</option>
+                                                        <option value="approved">{{ $lang['active'] }}</option>
+                                                    </select>
+                                                @else
+                                                    <select class="form-select" name="status">
+                                                        <option value="pre-written">{{ $lang['pre-written'] }}</option>
+                                                        <option value="disapproved">{{ $lang['active'] }}</option>
+                                                    </select>
+                                                @endif
                                             @else
-                                                <select class="form-select" name="status">
-                                                    <option value="pre-written">{{ $lang['pre-written'] }}</option>
-                                                    <option value="disapproved">{{ $lang['active'] }}</option>
-                                                </select>
+                                                @if($currentUser->user_type == 'fulladmin')
+                                                    <select class="form-select" name="status">
+                                                        <option value="pre-written">{{ $lang['pre-written'] }}</option>
+                                                        <option value="approved">{{ $lang['active'] }}</option>
+                                                    </select>
+                                                @else
+                                                    <select class="form-select" name="status">
+                                                        <option value="pre-written">{{ $lang['pre-written'] }}</option>
+                                                        <option value="disapproved">{{ $lang['active'] }}</option>
+                                                    </select>
+                                                @endif
                                             @endif
                                         </div>
                                     </div>
