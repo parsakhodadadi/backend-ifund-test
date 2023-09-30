@@ -47,36 +47,6 @@ class UserController extends controller
         ]);
     }
 
-    public function editAccess(int $itemId)
-    {
-        $successMessage = null;
-        $errorMessage = null;
-        $user = current($this->users->get(['id' => $itemId]));
-        $errors = $this->request(EditAccessRequest::class);
-        if (!empty($this->request) && empty($errors)) {
-            $errorMessage = $this->users->update(['id' => $user->id], $this->request);
-            if (empty($errorMessage)) {
-                $user = current($this->users->get(['id' => $itemId]));
-                $successMessage = __('users.edit-access-success');
-            }
-        }
-
-        $view = $this->blade->render('backend/main/layout/users/edit-access', [
-            'errors' => $errors,
-            'lang' => $this->lang,
-            'user' => $user,
-            'successMessage' => $successMessage,
-            'errorMessage' => $errorMessage,
-        ]);
-
-        echo $this->blade->render('backend/main/panel', [
-            'view' => $this->blade,
-            'content' => $view,
-            'navigation' => $this->loadNavigation(),
-            'header' => $this->loadHeader(),
-        ]);
-    }
-
     public function userSingle(int $itemId)
     {
         $user = current($this->users->get(['id' => $itemId]));
@@ -87,6 +57,22 @@ class UserController extends controller
             'posts' => $this->posts,
             'header' => $this->loadBackendHeader(),
         ]);
+    }
+
+    public function changeAccess(int $itemId)
+    {
+        if (current($this->users->get(['id' => $itemId]))->user_type == 'user') {
+            $errorMessage = $this->users->update(['id' => $itemId], ['user_type' => 'admin']);
+            if (!empty($errorMessage)) {
+                exit('error');
+            }
+        } else {
+            $errorMessage = $this->users->update(['id' => $itemId], ['user_type' => 'user']);
+            if (!empty($errorMessage)) {
+                exit('error');
+            }
+        }
+        redirect('/panel/users-management');
     }
 
     public function block(int $itemId)

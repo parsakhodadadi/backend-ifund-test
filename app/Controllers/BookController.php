@@ -51,8 +51,7 @@ class BookController extends controller
         if (!empty($this->request) && empty($errors)) {
             $tmpName = $_FILES['photo']['tmp_name'];
             $newFile = 'files' . $_FILES['photo']['name'];
-            $uploadProcess = $this->uploadPhoto($tmpName, $newFile);
-            if ($uploadProcess) {
+            if (move_uploaded_file($tmpName, $newFile)) {
                 unset($this->request['files']);
                 if ($this->userType == 'fulladmin' || $this->userType == 'admin') {
                     $status = 'approved';

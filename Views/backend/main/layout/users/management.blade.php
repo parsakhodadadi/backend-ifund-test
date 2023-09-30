@@ -216,16 +216,25 @@ Header END -->
                                                         @if($user->user_type != 'fulladmin')
                                                             @if(!($user->user_type == 'admin' && $currentUser->user_type == 'admin'))
                                                                 <div class="d-flex gap-2">
-                                                                    <a href="{{ route('') }}" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Message" aria-label="Message">
+                                                                    <a href="{{ route('') }}" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="ارسال پیام" aria-label="Message">
                                                                         <i class="bi bi-envelope"></i>
                                                                     </a>
                                                                     @if($user->blocked == 'no')
-                                                                        <a href="{{ route('/panel/users-management/block/') . $user->id }}" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Block" aria-label="Block">
+                                                                        <a href="{{ route('/panel/users-management/block/') . $user->id }}" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="بلاک" aria-label="Block">
                                                                             <i class="fas fa-ban"></i>
                                                                         </a>
                                                                     @else
-                                                                        <a href="{{ route('/panel/users-management/block/') . $user->id }}" class="btn btn-danger-soft btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Block" aria-label="Block">
+                                                                        <a href="{{ route('/panel/users-management/block/') . $user->id }}" class="btn btn-danger-soft btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="آنبلاک" aria-label="Block">
                                                                             <i class="fas fa-ban"></i>
+                                                                        </a>
+                                                                    @endif
+                                                                    @if($user->user_type == 'user')
+                                                                        <a href="{{ route('/panel/users-management/change-access/') . $user->id }}" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="ارتقا به ادمین" aria-label="Message">
+                                                                            <i class="fa fa-user-edit"></i>
+                                                                        </a>
+                                                                    @else
+                                                                        <a href="{{ route('/panel/users-management/change-access/') . $user->id }}" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="تغییر به کابر" aria-label="Message">
+                                                                            <i class="fa fa-user-edit"></i>
                                                                         </a>
                                                                     @endif
                                                                 </div>

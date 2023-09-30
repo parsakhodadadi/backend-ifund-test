@@ -139,4 +139,11 @@ class HomeController extends controller
             'replyComments' => $replyComments,
         ]);
     }
+
+    public function aaronBook()
+    {
+        echo $this->blade->render('frontend/main/layout/aaron-book', [
+            ''
+        ]);
+    }
 }

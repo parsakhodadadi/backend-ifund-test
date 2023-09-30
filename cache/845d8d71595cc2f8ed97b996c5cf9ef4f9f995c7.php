@@ -221,16 +221,25 @@ Header END -->
                                                         <?php if($user->user_type != 'fulladmin'): ?>
                                                             <?php if(!($user->user_type == 'admin' && $currentUser->user_type == 'admin')): ?>
                                                                 <div class="d-flex gap-2">
-                                                                    <a href="<?php echo e(route('')); ?>" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Message" aria-label="Message">
+                                                                    <a href="<?php echo e(route('')); ?>" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="ارسال پیام" aria-label="Message">
                                                                         <i class="bi bi-envelope"></i>
                                                                     </a>
                                                                     <?php if($user->blocked == 'no'): ?>
-                                                                        <a href="<?php echo e(route('/panel/users-management/block/') . $user->id); ?>" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Block" aria-label="Block">
+                                                                        <a href="<?php echo e(route('/panel/users-management/block/') . $user->id); ?>" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="بلاک" aria-label="Block">
                                                                             <i class="fas fa-ban"></i>
                                                                         </a>
                                                                     <?php else: ?>
-                                                                        <a href="<?php echo e(route('/panel/users-management/block/') . $user->id); ?>" class="btn btn-danger-soft btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Block" aria-label="Block">
+                                                                        <a href="<?php echo e(route('/panel/users-management/block/') . $user->id); ?>" class="btn btn-danger-soft btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="آنبلاک" aria-label="Block">
                                                                             <i class="fas fa-ban"></i>
+                                                                        </a>
+                                                                    <?php endif; ?>
+                                                                    <?php if($user->user_type == 'user'): ?>
+                                                                        <a href="<?php echo e(route('/panel/users-management/change-access/') . $user->id); ?>" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="ارتقا به ادمین" aria-label="Message">
+                                                                            <i class="fa fa-user-edit"></i>
+                                                                        </a>
+                                                                    <?php else: ?>
+                                                                        <a href="<?php echo e(route('/panel/users-management/change-access/') . $user->id); ?>" class="btn btn-light btn-round mb-0" data-bs-toggle="tooltip" data-bs-placement="top" title="تغییر به کابر" aria-label="Message">
+                                                                            <i class="fa fa-user-edit"></i>
                                                                         </a>
                                                                     <?php endif; ?>
                                                                 </div>

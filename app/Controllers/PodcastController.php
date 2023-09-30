@@ -57,7 +57,7 @@ class PodcastController extends controller
             $this->request['time'] = date("h:i:sa");
             $tmpName = $_FILES['podcast']['tmp_name'];
             $fileName = 'files/' . $_FILES['podcast']['name'];
-            if ($this->uploadPhoto($tmpName, $fileName)) {
+            if (move_uploaded_file($tmpName, $fileName)) {
                 unset($this->request['files']);
                 $this->request['podcast'] = $fileName;
             } else {
@@ -128,14 +128,14 @@ class PodcastController extends controller
                 }
 
                 if ($uploadNewPhoto == 1) {
-                    if (!$this->uploadPhoto($tmpNamePhoto, $fileNamePhoto)) {
+                    if (!move_uploaded_file($tmpNamePhoto, $fileNamePhoto)) {
                         exit('error uploading photo');
                     }
                     $this->request['photo'] = $fileNamePhoto;
                 }
 
                 if ($uploadNewAudio == 1) {
-                    if (!$this->uploadPhoto($tmpNameAudio, $fileNameAudio)) {
+                    if (!move_uploaded_file($tmpNameAudio, $fileNameAudio)) {
                         exit('error uploading photo');
                     }
                     $this->request['podcast'] = $fileNameAudio;

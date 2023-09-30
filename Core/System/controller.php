@@ -144,12 +144,4 @@ class controller
             'lang' => loadLang(ConfigHelper::getConfig('default-language'), 'front-header')
         ]);
     }
-
-    public function uploadPhoto($tmpFile, $fileName)
-    {
-        if (!move_uploaded_file($tmpFile, $fileName)) {
-            return false;
-        }
-        return true;
-    }
 }

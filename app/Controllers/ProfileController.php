@@ -43,7 +43,9 @@ class ProfileController extends controller
         $errors = $this->request(EditProfileRequest::class);
         if (!empty($this->request) && empty($errors)) {
             if (!empty($_FILES['photo']['name'])) {
-                $this->uploadPhoto($_FILES['photo']['tmp_name'], 'files/' . $_FILES['photo']['name']);
+                if (!move_uploaded_file($_FILES['photo']['tmp_name'], 'files/' . $_FILES['photo']['name'])) {
+                    exit('error uploading photo');
+                }
                 $this->request['photo'] = 'files/' . $_FILES['photo']['name'];
             }
             unset($this->request['files']);

@@ -8,7 +8,7 @@
                         <a class="nav-link ps-0" href="<?php echo e(route('/Others/Themes/Frontend/Theme/')); ?>about-us.html"><?php echo e(__('front-header.about-us')); ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><?php echo e(__('front-header.aaron-book')); ?></a>
+                        <a class="nav-link" href="<?php echo e(route('/aaron-book')); ?>"><?php echo e(__('front-header.aaron-book')); ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo e(route('/podcasts')); ?>"><?php echo e(__('front-header.aaron-cast')); ?></a>

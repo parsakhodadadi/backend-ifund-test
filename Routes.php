@@ -18,6 +18,7 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/sign-in', "SigninController@form");
     $router->post('/sign-in', "SigninController@form");
     $router->get('/panel', 'PanelController@dashboard');
+    $router->get('/aaron-book', 'HomeController@aaronBook');
 
     //post-categories
     $router->get('/panel/add-post-category', "PostCategoryController@create");
@@ -173,7 +174,7 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/panel/users-management', "UserController@management");
     $router->get('/panel/users-management/(\d+)', "UserController@userSingle");
     $router->get('/panel/users-management/block/(\d+)', "UserController@block");
-    $router->post('/panel/users-management/edit-access/(\d+)', "UserController@editAccess");
+    $router->get('/panel/users-management/change-access/(\d+)', "UserController@changeAccess");
     $router->get('/panel/users-management/delete/(\d+)', "UserController@delete");
     $router->before('GET|POST', '/panel/users-management', 'SigninController@checkAdmin');
     $router->before('GET|POST', '/panel/users-management/.*', 'SigninController@checkAdmin');

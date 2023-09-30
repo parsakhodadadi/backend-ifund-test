@@ -58,8 +58,7 @@ class PostController extends controller
             }
             $tmpFile = $_FILES['photo']['tmp_name'];
             $newFile = 'files/' . $_FILES['photo']['name'];
-            $result = move_uploaded_file($tmpFile, $newFile);
-            if ($result) {
+            if (move_uploaded_file($tmpFile, $newFile)) {
                 $this->request['photo'] = $newFile;
                 $this->request['user_id'] = $this->userId;
                 $this->request['status'] = $status;
@@ -127,7 +126,7 @@ class PostController extends controller
             }
 
             if ($uploadNewPhoto == 1) {
-                if (!$this->uploadPhoto($tmpName, $fileName)) {
+                if (!move_uploaded_file($tmpName, $fileName)) {
                     exit('error uploading photo');
                 }
                 $this->request['photo'] = $fileName;

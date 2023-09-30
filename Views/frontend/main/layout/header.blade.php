@@ -8,7 +8,7 @@
                         <a class="nav-link ps-0" href="{{ route('/Others/Themes/Frontend/Theme/') }}about-us.html">{{ __('front-header.about-us') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ __('front-header.aaron-book') }}</a>
+                        <a class="nav-link" href="{{ route('/aaron-book') }}">{{ __('front-header.aaron-book') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('/podcasts') }}">{{ __('front-header.aaron-cast') }}</a>
