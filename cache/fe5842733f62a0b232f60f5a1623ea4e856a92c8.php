@@ -4,7 +4,7 @@
 <head>
     <title>Blogzine - قالب HTML مجله خبری و وبلاگ</title>
 
-    <!-- Meta Tags -->
+    <!-- Meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Blogzine">
@@ -125,7 +125,7 @@ Header END -->
                                         <!-- Post name -->
                                         <div class="mb-3">
                                             <label class="form-label"><?php echo e($lang['title']); ?></label>
-                                            <input required id="con-name" name="title" type="text" class="form-control"
+                                            <input id="con-name" name="title" type="text" class="form-control"
                                                    placeholder="<?php echo e($lang['post-title']); ?>"
                                                    value="<?php if(!empty($post)): ?> <?php echo e($post->title); ?> <?php endif; ?>">
                                             <?php if(!empty($errors['title'])): ?>
@@ -188,8 +188,8 @@ Header END -->
                                                                    type="file" name="photo"
                                                                    accept="image/gif, image/jpeg, image/png"/>
                                                             <?php if(!empty($errors['files'])): ?>
-                                                                <?php if(!empty($errors['files']['file_required'])): ?>
-                                                                    <div class="form-control bg-danger"><?php echo e($errors['files']['file_required']); ?></div>
+                                                                <?php if(!empty($errors['files']['photo_required'])): ?>
+                                                                    <div class="form-control bg-danger"><?php echo e($errors['files']['photo_required']); ?></div>
                                                                 <?php else: ?>
                                                                     <div class="form-control bg-danger"><?php echo e($errors['files']['photo']); ?></div>
                                                                 <?php endif; ?>
@@ -203,16 +203,12 @@ Header END -->
                                                 <div class="position-relative">
                                                     <h6 class="my-2"><?php echo e($lang['add-photo']); ?></h6>
                                                     <label class="w-100" style="cursor:pointer;">
-                                                        <div class="input-group flex-row-reverse">
-                                                            <input type="text" class="form-control upload-name"/>
-                                                            <span class="btn btn-custom cursor-pointer upload-button"><?php echo e($lang['upload-file']); ?></span>
-                                                        </div>
-                                                        <input class="form-control stretched-link d-none hidden-upload"
+                                                        <input class="form-control"
                                                                type="file" name="photo"
                                                                accept="image/gif, image/jpeg, image/png"/>
                                                         <?php if(!empty($errors['files'])): ?>
-                                                            <?php if(!empty($errors['files']['file_required'])): ?>
-                                                                <div class="form-control bg-danger"><?php echo e($errors['files']['file_required']); ?></div>
+                                                            <?php if(!empty($errors['files']['photo_required'])): ?>
+                                                                <div class="form-control bg-danger"><?php echo e($errors['files']['photo_required']); ?></div>
                                                             <?php else: ?>
                                                                 <div class="form-control bg-danger"><?php echo e($errors['files']['photo']); ?></div>
                                                             <?php endif; ?>
@@ -225,15 +221,15 @@ Header END -->
                                         </div>
                                     </div>
                                     <div class="col-lg-7">
-                                        <!-- Tags -->
+                                        <!-- tagss -->
                                         <div class="mb-3">
-                                            <label class="form-label"><?php echo e($lang['tag']); ?></label>
-                                            <textarea class="form-control" name="tag" rows="1"
-                                                      placeholder="<?php echo e($lang['tag-placeholder']); ?>"><?php if(!empty($post->tag)): ?>
-                                                    <?php echo e($post->tag); ?>
+                                            <label class="form-label"><?php echo e($lang['tags']); ?></label>
+                                            <textarea class="form-control" name="tags" rows="1"
+                                                      placeholder="<?php echo e($lang['tags-placeholder']); ?>"><?php if(!empty($post->tags)): ?>
+                                                    <?php echo e($post->tags); ?>
 
                                                 <?php endif; ?></textarea>
-                                            <small><?php echo e($lang['hint-tag']); ?></small>
+                                            <small><?php echo e($lang['hint-tags']); ?></small>
                                         </div>
                                     </div>
                                     <div class="col-lg-5">

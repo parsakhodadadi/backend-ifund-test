@@ -4,7 +4,7 @@
 <head>
     <title>Blogzine - قالب HTML مجله خبری و وبلاگ</title>
 
-    <!-- Meta Tags -->
+    <!-- Meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Blogzine">
@@ -123,7 +123,7 @@ Header END -->
                                         <!-- Post name -->
                                         <div class="mb-3">
                                             <label class="form-label">{{ $lang['title'] }}</label>
-                                            <input required id="con-name" name="title" type="text" class="form-control"
+                                            <input id="con-name" name="title" type="text" class="form-control"
                                                    placeholder="{{ $lang['post-title'] }}"
                                                    value="@if(!empty($post)) {{ $post->title }} @endif">
                                             @if(!empty($errors['title']))
@@ -184,8 +184,8 @@ Header END -->
                                                                    type="file" name="photo"
                                                                    accept="image/gif, image/jpeg, image/png"/>
                                                             @if(!empty($errors['files']))
-                                                                @if(!empty($errors['files']['file_required']))
-                                                                    <div class="form-control bg-danger">{{ $errors['files']['file_required'] }}</div>
+                                                                @if(!empty($errors['files']['photo_required']))
+                                                                    <div class="form-control bg-danger">{{ $errors['files']['photo_required'] }}</div>
                                                                 @else
                                                                     <div class="form-control bg-danger">{{ $errors['files']['photo'] }}</div>
                                                                 @endif
@@ -199,16 +199,12 @@ Header END -->
                                                 <div class="position-relative">
                                                     <h6 class="my-2">{{ $lang['add-photo'] }}</h6>
                                                     <label class="w-100" style="cursor:pointer;">
-                                                        <div class="input-group flex-row-reverse">
-                                                            <input type="text" class="form-control upload-name"/>
-                                                            <span class="btn btn-custom cursor-pointer upload-button">{{ $lang['upload-file'] }}</span>
-                                                        </div>
-                                                        <input class="form-control stretched-link d-none hidden-upload"
+                                                        <input class="form-control"
                                                                type="file" name="photo"
                                                                accept="image/gif, image/jpeg, image/png"/>
                                                         @if(!empty($errors['files']))
-                                                            @if(!empty($errors['files']['file_required']))
-                                                                <div class="form-control bg-danger">{{ $errors['files']['file_required'] }}</div>
+                                                            @if(!empty($errors['files']['photo_required']))
+                                                                <div class="form-control bg-danger">{{ $errors['files']['photo_required'] }}</div>
                                                             @else
                                                                 <div class="form-control bg-danger">{{ $errors['files']['photo'] }}</div>
                                                             @endif
@@ -221,14 +217,14 @@ Header END -->
                                         </div>
                                     </div>
                                     <div class="col-lg-7">
-                                        <!-- Tags -->
+                                        <!-- tagss -->
                                         <div class="mb-3">
-                                            <label class="form-label">{{ $lang['tag'] }}</label>
-                                            <textarea class="form-control" name="tag" rows="1"
-                                                      placeholder="{{ $lang['tag-placeholder'] }}">@if(!empty($post->tag))
-                                                    {{ $post->tag }}
+                                            <label class="form-label">{{ $lang['tags'] }}</label>
+                                            <textarea class="form-control" name="tags" rows="1"
+                                                      placeholder="{{ $lang['tags-placeholder'] }}">@if(!empty($post->tags))
+                                                    {{ $post->tags }}
                                                 @endif</textarea>
-                                            <small>{{ $lang['hint-tag'] }}</small>
+                                            <small>{{ $lang['hint-tags'] }}</small>
                                         </div>
                                     </div>
                                     <div class="col-lg-5">

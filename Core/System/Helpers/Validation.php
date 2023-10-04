@@ -48,14 +48,14 @@ class Validation
         }
     }
 
-    public function tag_size($value): bool
+    public function tags_size($value): bool
     {
         if (!empty($value)) {
             if (ConfigHelper::getConfig('default-language') == 'fa') {
                 $separator = '،';
             }
-            $tagArray = explode($separator, $value);
-            if (count($tagArray) > 14) {
+            $tagsArray = explode($separator, $value);
+            if (count($tagsArray) > 14) {
                 return false;
             }
         }

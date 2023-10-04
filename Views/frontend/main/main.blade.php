@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 
 <head>
-    <title>Blogzine - قالب HTML مجله خبری و وبلاگ</title>
+    <title>مجله ارون</title>
 
     <!-- Meta Tags -->
     <meta charset="utf-8">

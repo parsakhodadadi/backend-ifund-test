@@ -159,26 +159,19 @@ Header END -->
                                     @endif
                                 </a> {{ $post->likes }}
                             </li>
-                            <li class="list-inline-item d-lg-block my-lg-2"><i class="far fa-eye me-1"></i> 2344 بازدید
+                            <li class="list-inline-item d-lg-block my-lg-2"><i class="far fa-eye me-1"></i>{{ $post->views }} بازدید
                             </li>
                         </ul>
                         <!-- Tags -->
                         <ul class="list-inline text-primary-hover mt-0 mt-lg-3">
-                            <li class="list-inline-item">
-                                <a class="text-body" href="#">#ورزش</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="text-body" href="#">#فیلم</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="text-body" href="#">#رسانه</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="text-body" href="#">#برگزیده</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="text-body" href="#">#استارت آپ</a>
-                            </li>
+                            @if(!empty($post->tags))
+                                @php($tags = explode('،', $post->tags))
+                                @foreach($tags as $tag)
+                                    <li class="list-inline-item">
+                                        <a class="text-body" href="#">#{{ $tag }}</a>
+                                    </li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -443,11 +436,7 @@ Header END -->
                     <!-- Comments START -->
                     <div>
                         <h3>
-                            @php($num = 0)
-                            @foreach($comments as $comment)
-                                @php($num++)
-                            @endforeach
-                            {{ $num . ' ' . __('comments.comment')}}
+                            {{ count($comments) + count($replyComments->get()) . ' ' . __('comments.comment')}}
                         </h3>
                         <!-- Comment level 1-->
                         @foreach($comments as $comment)
@@ -482,21 +471,6 @@ Header END -->
                                 </div>
                             @endforeach
                         @endforeach
-                        <!-- Comment children level 3 -->
-                        <div class="my-4 d-flex ps-3 ps-md-5">
-                            <img class="avatar avatar-md rounded-circle float-start me-3"
-                                 src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/01.jpg"
-                                 alt="avatar">
-                            <div>
-                                <div class="mb-2">
-                                    <h5 class="m-0">مونا شاه حسینی</h5>
-                                    <span class="me-3 small">21 خرداد، 1400 در 3:00 بعد از ظهر</span>
-                                    <a href="#" class="text-body fw-normal">پاسخ</a>
-                                </div>
-                                <p>در نهایت این مرگ است که باید پیروز شود، زیرا از هنگام تولد بخشی از سرنوشت ما شده و
-                                    فقط مدت کوتاهی پیش از بلعیدن طعمه اش، با آن بازی می کند.</p>
-                            </div>
-                        </div>
                     </div>
                     <!-- Comments END -->
                     <!-- Reply START -->

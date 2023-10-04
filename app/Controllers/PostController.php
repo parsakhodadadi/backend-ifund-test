@@ -216,7 +216,10 @@ class PostController extends controller
 
     public function like(int $itemId)
     {
-        $route = '/posts/' . $itemId . '/add-comment';
+        if (!isset($_SESSION['USERID'])) {
+            redirect('/sign-in');
+        }
+        $route = '/posts/' . $itemId;
         $post = current($this->posts->get(['id' => $itemId]));
         if (empty(current($this->likedPosts->get(['user_id' => $this->userId, 'post_id' => $itemId])))) {
             $errorMessageLikesTable = $this->likedPosts->insert(['user_id' => $this->userId, 'post_id' => $itemId]);

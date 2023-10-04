@@ -6,7 +6,7 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router = new BramusRouter();
     $router->setNamespace('\App\Controllers');
     //Define routes
-    $router->get('/', 'HomeController@frontend');
+    $router->get('/', 'HomeController@homePage');
     $router->get('/logout', "SigninController@logout");
 
     //authentication

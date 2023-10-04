@@ -12,7 +12,7 @@ class PostRequest extends Validation
             'title' => 'required',
             'short_description' => 'required',
             'text' => 'required',
-            'tag' => 'tag_size',
+            'tags' => 'tags_size',
             'files' => 'photo|photo_required',
             'post_category_id' => 'required|post_cat_valid',
         ];
@@ -24,9 +24,9 @@ class PostRequest extends Validation
             'title.required' => __('posts.title-required'),
             'short_description.required' => __('posts.short_description-required'),
             'text.required' => __('posts.text-required'),
-            'tag.tag_size' => __('posts.tag-size'),
-            'files.photo' => __('posts.files-photo'),
-            'files.file_required' => __('posts.files-required'),
+            'tags.tags_size' => __('posts.tags-size'),
+            'files.photo' => __('posts.photo-photo'),
+            'files.photo_required' => __('posts.photo-required'),
             'post_category_id.required' => __('posts.post_category-required'),
             'post_category_id.post_cat_valid' => __('posts.post_category-valid'),
         ];
