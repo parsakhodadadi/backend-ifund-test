@@ -72,28 +72,30 @@
 
     <!-- Plugins CSS -->
     <link rel="stylesheet" type="text/css"
-          href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/font-awesome/css/all.min.css">
+          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/font-awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css"
-          href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/bootstrap-icons/bootstrap-icons.css">
+          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css"
-          href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/apexcharts/css/apexcharts.css">
+          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/apexcharts/css/apexcharts.css">
     <link rel="stylesheet" type="text/css"
-          href="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/quill/css/quill.snow.css">
+          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/quill/css/quill.snow.css">
 
     <!-- Theme CSS -->
     <link id="style-switch" rel="stylesheet" type="text/css"
-          href="{{ route('/Others/Themes/Frontend/Theme/assets/css') }}/style-rtl.css">
+          href="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/css')); ?>/style-rtl.css">
 
 </head>
 
 <body>
 <!-- Preloader START -->
-{{ $view->make('backend/main/layout/preloader') }}
+<?php echo e($view->make('backend/main/layout/preloader')); ?>
+
 <!-- Preloader END -->
 
 <!-- =======================
 Header START -->
-{!! $header !!}
+<?php echo $header; ?>
+
 <!-- =======================
 Header END -->
 
@@ -107,8 +109,8 @@ Header END -->
                 <div class="col-12">
                     <!-- Title -->
                     <div class="d-sm-flex justify-content-sm-between align-items-center">
-                        <h1 class="mb-2 mb-sm-0 h3">{{ $lang['comments-list'] }} <span
-                                    class="badge bg-primary bg-opacity-10 text-primary">{{ count($comments) + count($replyComments->get()) }}</span>
+                        <h1 class="mb-2 mb-sm-0 h3"><?php echo e($lang['comments-list']); ?> <span
+                                    class="badge bg-primary bg-opacity-10 text-primary"><?php echo e(count($comments) + count($replyComments->get())); ?></span>
                         </h1>
                     </div>
                 </div>
@@ -126,27 +128,28 @@ Header END -->
                                     <thead class="table-dark">
                                     <tr>
                                         <th scope="col" class="border-0 rounded-start">عنوان اپیزود</th>
-                                        <th scope="col" class="border-0">{{ $lang['commentor'] }}</th>
-                                        <th scope="col" class="border-0">{{ $lang['rank'] }}</th>
-                                        <th scope="col" class="border-0">{{ $lang['status'] }}</th>
-                                        <th scope="col" class="border-0 rounded-end">{{ $lang['action'] }}</th>
+                                        <th scope="col" class="border-0"><?php echo e($lang['commentor']); ?></th>
+                                        <th scope="col" class="border-0"><?php echo e($lang['rank']); ?></th>
+                                        <th scope="col" class="border-0"><?php echo e($lang['status']); ?></th>
+                                        <th scope="col" class="border-0 rounded-end"><?php echo e($lang['action']); ?></th>
                                     </tr>
                                     </thead>
                                     <!-- Table body START -->
                                     <tbody class="border-top-0">
                                     <!-- Table item -->
-                                    @foreach($comments as $comment)
-                                        @foreach(array_reverse($replyComments->get(['post_comment_id' => $comment->id])) as $replyComment)
+                                    <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php $__currentLoopData = array_reverse($replyComments->get(['podcast_comment_id' => $comment->id])); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $replyComment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <tr>
                                                 <!-- Table data -->
                                                 <td>
                                                     <h6 class="course-title mb-0"><a
-                                                                href="#">{{ current($posts->get(['id' => $comment->post_id]))->title }}</a>
+                                                                href="#"><?php echo e(current($episodes->get(['id' => $comment->podcast_id]))->title); ?></a>
                                                     </h6>
                                                 </td>
                                                 <!-- Table data -->
                                                 <td>
-                                                    {{ current($users->get(['id' => $replyComment->user_id]))->first_name . ' ' . current($users->get(['id' => $replyComment->user_id]))->last_name }}
+                                                    <?php echo e(current($users->get(['id' => $replyComment->user_id]))->first_name . ' ' . current($users->get(['id' => $replyComment->user_id]))->last_name); ?>
+
                                                 </td>
                                                 <!-- Table data -->
                                                 <td>
@@ -162,24 +165,24 @@ Header END -->
                                                         <li class="list-inline-item me-0 small"><i
                                                                     class="fas fa-star text-warning"></i></li>
                                                     </ul>
-                                                    <p class="small course-title">{{ $replyComment->text }} <a href="#"
+                                                    <p class="small course-title"><?php echo e($replyComment->text); ?> <a href="#"
                                                                                                                data-bs-toggle="modal"
-                                                                                                               data-bs-target="#viewReview">{{ $lang['watch-more'] }}</a>
+                                                                                                               data-bs-target="#viewReview"><?php echo e($lang['watch-more']); ?></a>
                                                     </p>
                                                 </td>
                                                 <!-- Table data -->
                                                 <td>
-                                                    @if($replyComment->status == 'approved')
-                                                        <span class="badge bg-success bg-opacity-10 text-success mb-2">{{ $lang['approved'] }}</span>
-                                                    @else
-                                                        <span class="badge bg-danger bg-opacity-10 text-danger mb-2">{{ $lang['disapproved'] }}</span>
-                                                    @endif
+                                                    <?php if($replyComment->status == 'approved'): ?>
+                                                        <span class="badge bg-success bg-opacity-10 text-success mb-2"><?php echo e($lang['approved']); ?></span>
+                                                    <?php else: ?>
+                                                        <span class="badge bg-danger bg-opacity-10 text-danger mb-2"><?php echo e($lang['disapproved']); ?></span>
+                                                    <?php endif; ?>
                                                 </td>
                                                 <!-- Table data -->
                                                 <td>
                                                     <div class="dropdown">
-                                                        @if($currentUser->user_type == 'fulladmin')
-                                                            @if(current($users->get(['id' => $replyComment->user_id]))->user_type != 'fulladmin')
+                                                        <?php if($currentUser->user_type == 'fulladmin'): ?>
+                                                            <?php if(current($users->get(['id' => $replyComment->user_id]))->user_type != 'fulladmin'): ?>
                                                                 <a href="#" class="btn btn-light btn-round mb-0"
                                                                    role="button"
                                                                    id="dropdownReview" data-bs-toggle="dropdown"
@@ -189,29 +192,31 @@ Header END -->
                                                                 <!-- dropdown button -->
                                                                 <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
                                                                     aria-labelledby="dropdownReview">
-                                                                    @if($replyComment->status == 'disapproved')
+                                                                    <?php if($replyComment->status == 'disapproved'): ?>
                                                                         <li><a class="dropdown-item"
-                                                                               href="{{ route('/panel/posts-comments-management/approve-reply/') . $replyComment->id }}"><i
+                                                                               href="<?php echo e(route('/panel/podcasts-comments-management/approve-reply/') . $replyComment->id); ?>"><i
                                                                                         class="bi bi-pencil-square fa-fw me-2"></i>
-                                                                                {{ $lang['approve'] }}
+                                                                                <?php echo e($lang['approve']); ?>
+
                                                                             </a>
                                                                         </li>
-                                                                    @else
+                                                                    <?php else: ?>
                                                                         <li><a class="dropdown-item"
-                                                                               href="{{ route('/panel/posts-comments-management/approve-reply/') . $replyComment->id }}"><i
+                                                                               href="<?php echo e(route('/panel/podcasts-comments-management/approve-reply/') . $replyComment->id); ?>"><i
                                                                                         class="bi bi-pencil-square fa-fw me-2"></i>
                                                                                 عدم تایید
                                                                             </a>
                                                                         </li>
-                                                                    @endif
+                                                                    <?php endif; ?>
                                                                     <li><a class="dropdown-item"
-                                                                           href="{{ route('/panel/posts-comments-management/delete-reply/') . $replyComment->id }}"><i
-                                                                                    class="bi bi-trash fa-fw me-2"></i>{{ $lang['delete'] }}
+                                                                           href="<?php echo e(route('/panel/podcasts-comments-management/delete-reply/') . $replyComment->id); ?>"><i
+                                                                                    class="bi bi-trash fa-fw me-2"></i><?php echo e($lang['delete']); ?>
+
                                                                         </a></li>
                                                                 </ul>
-                                                            @endif
-                                                        @else
-                                                            @if(current($users->get(['id' => $replyComment->user_id]))->user_type != 'admin' && current($users->get(['id' => $replyComment->user_id]))->user_type != 'admin')
+                                                            <?php endif; ?>
+                                                        <?php else: ?>
+                                                            <?php if(current($users->get(['id' => $replyComment->user_id]))->user_type != 'admin' && current($users->get(['id' => $replyComment->user_id]))->user_type != 'admin'): ?>
                                                                 <a href="#" class="btn btn-light btn-round mb-0"
                                                                    role="button"
                                                                    id="dropdownReview" data-bs-toggle="dropdown"
@@ -221,42 +226,45 @@ Header END -->
                                                                 <!-- dropdown button -->
                                                                 <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
                                                                     aria-labelledby="dropdownReview">
-                                                                    @if($replyComment->status == 'disapproved')
+                                                                    <?php if($replyComment->status == 'disapproved'): ?>
                                                                         <li><a class="dropdown-item"
-                                                                               href="{{ route('/panel/posts-comments-management/approve-reply/') . $replyComment->id }}"><i
+                                                                               href="<?php echo e(route('/panel/podcasts-comments-management/approve-reply/') . $replyComment->id); ?>"><i
                                                                                         class="bi bi-pencil-square fa-fw me-2"></i>
-                                                                                {{ $lang['approve'] }}
+                                                                                <?php echo e($lang['approve']); ?>
+
                                                                             </a>
                                                                         </li>
-                                                                    @else
+                                                                    <?php else: ?>
                                                                         <li><a class="dropdown-item"
-                                                                               href="{{ route('/panel/posts-comments-management/approve-reply/') . $replyComment->id }}"><i
+                                                                               href="<?php echo e(route('/panel/podcasts-comments-management/approve-reply/') . $replyComment->id); ?>"><i
                                                                                         class="bi bi-pencil-square fa-fw me-2"></i>
                                                                                 عدم تایید
                                                                             </a>
                                                                         </li>
-                                                                    @endif
+                                                                    <?php endif; ?>
                                                                     <li><a class="dropdown-item"
-                                                                           href="{{ route('/panel/posts-comments-management/delete/') . $replyComment->id }}"><i
-                                                                                    class="bi bi-trash fa-fw me-2"></i>{{ $lang['delete'] }}
+                                                                           href="<?php echo e(route('/panel/podcasts-comments-management/delete/') . $replyComment->id); ?>"><i
+                                                                                    class="bi bi-trash fa-fw me-2"></i><?php echo e($lang['delete']); ?>
+
                                                                         </a></li>
                                                                 </ul>
-                                                            @endif
-                                                        @endif
+                                                            <?php endif; ?>
+                                                        <?php endif; ?>
                                                     </div>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <tr>
                                             <!-- Table data -->
                                             <td>
                                                 <h6 class="course-title mb-0"><a
-                                                            href="#">{{ current($posts->get(['id' => $comment->post_id]))->title }}</a>
+                                                            href="#"><?php echo e(current($episodes->get(['id' => $comment->podcast_id]))->title); ?></a>
                                                 </h6>
                                             </td>
                                             <!-- Table data -->
                                             <td>
-                                                {{ current($users->get(['id' => $comment->user_id]))->first_name . ' ' . current($users->get(['id' => $comment->user_id]))->last_name }}
+                                                <?php echo e(current($users->get(['id' => $comment->user_id]))->first_name . ' ' . current($users->get(['id' => $comment->user_id]))->last_name); ?>
+
                                             </td>
                                             <!-- Table data -->
                                             <td>
@@ -272,55 +280,57 @@ Header END -->
                                                     <li class="list-inline-item me-0 small"><i
                                                                 class="fas fa-star text-warning"></i></li>
                                                 </ul>
-                                                <p class="small course-title">{{ $comment->text }}<a href="#"
+                                                <p class="small course-title"><?php echo e($comment->text); ?><a href="#"
                                                                                                      data-bs-toggle="modal"
-                                                                                                     data-bs-target="#viewReview">{{ $lang['watch-more'] }}</a>
+                                                                                                     data-bs-target="#viewReview"><?php echo e($lang['watch-more']); ?></a>
                                                 </p>
                                             </td>
                                             <!-- Table data -->
                                             <td>
-                                                @if($comment->status == 'approved')
-                                                    <span class="badge bg-success bg-opacity-10 text-success mb-2">{{ $lang['approved'] }}</span>
-                                                @else
-                                                    <span class="badge bg-danger bg-opacity-10 text-danger mb-2">{{ $lang['disapproved'] }}</span>
-                                                @endif
+                                                <?php if($comment->status == 'approved'): ?>
+                                                    <span class="badge bg-success bg-opacity-10 text-success mb-2"><?php echo e($lang['approved']); ?></span>
+                                                <?php else: ?>
+                                                    <span class="badge bg-danger bg-opacity-10 text-danger mb-2"><?php echo e($lang['disapproved']); ?></span>
+                                                <?php endif; ?>
                                             </td>
                                             <!-- Table data -->
                                             <td>
-                                                @if($currentUser->user_type == 'fulladmin')
+                                                <?php if($currentUser->user_type == 'fulladmin'): ?>
                                                     <div class="dropdown">
-                                                        @if(current($users->get(['id '=> $comment->user_id]))->user_type != 'fulladmin')
-                                                        <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                           id="dropdownReview" data-bs-toggle="dropdown"
-                                                           aria-expanded="false">
-                                                            <i class="bi bi-three-dots fa-fw"></i>
-                                                        </a>
-                                                        <!-- dropdown button -->
+                                                        <?php if(current($users->get(['id '=> $comment->user_id]))->user_type != 'fulladmin'): ?>
+                                                            <a href="#" class="btn btn-light btn-round mb-0" role="button"
+                                                               id="dropdownReview" data-bs-toggle="dropdown"
+                                                               aria-expanded="false">
+                                                                <i class="bi bi-three-dots fa-fw"></i>
+                                                            </a>
+                                                            <!-- dropdown button -->
                                                             <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
                                                                 aria-labelledby="dropdownReview">
-                                                                @if($comment->status == 'disapproved')
+                                                                <?php if($comment->status == 'disapproved'): ?>
                                                                     <li><a class="dropdown-item"
-                                                                           href="{{ route('/panel/posts-comments-management/approve/') . $comment->id }}"><i
+                                                                           href="<?php echo e(route('/panel/podcasts-comments-management/approve/') . $comment->id); ?>"><i
                                                                                     class="bi bi-pencil-square fa-fw me-2"></i>
-                                                                            {{ $lang['approve'] }}
+                                                                            <?php echo e($lang['approve']); ?>
+
                                                                         </a>
                                                                     </li>
-                                                                @else
+                                                                <?php else: ?>
                                                                     <li><a class="dropdown-item"
-                                                                           href="{{ route('/panel/posts-comments-management/approve/') . $comment->id }}"><i
+                                                                           href="<?php echo e(route('/panel/podcasts-comments-management/approve/') . $comment->id); ?>"><i
                                                                                     class="bi bi-pencil-square fa-fw me-2"></i>
                                                                             عدم تایید
                                                                         </a>
                                                                     </li>
-                                                                @endif
+                                                                <?php endif; ?>
                                                                 <li><a class="dropdown-item"
-                                                                       href="{{ route('/panel/posts-comments-management/delete/') . $comment->id }}"><i
-                                                                                class="bi bi-trash fa-fw me-2"></i>{{ $lang['delete'] }}
+                                                                       href="<?php echo e(route('/panel/podcasts-comments-management/delete/') . $comment->id); ?>"><i
+                                                                                class="bi bi-trash fa-fw me-2"></i><?php echo e($lang['delete']); ?>
+
                                                                     </a></li>
                                                             </ul>
-                                                        @endif
-                                                        @else
-                                                            @if(current($users->get(['id' => $comment->user_id]))->user_type != 'admin' && $currentUser->user_type == 'admin')
+                                                        <?php endif; ?>
+                                                        <?php else: ?>
+                                                            <?php if(current($users->get(['id' => $comment->user_id]))->user_type != 'admin' && $currentUser->user_type == 'admin'): ?>
                                                                 <a href="#" class="btn btn-light btn-round mb-0"
                                                                    role="button"
                                                                    id="dropdownReview" data-bs-toggle="dropdown"
@@ -330,32 +340,34 @@ Header END -->
                                                                 <!-- dropdown button -->
                                                                 <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
                                                                     aria-labelledby="dropdownReview">
-                                                                    @if($comment->status == 'approved')
+                                                                    <?php if($comment->status == 'disapproved'): ?>
                                                                         <li><a class="dropdown-item"
-                                                                               href="{{ route('/panel/posts-comments-management/approve/') . $comment->id }}"><i
+                                                                               href="<?php echo e(route('/panel/podcasts-comments-management/approve/') . $comment->id); ?>"><i
                                                                                         class="bi bi-pencil-square fa-fw me-2"></i>
-                                                                                {{ $lang['approve'] }}
+                                                                                <?php echo e($lang['approve']); ?>
+
                                                                             </a>
                                                                         </li>
-                                                                    @else
+                                                                    <?php else: ?>
                                                                         <li><a class="dropdown-item"
-                                                                               href="{{ route('/panel/posts-comments-management/approve/') . $comment->id }}"><i
+                                                                               href="<?php echo e(route('/panel/podcasts-comments-management/approve/') . $comment->id); ?>"><i
                                                                                         class="bi bi-pencil-square fa-fw me-2"></i>
                                                                                 عدم تایید
                                                                             </a>
                                                                         </li>
-                                                                    @endif
+                                                                    <?php endif; ?>
                                                                     <li><a class="dropdown-item"
-                                                                           href="{{ route('/panel/posts-comments-management/delete/') . $comment->id }}"><i
-                                                                                    class="bi bi-trash fa-fw me-2"></i>{{ $lang['delete'] }}
+                                                                           href="<?php echo e(route('/panel/podcasts-comments-management/delete/') . $comment->id); ?>"><i
+                                                                                    class="bi bi-trash fa-fw me-2"></i><?php echo e($lang['delete']); ?>
+
                                                                         </a></li>
                                                                 </ul>
-                                                            @endif
+                                                            <?php endif; ?>
                                                     </div>
-                                                @endif
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </tbody>
                                     <!-- Table body END -->
                                 </table>
@@ -388,7 +400,7 @@ Header END -->
                     <!-- Blog list table END -->
                 </div>
                 <div class="col-lg-6">
-                    <!-- Top rated post START -->
+                    <!-- Top rated episode START -->
                     <div class="card border bg-transparent rounded-3">
                         <!-- Card header START -->
                         <div class="card-header bg-transparent border-bottom py-3">
@@ -627,7 +639,7 @@ Header END -->
                                     <!-- Table body END -->
                                 </table>
                             </div>
-                            <!-- Top rated post END -->
+                            <!-- Top rated episode END -->
 
                             <!-- Pagination START -->
                             <div class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4 mt-sm-3">
@@ -686,7 +698,7 @@ Header END -->
                                             <div class="d-flex align-items-center position-relative">
                                                 <div class="avatar avatar-xs me-2">
                                                     <img class="avatar-img rounded-circle"
-                                                         src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }} /avatar/01.jpg"
+                                                         src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?> /avatar/01.jpg"
                                                          alt="avatar">
                                                 </div>
                                                 <div>
@@ -741,7 +753,7 @@ Header END -->
                                             <div class="d-flex align-items-center position-relative">
                                                 <div class="avatar avatar-xs me-2">
                                                     <img class="avatar-img rounded-circle"
-                                                         src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }} /avatar/02.jpg"
+                                                         src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?> /avatar/02.jpg"
                                                          alt="avatar">
                                                 </div>
                                                 <div>
@@ -796,7 +808,7 @@ Header END -->
                                             <div class="d-flex align-items-center position-relative">
                                                 <div class="avatar avatar-xs me-2">
                                                     <img class="avatar-img rounded-circle"
-                                                         src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }} /avatar/03.jpg"
+                                                         src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?> /avatar/03.jpg"
                                                          alt="avatar">
                                                 </div>
                                                 <div>
@@ -851,7 +863,7 @@ Header END -->
                                             <div class="d-flex align-items-center position-relative">
                                                 <div class="avatar avatar-xs me-2">
                                                     <img class="avatar-img rounded-circle"
-                                                         src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }} /avatar/04.jpg"
+                                                         src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?> /avatar/04.jpg"
                                                          alt="avatar">
                                                 </div>
                                                 <div>
@@ -906,7 +918,7 @@ Header END -->
                                             <div class="d-flex align-items-center position-relative">
                                                 <div class="avatar avatar-xs me-2">
                                                     <img class="avatar-img rounded-circle"
-                                                         src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }} /avatar/05.jpg"
+                                                         src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?> /avatar/05.jpg"
                                                          alt="avatar">
                                                 </div>
                                                 <div>
@@ -995,7 +1007,8 @@ Header END -->
 
 <!-- =======================
 Footer START -->
-{{ $view->make('backend/main/layout/footer') }}
+<?php echo e($view->make('backend/main/layout/footer')); ?>
+
 <!-- =======================
 Footer END -->
 
@@ -1015,13 +1028,13 @@ Footer END -->
                     <!-- Avatar -->
                     <div class="avatar avatar-md me-4 flex-shrink-0">
                         <img class="avatar-img rounded-circle"
-                             src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }} /avatar/04.jpg"
+                             src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?> /avatar/04.jpg"
                              alt="avatar">
                     </div>
                     <!-- Text -->
                     <div>
                         <div class="d-sm-flex mt-1 mt-md-0 align-items-center">
-                            <h5 class="me-3 mb-0">{{ current($users->get(['id' => $comment->user_id]))->first_name . ' ' . current($users->get(['id' => $comment->user_id]))->last_name }}</h5>
+                            <h5 class="me-3 mb-0"><?php echo e(current($users->get(['id' => $comment->user_id]))->first_name . ' ' . current($users->get(['id' => $comment->user_id]))->last_name); ?></h5>
                             <!-- Review star -->
                             <ul class="list-inline mb-0">
                                 <li class="list-inline-item me-0"><i class="fas fa-star text-warning"></i></li>
@@ -1033,7 +1046,7 @@ Footer END -->
                         </div>
                         <!-- Info -->
                         <p class="small mb-2">2 روز پیش</p>
-                        <p class="mb-2">{{ $comment->text }}</p>
+                        <p class="mb-2"><?php echo e($comment->text); ?></p>
                     </div>
                 </div>
             </div>
@@ -1053,15 +1066,15 @@ Footer END -->
 JS libraries, plugins and custom scripts -->
 
 <!-- Bootstrap JS -->
-<script src="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Vendors -->
-<script src="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/apexcharts/js/apexcharts.min.js"></script>
-<script src="{{ route('/Others/Themes/Frontend/Theme/assets/vendor') }}/quill/js/quill.min.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/apexcharts/js/apexcharts.min.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/vendor')); ?>/quill/js/quill.min.js"></script>
 
 <!-- Template Functions -->
-<script src="{{ route('/Others/Themes/Frontend/Theme/assets/js') }}/functions.js"></script>
+<script src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/js')); ?>/functions.js"></script>
 
 </body>
 
-</html>
+</html><?php /**PATH /Applications/MAMP/htdocs/ParsaFramework/Views/backend/main/layout/podcast-comments/management.blade.php ENDPATH**/ ?>

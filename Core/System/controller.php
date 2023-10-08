@@ -116,7 +116,7 @@ class controller
     {
 //        $count = 0;
         $users = loadModel(Users::class);
-        $posts = loadModel(Posts::class)->get();
+        $posts = loadModel(Posts::class)->get(['status' => 'approved']);
         $categories = loadModel(PostCategories::class);
 //        foreach ($posts as $post) {
 //            $count ++;
@@ -131,7 +131,7 @@ class controller
 //            }
 //        }
         return $this->view()->blade()->render('frontend/main/posts', [
-            'posts' => $posts,
+            'posts' => array_reverse($posts),
             'users' => $users,
             'categories' => $categories,
         ]);

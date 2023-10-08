@@ -256,7 +256,7 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'App\\DesingnPatterns\\Proxy\\Wallet\\Interface\\WalletProxy' => __DIR__ . '/../..' . '/app/DesignPatterns/Proxy/Wallet/WalletProxy.php',
         'App\\Exception\\QueryBuilderException' => __DIR__ . '/../..' . '/app/exceptions/QueryBuilderException.php',
         'App\\Middlewares\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/AdminMiddleware.php',
-        'App\\Middlewares\\ManagerMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/ManagerMiddleware.php',
+        'App\\Middlewares\\FulladminMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/FulladminMiddleware.php',
         'App\\Middlewares\\SigninMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/SigninMiddleware.php',
         'App\\Model\\Authors' => __DIR__ . '/../..' . '/app/Models/authors.php',
         'App\\Models\\Books' => __DIR__ . '/../..' . '/app/Models/books.php',

@@ -27,21 +27,29 @@
                         <a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-pencil me-1"></i>{{ $lang['posts'] }}</a>
                         <ul class="dropdown-menu" aria-labelledby="postMenu">
                             <!-- dropdown submenu -->
-                            <li> <a class="dropdown-item" href="{{ route('/panel/posts-management') }}">{{ $lang['posts-management'] }}</a> </li>
-                            <li> <a class="dropdown-item" href="{{ route('/panel/posts-categories-management') }}">{{ $lang['categories-management'] }}</a> </li>
-                            <li> <a class="dropdown-item" href="{{ route('/panel/my-posts') }}">{{ $lang['my-posts'] }}</a> </li>
-                            <li> <a class="dropdown-item" href="{{ route('/panel/post-categories') }}">{{ $lang['category'] }}</a> </li>
-                            <li> <a class="dropdown-item" href="{{ route('/panel/add-post') }}">{{ $lang['create'] }}</a></li>
-                            <li> <a class="dropdown-item" href="{{ route('/panel/posts-comments-management') }}">{{ $lang['comments'] }}</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('/panel/add-post') }}">ایجاد مطلب جدید</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('/panel/my-posts') }}">مطالب من</a> </li>
+                            @if($user->user_type == 'fulladmin')
+                                <li> <a class="dropdown-item" href="{{ route('/panel/posts-management') }}">مدیریت مطالب</a></li>
+                            @endif
+                            <li> <a class="dropdown-item" href="{{ route('/panel/add-post-category') }}">ایجاد دسته بندی جدید</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('/panel/post-categories') }}">دسته بندی ها</a> </li>
+                            @if($user->user_type == 'fulladmin')
+                                <li> <a class="dropdown-item" href="{{ route('/panel/posts-categories-management') }}">مدیریت دسته بندی ها</a></li>
+                            @endif
+                            <li> <a class="dropdown-item" href="{{ route('/panel/posts-comments-management') }}">نظرات</a></li>
                         </ul>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href=""><i class="fa fa-podcast"></i>  {{ $lang['aaron-cast'] }}</a>
+                        <a class="nav-link dropdown-toggle"><i class="fa fa-podcast"></i>  {{ $lang['aaron-cast'] }}</a>
                         <ul class="dropdown-menu">
-                            <li> <a class="dropdown-item" href="{{ route('/panel/add-podcast') }}">{{ $lang['create-new-podcast'] }}</a> </li>
+                            <li> <a class="dropdown-item" href="{{ route('/panel/add-podcast') }}">ایجاد پادکست جدید</a> </li>
                             <li> <a class="dropdown-item" href="{{ route('/panel/my-podcasts') }}">پادکست های من</a> </li>
-                            <li> <a class="dropdown-item" href="{{ route('/panel/podcasts-management') }}">مدیریت پادکست ها</a> </li>
+                            @if($user->user_type == 'fulladmin')
+                                <li> <a class="dropdown-item" href="{{ route('/panel/podcasts-management') }}">مدیریت پادکست ها</a> </li>
+                            @endif
+                            <li> <a class="dropdown-item" href="{{ route('/panel/podcasts-comments-management') }}">نظرات</a> </li>
                         </ul>
                     </li>
 
@@ -54,7 +62,7 @@
                             <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-author-list.html">لیست نویسندگان</a></li>
                             <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-author-single.html">جزئیات نویسنده</a></li>
                             <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-edit-profile.html">ویرایش حساب کاربری</a></li>
-                            <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-reviews.html">نظرات</a></li>
+                            <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-reviews.html">مدیریت نظرات</a></li>
                             <li> <a class="dropdown-item" href="{{ route('/Others/Themes/Frontend/Theme/') }}dashboard-settings.html">تنظیمات</a></li>
                             <li class="dropdown-divider"></li>
                             <li> <a class="dropdown-item" href="#" target="_blank"> <i class="text-warning fa-fw bi bi-life-preserver me-2"></i>پشتیبانی</a></li>

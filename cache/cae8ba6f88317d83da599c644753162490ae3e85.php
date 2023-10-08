@@ -224,7 +224,7 @@ Header END -->
                                 </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php if($comment->id == $reply): ?>
-                                <form action="<?php echo e(route('/') . $action); ?>" method="post" class="row g-3 mt-2">
+                                <form action="<?php echo e(route('') . $action); ?>" method="post" class="row g-3 mt-2">
                                     <div class="col-12">
                                         <label class="form-label">متن پاسخ *</label>
                                         <textarea name="text" class="form-control" rows="3"></textarea>

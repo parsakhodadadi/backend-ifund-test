@@ -136,12 +136,12 @@ Header END -->
                                     <tbody class="border-top-0">
                                     <!-- Table item -->
                                     @foreach($comments as $comment)
-                                        @foreach(array_reverse($replyComments->get(['post_comment_id' => $comment->id])) as $replyComment)
+                                        @foreach(array_reverse($replyComments->get(['podcast_comment_id' => $comment->id])) as $replyComment)
                                             <tr>
                                                 <!-- Table data -->
                                                 <td>
                                                     <h6 class="course-title mb-0"><a
-                                                                href="#">{{ current($posts->get(['id' => $comment->post_id]))->title }}</a>
+                                                                href="#">{{ current($episodes->get(['id' => $comment->podcast_id]))->title }}</a>
                                                     </h6>
                                                 </td>
                                                 <!-- Table data -->
@@ -191,21 +191,21 @@ Header END -->
                                                                     aria-labelledby="dropdownReview">
                                                                     @if($replyComment->status == 'disapproved')
                                                                         <li><a class="dropdown-item"
-                                                                               href="{{ route('/panel/posts-comments-management/approve-reply/') . $replyComment->id }}"><i
+                                                                               href="{{ route('/panel/podcasts-comments-management/approve-reply/') . $replyComment->id }}"><i
                                                                                         class="bi bi-pencil-square fa-fw me-2"></i>
                                                                                 {{ $lang['approve'] }}
                                                                             </a>
                                                                         </li>
                                                                     @else
                                                                         <li><a class="dropdown-item"
-                                                                               href="{{ route('/panel/posts-comments-management/approve-reply/') . $replyComment->id }}"><i
+                                                                               href="{{ route('/panel/podcasts-comments-management/approve-reply/') . $replyComment->id }}"><i
                                                                                         class="bi bi-pencil-square fa-fw me-2"></i>
                                                                                 عدم تایید
                                                                             </a>
                                                                         </li>
                                                                     @endif
                                                                     <li><a class="dropdown-item"
-                                                                           href="{{ route('/panel/posts-comments-management/delete-reply/') . $replyComment->id }}"><i
+                                                                           href="{{ route('/panel/podcasts-comments-management/delete-reply/') . $replyComment->id }}"><i
                                                                                     class="bi bi-trash fa-fw me-2"></i>{{ $lang['delete'] }}
                                                                         </a></li>
                                                                 </ul>
@@ -223,21 +223,21 @@ Header END -->
                                                                     aria-labelledby="dropdownReview">
                                                                     @if($replyComment->status == 'disapproved')
                                                                         <li><a class="dropdown-item"
-                                                                               href="{{ route('/panel/posts-comments-management/approve-reply/') . $replyComment->id }}"><i
+                                                                               href="{{ route('/panel/podcasts-comments-management/approve-reply/') . $replyComment->id }}"><i
                                                                                         class="bi bi-pencil-square fa-fw me-2"></i>
                                                                                 {{ $lang['approve'] }}
                                                                             </a>
                                                                         </li>
                                                                     @else
                                                                         <li><a class="dropdown-item"
-                                                                               href="{{ route('/panel/posts-comments-management/approve-reply/') . $replyComment->id }}"><i
+                                                                               href="{{ route('/panel/podcasts-comments-management/approve-reply/') . $replyComment->id }}"><i
                                                                                         class="bi bi-pencil-square fa-fw me-2"></i>
                                                                                 عدم تایید
                                                                             </a>
                                                                         </li>
                                                                     @endif
                                                                     <li><a class="dropdown-item"
-                                                                           href="{{ route('/panel/posts-comments-management/delete/') . $replyComment->id }}"><i
+                                                                           href="{{ route('/panel/podcasts-comments-management/delete/') . $replyComment->id }}"><i
                                                                                     class="bi bi-trash fa-fw me-2"></i>{{ $lang['delete'] }}
                                                                         </a></li>
                                                                 </ul>
@@ -251,7 +251,7 @@ Header END -->
                                             <!-- Table data -->
                                             <td>
                                                 <h6 class="course-title mb-0"><a
-                                                            href="#">{{ current($posts->get(['id' => $comment->post_id]))->title }}</a>
+                                                            href="#">{{ current($episodes->get(['id' => $comment->podcast_id]))->title }}</a>
                                                 </h6>
                                             </td>
                                             <!-- Table data -->
@@ -290,31 +290,31 @@ Header END -->
                                                 @if($currentUser->user_type == 'fulladmin')
                                                     <div class="dropdown">
                                                         @if(current($users->get(['id '=> $comment->user_id]))->user_type != 'fulladmin')
-                                                        <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                           id="dropdownReview" data-bs-toggle="dropdown"
-                                                           aria-expanded="false">
-                                                            <i class="bi bi-three-dots fa-fw"></i>
-                                                        </a>
-                                                        <!-- dropdown button -->
+                                                            <a href="#" class="btn btn-light btn-round mb-0" role="button"
+                                                               id="dropdownReview" data-bs-toggle="dropdown"
+                                                               aria-expanded="false">
+                                                                <i class="bi bi-three-dots fa-fw"></i>
+                                                            </a>
+                                                            <!-- dropdown button -->
                                                             <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
                                                                 aria-labelledby="dropdownReview">
                                                                 @if($comment->status == 'disapproved')
                                                                     <li><a class="dropdown-item"
-                                                                           href="{{ route('/panel/posts-comments-management/approve/') . $comment->id }}"><i
+                                                                           href="{{ route('/panel/podcasts-comments-management/approve/') . $comment->id }}"><i
                                                                                     class="bi bi-pencil-square fa-fw me-2"></i>
                                                                             {{ $lang['approve'] }}
                                                                         </a>
                                                                     </li>
                                                                 @else
                                                                     <li><a class="dropdown-item"
-                                                                           href="{{ route('/panel/posts-comments-management/approve/') . $comment->id }}"><i
+                                                                           href="{{ route('/panel/podcasts-comments-management/approve/') . $comment->id }}"><i
                                                                                     class="bi bi-pencil-square fa-fw me-2"></i>
                                                                             عدم تایید
                                                                         </a>
                                                                     </li>
                                                                 @endif
                                                                 <li><a class="dropdown-item"
-                                                                       href="{{ route('/panel/posts-comments-management/delete/') . $comment->id }}"><i
+                                                                       href="{{ route('/panel/podcasts-comments-management/delete/') . $comment->id }}"><i
                                                                                 class="bi bi-trash fa-fw me-2"></i>{{ $lang['delete'] }}
                                                                     </a></li>
                                                             </ul>
@@ -330,23 +330,23 @@ Header END -->
                                                                 <!-- dropdown button -->
                                                                 <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
                                                                     aria-labelledby="dropdownReview">
-                                                                    @if($comment->status == 'approved')
+                                                                    @if($comment->status == 'disapproved')
                                                                         <li><a class="dropdown-item"
-                                                                               href="{{ route('/panel/posts-comments-management/approve/') . $comment->id }}"><i
+                                                                               href="{{ route('/panel/podcasts-comments-management/approve/') . $comment->id }}"><i
                                                                                         class="bi bi-pencil-square fa-fw me-2"></i>
                                                                                 {{ $lang['approve'] }}
                                                                             </a>
                                                                         </li>
                                                                     @else
                                                                         <li><a class="dropdown-item"
-                                                                               href="{{ route('/panel/posts-comments-management/approve/') . $comment->id }}"><i
+                                                                               href="{{ route('/panel/podcasts-comments-management/approve/') . $comment->id }}"><i
                                                                                         class="bi bi-pencil-square fa-fw me-2"></i>
                                                                                 عدم تایید
                                                                             </a>
                                                                         </li>
                                                                     @endif
                                                                     <li><a class="dropdown-item"
-                                                                           href="{{ route('/panel/posts-comments-management/delete/') . $comment->id }}"><i
+                                                                           href="{{ route('/panel/podcasts-comments-management/delete/') . $comment->id }}"><i
                                                                                     class="bi bi-trash fa-fw me-2"></i>{{ $lang['delete'] }}
                                                                         </a></li>
                                                                 </ul>
@@ -388,7 +388,7 @@ Header END -->
                     <!-- Blog list table END -->
                 </div>
                 <div class="col-lg-6">
-                    <!-- Top rated post START -->
+                    <!-- Top rated episode START -->
                     <div class="card border bg-transparent rounded-3">
                         <!-- Card header START -->
                         <div class="card-header bg-transparent border-bottom py-3">
@@ -627,7 +627,7 @@ Header END -->
                                     <!-- Table body END -->
                                 </table>
                             </div>
-                            <!-- Top rated post END -->
+                            <!-- Top rated episode END -->
 
                             <!-- Pagination START -->
                             <div class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4 mt-sm-3">

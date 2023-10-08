@@ -150,7 +150,8 @@ class PostCommentController extends controller
         echo $this->blade->render('backend/main/layout/post-comments/management', [
             'view' => $this->blade,
             'lang' => $this->lang,
-            'comments' => $this->comments->get(),
+            'comments' => array_reverse($this->comments->get()),
+            'replyComments' => $this->replyComments,
             'posts' => $this->posts,
             'users' => $this->users,
             'currentUser' => $this->currentUser,
@@ -158,31 +159,81 @@ class PostCommentController extends controller
         ]);
     }
 
-    public function delete(int $itemId)
-    {
-        $commentor = current($this->users->get(['id' => current($this->comments->get(['id' => $itemId]))->user_id]));
-        if ($this->currentUser->user_type == 'admin') {
-            if ($commentor->user_type == 'admin') {
-                exit('Invalid Status');
-            }
-        }
-        $errorMessage = $this->comments->delete(['id' => $itemId]);
-        if (empty($errorMessage)) {
-            redirect('/panel/posts-comments-management');
-        }
-    }
-
     public function approve(int $itemId)
     {
-        $commentor = current($this->users->get(['id' => current($this->comments->get(['id' => $itemId]))->user_id]));
-        if ($this->currentUser->user_type == 'admin') {
-            if ($commentor->user_type == 'admin') {
-                exit('Invalid Status');
+        if ($_SERVER['REQUEST_URI'] == '/ParsaFramework/panel/posts-comments-management/approve/' . $itemId) {
+            $comment = current($this->comments->get(['id' => $itemId]));
+            $commentor = current($this->users->get(['id' => $comment->user_id]));
+            if (empty($comment)) {
+                exit('<b>Invalid Comment</b>');
+            }
+            if (!($commentor->user_type == 'admin' && $this->currentUser->user_type == 'fulladmin') && !($commentor->user_type == 'user' && $this->currentUser->user_type == 'admin')) {
+                exit('<b>Invalid Access</b>');
+            }
+            if ($comment->status == 'approved') {
+                $errorMessage = $this->comments->update(['id' => $itemId], ['status' => 'disapproved']);
+                if (!empty($errorMessage)) {
+                    exit('error');
+                }
+            } else {
+                $errorMessage = $this->comments->update(['id' => $itemId], ['status' => 'approved']);
+                if (!empty($errorMessage)) {
+                    exit('error');
+                }
+            }
+        } else {
+            $reply = current($this->replyComments->get(['id' => $itemId]));
+            $commentor = current($this->users->get(['id' => $reply->user_id]));
+            if (empty($reply)) {
+                exit('<b>Invalid Comment</b>');
+            }
+            if (!($commentor->user_type == 'admin' && $this->currentUser->user_type == 'fulladmin') && !($commentor->user_type == 'user' && $this->currentUser->user_type == 'admin')) {
+                exit('<b>Invalid Access</b>');
+            }
+            if ($reply->status == 'approved') {
+                $errorMessage = $this->replyComments->update(['id' => $itemId], ['status' => 'disapproved']);
+                if (!empty($errorMessage)) {
+                    exit('error');
+                }
+            } else {
+                $errorMessage = $this->replyComments->update(['id' => $itemId], ['status' => 'approved']);
+                if (!empty($errorMessage)) {
+                    exit('error');
+                }
             }
         }
-        $errorMessage = $this->comments->update(['id' => $itemId], ['status' => 'approved']);
-        if (empty($errorMessage)) {
-            redirect('/panel/posts-comments-management');
+        redirect('/panel/podcasts-comments-management');
+    }
+
+    public function delete(int $itemId)
+    {
+        if ($_SERVER['REQUEST_URI'] ==  '/ParsaFramework/panel/posts-comments-management/delete/' . $itemId) {
+            $comment = current($this->comments->get(['id' => $itemId]));
+            $commentor = current($this->users->get(['id' => $comment->user_id]));
+            if (empty($comment)) {
+                exit('<b>Invalid Comment</b>');
+            }
+            if (!($commentor->user_type == 'admin' && $this->currentUser->user_type == 'fulladmin') && !($commentor->user_type == 'user' && $this->currentUser->user_type == 'admin')) {
+                exit('<b>Invalid Access</b>');
+            }
+            $errorMessage = $this->comments->delete(['id' => $itemId]);
+            if (!empty($errorMessage)) {
+                exit('error');
+            }
+        } else {
+            $reply = current($this->replyComments->get(['id' => $itemId]));
+            $commentor = current($this->users->get(['id' => $reply->user_id]));
+            if (empty($reply)) {
+                exit('<b>Invalid Comment</b>');
+            }
+            if (!($commentor->user_type == 'admin' && $this->currentUser->user_type == 'fulladmin') && !($commentor->user_type == 'user' && $this->currentUser->user_type == 'admin')) {
+                exit('<b>Invalid Access</b>');
+            }
+            $errorMessage = $this->replyComments->delete(['id' => $itemId]);
+            if (!empty($errorMessage)) {
+                exit('error');
+            }
         }
+        redirect('/panel/posts-comments-management');
     }
 }

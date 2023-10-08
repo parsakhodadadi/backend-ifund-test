@@ -65,7 +65,9 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     //posts-comments
     $router->get('/panel/posts-comments-management', "PostCommentController@management");
     $router->get('/panel/posts-comments-management/delete/(\d+)', "PostCommentController@delete");
+    $router->get('/panel/posts-comments-management/delete-reply/(\d+)', "PostCommentController@delete");
     $router->get('/panel/posts-comments-management/approve/(\d+)', "PostCommentController@approve");
+    $router->get('/panel/posts-comments-management/approve-reply/(\d+)', "PostCommentController@approve");
     $router->before('GET|POST', '/panel/posts-comments-management', 'SigninController@checkAdmin');
     $router->before('GET|POST', '/panel/posts-comments-management/.*', 'SigninController@checkAdmin');
 
@@ -95,6 +97,13 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->get('/podcasts/(\d+)/reply/(\d+)', "PodcastCommentController@reply");
     $router->post('/podcasts/(\d+)/reply/(\d+)', "PodcastCommentController@reply");
     $router->before('GET|POST', '/podcasts/(\d+)/.*', "SinginController@checkSignin");
+    $router->get('/panel/podcasts-comments-management', "PodcastCommentController@management");
+    $router->get('/panel/podcasts-comments-management/approve/(\d+)', "PodcastCommentController@approve");
+    $router->get('/panel/podcasts-comments-management/approve-reply/(\d+)', "PodcastCommentController@approve");
+    $router->get('/panel/podcasts-comments-management/delete/(\d+)', "PodcastCommentController@delete");
+    $router->get('/panel/podcasts-comments-management/delete-reply/(\d+)', "PodcastCommentController@delete");
+    $router->before('GET|POST', '/panel/podcasts-comments-management', 'SigninController@checkAdmin');
+    $router->before('GET|POST', '/panel/podcasts-comments-management/.*', 'SigninController@checkAdmin');
 
     //books
     $router->get('/panel/add-book', "BookController@create");

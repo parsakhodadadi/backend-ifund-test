@@ -4,12 +4,15 @@ namespace App\Middlewares;
 
 use App\Models\Users;
 
-class ManagerMiddleware
+class FulladminMiddleware
 {
     private $users;
 
     public function __construct()
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $this->users = loadModel(Users::class);
     }
 
@@ -17,7 +20,7 @@ class ManagerMiddleware
     {
         if (isset($_SESSION['USERID'])) {
             if (current($this->users->get(['id' => $_SESSION['USERID']]))->user_type != 'fulladmin') {
-                redirect('/panel');
+                exit('<b>You do not have access to this module</b>');
             }
         }
     }

@@ -32,7 +32,7 @@ return array(
     'App\\DesingnPatterns\\Proxy\\Wallet\\Interface\\WalletProxy' => $baseDir . '/app/DesignPatterns/Proxy/Wallet/WalletProxy.php',
     'App\\Exception\\QueryBuilderException' => $baseDir . '/app/exceptions/QueryBuilderException.php',
     'App\\Middlewares\\AdminMiddleware' => $baseDir . '/app/Middlewares/AdminMiddleware.php',
-    'App\\Middlewares\\ManagerMiddleware' => $baseDir . '/app/Middlewares/ManagerMiddleware.php',
+    'App\\Middlewares\\FulladminMiddleware' => $baseDir . '/app/Middlewares/FulladminMiddleware.php',
     'App\\Middlewares\\SigninMiddleware' => $baseDir . '/app/Middlewares/SigninMiddleware.php',
     'App\\Model\\Authors' => $baseDir . '/app/Models/authors.php',
     'App\\Models\\Books' => $baseDir . '/app/Models/books.php',

@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Middlewares\AdminMiddleware;
-use App\Middlewares\ManagerMiddleware;
+use App\Middlewares\FulladminMiddleware;
 use App\Models\Users;
 use App\Services\User\SigninAuth;
 use Core\System\controller;
@@ -141,7 +141,7 @@ class SigninController extends controller
 
     public function checkFullAdmin()
     {
-        $managerMiddleware = new ManagerMiddleware();
+        $managerMiddleware = new FulladminMiddleware();
         $managerMiddleware->boot();
     }
 

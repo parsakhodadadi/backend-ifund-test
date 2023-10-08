@@ -183,12 +183,11 @@ Header END -->
                         <br>
                     <?php endif; ?>
                     <div>
+                        <!-- Comment children level 3 -->
+                        <!-- Reply START -->
+                        <hr>
                         <h3>
-                            <?php ($num = 0); ?>
-                            <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <?php ($num++); ?>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            <?php echo e($num . ' ' . __('comments.comment')); ?>
+                            <?php echo e(count($comments) . ' ' . __('comments.comment')); ?>
 
                         </h3>
                         <!-- Comment level 1-->
@@ -225,7 +224,7 @@ Header END -->
                                 </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php if($comment->id == $reply): ?>
-                                <form action="<?php echo e(route('/') . $action); ?>" method="post" class="row g-3 mt-2">
+                                <form action="<?php echo e(route('') . $action); ?>" method="post" class="row g-3 mt-2">
                                     <div class="col-12">
                                         <label class="form-label">متن پاسخ *</label>
                                         <textarea name="text" class="form-control" rows="3"></textarea>
@@ -249,9 +248,6 @@ Header END -->
                                 </form>
                             <?php endif; ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        <!-- Comment children level 3 -->
-                        <!-- Reply START -->
-                        <hr>
                         <div>
                             <h3>ثبت دیدگاه</h3>
                             <small>آدرس ایمیل شما منتشر نخواهد شد. فیلدهای الزامی علامت گذاری شده اند *</small>

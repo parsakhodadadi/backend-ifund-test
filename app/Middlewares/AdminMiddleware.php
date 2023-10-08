@@ -12,6 +12,9 @@ class AdminMiddleware
 
     public function __construct()
     {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         $this->users = loadModel(Users::class);
     }
 
@@ -19,7 +22,7 @@ class AdminMiddleware
     {
         if (isset($_SESSION['USERID'])) {
             if (current($this->users->get(['id' => $_SESSION['USERID']]))->user_type == 'user') {
-                redirect('/panel');
+                exit('<b>You do not have access to this module</b>');
             }
         }
     }

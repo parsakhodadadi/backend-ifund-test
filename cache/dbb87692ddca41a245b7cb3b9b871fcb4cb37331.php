@@ -2,7 +2,7 @@
 <html lang="fa" dir="rtl">
 
 <head>
-    <title>Blogzine - قالب HTML مجله خبری و وبلاگ</title>
+    <title>مجله ارون - نظرات</title>
 
     <!-- Meta Tags -->
     <meta charset="utf-8">
@@ -101,7 +101,6 @@ Header END -->
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
-
     <!-- =======================
     Reviews START -->
     <section class="py-4">
@@ -111,7 +110,8 @@ Header END -->
                     <!-- Title -->
                     <div class="d-sm-flex justify-content-sm-between align-items-center">
                         <h1 class="mb-2 mb-sm-0 h3"><?php echo e($lang['comments-list']); ?> <span
-                                    class="badge bg-primary bg-opacity-10 text-primary"><?php echo e(count($comments)); ?></span></h1>
+                                    class="badge bg-primary bg-opacity-10 text-primary"><?php echo e(count($comments) + count($replyComments->get())); ?></span>
+                        </h1>
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@ Header END -->
                                     <!-- Table head -->
                                     <thead class="table-dark">
                                     <tr>
-                                        <th scope="col" class="border-0 rounded-start"><?php echo e($lang['post-title']); ?></th>
+                                        <th scope="col" class="border-0 rounded-start">عنوان اپیزود</th>
                                         <th scope="col" class="border-0"><?php echo e($lang['commentor']); ?></th>
                                         <th scope="col" class="border-0"><?php echo e($lang['rank']); ?></th>
                                         <th scope="col" class="border-0"><?php echo e($lang['status']); ?></th>
@@ -138,6 +138,122 @@ Header END -->
                                     <tbody class="border-top-0">
                                     <!-- Table item -->
                                     <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php $__currentLoopData = array_reverse($replyComments->get(['post_comment_id' => $comment->id])); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $replyComment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <tr>
+                                                <!-- Table data -->
+                                                <td>
+                                                    <h6 class="course-title mb-0"><a
+                                                                href="#"><?php echo e(current($posts->get(['id' => $comment->post_id]))->title); ?></a>
+                                                    </h6>
+                                                </td>
+                                                <!-- Table data -->
+                                                <td>
+                                                    <?php echo e(current($users->get(['id' => $replyComment->user_id]))->first_name . ' ' . current($users->get(['id' => $replyComment->user_id]))->last_name); ?>
+
+                                                </td>
+                                                <!-- Table data -->
+                                                <td>
+                                                    <ul class="list-inline mb-2">
+                                                        <li class="list-inline-item me-0 small"><i
+                                                                    class="fas fa-star text-warning"></i></li>
+                                                        <li class="list-inline-item me-0 small"><i
+                                                                    class="fas fa-star text-warning"></i></li>
+                                                        <li class="list-inline-item me-0 small"><i
+                                                                    class="fas fa-star text-warning"></i></li>
+                                                        <li class="list-inline-item me-0 small"><i
+                                                                    class="fas fa-star text-warning"></i></li>
+                                                        <li class="list-inline-item me-0 small"><i
+                                                                    class="fas fa-star text-warning"></i></li>
+                                                    </ul>
+                                                    <p class="small course-title"><?php echo e($replyComment->text); ?> <a href="#"
+                                                                                                               data-bs-toggle="modal"
+                                                                                                               data-bs-target="#viewReview"><?php echo e($lang['watch-more']); ?></a>
+                                                    </p>
+                                                </td>
+                                                <!-- Table data -->
+                                                <td>
+                                                    <?php if($replyComment->status == 'approved'): ?>
+                                                        <span class="badge bg-success bg-opacity-10 text-success mb-2"><?php echo e($lang['approved']); ?></span>
+                                                    <?php else: ?>
+                                                        <span class="badge bg-danger bg-opacity-10 text-danger mb-2"><?php echo e($lang['disapproved']); ?></span>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <!-- Table data -->
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <?php if($currentUser->user_type == 'fulladmin'): ?>
+                                                            <?php if(current($users->get(['id' => $replyComment->user_id]))->user_type != 'fulladmin'): ?>
+                                                                <a href="#" class="btn btn-light btn-round mb-0"
+                                                                   role="button"
+                                                                   id="dropdownReview" data-bs-toggle="dropdown"
+                                                                   aria-expanded="false">
+                                                                    <i class="bi bi-three-dots fa-fw"></i>
+                                                                </a>
+                                                                <!-- dropdown button -->
+                                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
+                                                                    aria-labelledby="dropdownReview">
+                                                                    <?php if($replyComment->status == 'disapproved'): ?>
+                                                                        <li><a class="dropdown-item"
+                                                                               href="<?php echo e(route('/panel/posts-comments-management/approve-reply/') . $replyComment->id); ?>"><i
+                                                                                        class="bi bi-pencil-square fa-fw me-2"></i>
+                                                                                <?php echo e($lang['approve']); ?>
+
+                                                                            </a>
+                                                                        </li>
+                                                                    <?php else: ?>
+                                                                        <li><a class="dropdown-item"
+                                                                               href="<?php echo e(route('/panel/posts-comments-management/approve-reply/') . $replyComment->id); ?>"><i
+                                                                                        class="bi bi-pencil-square fa-fw me-2"></i>
+                                                                                عدم تایید
+                                                                            </a>
+                                                                        </li>
+                                                                    <?php endif; ?>
+                                                                    <li><a class="dropdown-item"
+                                                                           href="<?php echo e(route('/panel/posts-comments-management/delete-reply/') . $replyComment->id); ?>"><i
+                                                                                    class="bi bi-trash fa-fw me-2"></i><?php echo e($lang['delete']); ?>
+
+                                                                        </a></li>
+                                                                </ul>
+                                                            <?php endif; ?>
+                                                        <?php else: ?>
+                                                            <?php if(current($users->get(['id' => $replyComment->user_id]))->user_type != 'admin' && current($users->get(['id' => $replyComment->user_id]))->user_type != 'admin'): ?>
+                                                                <a href="#" class="btn btn-light btn-round mb-0"
+                                                                   role="button"
+                                                                   id="dropdownReview" data-bs-toggle="dropdown"
+                                                                   aria-expanded="false">
+                                                                    <i class="bi bi-three-dots fa-fw"></i>
+                                                                </a>
+                                                                <!-- dropdown button -->
+                                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
+                                                                    aria-labelledby="dropdownReview">
+                                                                    <?php if($replyComment->status == 'disapproved'): ?>
+                                                                        <li><a class="dropdown-item"
+                                                                               href="<?php echo e(route('/panel/posts-comments-management/approve-reply/') . $replyComment->id); ?>"><i
+                                                                                        class="bi bi-pencil-square fa-fw me-2"></i>
+                                                                                <?php echo e($lang['approve']); ?>
+
+                                                                            </a>
+                                                                        </li>
+                                                                    <?php else: ?>
+                                                                        <li><a class="dropdown-item"
+                                                                               href="<?php echo e(route('/panel/posts-comments-management/approve-reply/') . $replyComment->id); ?>"><i
+                                                                                        class="bi bi-pencil-square fa-fw me-2"></i>
+                                                                                عدم تایید
+                                                                            </a>
+                                                                        </li>
+                                                                    <?php endif; ?>
+                                                                    <li><a class="dropdown-item"
+                                                                           href="<?php echo e(route('/panel/posts-comments-management/delete/') . $replyComment->id); ?>"><i
+                                                                                    class="bi bi-trash fa-fw me-2"></i><?php echo e($lang['delete']); ?>
+
+                                                                        </a></li>
+                                                                </ul>
+                                                            <?php endif; ?>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <tr>
                                             <!-- Table data -->
                                             <td>
@@ -179,51 +295,76 @@ Header END -->
                                             </td>
                                             <!-- Table data -->
                                             <td>
-                                                <div class="dropdown">
-                                                    <?php if($currentUser->user_type == 'fulladmin'): ?>
+                                                <?php if($currentUser->user_type == 'fulladmin'): ?>
+                                                    <div class="dropdown">
+                                                        <?php if(current($users->get(['id '=> $comment->user_id]))->user_type != 'fulladmin'): ?>
                                                         <a href="#" class="btn btn-light btn-round mb-0" role="button"
                                                            id="dropdownReview" data-bs-toggle="dropdown"
                                                            aria-expanded="false">
                                                             <i class="bi bi-three-dots fa-fw"></i>
                                                         </a>
                                                         <!-- dropdown button -->
-                                                        <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
-                                                            aria-labelledby="dropdownReview">
-                                                            <?php if($comment->status == 'disapproved'): ?>
-                                                                <li><a class="dropdown-item" href="<?php echo e(route('/panel/posts-comments-management/approve/') . $comment->id); ?>"><i
-                                                                                class="bi bi-pencil-square fa-fw me-2"></i>
-                                                                        <?php echo e($lang['approve']); ?>
-
-                                                                    </a>
-                                                                </li>
-                                                            <?php endif; ?>
-                                                            <li><a class="dropdown-item" href="<?php echo e(route('/panel/posts-comments-management/delete/') . $comment->id); ?>"><i
-                                                                            class="bi bi-trash fa-fw me-2"></i><?php echo e($lang['delete']); ?></a></li>
-                                                        </ul>
-                                                    <?php else: ?>
-                                                        <?php if(current($users->get(['id' => $comment->user_id]))->user_type != 'admin' && current($users->get(['id' => $comment->user_id]))->user_type != 'admin'): ?>
-                                                            <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                               id="dropdownReview" data-bs-toggle="dropdown"
-                                                               aria-expanded="false">
-                                                                <i class="bi bi-three-dots fa-fw"></i>
-                                                            </a>
-                                                            <!-- dropdown button -->
                                                             <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
                                                                 aria-labelledby="dropdownReview">
                                                                 <?php if($comment->status == 'disapproved'): ?>
-                                                                    <li><a class="dropdown-item" href="<?php echo e(route('/panel/post-comments-management/approve/') . $comment->id); ?>"><i
+                                                                    <li><a class="dropdown-item"
+                                                                           href="<?php echo e(route('/panel/posts-comments-management/approve/') . $comment->id); ?>"><i
                                                                                     class="bi bi-pencil-square fa-fw me-2"></i>
                                                                             <?php echo e($lang['approve']); ?>
 
                                                                         </a>
                                                                     </li>
+                                                                <?php else: ?>
+                                                                    <li><a class="dropdown-item"
+                                                                           href="<?php echo e(route('/panel/posts-comments-management/approve/') . $comment->id); ?>"><i
+                                                                                    class="bi bi-pencil-square fa-fw me-2"></i>
+                                                                            عدم تایید
+                                                                        </a>
+                                                                    </li>
                                                                 <?php endif; ?>
-                                                                <li><a class="dropdown-item" href="<?php echo e(route('/panel/post-comments-management/delete/') . $comment->id); ?>"><i
-                                                                                class="bi bi-trash fa-fw me-2"></i><?php echo e($lang['delete']); ?></a></li>
+                                                                <li><a class="dropdown-item"
+                                                                       href="<?php echo e(route('/panel/posts-comments-management/delete/') . $comment->id); ?>"><i
+                                                                                class="bi bi-trash fa-fw me-2"></i><?php echo e($lang['delete']); ?>
+
+                                                                    </a></li>
                                                             </ul>
                                                         <?php endif; ?>
-                                                    <?php endif; ?>
-                                                </div>
+                                                        <?php else: ?>
+                                                            <?php if(current($users->get(['id' => $comment->user_id]))->user_type != 'admin' && $currentUser->user_type == 'admin'): ?>
+                                                                <a href="#" class="btn btn-light btn-round mb-0"
+                                                                   role="button"
+                                                                   id="dropdownReview" data-bs-toggle="dropdown"
+                                                                   aria-expanded="false">
+                                                                    <i class="bi bi-three-dots fa-fw"></i>
+                                                                </a>
+                                                                <!-- dropdown button -->
+                                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
+                                                                    aria-labelledby="dropdownReview">
+                                                                    <?php if($comment->status == 'approved'): ?>
+                                                                        <li><a class="dropdown-item"
+                                                                               href="<?php echo e(route('/panel/posts-comments-management/approve/') . $comment->id); ?>"><i
+                                                                                        class="bi bi-pencil-square fa-fw me-2"></i>
+                                                                                <?php echo e($lang['approve']); ?>
+
+                                                                            </a>
+                                                                        </li>
+                                                                    <?php else: ?>
+                                                                        <li><a class="dropdown-item"
+                                                                               href="<?php echo e(route('/panel/posts-comments-management/approve/') . $comment->id); ?>"><i
+                                                                                        class="bi bi-pencil-square fa-fw me-2"></i>
+                                                                                عدم تایید
+                                                                            </a>
+                                                                        </li>
+                                                                    <?php endif; ?>
+                                                                    <li><a class="dropdown-item"
+                                                                           href="<?php echo e(route('/panel/posts-comments-management/delete/') . $comment->id); ?>"><i
+                                                                                    class="bi bi-trash fa-fw me-2"></i><?php echo e($lang['delete']); ?>
+
+                                                                        </a></li>
+                                                                </ul>
+                                                            <?php endif; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -893,7 +1034,7 @@ Footer END -->
                     <!-- Text -->
                     <div>
                         <div class="d-sm-flex mt-1 mt-md-0 align-items-center">
-                            <h5 class="me-3 mb-0">با سهراب نوری</h5>
+                            <h5 class="me-3 mb-0"><?php echo e(current($users->get(['id' => $comment->user_id]))->first_name . ' ' . current($users->get(['id' => $comment->user_id]))->last_name); ?></h5>
                             <!-- Review star -->
                             <ul class="list-inline mb-0">
                                 <li class="list-inline-item me-0"><i class="fas fa-star text-warning"></i></li>
@@ -905,12 +1046,7 @@ Footer END -->
                         </div>
                         <!-- Info -->
                         <p class="small mb-2">2 روز پیش</p>
-                        <p class="mb-2">این راست نیست که هرچه عاشق‌ تر باشی بهتر درک می‌کنی. همه‌ی آنچه عشق و عاشقی از
-                            من می‌ خواهد فقط درکِ این حکمت است: دیگری نشناختنی است؛ ماتیِ او پرده‌ی ابهامی به روی یک راز
-                            نیست. </p>
-                        <p class="mb-2">بل گواهی است که در آن بازیِ بود و نمود هیچ‌ جایی ندارد. پس من در مسرتِ عشق
-                            ورزیدن به یک ناشناس غرق می‌شوم، کسی که تا ابد ناشناس خواهد ماند. سِیری عارفانه: من آن‌چه را
-                            نمی‌شناسم می‌شناسم...! </p>
+                        <p class="mb-2"><?php echo e($comment->text); ?></p>
                     </div>
                 </div>
             </div>
