@@ -399,603 +399,603 @@ Header END -->
                     </div>
                     <!-- Blog list table END -->
                 </div>
-                <div class="col-lg-6">
-                    <!-- Top rated episode START -->
-                    <div class="card border bg-transparent rounded-3">
-                        <!-- Card header START -->
-                        <div class="card-header bg-transparent border-bottom py-3">
-                            <h4 class="mb-2 mb-sm-0">اخبار محبوب</h4>
-                        </div>
-                        <!-- Card header END -->
 
-                        <!-- Card body START -->
-                        <div class="card-body py-3">
 
-                            <!-- Blog list table START -->
-                            <div class="table-responsive border-0">
-                                <table class="table align-middle p-4 mb-0 table-shrink">
-                                    <!-- Table head -->
-                                    <thead class="table-dark">
-                                    <tr>
-                                        <th scope="col" class="border-0 rounded-start">عنوان خبر</th>
-                                        <th scope="col" class="border-0">امتیاز</th>
-                                        <th scope="col" class="border-0 rounded-end">فعالیت</th>
-                                    </tr>
-                                    </thead>
 
-                                    <!-- Table body START -->
-                                    <tbody class="border-top-0">
 
-                                    <!-- Table item -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <h6 class="course-title mb-0"><a href="#">رازهای کوچک کثیف در مورد صنعت
-                                                    تجارت </a></h6>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <ul class="list-inline d-flex mb-0">
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                            </ul>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                   id="dropdownReview6" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bi bi-three-dots fa-fw"></i>
-                                                </a>
-                                                <!-- dropdown button -->
-                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
-                                                    aria-labelledby="dropdownReview6">
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-pencil-square fa-fw me-2"></i>ویرایش</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash fa-fw me-2"></i>حذف</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
 
-                                    <!-- Table item -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <h6 class="course-title mb-0"><a href="#">دلایل انتخاب استارت آپ</a></h6>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <ul class="list-inline d-flex mb-0">
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                            </ul>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                   id="dropdownReview7" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bi bi-three-dots fa-fw"></i>
-                                                </a>
-                                                <!-- dropdown button -->
-                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
-                                                    aria-labelledby="dropdownReview7">
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-pencil-square fa-fw me-2"></i>ویرایش</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash fa-fw me-2"></i>حذف</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <!-- Table item -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <h6 class="course-title mb-0"><a href="#">حضور ایرانسل در رویداد فناورانه
-                                                    خودروهای آینده</a></h6>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <ul class="list-inline d-flex mb-0">
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                            </ul>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                   id="dropdownReview8" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bi bi-three-dots fa-fw"></i>
-                                                </a>
-                                                <!-- dropdown button -->
-                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
-                                                    aria-labelledby="dropdownReview8">
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-pencil-square fa-fw me-2"></i>ویرایش</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash fa-fw me-2"></i>حذف</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
 
-                                    <!-- Table item -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <h6 class="course-title mb-0"><a href="#">هشدار درباره یک بیماری حاد تنفسی
-                                                    در سرما</a></h6>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <ul class="list-inline d-flex mb-0">
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-muted"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-muted"></i></li>
-                                            </ul>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                   id="dropdownReview9" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bi bi-three-dots fa-fw"></i>
-                                                </a>
-                                                <!-- dropdown button -->
-                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
-                                                    aria-labelledby="dropdownReview9">
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-pencil-square fa-fw me-2"></i>ویرایش</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash fa-fw me-2"></i>حذف</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
 
-                                    <!-- Table item -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <h6 class="course-title mb-0"><a href="#">آمار فرزندان حاصل از روش‌های کمک‌
-                                                    باروری</a></h6>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <ul class="list-inline d-flex mb-0">
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-muted"></i></li>
-                                            </ul>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                   id="dropdownReview10" data-bs-toggle="dropdown"
-                                                   aria-expanded="false">
-                                                    <i class="bi bi-three-dots fa-fw"></i>
-                                                </a>
-                                                <!-- dropdown button -->
-                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
-                                                    aria-labelledby="dropdownReview10">
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-pencil-square fa-fw me-2"></i>ویرایش</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash fa-fw me-2"></i>حذف</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
 
-                                    </tbody>
-                                    <!-- Table body END -->
-                                </table>
-                            </div>
-                            <!-- Top rated episode END -->
 
-                            <!-- Pagination START -->
-                            <div class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4 mt-sm-3">
-                                <!-- Content -->
-                                <p class="mb-sm-0 text-center text-sm-start">نمایش 1 تا 8 از 20</p>
-                                <!-- Pagination -->
-                                <nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
-                                    <ul class="pagination pagination-sm pagination-bordered mb-0">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">قبل</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item disabled"><a class="page-link" href="#">..</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">15</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">بعد</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <!-- Pagination END -->
-                        </div>
-                    </div>
-                    <!-- Blog list table END -->
-                </div>
-                <div class="col-lg-6">
-                    <!-- Blog list table START -->
-                    <div class="card border bg-transparent rounded-3">
-                        <!-- Card header START -->
-                        <div class="card-header bg-transparent border-bottom py-3">
-                            <h4 class="mb-2 mb-sm-0">نویسندگان محبوب </h4>
-                        </div>
-                        <!-- Card header END -->
 
-                        <!-- Card body START -->
-                        <div class="card-body py-3">
-                            <div class="table-responsive">
-                                <table class="table p-4 mb-0 align-middle table-shrink">
-                                    <!-- Table head -->
-                                    <thead class="table-dark">
-                                    <tr>
-                                        <th scope="col" class="border-0 rounded-start">نام نویسنده</th>
-                                        <th scope="col" class="border-0">امتیاز</th>
-                                        <th scope="col" class="border-0 rounded-end">عملیات</th>
-                                    </tr>
-                                    </thead>
 
-                                    <!-- Table body START -->
-                                    <tbody class="border-top-0">
 
-                                    <!-- Table item -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="d-flex align-items-center position-relative">
-                                                <div class="avatar avatar-xs me-2">
-                                                    <img class="avatar-img rounded-circle"
-                                                         src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?> /avatar/01.jpg"
-                                                         alt="avatar">
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-1"><a href="#"
-                                                                        class="stretched-link text-reset btn-link">مریم
-                                                            قنبرزاده</a></h6>
-                                                </div>
-                                            </div>
-                                        </td>
 
-                                        <!-- Table data -->
-                                        <td>
-                                            <ul class="list-inline d-flex mb-0">
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                            </ul>
-                                        </td>
 
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                   id="dropdownReview11" data-bs-toggle="dropdown"
-                                                   aria-expanded="false">
-                                                    <i class="bi bi-three-dots fa-fw"></i>
-                                                </a>
-                                                <!-- dropdown button -->
-                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
-                                                    aria-labelledby="dropdownReview11">
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-pencil-square fa-fw me-2"></i>ویرایش</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash fa-fw me-2"></i>حذف</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
 
-                                    <!-- Table item -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="d-flex align-items-center position-relative">
-                                                <div class="avatar avatar-xs me-2">
-                                                    <img class="avatar-img rounded-circle"
-                                                         src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?> /avatar/02.jpg"
-                                                         alt="avatar">
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-1"><a href="#"
-                                                                        class="stretched-link text-reset btn-link">پرهام
-                                                            محمدی</a></h6>
-                                                </div>
-                                            </div>
-                                        </td>
 
-                                        <!-- Table data -->
-                                        <td>
-                                            <ul class="list-inline d-flex mb-0">
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                            </ul>
-                                        </td>
 
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                   id="dropdownReview12" data-bs-toggle="dropdown"
-                                                   aria-expanded="false">
-                                                    <i class="bi bi-three-dots fa-fw"></i>
-                                                </a>
-                                                <!-- dropdown button -->
-                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
-                                                    aria-labelledby="dropdownReview12">
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-pencil-square fa-fw me-2"></i>ویرایش</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash fa-fw me-2"></i>حذف</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
 
-                                    <!-- Table item -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="d-flex align-items-center position-relative">
-                                                <div class="avatar avatar-xs me-2">
-                                                    <img class="avatar-img rounded-circle"
-                                                         src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?> /avatar/03.jpg"
-                                                         alt="avatar">
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-1"><a href="#"
-                                                                        class="stretched-link text-reset btn-link">مهدی
-                                                            علیزاده</a></h6>
-                                                </div>
-                                            </div>
-                                        </td>
 
-                                        <!-- Table data -->
-                                        <td>
-                                            <ul class="list-inline d-flex mb-0">
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                            </ul>
-                                        </td>
 
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                   id="dropdownReview13" data-bs-toggle="dropdown"
-                                                   aria-expanded="false">
-                                                    <i class="bi bi-three-dots fa-fw"></i>
-                                                </a>
-                                                <!-- dropdown button -->
-                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
-                                                    aria-labelledby="dropdownReview13">
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-pencil-square fa-fw me-2"></i>ویرایش</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash fa-fw me-2"></i>حذف</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
 
-                                    <!-- Table item -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="d-flex align-items-center position-relative">
-                                                <div class="avatar avatar-xs me-2">
-                                                    <img class="avatar-img rounded-circle"
-                                                         src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?> /avatar/04.jpg"
-                                                         alt="avatar">
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-1"><a href="#"
-                                                                        class="stretched-link text-reset btn-link">سهراب
-                                                            نوری</a></h6>
-                                                </div>
-                                            </div>
-                                        </td>
 
-                                        <!-- Table data -->
-                                        <td>
-                                            <ul class="list-inline d-flex mb-0">
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-muted"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-muted"></i></li>
-                                            </ul>
-                                        </td>
 
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                   id="dropdownReview14" data-bs-toggle="dropdown"
-                                                   aria-expanded="false">
-                                                    <i class="bi bi-three-dots fa-fw"></i>
-                                                </a>
-                                                <!-- dropdown button -->
-                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
-                                                    aria-labelledby="dropdownReview14">
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-pencil-square fa-fw me-2"></i>ویرایش</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash fa-fw me-2"></i>حذف</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
 
-                                    <!-- Table item -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="d-flex align-items-center position-relative">
-                                                <div class="avatar avatar-xs me-2">
-                                                    <img class="avatar-img rounded-circle"
-                                                         src="<?php echo e(route('/Others/Themes/Frontend/Theme/assets/images')); ?> /avatar/05.jpg"
-                                                         alt="avatar">
-                                                </div>
-                                                <div>
-                                                    <h6 class="mb-1"><a href="#"
-                                                                        class="stretched-link text-reset btn-link">نازنین
-                                                            موحد</a></h6>
-                                                </div>
-                                            </div>
-                                        </td>
 
-                                        <!-- Table data -->
-                                        <td>
-                                            <ul class="list-inline d-flex mb-0">
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-warning"></i></li>
-                                                <li class="list-inline-item me-1 small"><i
-                                                            class="fas fa-star text-muted"></i></li>
-                                            </ul>
-                                        </td>
 
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" class="btn btn-light btn-round mb-0" role="button"
-                                                   id="dropdownReview115" data-bs-toggle="dropdown"
-                                                   aria-expanded="false">
-                                                    <i class="bi bi-three-dots fa-fw"></i>
-                                                </a>
-                                                <!-- dropdown button -->
-                                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded"
-                                                    aria-labelledby="dropdownReview115">
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-pencil-square fa-fw me-2"></i>ویرایش</a>
-                                                    </li>
-                                                    <li><a class="dropdown-item" href="#"><i
-                                                                    class="bi bi-trash fa-fw me-2"></i>حذف</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
 
-                                    </tbody>
-                                    <!-- Table body END -->
-                                </table>
-                            </div>
 
-                            <!-- Pagination START -->
-                            <div class="d-sm-flex justify-content-sm-between align-items-sm-center mt-4 mt-sm-3">
-                                <!-- Content -->
-                                <p class="mb-sm-0 text-center text-sm-start">نمایش 1 تا 8 از 20</p>
-                                <!-- Pagination -->
-                                <nav class="mb-sm-0 d-flex justify-content-center" aria-label="navigation">
-                                    <ul class="pagination pagination-sm pagination-bordered mb-0">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">قبل</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item disabled"><a class="page-link" href="#">..</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">15</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">بعد</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <!-- Pagination END -->
-                        </div>
-                    </div>
-                    <!-- Blog list table END -->
-                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </div>
     </section>

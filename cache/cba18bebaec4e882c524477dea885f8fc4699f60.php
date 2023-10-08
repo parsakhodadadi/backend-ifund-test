@@ -197,7 +197,7 @@ Header END -->
 
             <div class="row g-4">
                 <!-- Left sidebar START -->
-                <div class="col-lg-7 col-xxl-8">
+                <div class="col-lg-12 col-xxl-12">
                     <!-- Profile START -->
                     <form action="<?php echo e(route('/panel/edit-profile')); ?>" method="post" enctype="multipart/form-data">
                         <div class="card border mb-4">
@@ -454,132 +454,132 @@ Header END -->
                 <!-- Left sidebar END -->
 
                 <!-- Right sidebar START -->
-                <div class="col-lg-5 col-xxl-4">
-                    <!-- Profile Setting START -->
-                    <form action="<?php echo e(route('/panel/edit-profile-settings')); ?>" method="post">
-                        <div class="card border mb-4">
-                            <div class="card-header border-bottom p-3">
-                                <h4 class="card-header-title mb-0"><?php echo e($lang['account-settings']); ?></h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-check form-switch form-check-md mb-3">
-                                    <input class="form-check-input" name="show_profile_everyone" type="checkbox" id="availabilityCheck" checked="">
-                                    <label class="form-check-label" for="availabilityCheck"><?php echo e($lang['show-profile-every-one']); ?></label>
-                                </div>
-                                <div class="form-check form-switch form-check-md mb-3">
-                                    <input class="form-check-input" type="checkbox" id="proCheck" disabled="">
-                                    <label class="form-check-label" for="proCheck">غیرفعالسازی تبلیغات <span
-                                                class="badge bg-primary align-middle">حرفه ای</span></label>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- Profile Setting END -->
 
-                    <!-- Notifications START -->
-                    <div class="card border mb-4">
-                        <div class="card-header border-bottom p-3">
-                            <h4 class="card-header-title mb-0">مدیریت اعلان ها</h4>
-                        </div>
-                        <!-- Card body START -->
-                        <div class="card-body">
-                            <p>نوتیف هایی که مایل به دریافت آن هستید را فعال کرده و مابقی را غیرفعال نمایید.</p>
-                            <div class="form-check form-switch form-check-md mb-3">
-                                <input class="form-check-input" type="checkbox" id="withdrawalCheck" checked="">
-                                <label class="form-check-label" for="withdrawalCheck">برداشت وجه</label>
-                            </div>
-                            <div class="form-check form-switch form-check-md mb-3">
-                                <input class="form-check-input" type="checkbox" id="weeklyCheck">
-                                <label class="form-check-label" for="weeklyCheck">گزارش هفتگی</label>
-                            </div>
-                            <div class="form-check form-switch form-check-md mb-3">
-                                <input class="form-check-input" type="checkbox" id="passwordCheck" checked="">
-                                <label class="form-check-label" for="passwordCheck">تغییر رمز عبور</label>
-                            </div>
-                            <div class="form-check form-switch form-check-md mb-3">
-                                <input class="form-check-input" type="checkbox" id="dataCheck">
-                                <label class="form-check-label" for="dataCheck">هشدار مصرف داده</label>
-                            </div>
-                        </div>
-                        <!-- Card body END -->
-                    </div>
-                    <!-- Notifications START -->
 
-                    <!-- Deactivate account START -->
-                    <div class="card border mb-4">
-                        <div class="card-header border-bottom p-3">
-                            <h4 class="card-header-title mb-0">حذف حساب کاربری</h4>
-                        </div>
-                        <div class="card-body">
-                            <h6>قبل از حذف به نکات زیر دقت نمایید...</h6>
-                            <ul>
-                                <li>بک آپ گیری اطلاعات از <a href="#">اینجا</a></li>
-                                <li>با حذف حساب کاربری خود هیچ راهی برای بازیابی آن وجود نخواهد داشت.</li>
-                            </ul>
-                            <div class="form-check form-check-md my-3">
-                                <input class="form-check-input" type="checkbox" value="" id="deleteaccountCheck">
-                                <label class="form-check-label" for="deleteaccountCheck">بله، می خواهم حساب خود را حذف
-                                    کنم.</label>
-                            </div>
-                            <a href="#" class="btn btn-success-soft my-1">منصرف شدم</a>
-                            <a href="#" class="btn btn-danger my-1">حذف</a>
-                        </div>
-                    </div>
-                    <!-- Deactivate account START -->
-                    <p><i class="bi bi-info-circle me-2"></i>این حساب در 14 خرداد 1400 ایجاد شده است.</p>
 
-                    <div class="card bg-transparent border rounded-3 mt-4">
-                        <!-- Card header -->
-                        <div class="card-header bg-transparent border-bottom p-3">
-                            <h4 class="card-header-title mb-0">حساب های فعال</h4>
-                        </div>
-                        <!-- Card body START -->
-                        <div class="card-body">
-                            <!-- Google -->
-                            <div class="position-relative mb-3 mt-3 d-sm-flex bg-success bg-opacity-10 border border-success p-3 rounded">
-                                <!-- Title and content -->
-                                <h2 class="fs-1 mb-0 me-3"><i class="fab fa-google text-google-icon"></i></h2>
-                                <div>
-                                    <div class="position-absolute top-0 start-100 translate-middle bg-white rounded-circle lh-1 h-20px">
-                                        <i class="bi bi-check-circle-fill text-success fs-5"></i>
-                                    </div>
-                                    <h6 class="mb-1">Google</h6>
-                                    <p class="mb-1 small">شما با موفقیت به حساب Google خود وصل شده اید.</p>
-                                    <!-- Button -->
-                                    <button type="button" class="btn btn-sm btn-danger mb-0 me-2">خروج</button>
-                                    <a href="#" class="btn btn-sm btn-link text-body mb-0">کسب اطلاعات</a>
-                                </div>
-                            </div>
 
-                            <!-- Blogger -->
-                            <div class="mb-3 d-sm-flex border p-3 rounded">
-                                <!-- Title and content -->
-                                <h2 class="fs-1 mb-0 me-3"><i class="fab fa-blogger text-warning"></i></h2>
-                                <div>
-                                    <h6 class="mb-1">Blogger</h6>
-                                    <p class="mb-1 small">شما با موفقیت به حساب Blogger خود وصل شده اید.</p>
-                                    <!-- Button -->
-                                    <button type="button" class="btn btn-sm btn-primary mb-0 me-2">ورود</button>
-                                    <a href="#" class="btn btn-sm btn-link text-body mb-0">کسب اطلاعات</a>
-                                </div>
-                            </div>
 
-                            <!-- Facebook -->
-                            <div class="d-sm-flex border p-3 rounded mb-2">
-                                <!-- Title and content -->
-                                <h2 class="fs-1 mb-0 me-3"><i class="fab fa-facebook text-facebook"></i></h2>
-                                <div>
-                                    <h6 class="mb-1">Facebook</h6>
-                                    <p class="mb-1 small">شما با موفقیت به حساب Facebook خود وصل شده اید.</p>
-                                    <!-- Button -->
-                                    <button type="button" class="btn btn-sm btn-primary mb-0 me-2">ورود</button>
-                                    <a href="#" class="btn btn-sm btn-link text-body mb-0">کسب اطلاعات </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Card body END -->
-                    </div>
-                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </div>
     </section>

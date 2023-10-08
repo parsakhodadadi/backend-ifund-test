@@ -186,299 +186,299 @@ Header END -->
                     <!-- Chart END -->
                 </div>
 
-                <div class="col-md-6 col-xxl-4">
-                    <!-- Latest blog START -->
-                    <div class="card border h-100">
-                        <!-- Card header -->
-                        <div class="card-header border-bottom p-3">
-                            <h5 class="card-header-title mb-0">آخرین اخبار</h5>
-                        </div>
+{{--                <div class="col-md-6 col-xxl-4">--}}
+{{--                    <!-- Latest blog START -->--}}
+{{--                    <div class="card border h-100">--}}
+{{--                        <!-- Card header -->--}}
+{{--                        <div class="card-header border-bottom p-3">--}}
+{{--                            <h5 class="card-header-title mb-0">آخرین اخبار</h5>--}}
+{{--                        </div>--}}
 
-                        <!-- Card body START -->
-                        <div class="card-body p-3">
+{{--                        <!-- Card body START -->--}}
+{{--                        <div class="card-body p-3">--}}
 
-                            <div class="row">
-                                <!-- Blog item -->
-                                <div class="col-12">
-                                    <div class="d-flex align-items-center position-relative">
-                                        <img class="w-60 rounded" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/1by1/01.jpg" alt="product">
-                                        <div class="ms-3">
-                                            <a href="#" class="h6 stretched-link">رازهای کوچک کثیف در مورد صنعت تجارت</a>
-                                            <p class="small mb-0">17 تیر، 1400</p>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                            <div class="row">--}}
+{{--                                <!-- Blog item -->--}}
+{{--                                <div class="col-12">--}}
+{{--                                    <div class="d-flex align-items-center position-relative">--}}
+{{--                                        <img class="w-60 rounded" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/1by1/01.jpg" alt="product">--}}
+{{--                                        <div class="ms-3">--}}
+{{--                                            <a href="#" class="h6 stretched-link">رازهای کوچک کثیف در مورد صنعت تجارت</a>--}}
+{{--                                            <p class="small mb-0">17 تیر، 1400</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                <!-- Divider -->
-                                <hr class="my-3">
+{{--                                <!-- Divider -->--}}
+{{--                                <hr class="my-3">--}}
 
-                                <!-- Blog item -->
-                                <div class="col-12">
-                                    <div class="d-flex align-items-center position-relative">
-                                        <img class="w-60 rounded" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/1by1/02.jpg" alt="product">
-                                        <div class="ms-3">
-                                            <a href="#" class="h6 stretched-link">فیلم‌های بالیوودی الگوی ضدانقلاب شده!</a>
-                                            <p class="small mb-0">11 دی، 1400</p>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                <!-- Blog item -->--}}
+{{--                                <div class="col-12">--}}
+{{--                                    <div class="d-flex align-items-center position-relative">--}}
+{{--                                        <img class="w-60 rounded" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/1by1/02.jpg" alt="product">--}}
+{{--                                        <div class="ms-3">--}}
+{{--                                            <a href="#" class="h6 stretched-link">فیلم‌های بالیوودی الگوی ضدانقلاب شده!</a>--}}
+{{--                                            <p class="small mb-0">11 دی، 1400</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                <!-- Divider -->
-                                <hr class="my-3">
+{{--                                <!-- Divider -->--}}
+{{--                                <hr class="my-3">--}}
 
-                                <!-- Blog item -->
-                                <div class="col-12">
-                                    <div class="d-flex align-items-center position-relative">
-                                        <img class="w-60 rounded" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/1by1/03.jpg" alt="product">
-                                        <div class="ms-3">
-                                            <a href="#" class="h6 stretched-link">عادات بدی که افراد در صنعت باید آنها را ترک کنند!</a>
-                                            <p class="small mb-0">1 خرداد، 1400</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Card body END -->
+{{--                                <!-- Blog item -->--}}
+{{--                                <div class="col-12">--}}
+{{--                                    <div class="d-flex align-items-center position-relative">--}}
+{{--                                        <img class="w-60 rounded" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/blog/1by1/03.jpg" alt="product">--}}
+{{--                                        <div class="ms-3">--}}
+{{--                                            <a href="#" class="h6 stretched-link">عادات بدی که افراد در صنعت باید آنها را ترک کنند!</a>--}}
+{{--                                            <p class="small mb-0">1 خرداد، 1400</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <!-- Card body END -->--}}
 
-                        <!-- Card footer -->
-                        <div class="card-footer border-top text-center p-3">
-                            <a href="#">مشاهده همه</a>
-                        </div>
+{{--                        <!-- Card footer -->--}}
+{{--                        <div class="card-footer border-top text-center p-3">--}}
+{{--                            <a href="#">مشاهده همه</a>--}}
+{{--                        </div>--}}
 
-                    </div>
-                    <!-- Latest blog END -->
-                </div>
+{{--                    </div>--}}
+{{--                    <!-- Latest blog END -->--}}
+{{--                </div>--}}
 
-                <div class="col-md-6 col-xxl-4">
-                    <!-- Recent comment START -->
-                    <div class="card border h-100">
-                        <!-- Card header -->
-                        <div class="card-header border-bottom p-3">
-                            <h5 class="card-header-title mb-0">آخرین نظرات</h5>
-                        </div>
+{{--                <div class="col-md-6 col-xxl-4">--}}
+{{--                    <!-- Recent comment START -->--}}
+{{--                    <div class="card border h-100">--}}
+{{--                        <!-- Card header -->--}}
+{{--                        <div class="card-header border-bottom p-3">--}}
+{{--                            <h5 class="card-header-title mb-0">آخرین نظرات</h5>--}}
+{{--                        </div>--}}
 
-                        <!-- Card body START -->
-                        <div class="card-body p-3">
+{{--                        <!-- Card body START -->--}}
+{{--                        <div class="card-body p-3">--}}
 
-                            <div class="row">
-                                <!-- Comment item -->
-                                <div class="col-12">
-                                    <div class="d-flex align-items-center position-relative">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-lg flex-shrink-0">
-                                            <img class="avatar-img rounded-2" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/06.jpg" alt="avatar">
-                                        </div>
-                                        <!-- Info -->
-                                        <div class="ms-3">
-                                            <p class="mb-1"> <a class="h6 fw-normal stretched-link" href="#"> وقتی ثروت‌ های بزرگ به دست برخی مردم می‌افتد... </a></p>
-                                            <div class="d-flex justify-content-between">
-                                                <p class="small mb-0">با الهام کریمی</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                            <div class="row">--}}
+{{--                                <!-- Comment item -->--}}
+{{--                                <div class="col-12">--}}
+{{--                                    <div class="d-flex align-items-center position-relative">--}}
+{{--                                        <!-- Avatar -->--}}
+{{--                                        <div class="avatar avatar-lg flex-shrink-0">--}}
+{{--                                            <img class="avatar-img rounded-2" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/06.jpg" alt="avatar">--}}
+{{--                                        </div>--}}
+{{--                                        <!-- Info -->--}}
+{{--                                        <div class="ms-3">--}}
+{{--                                            <p class="mb-1"> <a class="h6 fw-normal stretched-link" href="#"> وقتی ثروت‌ های بزرگ به دست برخی مردم می‌افتد... </a></p>--}}
+{{--                                            <div class="d-flex justify-content-between">--}}
+{{--                                                <p class="small mb-0">با الهام کریمی</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                <!-- Divider -->
-                                <hr class="my-3">
+{{--                                <!-- Divider -->--}}
+{{--                                <hr class="my-3">--}}
 
-                                <!-- Comment item -->
-                                <div class="col-12">
-                                    <div class="d-flex align-items-center position-relative">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-lg flex-shrink-0">
-                                            <img class="avatar-img rounded-2" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/08.jpg" alt="avatar">
-                                        </div>
-                                        <!-- Info -->
-                                        <div class="ms-3">
-                                            <p class="mb-1"> <a class="h6 fw-normal stretched-link" href="#"> وقتی ثروت‌ های بزرگ به دست برخی مردم می‌افتد... </a></p>
-                                            <div class="d-flex justify-content-between">
-                                                <p class="small mb-0">با سارا موحد</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                <!-- Comment item -->--}}
+{{--                                <div class="col-12">--}}
+{{--                                    <div class="d-flex align-items-center position-relative">--}}
+{{--                                        <!-- Avatar -->--}}
+{{--                                        <div class="avatar avatar-lg flex-shrink-0">--}}
+{{--                                            <img class="avatar-img rounded-2" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/08.jpg" alt="avatar">--}}
+{{--                                        </div>--}}
+{{--                                        <!-- Info -->--}}
+{{--                                        <div class="ms-3">--}}
+{{--                                            <p class="mb-1"> <a class="h6 fw-normal stretched-link" href="#"> وقتی ثروت‌ های بزرگ به دست برخی مردم می‌افتد... </a></p>--}}
+{{--                                            <div class="d-flex justify-content-between">--}}
+{{--                                                <p class="small mb-0">با سارا موحد</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                <!-- Divider -->
-                                <hr class="my-3">
+{{--                                <!-- Divider -->--}}
+{{--                                <hr class="my-3">--}}
 
-                                <!-- Comment item -->
-                                <div class="col-12">
-                                    <div class="d-flex align-items-center position-relative">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-lg flex-shrink-0">
-                                            <img class="avatar-img rounded-2" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/04.jpg" alt="avatar">
-                                        </div>
-                                        <!-- Info -->
-                                        <div class="ms-3">
-                                            <p class="mb-1"> <a class="h6 fw-normal stretched-link" href="#"> وقتی ثروت‌ های بزرگ به دست برخی مردم می‌افتد </a></p>
-                                            <div class="d-flex justify-content-between">
-                                                <p class="small mb-0">با سهراب رضایی</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                <!-- Comment item -->--}}
+{{--                                <div class="col-12">--}}
+{{--                                    <div class="d-flex align-items-center position-relative">--}}
+{{--                                        <!-- Avatar -->--}}
+{{--                                        <div class="avatar avatar-lg flex-shrink-0">--}}
+{{--                                            <img class="avatar-img rounded-2" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/04.jpg" alt="avatar">--}}
+{{--                                        </div>--}}
+{{--                                        <!-- Info -->--}}
+{{--                                        <div class="ms-3">--}}
+{{--                                            <p class="mb-1"> <a class="h6 fw-normal stretched-link" href="#"> وقتی ثروت‌ های بزرگ به دست برخی مردم می‌افتد </a></p>--}}
+{{--                                            <div class="d-flex justify-content-between">--}}
+{{--                                                <p class="small mb-0">با سهراب رضایی</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                <!-- Divider -->
-                                <hr class="my-3">
+{{--                                <!-- Divider -->--}}
+{{--                                <hr class="my-3">--}}
 
-                                <!-- Comment item -->
-                                <div class="col-12">
-                                    <div class="d-flex align-items-center position-relative">
-                                        <!-- Avatar -->
-                                        <div class="avatar avatar-lg flex-shrink-0">
-                                            <img class="avatar-img rounded-2" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/05.jpg" alt="avatar">
-                                        </div>
-                                        <!-- Info -->
-                                        <div class="ms-3">
-                                            <p class="mb-1"> <a class="h6 fw-normal stretched-link" href="#"> وقتی ثروت‌ های بزرگ به دست برخی مردم می‌افتد </a></p>
-                                            <div class="d-flex justify-content-between">
-                                                <p class="small mb-0">با نگین جوان</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Card body END -->
-                    </div>
-                    <!-- Recent comment END -->
-                </div>
+{{--                                <!-- Comment item -->--}}
+{{--                                <div class="col-12">--}}
+{{--                                    <div class="d-flex align-items-center position-relative">--}}
+{{--                                        <!-- Avatar -->--}}
+{{--                                        <div class="avatar avatar-lg flex-shrink-0">--}}
+{{--                                            <img class="avatar-img rounded-2" src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/05.jpg" alt="avatar">--}}
+{{--                                        </div>--}}
+{{--                                        <!-- Info -->--}}
+{{--                                        <div class="ms-3">--}}
+{{--                                            <p class="mb-1"> <a class="h6 fw-normal stretched-link" href="#"> وقتی ثروت‌ های بزرگ به دست برخی مردم می‌افتد </a></p>--}}
+{{--                                            <div class="d-flex justify-content-between">--}}
+{{--                                                <p class="small mb-0">با نگین جوان</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <!-- Card body END -->--}}
+{{--                    </div>--}}
+{{--                    <!-- Recent comment END -->--}}
+{{--                </div>--}}
 
-                <div class="col-md-6 col-xxl-4">
-                    <!-- Notice board START -->
-                    <div class="card border h-100">
-                        <!-- Card header -->
-                        <div class="card-header border-bottom d-flex justify-content-between align-items-center  p-3">
-                            <h5 class="card-header-title mb-0">نوتیفیکیشن ها</h5>
-                            <!-- Dropdown button -->
-                            <div class="dropdown text-end">
-                                <a href="#" class="btn border-0 p-0 mb-0" role="button" id="dropdownShare3" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-three-dots fa-fw"></i>
-                                </a>
-                                <!-- dropdown button -->
-                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare3">
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square fa-fw me-2"></i>ویرایش</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-trash fa-fw me-2"></i>حذف</a></li>
-                                </ul>
-                            </div>
-                        </div>
+{{--                <div class="col-md-6 col-xxl-4">--}}
+{{--                    <!-- Notice board START -->--}}
+{{--                    <div class="card border h-100">--}}
+{{--                        <!-- Card header -->--}}
+{{--                        <div class="card-header border-bottom d-flex justify-content-between align-items-center  p-3">--}}
+{{--                            <h5 class="card-header-title mb-0">نوتیفیکیشن ها</h5>--}}
+{{--                            <!-- Dropdown button -->--}}
+{{--                            <div class="dropdown text-end">--}}
+{{--                                <a href="#" class="btn border-0 p-0 mb-0" role="button" id="dropdownShare3" data-bs-toggle="dropdown" aria-expanded="false">--}}
+{{--                                    <i class="bi bi-three-dots fa-fw"></i>--}}
+{{--                                </a>--}}
+{{--                                <!-- dropdown button -->--}}
+{{--                                <ul class="dropdown-menu dropdown-w-sm dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare3">--}}
+{{--                                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square fa-fw me-2"></i>ویرایش</a></li>--}}
+{{--                                    <li><a class="dropdown-item" href="#"><i class="bi bi-trash fa-fw me-2"></i>حذف</a></li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <!-- Card body START -->
-                        <div class="card-body p-3">
-                            <div class="custom-scrollbar h-350">
-                                <div class="row">
-                                    <!-- Notice board item -->
-                                    <div class="col-12">
-                                        <div class="d-flex justify-content-between position-relative">
-                                            <div class="d-sm-flex">
-                                                <div class="icon-lg bg-warning bg-opacity-15 text-warning rounded-2 flex-shrink-0">
-                                                    <i class="fas fa-user-tie fs-5"></i>
-                                                </div>
-                                                <!-- Info -->
-                                                <div class="ms-0 ms-sm-3 mt-2 mt-sm-0">
-                                                    <h6 class="mb-0"><a href="#" class="stretched-link">ثبت نام نویسنده جدید</a></h6>
-                                                    <p class="mb-0">پسرک گفت بیا این کفشا رو بپوش…</p>
-                                                    <span class="small">5 دقیقه پیش</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                        <!-- Card body START -->--}}
+{{--                        <div class="card-body p-3">--}}
+{{--                            <div class="custom-scrollbar h-350">--}}
+{{--                                <div class="row">--}}
+{{--                                    <!-- Notice board item -->--}}
+{{--                                    <div class="col-12">--}}
+{{--                                        <div class="d-flex justify-content-between position-relative">--}}
+{{--                                            <div class="d-sm-flex">--}}
+{{--                                                <div class="icon-lg bg-warning bg-opacity-15 text-warning rounded-2 flex-shrink-0">--}}
+{{--                                                    <i class="fas fa-user-tie fs-5"></i>--}}
+{{--                                                </div>--}}
+{{--                                                <!-- Info -->--}}
+{{--                                                <div class="ms-0 ms-sm-3 mt-2 mt-sm-0">--}}
+{{--                                                    <h6 class="mb-0"><a href="#" class="stretched-link">ثبت نام نویسنده جدید</a></h6>--}}
+{{--                                                    <p class="mb-0">پسرک گفت بیا این کفشا رو بپوش…</p>--}}
+{{--                                                    <span class="small">5 دقیقه پیش</span>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
 
-                                    <!-- Divider -->
-                                    <hr class="my-3">
+{{--                                    <!-- Divider -->--}}
+{{--                                    <hr class="my-3">--}}
 
-                                    <!-- Notice board item -->
-                                    <div class="col-12">
-                                        <div class="d-flex justify-content-between position-relative">
-                                            <div class="d-sm-flex">
-                                                <div class="icon-lg bg-success bg-opacity-10 text-success rounded-2 flex-shrink-0">
-                                                    <i class="bi bi-chat-left-quote-fill fs-5"></i>
-                                                </div>
-                                                <!-- Info -->
-                                                <div class="ms-0 ms-sm-3 mt-2 mt-sm-0">
-                                                    <h6 class="mb-0"><a href="#" class="stretched-link">افزودن 5 خبر جدید</a></h6>
-                                                    <p class="mb-0">پسرک گفت بیا این کفشا رو بپوش…</p>
-                                                    <span class="small">4 ساعت پیش</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                    <!-- Notice board item -->--}}
+{{--                                    <div class="col-12">--}}
+{{--                                        <div class="d-flex justify-content-between position-relative">--}}
+{{--                                            <div class="d-sm-flex">--}}
+{{--                                                <div class="icon-lg bg-success bg-opacity-10 text-success rounded-2 flex-shrink-0">--}}
+{{--                                                    <i class="bi bi-chat-left-quote-fill fs-5"></i>--}}
+{{--                                                </div>--}}
+{{--                                                <!-- Info -->--}}
+{{--                                                <div class="ms-0 ms-sm-3 mt-2 mt-sm-0">--}}
+{{--                                                    <h6 class="mb-0"><a href="#" class="stretched-link">افزودن 5 خبر جدید</a></h6>--}}
+{{--                                                    <p class="mb-0">پسرک گفت بیا این کفشا رو بپوش…</p>--}}
+{{--                                                    <span class="small">4 ساعت پیش</span>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
 
-                                    <!-- Divider -->
-                                    <hr class="my-3">
+{{--                                    <!-- Divider -->--}}
+{{--                                    <hr class="my-3">--}}
 
-                                    <!-- Notice board item -->
-                                    <div class="col-12">
-                                        <div class="d-flex justify-content-between position-relative">
-                                            <div class="d-sm-flex">
-                                                <div class="icon-lg bg-danger bg-opacity-10 text-danger rounded-2 flex-shrink-0">
-                                                    <i class="bi bi-bell-fill fs-5"></i>
-                                                </div>
-                                                <!-- Info -->
-                                                <div class="ms-0 ms-sm-3 mt-2 mt-sm-0">
-                                                    <h6 class="mb-0"><a href="#" class="stretched-link">5 ثبت نام جدید در خبرنامه</a></h6>
-                                                    <p class="mb-0">پسرک گفت بیا این کفشا رو بپوش…</p>
-                                                    <span class="small">4 ساعت پیش</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+{{--                                    <!-- Notice board item -->--}}
+{{--                                    <div class="col-12">--}}
+{{--                                        <div class="d-flex justify-content-between position-relative">--}}
+{{--                                            <div class="d-sm-flex">--}}
+{{--                                                <div class="icon-lg bg-danger bg-opacity-10 text-danger rounded-2 flex-shrink-0">--}}
+{{--                                                    <i class="bi bi-bell-fill fs-5"></i>--}}
+{{--                                                </div>--}}
+{{--                                                <!-- Info -->--}}
+{{--                                                <div class="ms-0 ms-sm-3 mt-2 mt-sm-0">--}}
+{{--                                                    <h6 class="mb-0"><a href="#" class="stretched-link">5 ثبت نام جدید در خبرنامه</a></h6>--}}
+{{--                                                    <p class="mb-0">پسرک گفت بیا این کفشا رو بپوش…</p>--}}
+{{--                                                    <span class="small">4 ساعت پیش</span>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
 
-                                    <!-- Divider -->
-                                    <hr class="my-3">
+{{--                                    <!-- Divider -->--}}
+{{--                                    <hr class="my-3">--}}
 
-                                    <!-- Notice board item -->
-                                    <div class="col-12">
-                                        <div class="d-flex justify-content-between position-relative">
-                                            <div class="d-sm-flex">
-                                                <div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-2 flex-shrink-0"><i class="fas fa-globe fs-5"></i></div>
-                                                <!-- Info -->
-                                                <div class="ms-0 ms-sm-3 mt-2 mt-sm-0">
-                                                    <h6 class="mb-0"><a href="#" class="stretched-link">بروزرسانی ویژگی های جدید</a></h6>
-                                                    <span class="small">3 روز پیش</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- Row END -->
-                            </div>
-                        </div>
-                        <!-- Card body END -->
+{{--                                    <!-- Notice board item -->--}}
+{{--                                    <div class="col-12">--}}
+{{--                                        <div class="d-flex justify-content-between position-relative">--}}
+{{--                                            <div class="d-sm-flex">--}}
+{{--                                                <div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-2 flex-shrink-0"><i class="fas fa-globe fs-5"></i></div>--}}
+{{--                                                <!-- Info -->--}}
+{{--                                                <div class="ms-0 ms-sm-3 mt-2 mt-sm-0">--}}
+{{--                                                    <h6 class="mb-0"><a href="#" class="stretched-link">بروزرسانی ویژگی های جدید</a></h6>--}}
+{{--                                                    <span class="small">3 روز پیش</span>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div><!-- Row END -->--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <!-- Card body END -->--}}
 
-                        <!-- Card footer -->
-                        <div class="card-footer border-top text-center p-3">
-                            <a href="#">مشاهده همه</a>
-                        </div>
+{{--                        <!-- Card footer -->--}}
+{{--                        <div class="card-footer border-top text-center p-3">--}}
+{{--                            <a href="#">مشاهده همه</a>--}}
+{{--                        </div>--}}
 
-                    </div>
-                    <!-- Notice board END -->
-                </div>
+{{--                    </div>--}}
+{{--                    <!-- Notice board END -->--}}
+{{--                </div>--}}
 
-                <div class="col-md-6 col-xxl-4">
-                    <div class="card border h-100">
+{{--                <div class="col-md-6 col-xxl-4">--}}
+{{--                    <div class="card border h-100">--}}
 
-                        <!-- Card header -->
-                        <div class="card-header border-bottom d-flex justify-content-between align-items-center p-3">
-                            <h5 class="card-header-title mb-0">آمار بازدید</h5>
-                            <a href="#" class="btn btn-sm btn-link p-0 mb-0 text-reset">مشاهده همه</a>
-                        </div>
+{{--                        <!-- Card header -->--}}
+{{--                        <div class="card-header border-bottom d-flex justify-content-between align-items-center p-3">--}}
+{{--                            <h5 class="card-header-title mb-0">آمار بازدید</h5>--}}
+{{--                            <a href="#" class="btn btn-sm btn-link p-0 mb-0 text-reset">مشاهده همه</a>--}}
+{{--                        </div>--}}
 
-                        <!-- Card body START -->
-                        <div class="card-body p-4">
-                            <!-- Chart -->
-                            <div class=" mx-auto">
-                                <div id="apexChartTrafficSources"></div>
-                            </div>
-                            <!-- Content -->
-                            <ul class="list-inline text-center mt-3">
-                                <li class="list-inline-item pe-2"><i class="text-primary fas fa-circle pe-1"></i> مرورگر </li>
-                                <li class="list-inline-item pe-2"><i class="text-success fas fa-circle pe-1"></i> وب سایت </li>
-                                <li class="list-inline-item pe-2"><i class="text-danger fas fa-circle pe-1"></i> شبکه های اجتماعی </li>
-                                <li class="list-inline-item pe-2"><i class="text-warning fas fa-circle pe-1"></i> سایر </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+{{--                        <!-- Card body START -->--}}
+{{--                        <div class="card-body p-4">--}}
+{{--                            <!-- Chart -->--}}
+{{--                            <div class=" mx-auto">--}}
+{{--                                <div id="apexChartTrafficSources"></div>--}}
+{{--                            </div>--}}
+{{--                            <!-- Content -->--}}
+{{--                            <ul class="list-inline text-center mt-3">--}}
+{{--                                <li class="list-inline-item pe-2"><i class="text-primary fas fa-circle pe-1"></i> مرورگر </li>--}}
+{{--                                <li class="list-inline-item pe-2"><i class="text-success fas fa-circle pe-1"></i> وب سایت </li>--}}
+{{--                                <li class="list-inline-item pe-2"><i class="text-danger fas fa-circle pe-1"></i> شبکه های اجتماعی </li>--}}
+{{--                                <li class="list-inline-item pe-2"><i class="text-warning fas fa-circle pe-1"></i> سایر </li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </section>

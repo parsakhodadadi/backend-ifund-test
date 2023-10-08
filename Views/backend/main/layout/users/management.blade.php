@@ -103,7 +103,6 @@ Header END -->
                 <div class="col-12">
                     <div class="d-sm-flex justify-content-between align-items-center">
                         <h1 class="mb-sm-0 h3">{{ $lang['users-list'] }}</h1>
-                        <a href="#" class="btn btn-sm btn-primary mb-0"><i class="fas fa-plus me-2"></i>ثبت نویسنده جدید</a>
                     </div>
                 </div>
             </div>
@@ -360,148 +359,148 @@ Header END -->
                     <!-- Card END -->
                 </div>
 
-                <div class="col-12">
-                    <!-- Card START -->
-                    <div class="card border">
+{{--                <div class="col-12">--}}
+{{--                    <!-- Card START -->--}}
+{{--                    <div class="card border">--}}
 
-                        <!-- Card header START -->
-                        <div class="card-header border-bottom p-3">
-                            <h5 class="mb-2 mb-sm-0">درخواست های جدید</h5>
-                        </div>
-                        <!-- Card header END -->
+{{--                        <!-- Card header START -->--}}
+{{--                        <div class="card-header border-bottom p-3">--}}
+{{--                            <h5 class="mb-2 mb-sm-0">درخواست های جدید</h5>--}}
+{{--                        </div>--}}
+{{--                        <!-- Card header END -->--}}
 
-                        <!-- Card body START -->
-                        <div class="card-body p-3">
-                            <!-- Table START -->
-                            <div class="table-responsive border-0">
-                                <table class="table align-middle p-4 mb-0 table-hover">
-                                    <!-- Table head -->
-                                    <thead class="table-dark">
-                                    <tr>
-                                        <th scope="col" class="border-0 rounded-start">نام نویسنده</th>
-                                        <th scope="col" class="border-0">تاریخ</th>
-                                        <th scope="col" class="border-0">نام شرکت</th>
-                                        <th scope="col" class="border-0 rounded-end">عملیات</th>
-                                    </tr>
-                                    </thead>
+{{--                        <!-- Card body START -->--}}
+{{--                        <div class="card-body p-3">--}}
+{{--                            <!-- Table START -->--}}
+{{--                            <div class="table-responsive border-0">--}}
+{{--                                <table class="table align-middle p-4 mb-0 table-hover">--}}
+{{--                                    <!-- Table head -->--}}
+{{--                                    <thead class="table-dark">--}}
+{{--                                    <tr>--}}
+{{--                                        <th scope="col" class="border-0 rounded-start">نام نویسنده</th>--}}
+{{--                                        <th scope="col" class="border-0">تاریخ</th>--}}
+{{--                                        <th scope="col" class="border-0">نام شرکت</th>--}}
+{{--                                        <th scope="col" class="border-0 rounded-end">عملیات</th>--}}
+{{--                                    </tr>--}}
+{{--                                    </thead>--}}
 
-                                    <!-- Table body START -->
-                                    <tbody class="border-top-0">
-                                    <!-- Table row -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="d-flex align-items-center position-relative">
-                                                <!-- Image -->
-                                                <div class="avatar avatar-md">
-                                                    <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/04.jpg" class="rounded-circle" alt="">
-                                                </div>
-                                                <div class="mb-0 ms-2">
-                                                    <!-- Title -->
-                                                    <h6 class="mb-0"><a href="#" class="stretched-link">سهراب نوری</a></h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>22 خرداد 1400</td>
-                                        <!-- Table data -->
-                                        <td>تابناک</td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <a href="#" class="btn btn-sm btn-success-soft me-1 mb-1 mb-lg-0">پذیرفتن</a>
-                                            <a href="#" class="btn btn-sm btn-secondary-soft me-1 mb-1 mb-lg-0">رد</a>
-                                            <a href="#" class="btn btn-sm btn-primary-soft me-1 mb-0">مشاهده</a>
-                                        </td>
-                                    </tr>
+{{--                                    <!-- Table body START -->--}}
+{{--                                    <tbody class="border-top-0">--}}
+{{--                                    <!-- Table row -->--}}
+{{--                                    <tr>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>--}}
+{{--                                            <div class="d-flex align-items-center position-relative">--}}
+{{--                                                <!-- Image -->--}}
+{{--                                                <div class="avatar avatar-md">--}}
+{{--                                                    <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/04.jpg" class="rounded-circle" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="mb-0 ms-2">--}}
+{{--                                                    <!-- Title -->--}}
+{{--                                                    <h6 class="mb-0"><a href="#" class="stretched-link">سهراب نوری</a></h6>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </td>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>22 خرداد 1400</td>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>تابناک</td>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>--}}
+{{--                                            <a href="#" class="btn btn-sm btn-success-soft me-1 mb-1 mb-lg-0">پذیرفتن</a>--}}
+{{--                                            <a href="#" class="btn btn-sm btn-secondary-soft me-1 mb-1 mb-lg-0">رد</a>--}}
+{{--                                            <a href="#" class="btn btn-sm btn-primary-soft me-1 mb-0">مشاهده</a>--}}
+{{--                                        </td>--}}
+{{--                                    </tr>--}}
 
-                                    <!-- Table row -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="d-flex align-items-center position-relative">
-                                                <!-- Image -->
-                                                <div class="avatar avatar-md">
-                                                    <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/05.jpg" class="rounded-circle" alt="">
-                                                </div>
-                                                <div class="mb-0 ms-2">
-                                                    <!-- Title -->
-                                                    <h6 class="mb-0"><a href="#" class="stretched-link">نیلوفر حقیقت نژاد</a></h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>29 آذر 1400</td>
-                                        <!-- Table data -->
-                                        <td>مشرق نیوز</td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <a href="#" class="btn btn-sm btn-success-soft me-1 mb-1 mb-lg-0">پذیرفتن</a>
-                                            <a href="#" class="btn btn-sm btn-secondary-soft me-1 mb-1 mb-lg-0">رد</a>
-                                            <a href="#" class="btn btn-sm btn-primary-soft me-1 mb-0">مشاهده</a>
-                                        </td>
-                                    </tr>
+{{--                                    <!-- Table row -->--}}
+{{--                                    <tr>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>--}}
+{{--                                            <div class="d-flex align-items-center position-relative">--}}
+{{--                                                <!-- Image -->--}}
+{{--                                                <div class="avatar avatar-md">--}}
+{{--                                                    <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/05.jpg" class="rounded-circle" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="mb-0 ms-2">--}}
+{{--                                                    <!-- Title -->--}}
+{{--                                                    <h6 class="mb-0"><a href="#" class="stretched-link">نیلوفر حقیقت نژاد</a></h6>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </td>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>29 آذر 1400</td>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>مشرق نیوز</td>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>--}}
+{{--                                            <a href="#" class="btn btn-sm btn-success-soft me-1 mb-1 mb-lg-0">پذیرفتن</a>--}}
+{{--                                            <a href="#" class="btn btn-sm btn-secondary-soft me-1 mb-1 mb-lg-0">رد</a>--}}
+{{--                                            <a href="#" class="btn btn-sm btn-primary-soft me-1 mb-0">مشاهده</a>--}}
+{{--                                        </td>--}}
+{{--                                    </tr>--}}
 
-                                    <!-- Table row -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="d-flex align-items-center position-relative">
-                                                <!-- Image -->
-                                                <div class="avatar avatar-md">
-                                                    <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/06.jpg" class="rounded-circle" alt="">
-                                                </div>
-                                                <div class="mb-0 ms-2">
-                                                    <!-- Title -->
-                                                    <h6 class="mb-0"><a href="#" class="stretched-link">فاطمه قنبرزاده</a></h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td class="text-center text-sm-start">25 مهر 1400</td>
-                                        <!-- Table data -->
-                                        <td>تسنیم</td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <a href="#" class="btn btn-sm btn-success me-1 mb-1 mb-md-0 disabled">پذیرفته شده</a>
-                                            <a href="#" class="btn btn-sm btn-primary-soft me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail">مشاهده</a>
-                                        </td>
-                                    </tr>
+{{--                                    <!-- Table row -->--}}
+{{--                                    <tr>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>--}}
+{{--                                            <div class="d-flex align-items-center position-relative">--}}
+{{--                                                <!-- Image -->--}}
+{{--                                                <div class="avatar avatar-md">--}}
+{{--                                                    <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/06.jpg" class="rounded-circle" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="mb-0 ms-2">--}}
+{{--                                                    <!-- Title -->--}}
+{{--                                                    <h6 class="mb-0"><a href="#" class="stretched-link">فاطمه قنبرزاده</a></h6>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </td>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td class="text-center text-sm-start">25 مهر 1400</td>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>تسنیم</td>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>--}}
+{{--                                            <a href="#" class="btn btn-sm btn-success me-1 mb-1 mb-md-0 disabled">پذیرفته شده</a>--}}
+{{--                                            <a href="#" class="btn btn-sm btn-primary-soft me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail">مشاهده</a>--}}
+{{--                                        </td>--}}
+{{--                                    </tr>--}}
 
-                                    <!-- Table row -->
-                                    <tr>
-                                        <!-- Table data -->
-                                        <td>
-                                            <div class="d-flex align-items-center position-relative">
-                                                <!-- Image -->
-                                                <div class="avatar avatar-md">
-                                                    <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/07.jpg" class="rounded-circle" alt="">
-                                                </div>
-                                                <div class="mb-0 ms-2">
-                                                    <!-- Title -->
-                                                    <h6 class="mb-0"><a href="#" class="stretched-link">نیلوفر خالدی</a></h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <!-- Table data -->
-                                        <td>14 دی 1400</td>
-                                        <!-- Table data -->
-                                        <td>خبر آنلاین</td>
-                                        <!-- Table data -->
-                                        <td>
-                                            <a href="#" class="btn btn-sm btn-secondary me-1 mb-1 mb-md-0 disabled">رد شده</a>
-                                            <a href="#" class="btn btn-sm btn-primary-soft me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail">مشاهده</a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                    <!-- Table body END -->
-                                </table>
-                            </div>
-                            <!-- Table END -->
-                        </div>
-                        <!-- Card body END -->
-                    </div>
+{{--                                    <!-- Table row -->--}}
+{{--                                    <tr>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>--}}
+{{--                                            <div class="d-flex align-items-center position-relative">--}}
+{{--                                                <!-- Image -->--}}
+{{--                                                <div class="avatar avatar-md">--}}
+{{--                                                    <img src="{{ route('/Others/Themes/Frontend/Theme/assets/images') }}/avatar/07.jpg" class="rounded-circle" alt="">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="mb-0 ms-2">--}}
+{{--                                                    <!-- Title -->--}}
+{{--                                                    <h6 class="mb-0"><a href="#" class="stretched-link">نیلوفر خالدی</a></h6>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </td>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>14 دی 1400</td>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>خبر آنلاین</td>--}}
+{{--                                        <!-- Table data -->--}}
+{{--                                        <td>--}}
+{{--                                            <a href="#" class="btn btn-sm btn-secondary me-1 mb-1 mb-md-0 disabled">رد شده</a>--}}
+{{--                                            <a href="#" class="btn btn-sm btn-primary-soft me-1 mb-0" data-bs-toggle="modal" data-bs-target="#appDetail">مشاهده</a>--}}
+{{--                                        </td>--}}
+{{--                                    </tr>--}}
+{{--                                    </tbody>--}}
+{{--                                    <!-- Table body END -->--}}
+{{--                                </table>--}}
+{{--                            </div>--}}
+{{--                            <!-- Table END -->--}}
+{{--                        </div>--}}
+{{--                        <!-- Card body END -->--}}
+{{--                    </div>--}}
                     <!-- Card END -->
-                </div>
+{{--                </div>--}}
             </div>
         </div>
     </section>

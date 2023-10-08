@@ -159,3 +159,8 @@ function getClientIP() : string
         return 'Unknown';
     }
 }
+
+function pageNotFound()
+{
+    echo 'page not found';
+}

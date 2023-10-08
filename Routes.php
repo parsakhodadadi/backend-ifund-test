@@ -195,7 +195,7 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     //404
     $router->set404(function () {
 //        header('HTTP/1.1 404 Not Found');
-        echo 'route not found';
+        pageNotFound();
         // ... do something special here
     });
 

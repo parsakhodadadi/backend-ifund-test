@@ -440,33 +440,33 @@
             <!-- Main navbar END -->
 
             <!-- Nav right START -->
-            <div class="nav flex-nowrap align-items-center">
-                <!-- Nav Button -->
-                <div class="nav-item d-none d-md-block">
-                    <a href="#" class="btn btn-sm btn-danger mb-0 mx-2">خبرنامه</a>
-                </div>
-                <!-- Nav Search -->
-                <div class="nav-item dropdown dropdown-toggle-icon-none nav-search">
-                    <a class="nav-link dropdown-toggle" role="button" href="#" id="navSearch" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        <i class="bi bi-search fs-4"> </i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch">
-                        <form class="input-group">
-                            <input class="form-control border-success" type="search" placeholder="جستجو"
-                                   aria-label="Search">
-                            <button class="btn btn-success m-0" type="submit">جستجو</button>
-                        </form>
-                    </div>
-                </div>
-                <!-- Offcanvas menu toggler -->
-                <div class="nav-item">
-                    <a class="nav-link p-0" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button"
-                       aria-controls="offcanvasMenu">
-                        <i class="bi bi-text-right rtl-flip fs-2" data-bs-target="#offcanvasMenu"> </i>
-                    </a>
-                </div>
-            </div>
+{{--            <div class="nav flex-nowrap align-items-center">--}}
+{{--                <!-- Nav Button -->--}}
+{{--                <div class="nav-item d-none d-md-block">--}}
+{{--                    <a href="#" class="btn btn-sm btn-danger mb-0 mx-2">خبرنامه</a>--}}
+{{--                </div>--}}
+{{--                <!-- Nav Search -->--}}
+{{--                <div class="nav-item dropdown dropdown-toggle-icon-none nav-search">--}}
+{{--                    <a class="nav-link dropdown-toggle" role="button" href="#" id="navSearch" data-bs-toggle="dropdown"--}}
+{{--                       aria-expanded="false">--}}
+{{--                        <i class="bi bi-search fs-4"> </i>--}}
+{{--                    </a>--}}
+{{--                    <div class="dropdown-menu dropdown-menu-end shadow rounded p-2" aria-labelledby="navSearch">--}}
+{{--                        <form class="input-group">--}}
+{{--                            <input class="form-control border-success" type="search" placeholder="جستجو"--}}
+{{--                                   aria-label="Search">--}}
+{{--                            <button class="btn btn-success m-0" type="submit">جستجو</button>--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <!-- Offcanvas menu toggler -->--}}
+{{--                <div class="nav-item">--}}
+{{--                    <a class="nav-link p-0" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button"--}}
+{{--                       aria-controls="offcanvasMenu">--}}
+{{--                        <i class="bi bi-text-right rtl-flip fs-2" data-bs-target="#offcanvasMenu"> </i>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <!-- Nav right END -->
         </div>
     </nav>
