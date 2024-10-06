@@ -8,7 +8,7 @@ $configs = [
     'email-verification-register' => new \App\Services\User\DesignPatterns\Strategy\Methods\Register\EmailVerification(),
     'edit-profile' => new \App\Services\User\DesignPatterns\Strategy\Methods\EditProfile\EditProfile(),
     'mobile-verification' => new \App\Services\User\DesignPatterns\Strategy\Methods\EditProfile\EmailVerification(),
-    'base-url' => 'http://localhost:8888/ParsaFramework',
+    'base-url' => 'http://localhost/backend-ifund',
 
     'debug' => true,
 

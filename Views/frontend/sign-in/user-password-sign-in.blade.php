@@ -65,11 +65,6 @@ Header END -->
                                 <label class="form-label" for="exampleInputPassword1">{{ $lang['password'] }}</label>
                                 <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="*********">
                             </div>
-                            <!-- Checkbox -->
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">{{ $lang['remember-me'] }}</label>
-                            </div>
                             <!-- Button -->
                             <div class="row align-items-center">
                                 <div class="col-sm-4">
@@ -80,22 +75,10 @@ Header END -->
                                 </div>
                             </div>
                         </form>
+                        @if(!empty($errorMessage))
+                            <div class="form-control bg-danger">{{ $errorMessage }}</div>
+                        @endif
                         <!-- Form END -->
-                        <hr>
-                        <!-- Social-media btn -->
-                        <div class="text-center">
-                            <p>{{ $lang['sign-in-with-social-media'] }}</p>
-                            <ul class="list-unstyled d-sm-flex mt-3 justify-content-center">
-                                <li class="mx-2">
-                                    <a href="#" class="btn bg-facebook d-inline-block"><i class="fab fa-facebook-f me-2">{{ $lang['sign-in-facebook'] }}</i>
-                                    </a>
-                                </li>
-                                <li class="mx-2">
-                                    <a href="#" class="btn bg-google d-inline-block"><i class="fab fa-google me-2">{{ $lang['sign-in-google'] }}</i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>

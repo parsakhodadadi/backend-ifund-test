@@ -3,12 +3,7 @@
 namespace App\Controllers;
 
 use App\Middlewares\AdminMiddleware;
-use App\Middlewares\ManagerMiddleware;
-use App\Models\Posts;
 use App\Models\Users;
-use App\Request\ChangePasswordRequest;
-use App\Request\EditAccessRequest;
-use App\Request\EditProfileRequest;
 use App\Services\User\EditProfileService;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;

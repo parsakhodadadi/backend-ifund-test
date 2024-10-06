@@ -2,10 +2,6 @@
 
 namespace Core\System;
 
-use App\Model\Authors;
-use App\Models\Categories;
-use App\Models\PostCategories;
-use App\Models\Subjects;
 use App\Models\Users;
 use Core\System\Helpers\ConfigHelper;
 
@@ -17,7 +13,9 @@ class Validation
 
     public function __construct()
     {
-        $this->userId = $_SESSION['USERID'];
+        if (!empty($_SESSION['USERID'])) {
+            $this->userId = $_SESSION['USERID'];
+        }
         $this->users = loadModel(Users::class);
         $this->currentUser = current($this->users->get(['id' => $this->userId]));
     }
@@ -78,10 +76,10 @@ class Validation
         return true;
     }
 
-    public function category_valid($value)
+    public function bookCategoryValid($value)
     {
         if (is_numeric($value)) {
-            $category = current(loadModel(Categories::class)->get(['id' => $value]));
+            $category = current(loadModel(BookCategories::class)->get(['id' => $value]));
             if (!empty($category)) {
                 return true;
             } else {

@@ -34,7 +34,9 @@ class SigninAuth
 
     public function getUserId(): int
     {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         if (isset($_SESSION['USERID'])) {
             return $_SESSION['USERID'];
         }

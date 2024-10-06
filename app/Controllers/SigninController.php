@@ -12,16 +12,17 @@ use App\Middlewares\SigninMiddleware;
 
 class SigninController extends controller
 {
-
+    private $request;
     private object $authService;
     private $lang;
-    private $blade;
+    private object $blade;
     private $users;
     private $configHelper;
     private $errorMessage;
 
     public function __construct()
     {
+        $this->request = request();
         $this->configHelper = new ConfigHelper();
         $this->authService = SigninAuth::getInstance($this->configHelper::getConfig('sign-in-method'));
         $this->blade = blade();
@@ -37,21 +38,20 @@ class SigninController extends controller
         }
         $signinViewName = $this->authService->method()->getViewName();
         if ($signinViewName == 'user-password-sign-in' || $signinViewName == 'otp-sign-in') {
-            $request = request();
             if (isset($_SESSION['USERID'])) {
-                if (!empty($request)) {
+                if (!empty($this->request)) {
                     die(json_encode(['code' => 200, 'message' => 'success', 'status' => true]));
                 } else {
                     redirect('/panel');
                 }
             }
 
-            if (!empty($request)) {
-                if (!$this->security()->checkCSRFToken($request['csrf_token'])) {
+            if (!empty($this->request)) {
+                if (!$this->security()->checkCSRFToken($this->request['csrf_token'])) {
                     echo 'false';
                 }
 
-                unset($request['csrf_token']);
+                unset($this->request['csrf_token']);
 
                 $rules = [
                     'email' => 'required',
@@ -63,7 +63,7 @@ class SigninController extends controller
                     'password.required' => 'پسورد الزامی می باشد',
                 ];
 
-                $errors = $this->validation()->check($rules, $request, $messages);
+                $errors = $this->validation()->check($rules, $this->request, $messages);
 
                 if (!empty($errors)) {
                     die($this->view()->blade()
@@ -73,11 +73,24 @@ class SigninController extends controller
                         ]));
                 }
 
-                $password = $request['password'];
-                unset($request['password']);
-                $user = current($this->users->get($request));
-
-                if (!password_verify($password, $user->password)) {
+                $password = $this->request['password'];
+                unset($this->request['password']);
+                $user = current($this->users->get($this->request));
+                if (!empty($user)) {
+                    if (!password_verify($password, $user->password)) {
+                        if ($this->security()->attempt()) {
+                            $this->event()->blockUserPerTime(15);
+                        }
+                        $errorMessage = $this->lang['wrong-credential'];
+                        die($this->blade->render('frontend/sign-in/user-password-sign-in', [
+                            'errorMessage' => $errorMessage,
+                            'errors' => [],
+                            'security' => $this->security(),
+                            'lang' => $this->lang,
+                            'view' => $this->blade,
+                        ]));
+                    }
+                } else {
                     $errorMessage = $this->lang['wrong-credential'];
                     die($this->blade->render('frontend/sign-in/user-password-sign-in', [
                         'errorMessage' => $errorMessage,
@@ -108,7 +121,7 @@ class SigninController extends controller
                     die(self::view()->blade()->render("backend/errors/$this->users"));
                 } else {
                     $_SESSION['USERID'] = $user->id;
-                    echo json_encode(['code' => 200, 'message' => 'success', 'status' => true]);
+//                    echo json_encode(['code' => 200, 'message' => 'success', 'status' => true]);
                 }
                 redirect('/panel');
             } else {
@@ -118,6 +131,7 @@ class SigninController extends controller
                     'security' => $this->security(),
                     'lang' => $this->lang,
                 ]);
+                exit('heyy');
             }
         } else {
             if ($signinViewName == 'otp-signin') {
@@ -145,7 +159,7 @@ class SigninController extends controller
         $managerMiddleware->boot();
     }
 
-    public function logout()
+    public function signOut()
     {
         session_start();
         if (isset($_SESSION['USERID'])) {

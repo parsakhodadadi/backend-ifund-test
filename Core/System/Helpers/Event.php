@@ -15,6 +15,7 @@ class Event
         if (time() >= $_SESSION['decay_time']) {
             unset($_SESSION[$checkIndex], $_SESSION[$unsetIndex]);
             return true;
-        } return false;
+        }
+        return false;
     }
 }

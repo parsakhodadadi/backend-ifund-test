@@ -24,31 +24,14 @@ class PanelController extends controller
     public function __construct()
     {
         $this->blade = blade();
-        $lang = ConfigHelper::getConfig('default-language');
-        $this->lang = loadLang($lang, 'dashboard');
-        $this->userId = $_SESSION['USERID'];
-        $this->users = loadModel(Users::class);
-        $this->currentUser = current($this->users->get(['id' => $this->userId]));
-        $this->likes = loadModel(LikedPosts::class);
-        $this->posts = loadModel(Posts::class);
     }
 
     public function dashboard()
     {
-        $pages = loadModel(PageViews::class)->get();
-        $viewers = loadModel(Viewers::class)->get();
-        $views = 0;
-        foreach ($pages as $page) {
-            $views += $page->views;
-        }
-        echo $this->blade->render('backend/main/layout/dashboard', [
+        $content = $this->blade->render('backend/main/layout/dashboard');
+        echo $this->blade->render('backend/main/panel', [
+            'content' => $content,
             'view' => $this->blade,
-            'lang' => $this->lang,
-            'header' => $this->loadBackendHeader(),
-            'likes' => $this->likes->get(),
-            'posts' => $this->posts->get(),
-            'views' => $views,
-            'viewers' => $viewers,
         ]);
     }
 }

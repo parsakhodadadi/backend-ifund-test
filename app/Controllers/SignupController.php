@@ -36,23 +36,22 @@ class SignupController extends controller
         $successMessage = null;
         $errorMessage = null;
         $errorPassNotEq = null;
+        $registeredEmailErr = null;
         $signupView = $this->signupService->method()->getViewName();
         if ($signupView == 'sign-up-form') {
             $errors = $this->request(SignupRequest::class);
             if (!empty($this->request) && empty($errors)) {
-//                if ($this->request['password'] == $this->request['confirm-password']) {
-                unset($this->request['confirm-password']);
-                $this->request['password'] = password_hash($this->request['password'], PASSWORD_DEFAULT);
-                $this->request['user_type'] = 'user';
-                $this->request['email_status'] = 'unverified';
-                $this->request['blocked'] = 'no';
-                $this->request['photo'] = 'files/default-profile.png';
-                $this->request['subscription_date'] = date("Y/m/d");
-                $this->request['subscription_time'] = date("h:i:sa");
-                $errorMessage = $this->users->insert($this->request);
-                if (empty($errorMessage)) {
-                    $successMessage = __('sign-up.create-success');
-                }
+                    if ($this->request['password'] == $this->request['confirm-password']) {
+                        unset($this->request['confirm-password']);
+                        $errorMessage = $this->users->insert($this->request);
+                        if (empty($errorMessage)) {
+                            $successMessage = __('sign-up.create-account-success');
+                        } else if ($errorMessage == 23000) {
+                            $registeredEmailErr = __('sign-up.registered-email-error');;
+                        }
+                    } else {
+                        $errorPassNotEq = __('sign-up.error-equality-passes');
+                    }
 //                    $_SESSION['SIGNUP_METHOD'] = current($this->users->get(['email' => $this->request['email']]))->id;
 //                    $_SESSION['SIGNUP_METHOD'] = 'email-verification-signup';
 //                    redirect('/sign-up');
@@ -60,14 +59,12 @@ class SignupController extends controller
 //                    $errorPassNotEq = $this->lang['not-equal-pass'];
 //                }
             }
-            echo $this->blade->render('frontend/sign-up/sign-up-form', [
-                'data' => $this->request,
-                'errors' => $errors,
+            echo $this->blade->render('backend/main/layout/sign-up', [
                 'lang' => $this->lang,
-                'successMessage' => $successMessage,
-                'errorMessage' => $errorMessage,
+                'errors' => $errors,
                 'errorPassNotEq' => $errorPassNotEq,
-                'view' => $this->blade,
+                'registeredEmailErr' => $registeredEmailErr,
+                'successMessage' => $successMessage,
             ]);
         } elseif ($signupView == 'email-verification') {
             $verificationCode = rand(100000, 999999);

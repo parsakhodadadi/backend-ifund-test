@@ -10,11 +10,13 @@
       "Core/System",
       "Helpers",
       "db",
-      "BramusRouter.php"
+      "BramusRouter.php",
+      "AaronRouter/AaronRouter.php"
     ]
   },
   "psr-4": {
-    "App\\": "app/"
+    "App\\": "app/",
+    "AaronRouter\\Router\\": "AaronRouter/"
   },
   "require": {
     "bramus/router": "~1.6",

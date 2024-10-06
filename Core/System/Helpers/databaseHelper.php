@@ -21,7 +21,7 @@ class databaseHelper
         // $databaseDetails=$defaultDatabase::getConfig('all','database');
         $databaseDetails = call_user_func_array(['Core\System\Helpers\ConfigHelper','getConfig'], ['all',$configs['default-database']]);
         try {
-            $conn = new PDO("mysql:host={$databaseDetails['server']};dbname={$databaseDetails['database']}", $databaseDetails['user'], $databaseDetails['password']);
+            $conn = new PDO("mysql:host={$databaseDetails['server']};dbname={$databaseDetails['database']}", $databaseDetails['user']);
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $conn;

@@ -23,7 +23,7 @@ return [
     'subject-add-suc-admin' => 'موضوع شما با موفقیت ایجاد شد و پس از تایید مدیریت کل قابل نمایش خواهد بود',
     'subject-add-suc-fulladmin' => 'موضوع شما با موفقیت ایجاد شد',
     'subject-update-suc-admin' => ' موضوع شما با موفقیت ویرایش شد و پس از تایید مدیریت کل قابل نمایش خواهد بود',
-    'subject-update-suc-fulladmin' => 'موضوع شما با موفقیت ویرایش شد',
+    'subject-update-suc-fulladmin' => 'موضوع شما با موفقیت به روزرسانی شد',
     'categories' => 'دسته بندی موضوعی',
     'settings' =>  'تنظیمات دسته بندی ها',
     'edit' => 'ویرایش',
@@ -39,4 +39,7 @@ return [
     'subjects-list' => 'لیست موضوعات',
     'subjects' => 'موضوعات',
     'subjects-settings' => 'تنظیمات موضوعات',
+    'title-required' => 'لطفا عنوان را وارد کنید',
+    'description-required' => 'لطفا توضیحات را وارد کنید',
+    'category-invalid' => 'دسته بندی معتبر نمی باشد',
 ];

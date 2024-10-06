@@ -114,25 +114,12 @@ Header END -->
                             </div>
                         </form>
                         <!-- Form END -->
-                        <hr>
                         @if(!empty($successMessage))
                             <div class="form-control bg-success">{{ $successMessage }}</div>
                         @endif
                         @if(!empty($errorMessage))
                             <div class="form-control bg-danger">{{ $errorMessage }}</div>
                         @endif
-                        <!-- Social-media btn -->
-                        <div class="text-center">
-                            <p>{{ $lang['sign-in-with-social-media'] }}</p>
-                            <ul class="list-unstyled d-sm-flex mt-3 justify-content-center">
-                                <li class="mx-2">
-                                    <a href="#" class="btn bg-facebook d-inline-block"><i class="fab fa-facebook-f me-2"></i>{{ $lang['sign-in-facebook'] }}</a>
-                                </li>
-                                <li class="mx-2">
-                                    <a href="#" class="btn bg-google d-inline-block"><i class="fab fa-google me-2"></i>{{ $lang['sign-in-google'] }}</a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
