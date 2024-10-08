@@ -6,6 +6,7 @@ use App\Middlewares\AdminMiddleware;
 use App\Middlewares\FulladminMiddleware;
 use App\Models\Users;
 use App\Services\User\SigninAuth;
+use App\Request\SigninRequest;
 use Core\System\controller;
 use Core\System\Helpers\ConfigHelper;
 use App\Middlewares\SigninMiddleware;
@@ -45,31 +46,19 @@ class SigninController extends controller
                     redirect('/panel');
                 }
             }
-
-            if (!empty($this->request)) {
+            $errors = $this->request(SigninRequest::class);
+            if (!empty($this->request) && empty($errors)) {
                 if (!$this->security()->checkCSRFToken($this->request['csrf_token'])) {
                     echo 'false';
                 }
 
                 unset($this->request['csrf_token']);
-
-                $rules = [
-                    'email' => 'required',
-                    'password' => 'required',
-                ];
-
-                $messages = [
-                    'email.required' => 'نام الزامی می باشد',
-                    'password.required' => 'پسورد الزامی می باشد',
-                ];
-
-                $errors = $this->validation()->check($rules, $this->request, $messages);
-
                 if (!empty($errors)) {
                     die($this->view()->blade()
-                        ->render('frontend/sign-in/user-password-sign-in', [
+                        ->render('backend/main/layout/user-password-sign-in', [
                             'errors' => $errors,
                             'view' => $this->blade,
+                            'data' => $this->request,
                         ]));
                 }
 
@@ -82,7 +71,7 @@ class SigninController extends controller
                             $this->event()->blockUserPerTime(15);
                         }
                         $errorMessage = $this->lang['wrong-credential'];
-                        die($this->blade->render('frontend/sign-in/user-password-sign-in', [
+                        die($this->blade->render('backend/main/layout/user-password-sign-in', [
                             'errorMessage' => $errorMessage,
                             'errors' => [],
                             'security' => $this->security(),
@@ -92,7 +81,7 @@ class SigninController extends controller
                     }
                 } else {
                     $errorMessage = $this->lang['wrong-credential'];
-                    die($this->blade->render('frontend/sign-in/user-password-sign-in', [
+                    die($this->blade->render('backend/main/layout/user-password-sign-in', [
                         'errorMessage' => $errorMessage,
                         'errors' => [],
                         'security' => $this->security(),
@@ -106,7 +95,7 @@ class SigninController extends controller
                         $this->event()->blockUserPerTime(15);
                         if (!$this->event()->decayUserPerTime('attempt')) {
                             $this->errorMessage = $this->lang['blocked'];
-                            die($this->blade->render('frontend/sign-in/user-password-sign-in', [
+                            die($this->blade->render('backend/main/layout/user-password-sign-in', [
                                 'errorMessage' => $this->errorMessage,
                                 'errors' => [],
                                 'security' => $this->security(),
@@ -125,13 +114,12 @@ class SigninController extends controller
                 }
                 redirect('/panel');
             } else {
-                echo $this->blade->render("frontend/sign-in/$signinViewName", [
+                echo $this->blade->render("backend/main/layout/$signinViewName", [
                     'view' => $this->blade,
-                    'errors' => [],
+                    'errors' => $errors,
                     'security' => $this->security(),
                     'lang' => $this->lang,
                 ]);
-                exit('heyy');
             }
         } else {
             if ($signinViewName == 'otp-signin') {

@@ -173,7 +173,7 @@
                             <a href="#" class="waves-effect waves-light dropdown-toggle w-auto l-h-12 bg-transparent p-0 no-shadow" title="User" data-bs-toggle="modal" data-bs-target="#quick_user_toggle">
                                 <div class="d-flex pt-1">
                                     <div class="text-end me-10">
-                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary"> مختار مینائی</p>
+                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary">{{ $user->name }}</p>
                                         <small class="fs-10 mb-0 text-uppercase text-mute"> ادمین</small>
                                     </div>
                                     <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\avatar\avatar-1.png" class="avatar rounded-10 bg-primary-light h-40 w-40" alt="">
@@ -206,7 +206,7 @@
                         <div class="image d-flex align-items-center">
                             <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\avatar\avatar-13.png" class="rounded-0 me-10" alt="User Image">
                           <div>
-                                <h4 class="mb-0 fw-600">مختار مینائی </h4>
+                                <h4 class="mb-0 fw-600">{{ $user->name }}</h4>
                                 <p class="mb-0">ادمین</p>
                             </div>
                         </div>
@@ -217,7 +217,7 @@
                                 <a class="dropdown-item" href="mailbox.html"><i class="ti-email"></i> دریافت پیام</a>
                                 <a class="dropdown-item" href="contact_app_chat.html"><i class="ti-link"></i> گفتگو</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="auth_login.html"><i class="ti-lock"></i> خروج</a>
+                                <a class="dropdown-item" href="{{ route('/sign-out') }}"><i class="ti-lock"></i> خروج</a>
                             </div>
                         </div>
                     </div>
@@ -228,12 +228,12 @@
                         <ul class="sidebar-menu" data-widget="tree">
                             <li class="header">منوی اصلی</li>
                             <li>
-                                <a href="index.html">
+                                <a href="{{ route('/panel') }}">
 					<i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
 					<span>داشبورد</span>
 				  </a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="offers.html">
 					<i class="icon-Chart-pie"><span class="path1"></span><span class="path2"></span></i>
 					<span>آفر</span>
@@ -579,7 +579,7 @@
                                         document.write(new Date().getFullYear())
                                     </script> تمامی حقوق محفوظ است</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </section>

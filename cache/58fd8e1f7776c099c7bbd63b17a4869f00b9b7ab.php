@@ -38,7 +38,9 @@
                                     <div class="form-group">
                                         <div class="input-group mb-3">
                                             <span class="input-group-text bg-transparent"><i class="ti-user"></i></span>
-                                            <input type="text" name="name" class="form-control ps-15 bg-transparent"
+                                            <input type="text" name="name" 
+                                            <?php if(!empty($data)): ?> value="<?php echo e($data['name']); ?>" <?php endif; ?> 
+                                            class="form-control ps-15 bg-transparent"
                                                 placeholder="نام وفامیلی" style="direction:rtl;">  
                                         </div>
                                         <?php if(!empty($errors['name'])): ?>
@@ -49,7 +51,9 @@
                                         <div class="input-group mb-3">
                                             <span class="input-group-text bg-transparent"><i
                                                     class="ti-email"></i></span>
-                                            <input type="text" name="email" class="form-control ps-15 bg-transparent"
+                                            <input type="text" name="email"
+                                            <?php if(!empty($data)): ?> value="<?php echo e($data['email']); ?>" <?php endif; ?> 
+                                            class="form-control ps-15 bg-transparent"
                                                 placeholder="ایمیل" style="direction:rtl;">
                                         </div>
                                         <?php if(!empty($errors['email']['required'])): ?>
@@ -64,7 +68,13 @@
                                     <div class="form-group">
                                         <div class="input-group mb-3">
                                             <span class="input-group-text bg-transparent"><i class="ti-lock"></i></span>
-                                            <input type="password" name="password" class="form-control ps-15 bg-transparent"
+                                            <input type="password" 
+                                            <?php if(!empty($data['password']) && empty($successMessage)): ?>
+                                                value="<?php echo e($data['password']); ?>"
+                                            <?php elseif(!empty($successMessage)): ?> 
+                                                value="<?php echo e($password); ?>"
+                                            <?php endif; ?>  
+                                            name="password" class="form-control ps-15 bg-transparent"
                                                 placeholder="پسوورد" style="direction:rtl;">
                                         </div>
                                         <?php if(!empty($errors['password']['required'])): ?>
@@ -76,7 +86,13 @@
                                     <div class="form-group">
                                         <div class="input-group mb-3">
                                             <span class="input-group-text bg-transparent"><i class="ti-lock"></i></span>
-                                            <input type="password" name="confirm-password" class="form-control ps-15 bg-transparent"
+                                            <input type="password" name="confirm-password"
+                                            <?php if(!empty($data['confirm-password'])): ?>
+                                                value="<?php echo e($data['confirm-password']); ?>"
+                                            <?php elseif(!empty($successMessage)): ?> 
+                                                value="<?php echo e($password); ?>"
+                                            <?php endif; ?> 
+                                            class="form-control ps-15 bg-transparent"
                                                 placeholder="تائید پسوورد" style="direction:rtl;">
                                         </div>
                                         <?php if(!empty($errors['confirm-password']['required'])): ?>
@@ -107,7 +123,7 @@
                                     </div>
                                 </form>
                                 <div class="text-center">
-                                    <p class="mt-15 mb-0">حساب کاربری دارید؟<a href="auth_login.html"
+                                    <p class="mt-15 mb-0">حساب کاربری دارید؟<a href="<?php echo e(route('/sign-in')); ?>"
                                             class="text-danger ms-5">ورود</a></p>
                                 </div>
                             </div>
