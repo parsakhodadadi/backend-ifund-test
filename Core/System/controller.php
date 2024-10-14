@@ -25,12 +25,18 @@ class controller
 {
     private $users;
     private $userId = null;
-    private $currentUser = null;
     private $categories = null;
+
+    private $currentUser;
 
     public function __construct()
     {
+        $users = loadModel(Users::class);
+        if (isset($_SESSION['USERID'])) {
+            $this->currentUser = current($users->get(['id' => $_SESSION['USERED']]));
+        }
     }
+
 
     public function loadController($class)
     {

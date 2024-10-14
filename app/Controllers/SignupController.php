@@ -37,12 +37,15 @@ class SignupController extends controller
         $errorMessage = null;
         $errorPassNotEq = null;
         $registeredEmailErr = null;
+        $password = null;
         $signupView = $this->signupService->method()->getViewName();
         if ($signupView == 'sign-up-form') {
             $errors = $this->request(SignupRequest::class);
             if (!empty($this->request) && empty($errors)) {
                     if ($this->request['password'] == $this->request['confirm-password']) {
                         unset($this->request['confirm-password']);
+                        $password = $this->request['password'];
+                        $this->request['password'] = password_hash($this->request['password'], PASSWORD_DEFAULT);
                         $errorMessage = $this->users->insert($this->request);
                         if (empty($errorMessage)) {
                             $successMessage = __('sign-up.create-account-success');
@@ -65,6 +68,8 @@ class SignupController extends controller
                 'errorPassNotEq' => $errorPassNotEq,
                 'registeredEmailErr' => $registeredEmailErr,
                 'successMessage' => $successMessage,
+                'data' => $this->request,
+                'password' => $password,
             ]);
         } elseif ($signupView == 'email-verification') {
             $verificationCode = rand(100000, 999999);

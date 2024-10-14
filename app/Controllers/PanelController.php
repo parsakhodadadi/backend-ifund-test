@@ -15,7 +15,6 @@ class PanelController extends controller
 {
     private $blade;
     private $lang;
-    private $userId;
     private $users;
     private $currentUser;
     private $likes;
@@ -24,14 +23,18 @@ class PanelController extends controller
     public function __construct()
     {
         $this->blade = blade();
+        $this->users = loadModel(Users::class);
+        $this->currentUser = current($this->users->get(['id' => $_SESSION['USERID']]));
     }
 
-    public function dashboard()
+    public function panel() 
     {
         $content = $this->blade->render('backend/main/layout/dashboard');
         echo $this->blade->render('backend/main/panel', [
             'content' => $content,
             'view' => $this->blade,
+            'user' => $this->currentUser,
+            'lang' => loadLang(ConfigHelper::getConfig('default-language'), 'panel'),
         ]);
     }
 }

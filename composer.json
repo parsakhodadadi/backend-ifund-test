@@ -11,7 +11,8 @@
       "Helpers",
       "db",
       "BramusRouter.php",
-      "AaronRouter/AaronRouter.php"
+      "AaronRouter/AaronRouter.php",
+      "app/Controllers/UsersController.php"
     ]
   },
   "psr-4": {

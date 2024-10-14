@@ -52,7 +52,7 @@
                                 <div class="search-bx mx-5">
                                     <form>
                                         <div class="input-group">
-                                            <input type="search" class="form-control" placeholder="جستجو ....">
+                                            <input type="search" class="form-control" placeholder="<?php echo e($lang['search']); ?>">
                                             <div class="input-group-append">
                                                 <button class="btn" type="submit" id="button-addon3"><i class="icon-Search"><span class="path1"></span><span class="path2"></span></i></button>
                                             </div>
@@ -173,14 +173,13 @@
                             <a href="#" class="waves-effect waves-light dropdown-toggle w-auto l-h-12 bg-transparent p-0 no-shadow" title="User" data-bs-toggle="modal" data-bs-target="#quick_user_toggle">
                                 <div class="d-flex pt-1">
                                     <div class="text-end me-10">
-                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary"> مختار مینائی</p>
-                                        <small class="fs-10 mb-0 text-uppercase text-mute"> ادمین</small>
+                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary"><?php echo e($user->name); ?></p>
+                                        <small class="fs-10 mb-0 text-uppercase text-mute"> <?php echo e($lang['admin']); ?></small>
                                     </div>
                                     <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\avatar\avatar-1.png" class="avatar rounded-10 bg-primary-light h-40 w-40" alt="">
                                 </div>
                             </a>
                         </li>
-
                     </ul>
                 </div>
             </nav>
@@ -206,18 +205,18 @@
                         <div class="image d-flex align-items-center">
                             <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\avatar\avatar-13.png" class="rounded-0 me-10" alt="User Image">
                           <div>
-                                <h4 class="mb-0 fw-600">مختار مینائی </h4>
-                                <p class="mb-0">ادمین</p>
+                                <h4 class="mb-0 fw-600"><?php echo e($user->name); ?></h4>
+                                <p class="mb-0"><?php echo e($lang['admin']); ?></p>
                             </div>
                         </div>
                         <div class="info">
                             <a class="dropdown-toggle p-15 d-grid" data-bs-toggle="dropdown" href="#"></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="extra_profile.html"><i class="ti-user"></i> پروفایل</a>
-                                <a class="dropdown-item" href="mailbox.html"><i class="ti-email"></i> دریافت پیام</a>
-                                <a class="dropdown-item" href="contact_app_chat.html"><i class="ti-link"></i> گفتگو</a>
+                                <a class="dropdown-item" href="extra_profile.html"><i class="ti-user"></i> <?php echo e($lang['profile']); ?></a>
+                                <a class="dropdown-item" href="mailbox.html"><i class="ti-email"></i> <?php echo e($lang['receive-msg']); ?></a>
+                                <a class="dropdown-item" href="contact_app_chat.html"><i class="ti-link"></i> <?php echo e($lang['negotiation']); ?></a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="auth_login.html"><i class="ti-lock"></i> خروج</a>
+                                <a class="dropdown-item" href="<?php echo e(route('/sign-out')); ?>"><i class="ti-lock"></i> <?php echo e($lang['exit']); ?></a>
                             </div>
                         </div>
                     </div>
@@ -226,26 +225,26 @@
                     <div class="multinav-scroll" style="height: 97%;">
                         <!-- sidebar menu-->
                         <ul class="sidebar-menu" data-widget="tree">
-                            <li class="header">منوی اصلی</li>
+                            <li class="header"><?php echo e($lang['main-menu']); ?></li>
                             <li>
-                                <a href="index.html">
+                                <a href="<?php echo e(route('/panel')); ?>">
 					<i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
-					<span>داشبورد</span>
+					<span><?php echo e($lang['dashboard']); ?></span>
 				  </a>
                             </li>
-                            <li>
+                             <!-- <li>
                                 <a href="offers.html">
 					<i class="icon-Chart-pie"><span class="path1"></span><span class="path2"></span></i>
 					<span>آفر</span>
 				  </a>
-                            </li>
+                            </li> -->
                             <li>
-                                <a href="people.html">
+                                <a href="<?php echo e(route('/panel/users-management')); ?>">
 					<i class="icon-Flag"><span class="path1"></span><span class="path2"></span></i>
-					<span>کاربران</span>
+					<span><?php echo e($lang['users']); ?></span>
 				  </a>
                             </li>
-                            <li>
+                        <!--    <li>
                                 <a href="jobs-details.html">
 					<i class="icon-Alarm-clock"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
 					<span>جزئیات مشاغل</span>
@@ -579,7 +578,7 @@
                                         document.write(new Date().getFullYear())
                                     </script> تمامی حقوق محفوظ است</p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </section>
@@ -598,10 +597,6 @@
                     </li>
                 </ul>
             </div>
-            &copy;
-            <script>
-                document.write(new Date().getFullYear())
-            </script> <a href="https://www.fudatco.com/">  crmi/hrmm قالب مدیریت</a>. بازطراحی و فارسی سازی توسط هلدینگ فنی مهندسی فوداتکو.
         </footer>
         <!-- Side panel -->
         <!-- quick_actions_toggle -->
