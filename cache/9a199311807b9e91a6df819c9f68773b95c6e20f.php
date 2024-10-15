@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\favicon.ico">
+    <link rel="icon" href="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\favicon.ico">
     <!-- Vendors Style-->
-    <link rel="stylesheet" href="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}src\css\vendors_css.css">
+    <link rel="stylesheet" href="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>src\css\vendors_css.css">
 
     <!-- Style-->
-    <link rel="stylesheet" href="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}src\css\style.css">
-    <link rel="stylesheet" href="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}src\css\skin_color.css">
+    <link rel="stylesheet" href="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>src\css\style.css">
+    <link rel="stylesheet" href="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>src\css\skin_color.css">
     <title>Admin Panel</title>
 </head>
 
@@ -28,12 +28,12 @@
                 <a href="index.html" class="logo">
                     <!-- logo-->
                     <div class="logo-mini w-30">
-                        <span class="light-logo"><img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\logo-letter.png" alt="logo"></span>
-                        <span class="dark-logo"><img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\logo-letter-white.png" alt="logo"></span>
+                        <span class="light-logo"><img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\logo-letter.png" alt="logo"></span>
+                        <span class="dark-logo"><img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\logo-letter-white.png" alt="logo"></span>
                     </div>
                     <div class="logo-lg">
-                        <span class="light-logo"><img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\logo-dark-text.png" alt="logo"></span>
-                        <span class="dark-logo"><img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\logo-light-text.png" alt="logo"></span>
+                        <span class="light-logo"><img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\logo-dark-text.png" alt="logo"></span>
+                        <span class="dark-logo"><img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\logo-light-text.png" alt="logo"></span>
                     </div>
                 </a>
             </div>
@@ -52,7 +52,7 @@
                                 <div class="search-bx mx-5">
                                     <form>
                                         <div class="input-group">
-                                            <input type="search" class="form-control" placeholder="{{ $lang['search'] }}">
+                                            <input type="search" class="form-control" placeholder="<?php echo e($lang['search']); ?>">
                                             <div class="input-group-append">
                                                 <button class="btn" type="submit" id="button-addon3"><i class="icon-Search"><span class="path1"></span><span class="path2"></span></i></button>
                                             </div>
@@ -151,14 +151,14 @@
 
                         <li class="btn-group">
                             <a href="#" class="waves-effect waves-light nav-link btn-primary-light svg-bt-icon dropdown-toggle" data-bs-toggle="dropdown">
-					<img class="rounded" src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\svg-icon\ger.svg" alt="">
+					<img class="rounded" src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\svg-icon\ger.svg" alt="">
 				</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\svg-icon\ger.svg" alt=""> آلمانی</a>
-                                <a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\svg-icon\spain.svg" alt=""> اسپانیایی</a>
+                                <a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\svg-icon\ger.svg" alt=""> آلمانی</a>
+                                <a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\svg-icon\spain.svg" alt=""> اسپانیایی</a>
                          
-                                <a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\svg-icon\jap.svg" alt=""> ژاپنی</a>
-                                <a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\svg-icon\fra.svg" alt=""> فرانسوی</a>
+                                <a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\svg-icon\jap.svg" alt=""> ژاپنی</a>
+                                <a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\svg-icon\fra.svg" alt=""> فرانسوی</a>
                             </div>
                         </li>
 
@@ -173,10 +173,10 @@
                             <a href="#" class="waves-effect waves-light dropdown-toggle w-auto l-h-12 bg-transparent p-0 no-shadow" title="User" data-bs-toggle="modal" data-bs-target="#quick_user_toggle">
                                 <div class="d-flex pt-1">
                                     <div class="text-end me-10">
-                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary">{{ $user->name }}</p>
-                                        <small class="fs-10 mb-0 text-uppercase text-mute"> {{ $lang['admin'] }}</small>
+                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary"><?php echo e($user->name); ?></p>
+                                        <small class="fs-10 mb-0 text-uppercase text-mute"> <?php echo e($lang['admin']); ?></small>
                                     </div>
-                                    <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\avatar\avatar-1.png" class="avatar rounded-10 bg-primary-light h-40 w-40" alt="">
+                                    <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\avatar\avatar-1.png" class="avatar rounded-10 bg-primary-light h-40 w-40" alt="">
                                 </div>
                             </a>
                         </li>
@@ -193,7 +193,7 @@
                     <a href="index.html" class="logo">
                         <!-- logo-->
                         <div class="logo-mini">
-                            <span class="light-logo"><img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\logo-letter.png" alt="logo"></span>
+                            <span class="light-logo"><img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\logo-letter.png" alt="logo"></span>
                         </div>
                         <div class="logo-lg">
                             <span class="light-logo fs-36 fw-700">CRM<span class="text-primary">i</span></span>
@@ -203,20 +203,20 @@
                 <div class="user-profile my-15 px-20 py-10 b-1 rounded10 mx-15">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="image d-flex align-items-center">
-                            <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\avatar\avatar-13.png" class="rounded-0 me-10" alt="User Image">
+                            <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\avatar\avatar-13.png" class="rounded-0 me-10" alt="User Image">
                           <div>
-                                <h4 class="mb-0 fw-600">{{ $user->name }}</h4>
-                                <p class="mb-0">{{ $lang['admin'] }}</p>
+                                <h4 class="mb-0 fw-600"><?php echo e($user->name); ?></h4>
+                                <p class="mb-0"><?php echo e($lang['admin']); ?></p>
                             </div>
                         </div>
                         <div class="info">
                             <a class="dropdown-toggle p-15 d-grid" data-bs-toggle="dropdown" href="#"></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="{{ route('/panel/edit-profile') }}"><i class="ti-user"></i> {{ $lang['profile'] }}</a>
-                                <a class="dropdown-item" href="mailbox.html"><i class="ti-email"></i> {{ $lang['receive-msg'] }}</a>
-                                <a class="dropdown-item" href="contact_app_chat.html"><i class="ti-link"></i> {{ $lang['negotiation'] }}</a>
+                                <a class="dropdown-item" href="<?php echo e(route('/panel/edit-profile')); ?>"><i class="ti-user"></i> <?php echo e($lang['profile']); ?></a>
+                                <a class="dropdown-item" href="mailbox.html"><i class="ti-email"></i> <?php echo e($lang['receive-msg']); ?></a>
+                                <a class="dropdown-item" href="contact_app_chat.html"><i class="ti-link"></i> <?php echo e($lang['negotiation']); ?></a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('/sign-out') }}"><i class="ti-lock"></i> {{ $lang['exit'] }}</a>
+                                <a class="dropdown-item" href="<?php echo e(route('/sign-out')); ?>"><i class="ti-lock"></i> <?php echo e($lang['exit']); ?></a>
                             </div>
                         </div>
                     </div>
@@ -225,11 +225,11 @@
                     <div class="multinav-scroll" style="height: 97%;">
                         <!-- sidebar menu-->
                         <ul class="sidebar-menu" data-widget="tree">
-                            <li class="header">{{ $lang['main-menu'] }}</li>
+                            <li class="header"><?php echo e($lang['main-menu']); ?></li>
                             <li>
-                                <a href="{{ route('/panel') }}">
+                                <a href="<?php echo e(route('/panel')); ?>">
 					<i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
-					<span>{{ $lang['dashboard'] }}</span>
+					<span><?php echo e($lang['dashboard']); ?></span>
 				  </a>
                             </li>
                              <!-- <li>
@@ -239,9 +239,9 @@
 				  </a>
                             </li> -->
                             <li>
-                                <a href="{{ route('/panel/users-management') }}">
+                                <a href="<?php echo e(route('/panel/users-management')); ?>">
 					<i class="icon-Flag"><span class="path1"></span><span class="path2"></span></i>
-					<span>{{ $lang['users'] }}</span>
+					<span><?php echo e($lang['users']); ?></span>
 				  </a>
                             </li>
                         <!--    <li>
@@ -565,7 +565,7 @@
                         <div class="sidebar-widgets">
                             <div class="mx-25 mb-30 pb-20 side-bx bg-primary-light rounded20">
                                 <div class="text-center">
-                                    <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\svg-icon\color-svg\custom-17.svg" class="sideimg p-5" alt="">
+                                    <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\svg-icon\color-svg\custom-17.svg" class="sideimg p-5" alt="">
                                     <h4 class="title-bx text-primary mm">مشاهده همه گزارشات</h4>
                                     <a href="#" class="py-10 fs-14 mb-0 text-primary">
 							بهترین پنل مدیریت <i class="mdi mdi-arrow-right"></i>
@@ -585,7 +585,8 @@
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        {!! $content !!}
+        <?php echo $content; ?>
+
         <!-- /.content-wrapper -->
 
     <footer class="main-footer">
@@ -690,7 +691,7 @@
                                         <h5 class="fw-500 mb-15">پیام های سیستمی</h5>
                                         <div class="d-flex align-items-center mb-30">
                                             <div class="me-15 bg-lightest h-50 w-50 l-h-50 rounded text-center">
-                                                <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\svg-icon\color-svg\001-glass.svg" class="h-30" alt="">
+                                                <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\svg-icon\color-svg\001-glass.svg" class="h-30" alt="">
                                             </div>
                                             <div class="d-flex flex-column flex-grow-1 me-2 fw-500">
                                                 <a href="#" class="text-dark hover-primary mb-1 fs-16">هزینه های جانبی</a>
@@ -700,7 +701,7 @@
                                         </div>
                                         <div class="d-flex align-items-center mb-30">
                                             <div class="me-15 bg-lightest h-50 w-50 l-h-50 rounded text-center">
-                                                <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\svg-icon\color-svg\002-google.svg" class="h-30" alt="">
+                                                <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\svg-icon\color-svg\002-google.svg" class="h-30" alt="">
                                             </div>
                                             <div class="d-flex flex-column flex-grow-1 me-2 fw-500">
                                                 <a href="#" class="text-dark hover-danger mb-1 fs-16">هزینه تنظیمات</a>
@@ -710,7 +711,7 @@
                                         </div>
                                         <div class="d-flex align-items-center mb-30">
                                             <div class="me-15 bg-lightest h-50 w-50 l-h-50 rounded text-center">
-                                                <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\svg-icon\color-svg\003-settings.svg" class="h-30" alt="">
+                                                <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\svg-icon\color-svg\003-settings.svg" class="h-30" alt="">
                                             </div>
                                             <div class="d-flex flex-column flex-grow-1 me-2 fw-500">
                                                 <a href="#" class="text-dark hover-success mb-1 fs-16">هزینه لابراتور</a>
@@ -720,7 +721,7 @@
                                         </div>
                                         <div class="d-flex align-items-center mb-30">
                                             <div class="me-15 bg-lightest h-50 w-50 l-h-50 rounded text-center">
-                                                <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\svg-icon\color-svg\004-dad.svg" class="h-30" alt="">
+                                                <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\svg-icon\color-svg\004-dad.svg" class="h-30" alt="">
                                             </div>
                                             <div class="d-flex flex-column flex-grow-1 me-2 fw-500">
                                                 <a href="#" class="text-dark hover-info mb-1 fs-16">حقوق کاربران</a>
@@ -730,7 +731,7 @@
                                         </div>
                                         <div class="d-flex align-items-center">
                                             <div class="me-15 bg-lightest h-50 w-50 l-h-50 rounded text-center">
-                                                <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\svg-icon\color-svg\005-paint-palette.svg" class="h-30" alt="">
+                                                <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\svg-icon\color-svg\005-paint-palette.svg" class="h-30" alt="">
                                             </div>
                                             <div class="d-flex flex-column flex-grow-1 me-2 fw-500">
                                                 <a href="#" class="text-dark hover-warning mb-1 fs-16">طراحی گارگاه</a>
@@ -988,7 +989,7 @@
                         </div>
                         <div>
                             <div class="d-flex flex-row">
-                                <div class=""><img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\avatar\avatar-2.png" alt="user" class="rounded bg-danger-light w-150" width="100"></div>
+                                <div class=""><img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\avatar\avatar-2.png" alt="user" class="rounded bg-danger-light w-150" width="100"></div>
                                 <div class="ps-20">
                                     <h5 class="mb-0">هانیه مهدوی</h5>
                                     <p class="my-5 text-fade">طراح وب</p>
@@ -1154,7 +1155,7 @@
                                 </div>
                             </div>
                             <a href="#" class="flex-shrink-0">
-						<img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\product\product-1.png" class="avatar h-100 w-100" alt="">
+						<img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\product\product-1.png" class="avatar h-100 w-100" alt="">
 					</a>
                         </div>
                         <div class="dropdown-divider"></div>
@@ -1175,7 +1176,7 @@
                                 </div>
                             </div>
                             <a href="#" class="flex-shrink-0">
-						<img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\product\product-2.png" class="avatar h-100 w-100" alt="">
+						<img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\product\product-2.png" class="avatar h-100 w-100" alt="">
 					</a>
                         </div>
                         <div class="dropdown-divider"></div>
@@ -1196,7 +1197,7 @@
                                 </div>
                             </div>
                             <a href="#" class="flex-shrink-0">
-						<img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\product\product-3.png" class="avatar h-100 w-100" alt="">
+						<img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\product\product-3.png" class="avatar h-100 w-100" alt="">
 					</a>
                         </div>
                         <div class="dropdown-divider"></div>
@@ -1217,7 +1218,7 @@
                                 </div>
                             </div>
                             <a href="#" class="flex-shrink-0">
-						<img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\product\product-4.png" class="avatar h-100 w-100" alt="">
+						<img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\product\product-4.png" class="avatar h-100 w-100" alt="">
 					</a>
                         </div>
                         <div class="dropdown-divider"></div>
@@ -1238,7 +1239,7 @@
                                 </div>
                             </div>
                             <a href="#" class="flex-shrink-0">
-						<img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\product\product-5.png" class="avatar h-100 w-100" alt="">
+						<img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\product\product-5.png" class="avatar h-100 w-100" alt="">
 					</a>
                         </div>
                         <div class="dropdown-divider"></div>
@@ -1259,7 +1260,7 @@
                                 </div>
                             </div>
                             <a href="#" class="flex-shrink-0">
-						<img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\product\product-6.png" class="avatar h-100 w-100" alt="">
+						<img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\product\product-6.png" class="avatar h-100 w-100" alt="">
 					</a>
                         </div>
                     </div>
@@ -1355,7 +1356,7 @@
                     <div class="chat-msg user">
                         <div class="d-flex align-items-center">
                             <span class="msg-avatar">
-                                <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\avatar\2.jpg" class="avatar avatar-lg" alt="">
+                                <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\avatar\2.jpg" class="avatar avatar-lg" alt="">
                             </span>
                             <div class="mx-10">
                                 <a href="#" class="text-dark hover-primary fw-bold">سیما </a>
@@ -1373,7 +1374,7 @@
                                 <p class="text-muted fs-12 mb-0">3 دقیقه پیش</p>
                             </div>
                             <span class="msg-avatar">
-                                <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\avatar\3.jpg" class="avatar avatar-lg" alt="">
+                                <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\avatar\3.jpg" class="avatar avatar-lg" alt="">
                             </span>
                         </div>
                         <div class="cm-msg-text">
@@ -1383,7 +1384,7 @@
                     <div class="chat-msg user">
                         <div class="d-flex align-items-center">
                             <span class="msg-avatar">
-                                <img src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}images\avatar\2.jpg" class="avatar avatar-lg" alt="">
+                                <img src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>images\avatar\2.jpg" class="avatar avatar-lg" alt="">
                             </span>
                             <div class="mx-10">
                                 <a href="#" class="text-dark hover-primary fw-bold">سیما</a>
@@ -1411,15 +1412,15 @@
     <!-- Page Content overlay -->
 
     <!-- Vendor JS -->
-    <script src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}src\js\vendors.min.js"></script>
-    <script src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}src\js\pages\chat-popup.js"></script>
-    <script src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}assets\icons\feather-icons\feather.min.js"></script>
+    <script src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>src\js\vendors.min.js"></script>
+    <script src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>src\js\pages\chat-popup.js"></script>
+    <script src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>assets\icons\feather-icons\feather.min.js"></script>
     <script
-        src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}assets\vendor_components\apexcharts-bundle\apexcharts.min.js"></script>
-    <script src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}style/js/dashboard-light.js"></script>
-    <script src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}src\js\template.js"></script>
-    <script src="{{ route('/Others/Themes/Backend/crmi/hrmm/') }}src\js\pages\dashboard.js"></script>
+        src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>assets\vendor_components\apexcharts-bundle\apexcharts.min.js"></script>
+    <script src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>style/js/dashboard-light.js"></script>
+    <script src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>src\js\template.js"></script>
+    <script src="<?php echo e(route('/Others/Themes/Backend/crmi/hrmm/')); ?>src\js\pages\dashboard.js"></script>
 
 </body>
 
-</html>
+</html><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/backend-ifund/views/backend/main/panel.blade.php ENDPATH**/ ?>

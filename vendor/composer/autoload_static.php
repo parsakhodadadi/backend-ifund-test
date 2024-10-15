@@ -251,6 +251,7 @@ class ComposerStaticInit2893115afc6bc7ccc85604fdf6bbeb26
         'App\\Middlewares\\FulladminMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/FulladminMiddleware.php',
         'App\\Middlewares\\SigninMiddleware' => __DIR__ . '/../..' . '/app/Middlewares/SigninMiddleware.php',
         'App\\Models\\Users' => __DIR__ . '/../..' . '/app/Models/users.php',
+        'App\\Request\\EditProfileRequest' => __DIR__ . '/../..' . '/app/Requests/EditProfileRequest.php',
         'App\\Request\\Request' => __DIR__ . '/../..' . '/app/Requests/Request.php',
         'App\\Request\\SigninRequest' => __DIR__ . '/../..' . '/app/Requests/SigninRequest.php',
         'App\\Request\\SignupRequest' => __DIR__ . '/../..' . '/app/Requests/SignupRequest.php',

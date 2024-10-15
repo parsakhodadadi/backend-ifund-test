@@ -18,6 +18,7 @@ if (isset($_SERVER['REQUEST_METHOD'])) {
     $router->set('/sign-out', 'SigninController', 'signOut');
     $router->set('/panel/users-management/block/d', 'UsersController', 'block', true);
     $router->set('/panel/users-management/delete/d', 'UsersController', 'delete', true);
+    $router->set('/panel/edit-profile', 'ProfileController', 'edit');
 
     $router->setRestriction('/panel/users-management', 'SigninController', 'checkAdmin');
 

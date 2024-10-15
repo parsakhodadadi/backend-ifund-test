@@ -212,7 +212,7 @@
                         <div class="info">
                             <a class="dropdown-toggle p-15 d-grid" data-bs-toggle="dropdown" href="#"></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="extra_profile.html"><i class="ti-user"></i> <?php echo e($lang['profile']); ?></a>
+                                <a class="dropdown-item" href="<?php echo e(route('/panel/edit-profile')); ?>"><i class="ti-user"></i> <?php echo e($lang['profile']); ?></a>
                                 <a class="dropdown-item" href="mailbox.html"><i class="ti-email"></i> <?php echo e($lang['receive-msg']); ?></a>
                                 <a class="dropdown-item" href="contact_app_chat.html"><i class="ti-link"></i> <?php echo e($lang['negotiation']); ?></a>
                                 <div class="dropdown-divider"></div>

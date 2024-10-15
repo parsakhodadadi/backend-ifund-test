@@ -46,6 +46,16 @@ class Validation
         }
     }
 
+    public function phone_number($value): bool
+    {
+        if(!empty($value)) {
+            if (!is_numeric($value)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public function tags_size($value): bool
     {
         if (!empty($value)) {

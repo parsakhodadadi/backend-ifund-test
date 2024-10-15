@@ -27,6 +27,7 @@ return array(
     'App\\Middlewares\\FulladminMiddleware' => $baseDir . '/app/Middlewares/FulladminMiddleware.php',
     'App\\Middlewares\\SigninMiddleware' => $baseDir . '/app/Middlewares/SigninMiddleware.php',
     'App\\Models\\Users' => $baseDir . '/app/Models/users.php',
+    'App\\Request\\EditProfileRequest' => $baseDir . '/app/Requests/EditProfileRequest.php',
     'App\\Request\\Request' => $baseDir . '/app/Requests/Request.php',
     'App\\Request\\SigninRequest' => $baseDir . '/app/Requests/SigninRequest.php',
     'App\\Request\\SignupRequest' => $baseDir . '/app/Requests/SignupRequest.php',

@@ -38,7 +38,7 @@ class Users
         }
     }
 
-    public function update($where = [], array $data = [])
+    public function update(array $where = [], array $data = [])
     {
         try {
             $this->db->pdoUpdate($this->table, $data, $where);
