@@ -11,4 +11,10 @@ return [
     'block' => 'بلاک',
     'delete' => 'حذف',
     'unblock' => 'آنبلاک',
+    'phone' => 'شماره تلفن',
+    'experience' => 'تجربیات',
+    'skills' => 'مهارت ها',
+    'email' => 'ایمیل',
+    'promote-to-instructor' => 'ارتقا به مدرس',
+    'chnage-to-normal-user' => 'تغییر به کاربر عادی',
 ];

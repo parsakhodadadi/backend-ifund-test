@@ -59,6 +59,10 @@
                                                     <th><?php echo e($lang['name']); ?></th>
                                                     <th><?php echo e($lang['status']); ?></th>
                                                     <th><?php echo e($lang['user-type']); ?></th>
+                                                    <th><?php echo e($lang['email']); ?></th>
+                                                    <th><?php echo e($lang['phone']); ?></th>
+                                                    <th><?php echo e($lang['experience']); ?></th>
+                                                    <th><?php echo e($lang['skills']); ?></th>
                                                     <th><i class="fa fa-lock me-5"></i><?php echo e($lang['operations']); ?></th>
                                                     <th></th>
                                                 </tr>
@@ -94,10 +98,35 @@
                                                             <?php endif; ?>
                                                         </td>
                                                         <td>
+                                                            <?php echo e($user->email); ?>
+
+                                                        </td>
+                                                        <td>
+                                                            <?php echo e($user->phone); ?>
+
+                                                        </td>
+                                                        <td>
+                                                            <?php echo e($user->experience); ?>
+
+                                                        </td>
+                                                        <td>
+                                                            <?php echo e($user->skills); ?>
+
+                                                        </td>
+                                                        <td>
                                                             <div class="dropdown">
                                                                 <?php if($user->user_type != 'admin'): ?>
                                                                     <a class="px-10 pt-5" href="#" data-bs-toggle="dropdown"><i class="ti-more-alt"></i></a>
                                                                     <div class="dropdown-menu">
+                                                                        <a class="dropdown-item" href="<?php echo e(route('/panel/users-management/promote-to-instructor/') . $user->id); ?>">
+                                                                            <?php if($user->user_type == 'instructor'): ?>
+                                                                            <?php echo e($lang['chnage-to-normal-user']); ?>
+
+                                                                            <?php else: ?>
+                                                                            <?php echo e($lang['promote-to-instructor']); ?>
+
+                                                                            <?php endif; ?>
+                                                                        </a>
                                                                         <a class="dropdown-item" href="<?php echo e(route('/panel/users-management/block/') . $user->id); ?>">
                                                                             <?php if($user->status == 'active'): ?>
                                                                                 <?php echo e($lang['block']); ?>

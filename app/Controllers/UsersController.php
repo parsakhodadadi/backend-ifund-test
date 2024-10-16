@@ -66,4 +66,20 @@ class UsersController extends controller {
         }
         redirect('/panel/users-management');
     }
+
+    public function promoteToInstructor(int $itemId)
+    {
+        if (current($this->users->get(['id' => $itemId]))->user_type == 'user') {
+            $errorMessage = $this->users->update(['id' => $itemId], ['user_type' => 'instructor']);
+            if (!empty($errorMessage)) {
+                exit('error');
+            }
+        } else {
+            $errorMessage = $this->users->update(['id' => $itemId], ['user_type' => 'user']);
+            if (!empty($errorMessage)) {
+                exit('error');
+            }
+        }
+        redirect('/panel/users-management');
+    }
 }

@@ -59,6 +59,10 @@
                                                     <th>{{ $lang['name'] }}</th>
                                                     <th>{{ $lang['status'] }}</th>
                                                     <th>{{ $lang['user-type'] }}</th>
+                                                    <th>{{ $lang['email'] }}</th>
+                                                    <th>{{ $lang['phone'] }}</th>
+                                                    <th>{{ $lang['experience'] }}</th>
+                                                    <th>{{ $lang['skills'] }}</th>
                                                     <th><i class="fa fa-lock me-5"></i>{{ $lang['operations'] }}</th>
                                                     <th></th>
                                                 </tr>
@@ -92,10 +96,29 @@
                                                             @endif
                                                         </td>
                                                         <td>
+                                                            {{ $user->email }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $user->phone }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $user->experience }}
+                                                        </td>
+                                                        <td>
+                                                            {{ $user->skills }}
+                                                        </td>
+                                                        <td>
                                                             <div class="dropdown">
                                                                 @if($user->user_type != 'admin')
                                                                     <a class="px-10 pt-5" href="#" data-bs-toggle="dropdown"><i class="ti-more-alt"></i></a>
                                                                     <div class="dropdown-menu">
+                                                                        <a class="dropdown-item" href="{{ route('/panel/users-management/promote-to-instructor/') . $user->id }}">
+                                                                            @if($user->user_type == 'instructor')
+                                                                            {{ $lang['chnage-to-normal-user'] }}
+                                                                            @else
+                                                                            {{ $lang['promote-to-instructor'] }}
+                                                                            @endif
+                                                                        </a>
                                                                         <a class="dropdown-item" href="{{ route('/panel/users-management/block/') . $user->id }}">
                                                                             @if($user->status == 'active')
                                                                                 {{ $lang['block'] }}
