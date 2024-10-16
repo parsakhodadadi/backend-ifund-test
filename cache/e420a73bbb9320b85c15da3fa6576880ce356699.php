@@ -59,28 +59,29 @@
                                                 <input type="tel" class="form-control" 
                                                 name="phone"
                                                 id="inputPhone"
-                                                value="<?php echo e($user->phone); ?>" placeholder="">
+                                                value="<?php echo e($user->phone); ?>" placeholder="09*********">
                                                 <?php if(!empty($errors['phone']['phone_number'])): ?>
                                                     <div class="form-element alert-danger"><?php echo e($errors['phone']['phone_number']); ?></div>
+                                                <?php elseif(!empty($errors['phone']['phone_size'])): ?>   
+                                                    <div class="form-element alert-danger"><?php echo e($errors['phone']['phone_size']); ?></div>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputExperience" class="col-sm-2 form-label"><?php echo e($lang['experience']); ?></label>
-
                                             <div class="col-sm-10">
                                                 <textarea class="form-control" id="inputExperience"
                                                 name="experience"
-                                                value="<?php echo e($user->experience); ?>"
-                                                    placeholder=""></textarea>
+                                                    placeholder=""><?php echo e($user->experience); ?></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputSkills" class="col-sm-2 form-label"> <?php echo e($lang['skills']); ?></label>
-
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control"
-                                                name="skills" id="inputSkills" placeholder="">
+                                                name="skills" id="inputSkills"
+                                                value="<?php echo e($user->skills); ?>"
+                                                 placeholder="">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -89,7 +90,7 @@
                                             </div>
                                         </div>
                                         <?php if(!empty($successMessage)): ?>
-                                            <div class="form-group alert-success"><?php echo e($successMessage); ?></div>
+                                            <div class="form-element alert-success"><?php echo e($successMessage); ?></div>
                                         <?php endif; ?>
                                     </form>
                                 </div>

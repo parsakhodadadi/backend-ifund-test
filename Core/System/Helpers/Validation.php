@@ -56,6 +56,14 @@ class Validation
         return true;
     }
 
+    public function phone_size($value): bool 
+    {
+        if (strlen($value) != 11) {
+            return false;
+        } 
+        return true;
+    }
+
     public function tags_size($value): bool
     {
         if (!empty($value)) {

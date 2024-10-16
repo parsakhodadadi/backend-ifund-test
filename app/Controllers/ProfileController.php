@@ -34,6 +34,7 @@ class ProfileController extends controller
             $errorMessage = $this->users->update(['id' => $this->userID], $this->request);
             if (empty($errorMessage)) {
                 $successMessage = __('edit-profile.edit-suc');
+                $this->currentUser = current($this->users->get(['id' => $this->userID ]));
             }
         }
         $content = $this->blade->render('backend/main/layout/edit-profile', [

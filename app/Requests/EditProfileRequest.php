@@ -11,7 +11,7 @@ class EditProfileRequest extends Validation
         return [
             'name' => 'required',
             'email' => 'email|required',
-            'phone' => 'phone_number',
+            'phone' => 'phone_number|phone_size',
             'skills' => 'no_rule',
             'experience' => 'no_rule',
         ];
@@ -26,6 +26,7 @@ class EditProfileRequest extends Validation
             'password.required' => __('sign-up.password-required'),
             'password.password' => __('sign-up.password-password'),
             'phone.phone_number' => __('edit-profile.phone-number'),
+            'phone.phone_size' => __('edit-profile.phone-size'),
         ];
     }
 

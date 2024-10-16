@@ -59,28 +59,29 @@
                                                 <input type="tel" class="form-control" 
                                                 name="phone"
                                                 id="inputPhone"
-                                                value="{{ $user->phone }}" placeholder="">
+                                                value="{{ $user->phone }}" placeholder="09*********">
                                                 @if(!empty($errors['phone']['phone_number']))
                                                     <div class="form-element alert-danger">{{ $errors['phone']['phone_number'] }}</div>
+                                                @elseif(!empty($errors['phone']['phone_size']))   
+                                                    <div class="form-element alert-danger">{{ $errors['phone']['phone_size'] }}</div>
                                                 @endif
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputExperience" class="col-sm-2 form-label">{{ $lang['experience'] }}</label>
-
                                             <div class="col-sm-10">
                                                 <textarea class="form-control" id="inputExperience"
                                                 name="experience"
-                                                value="{{ $user->experience }}"
-                                                    placeholder=""></textarea>
+                                                    placeholder="">{{ $user->experience }}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputSkills" class="col-sm-2 form-label"> {{ $lang['skills'] }}</label>
-
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control"
-                                                name="skills" id="inputSkills" placeholder="">
+                                                name="skills" id="inputSkills"
+                                                value="{{ $user->skills }}"
+                                                 placeholder="">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -89,7 +90,7 @@
                                             </div>
                                         </div>
                                         @if(!empty($successMessage))
-                                            <div class="form-group alert-success">{{ $successMessage }}</div>
+                                            <div class="form-element alert-success">{{ $successMessage }}</div>
                                         @endif
                                     </form>
                                 </div>
